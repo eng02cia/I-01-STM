@@ -1,0 +1,1 @@
+int verificaValorArrayIgualZeroAsciiOuTraco(unsigned char quantidadeBytes,unsigned char*indexComparaValores);

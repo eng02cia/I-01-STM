@@ -1,0 +1,1 @@
+unsigned char comparaValoresArray (unsigned char qtBytes,unsigned char *variavelA, unsigned char *variavelB);

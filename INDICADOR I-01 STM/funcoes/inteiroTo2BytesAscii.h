@@ -1,0 +1,1 @@
+void inteiroTo2BytesAscii(unsigned char valorInteiro,unsigned char *indexArrayDestino);

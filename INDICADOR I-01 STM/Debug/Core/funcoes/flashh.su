@@ -1,0 +1,8 @@
+C:/Users/ENGENHARIA - GABRIEL/Documents/Caio/Projetos/PROJETOS VERSIONADOS/I-01-STM/INDICADOR I-01 STM/libC/funcoes/flashh.c:28:17:GetPage	24	static
+C:/Users/ENGENHARIA - GABRIEL/Documents/Caio/Projetos/PROJETOS VERSIONADOS/I-01-STM/INDICADOR I-01 STM/libC/funcoes/flashh.c:44:6:float2Bytes	24	static
+C:/Users/ENGENHARIA - GABRIEL/Documents/Caio/Projetos/PROJETOS VERSIONADOS/I-01-STM/INDICADOR I-01 STM/libC/funcoes/flashh.c:55:7:Bytes2float	32	static
+C:/Users/ENGENHARIA - GABRIEL/Documents/Caio/Projetos/PROJETOS VERSIONADOS/I-01-STM/INDICADOR I-01 STM/libC/funcoes/flashh.c:68:10:Flash_Write_Data	56	static
+C:/Users/ENGENHARIA - GABRIEL/Documents/Caio/Projetos/PROJETOS VERSIONADOS/I-01-STM/INDICADOR I-01 STM/libC/funcoes/flashh.c:107:6:Flash_Read_Data	24	static
+C:/Users/ENGENHARIA - GABRIEL/Documents/Caio/Projetos/PROJETOS VERSIONADOS/I-01-STM/INDICADOR I-01 STM/libC/funcoes/flashh.c:126:6:Convert_To_Str	32	static
+C:/Users/ENGENHARIA - GABRIEL/Documents/Caio/Projetos/PROJETOS VERSIONADOS/I-01-STM/INDICADOR I-01 STM/libC/funcoes/flashh.c:135:6:Flash_Write_NUM	16	static
+C:/Users/ENGENHARIA - GABRIEL/Documents/Caio/Projetos/PROJETOS VERSIONADOS/I-01-STM/INDICADOR I-01 STM/libC/funcoes/flashh.c:140:7:Flash_Read_NUM	24	static

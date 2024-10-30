@@ -1,0 +1,1 @@
+ unsigned char transfereConstToArray(const char *charOrigem,unsigned char*charDestino);

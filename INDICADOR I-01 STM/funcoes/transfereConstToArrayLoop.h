@@ -1,0 +1,1 @@
+void transfereConstToArrayLoop (unsigned char quantidadetransferencia, const char *indexArrayOrigem, unsigned char *indexArrayDestino);

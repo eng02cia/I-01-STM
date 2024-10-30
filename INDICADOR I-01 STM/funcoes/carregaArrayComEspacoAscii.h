@@ -1,0 +1,1 @@
+void carregaArrayComEspacoAscii(unsigned char QuantidadeBytes,unsigned char*IndexApagaValores);

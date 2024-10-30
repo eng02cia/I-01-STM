@@ -1,0 +1,1 @@
+void converteArrayDecimalParaAscii (unsigned char QuantidadeBytes,unsigned char*IndexConverteValores);

@@ -1,0 +1,1 @@
+void subtracaoValorArray(unsigned char qtSubutracao,unsigned char *indexMinuendo,unsigned char *indexSubtraendo);

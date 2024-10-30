@@ -1,0 +1,1 @@
+int inteiroToArray(unsigned int rtempArray,unsigned char *indexDestino);

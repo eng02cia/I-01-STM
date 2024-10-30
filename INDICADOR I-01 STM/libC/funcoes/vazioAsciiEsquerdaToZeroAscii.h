@@ -1,0 +1,1 @@
+void vazioAsciiEsquerdaToZeroAscii(unsigned char quantidadeBytes,unsigned char*indexConverteValores);

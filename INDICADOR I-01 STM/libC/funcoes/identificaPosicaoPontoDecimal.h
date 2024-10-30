@@ -1,0 +1,1 @@
+int identificaPosicaoPontoDecimal(unsigned char *indexPosicaoPonto);

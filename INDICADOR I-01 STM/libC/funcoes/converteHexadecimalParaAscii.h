@@ -1,0 +1,1 @@
+void converteHexadecimalParaAscii(unsigned char valorHexadecimal,unsigned char*indexDestinoConversao);

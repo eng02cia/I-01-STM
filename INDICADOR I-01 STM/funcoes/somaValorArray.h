@@ -1,0 +1,1 @@
+void somaValorArray(unsigned char qtSoma,unsigned char *indexParcela_1,unsigned char *indexParcela_2);

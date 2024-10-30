@@ -1,0 +1,1 @@
+int verificaValorArrayIgualEspacoAscii(unsigned char quantidadeBytes,unsigned char*indexComparaValores);

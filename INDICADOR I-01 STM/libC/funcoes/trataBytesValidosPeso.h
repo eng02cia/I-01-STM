@@ -1,0 +1,1 @@
+void trataBytesValidosPeso(unsigned char *indexOrigem);

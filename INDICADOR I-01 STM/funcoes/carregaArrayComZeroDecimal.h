@@ -1,0 +1,1 @@
+void carregaArrayComZeroDecimal(unsigned int quantidadeBytes,unsigned char*indexApagaValores);

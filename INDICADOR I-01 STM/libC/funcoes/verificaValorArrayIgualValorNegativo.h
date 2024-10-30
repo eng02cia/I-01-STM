@@ -1,0 +1,1 @@
+int verificaValorArrayIgualValorNegativo(unsigned char quantidadeBytes,unsigned char*indexComparaValores);

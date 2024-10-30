@@ -1,0 +1,1 @@
+void pesoGramaDecimalToPesoKgAscii(unsigned char inserePonto,unsigned char posicaoPontoDecimal,unsigned char qtBytesOrigem,unsigned char *indexOrigem,unsigned char qtBytesDestino,unsigned char *indexDestino);

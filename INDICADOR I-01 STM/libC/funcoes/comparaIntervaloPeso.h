@@ -1,0 +1,1 @@
+int comparaIntervaloPeso(unsigned char *pesoDecimalBalanca,unsigned char *pesoAlvo,unsigned char *toleranciaL,unsigned char *toleranciaH);

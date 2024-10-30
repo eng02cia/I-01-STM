@@ -1,0 +1,1 @@
+void transfereArrayToArray (int qtBytes,unsigned char *indexOrigem,unsigned char *indexDestino);

@@ -1,0 +1,1 @@
+int comparaConstComArray(const char *variavelA, unsigned char *variavelB);

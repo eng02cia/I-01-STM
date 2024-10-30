@@ -1,0 +1,1 @@
+unsigned char verificaValorArrayIgualZeroAscii(unsigned char quantidadeBytes,unsigned char*indexComparaValores);
