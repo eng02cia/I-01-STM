@@ -11,7 +11,7 @@ extern UART_HandleTypeDef huart3;
 //////////////////////////////////////////////////////////////////////////////////
 void metodoControleDasTelas(void)
 {
-	if (exibeVersionControl == 0 && mostraTelaTemporariaLcd == 0)
+	if ((exibeVersionControl == 0) && (mostraTelaTemporariaLcd == 0) && (sistemaInicializado == 1))
 	{
 		//Menu de programação
 		if (menuAcessaMenusProgramacao != menuAcessaMenusProgramacaoEmEspera
@@ -20,10 +20,10 @@ void metodoControleDasTelas(void)
 				|| menuModoTecnicoIndicador != menuModoTecnicoIndicadorEmEspera)
 		{
 			if (trocarPaginaDwin == 1)
-						{
-							trocarPaginaDwin=0;
-							goToPageDWIN(3);
-						}
+			{
+				trocarPaginaDwin=0;
+				carregaTela3();
+			}
 			transfereCaracterLcdMenu1Dwin();
 			transfereCaracterLcdMenu2Dwin();
 		}
@@ -36,17 +36,18 @@ void metodoControleDasTelas(void)
 				//cria a tela de status principal 1
 				//caso sem recepção de de peso coloca tela e erro
 				escreveDadoLcd(&telaStatusPrincipal[0],&caracterLcd[0]);
+
 				if (trocarPaginaDwin == 0)
 				{
-					trocarPaginaDwin=1;
+					trocarPaginaDwin = 1;
 					if (posicaoPontoDecimalIndicadorMem == 0 )
 					{
-						goToPageDWIN(1);
+						carregaTela1();
 						limpaLinha2Dwin();
 					}
 					if (posicaoPontoDecimalIndicadorMem != 0 )
 					{
-						goToPageDWIN(2);
+						carregaTela2();
 						limpaLinha2Dwin();
 					}
 				}
@@ -70,14 +71,14 @@ void metodoControleDasTelas(void)
 				{
 					if (statusControleSobreCarga == 1){transfereConstToArray(&telaSobreCarga[0],&caracterLcd[16]);}
 					if (statusControleSubCarga == 1){transfereConstToArray(&telaSubCarga[0],&caracterLcd[16]);}
-					transfereCaracterLcdLinha2Dwin();
+					//transfereCaracterLcdLinha2Dwin();
 
-					ocultaPesoDwin();
+					//ocultaPesoDwin();
 				}
 				else
 				{
 					transfereConstToArray(&modeloIndicador[0],&caracterLcd[0]);
-					transfereCaracterLcdLinha1Dwin();
+					//transfereCaracterLcdLinha1Dwin();
 					if (controleTara == _TARAATIVADA)
 					{
 						transfereArrayToArray(7,&pesoLiquidoIndicadorAscii[0],&caracterLcd[22]);
@@ -87,7 +88,7 @@ void metodoControleDasTelas(void)
 						//                        caracterLcd[16] = testeEndModbus +'0';
 						transfereArrayToArray(7,&pesoBrutoIndicadorAscii[0],&caracterLcd[22]);
 					}
-					mostraPesoDwin();
+					//mostraPesoDwin();
 					caracterLcd[30] = 'K';
 					caracterLcd[31] = 'g';
 				}
