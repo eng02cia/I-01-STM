@@ -89,9 +89,7 @@ void metodoLigaSistema(void)
     statusLigaDesliga = _LIGADO;
     exibeVersionControl = 1;
     statusPowerOnMem = _LIGADO;
-    fazTelaInicio = 1;
     trocarPaginaPeso = 1;
-    TelaInicio();
 //    preparaSalvaStatusPowerOn();
     escreveDadoLcd(&telaInicialIndicador[0],&caracterLcd[0]);
     controleTara = _TARADESATIVADA;
@@ -190,8 +188,7 @@ void telaErroLimiteZero(void)
     mostraTelaTemporariaLcd = 1;
     transfereArrayToArray(32,&caracterLcd[0],&backupTelaLcd[0]);
     transfereConstToArray(&telaErroLimiteZeroLcd[0],&caracterLcd[0]);
-    transfereCaracterLcdLinha1();
-
+    transfereCaracterLcdLinha1Dwin();
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //função de controle do tempo para apagar o backlight quando backlight amarelo	//

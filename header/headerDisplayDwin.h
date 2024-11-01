@@ -1,14 +1,14 @@
-//void ocultaPesoDwin(void);
+void ocultaPesoDwin(void);
 void mostraPesoTesteDisplay(void);
-//void mostraPesoDwin(void);
+void mostraPesoDwin(void);
 void limpaLinha2Dwin(void);
-//void transfereCaracterLcdLinha1Dwin(void);
-//void transfereCaracterLcdLinha2Dwin(void);
+void transfereCaracterLcdLinha1Dwin(void);
+void transfereCaracterLcdLinha2Dwin(void);
 void transfereCaracterLcdMenu1Dwin(void);
 void transfereCaracterLcdMenu2Dwin(void);
 void zeraPesoParaErro(void);
 void zeraErroParaPeso (void);
-void limpaLinha1Lcd(void);
+void limpaLinha1Dwin(void);
 void transfereCaracterDwinLinhasCorrente(void);
 void transfereCaracterDwinLinha1Aplicacao(void);
 void transfereCaracterDwinLinha2Aplicacao(void);
@@ -16,7 +16,6 @@ void transfereCaracterDwinLinha2NumBrinco(void);
 void transfereCaracterDwinTelaInicial(void);
 void carregaTela1(void);
 void carregaTela2(void);
-void carregaTela3(void);
 void carregaTela11(void);
 void backLightDwinMaximo(void);
 void backLightDwinMinimo(void);
@@ -59,7 +58,6 @@ static unsigned char limpaLinha1;
 
 const char charTela1Dwin[]={0x5A,0xA5,0x07,0x82,0x00,0x84,0x5A,0x01,0,1};
 const char charTela2Dwin[]={0x5A,0xA5,0x07,0x82,0x00,0x84,0x5A,0x01,0,2};
-const char charTela3Dwin[]={0x5A,0xA5,0x07,0x82,0x00,0x84,0x5A,0x01,0,3};
 const char charTela11Dwin[]={0x5A,0xA5,0x07,0x82,0x00,0x84,0x5A,0x01,0,11};
 
 const char pesoTraco[]= {"-------"};

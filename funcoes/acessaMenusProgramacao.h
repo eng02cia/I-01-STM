@@ -9,7 +9,6 @@ void funcaoAcessaMenusProgramacao(void)
         menuAcessaMenusProgramacao = menuAcessaMenusProgramacaoEmEspera;
         teclaPressionadaAtual = teclaSolta;    
         flagInibeTeclaSolta = 1;
-
     }
     else
     {
@@ -82,25 +81,6 @@ void funcaoAcessaMenusProgramacao(void)
 void telaAcessaMenuModoTecnicoIndicador(void)
 {
     menuAcessaMenusProgramacao = acessaMenuModoTecnicoIndicador;
-
-
-/*
-    tempTxQtBytes = 0;
-    tempQtBytes = transfereConstToArray(&linha0NextionModoTecnico[0],&frameTxNextion[0]);
-    tempTxQtBytes = tempTxQtBytes+tempQtBytes;
-    tempQtBytes = transfereConstToArray(&cmd_end[0],&frameTxNextion[tempTxQtBytes]);
-    tempTxQtBytes = tempTxQtBytes+tempQtBytes;
-    HAL_UART_Transmit(&huart3, &frameTxNextion[0],tempTxQtBytes,50);
-
-    tempTxQtBytes = 0;
-    tempQtBytes = transfereConstToArray(&linha1NextionModoTecnico[0],&frameTxNextion[0]);
-    tempTxQtBytes = tempTxQtBytes+tempQtBytes;
-    tempQtBytes = transfereConstToArray(&cmd_end[0],&frameTxNextion[tempTxQtBytes]);
-    tempTxQtBytes = tempTxQtBytes+tempQtBytes;
-    HAL_UART_Transmit(&huart3, &frameTxNextion[0],tempTxQtBytes,50);
-
-
-*/
     escreveDadoLcd(&charTelaAcessaMenuModoTecnicoIndicador[0],&caracterLcd[0]);  
     caracterLcd[30] = caracterIncremento;
     caracterLcd[31] = caracterSalva;       
@@ -111,24 +91,6 @@ void telaAcessaMenuModoTecnicoIndicador(void)
 void telaAcessaMenuConfiguraSerial_1(void)
 {
     menuAcessaMenusProgramacao = acessaMenuProgramaSerial_1;
-
-
-/*
-    tempTxQtBytes = 0;
-    tempQtBytes = transfereConstToArray(&linha0NextionConfiguraSerial[0],&frameTxNextion[0]);
-    tempTxQtBytes = tempTxQtBytes+tempQtBytes;
-    tempQtBytes = transfereConstToArray(&cmd_end[0],&frameTxNextion[tempTxQtBytes]);
-    tempTxQtBytes = tempTxQtBytes+tempQtBytes;
-    HAL_UART_Transmit(&huart3, &frameTxNextion[0],tempTxQtBytes,50);
-
-
-    tempTxQtBytes = 0;
-    tempQtBytes = transfereConstToArray(&linha1NextionConfiguraSerial[0],&frameTxNextion[0]);
-    tempTxQtBytes = tempTxQtBytes+tempQtBytes;
-    tempQtBytes = transfereConstToArray(&cmd_end[0],&frameTxNextion[tempTxQtBytes]);
-    tempTxQtBytes = tempTxQtBytes+tempQtBytes;
-    HAL_UART_Transmit(&huart3, &frameTxNextion[0],tempTxQtBytes,50);
-*/
     escreveDadoLcd(&charTelaAcessaMenuConfiguraSerial_1[0],&caracterLcd[0]);
     caracterLcd[30] = caracterIncremento;
     caracterLcd[31] = caracterSalva;       
@@ -139,25 +101,6 @@ void telaAcessaMenuConfiguraSerial_1(void)
 void telaAcessaMenuFazCalibracao(void)
 {
     menuAcessaMenusProgramacao = acessaMenuCalibracao;
-
-
-/*
-    tempTxQtBytes = 0;
-    tempQtBytes = transfereConstToArray(&linha0NextionCalibracaoIndicador[0],&frameTxNextion[0]);
-    tempTxQtBytes = tempTxQtBytes+tempQtBytes;
-    tempQtBytes = transfereConstToArray(&cmd_end[0],&frameTxNextion[tempTxQtBytes]);
-    tempTxQtBytes = tempTxQtBytes+tempQtBytes;
-    HAL_UART_Transmit(&huart3, &frameTxNextion[0],tempTxQtBytes,50);
-
-
-    tempTxQtBytes = 0;
-    tempQtBytes = transfereConstToArray(&linha1NextionCalibracaoIndicador[0],&frameTxNextion[0]);
-    tempTxQtBytes = tempTxQtBytes+tempQtBytes;
-    tempQtBytes = transfereConstToArray(&cmd_end[0],&frameTxNextion[tempTxQtBytes]);
-    tempTxQtBytes = tempTxQtBytes+tempQtBytes;
-    HAL_UART_Transmit(&huart3, &frameTxNextion[0],tempTxQtBytes,50);
-*/
-
     escreveDadoLcd(&charTelaAcessaMenuFazCalibracao[0],&caracterLcd[0]);
     caracterLcd[30] = caracterIncremento;
     caracterLcd[31] = caracterSalva;       

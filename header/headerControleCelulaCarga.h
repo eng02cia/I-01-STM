@@ -16,10 +16,10 @@ void tempoEstabilidadeCargaViva(void);
 //variaveis utilizadas no calculo dopeso
 //registra o peso atual da balan�a 01
 
-static unsigned char pesoBrutoIndicadorAscii[7];
-static unsigned char pesoTaraIndicadorAscii[7];
-static unsigned char pesoLiquidoIndicadorAscii[7];
-static unsigned char pesoCarregamentoAscii[7] = {' ',' ',' ',' ',' ',' ','0'};
+static unsigned char pesoBrutoIndicadorAscii[7] =   {' ',' ',' ',' ',' ',' ','0'};
+static unsigned char pesoTaraIndicadorAscii[7] =    {' ',' ',' ',' ',' ',' ','0'};
+static unsigned char pesoLiquidoIndicadorAscii[7] = {' ',' ',' ',' ',' ',' ','0'};
+static unsigned char pesoCarregamentoAscii[7] =     {' ',' ',' ',' ',' ',' ','0'};
 //static unsigned char pesoTempIndicadorAscii[7];
 static unsigned char arrayTempCalculaPeso[9];
 

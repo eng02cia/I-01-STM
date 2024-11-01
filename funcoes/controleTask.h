@@ -135,15 +135,3 @@ void funcaoControleLeituraPeso(void)
 }
 
 
-void TelaInicio (void)
-{
-	if (fazTelaInicio == 1)
-	{
-		fazTelaInicio = 0;
-		HAL_UART_Transmit(&huart3, "page START", 10, 25);
-		HAL_UART_Transmit(&huart3, cmd_end, 3, 25);
-		HAL_UART_Transmit(&huart3, "sleep=0", 7, 25);
-		HAL_UART_Transmit(&huart3, cmd_end, 3, 25);
-	}
-}
-

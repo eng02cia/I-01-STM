@@ -18,7 +18,7 @@ static unsigned char tempoMostraTelaErroCalibracao;
 static unsigned char tempoMostraTelaErroCargaMaxima;
 static unsigned char tempoMostraTelaErroZeroInicio;
 static unsigned char tempoMostraTelaErroMenuIniciar;
-static unsigned char fazTelaInicio;
+
 unsigned char frameEscritaDisplayRest[50];
 
 unsigned char rlcdTemp;
@@ -132,4 +132,4 @@ void apagaLcd(void);
 void apagaLinha_1Lcd(void);
 void apagaLinha_2Lcd(void);
 void controlaTempoExibeTelaTemporariaDisplay (void);
-void TelaInicio(void);
+

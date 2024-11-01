@@ -73,7 +73,6 @@ void TimerReadi2c (void)
 			flagFazLeituraI2c = 0;
 			tempoLeituraI2c = 0;
 			leituraI2c_Default();
-		//zeraTelaInicio();
 		}
 	}
 }

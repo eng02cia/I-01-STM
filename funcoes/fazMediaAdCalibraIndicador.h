@@ -41,7 +41,6 @@ void fazMediaAdCalibraIndicador(void)
                     flagFimCalibracao = 0;
 					HAL_UART_Transmit(&huart3, "page PESO", 9, 25);
 					HAL_UART_Transmit(&huart3, cmd_end, 3, 25);
-
                 }
                 else
                 {

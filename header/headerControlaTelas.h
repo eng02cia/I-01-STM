@@ -10,19 +10,19 @@ static unsigned char tempoExibeTelaInicial;
 //static unsigned char PesoAtualProcessoCorte[9];//mostra o peso progamado do corte que esta em execu��o
 unsigned char tempControlaTelas;
 
-
 //flags utilizados para controle das telas
 static unsigned char exibeVersionControl;
 static unsigned char transmitindoErro;
 unsigned char trocaTelaPeso;
 //frases utilizadas 
 
-    
-const char modeloIndicador[] ={" INDICADOR I-01 "};
-const char telaInicialIndicador[] =     {" INDICADOR I-01 ""STM 1.0"};
-const char telaStatusPrincipal[]=       {"                ""                "};
-const char telaSobreCarga[]=           {"  SOBRE CARGA   "};
-const char telaSubCarga[]=            {"  SUB CARGA   "};
+        
+const char telaInicialIndicador[] =     {" INDICADOR I-01 "};
+const char telaInicialVersao[] =        {"Vx.y.z          "};
+const char telaStatusPrincipal[] =      {"                ""                "};
+const char telaSobreCarga[] =           {"  SOBRE CARGA   "};
+const char telaSubCarga[] =             {"  SUB CARGA     "};
+const char telaSemCelulaCarga[] =       {"  CONECT/CABO   "};
 //const char paradoLcd[]= {"PARADO"};
 //const char descarregueLcd[]= {"DESCARREGUE"};
 //const char descarregandoLcd[]= {"DESCARREGANDO"};

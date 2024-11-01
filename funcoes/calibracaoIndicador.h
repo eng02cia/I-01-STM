@@ -807,7 +807,6 @@ void manipulacaoDoDigitoDoIndicador(void)
 /*tela de erro do peso de calibracao                                            */
 void telaErroPesoCalibracao (void)
 {    
-
 	transfereConstToArray(&charComPesoIndicador[0],&backupTelaLcd[0]);
 
 	backupTelaLcd[28] = caracterRetorna;
@@ -954,9 +953,6 @@ void telaErroSenhaTecnica(void)
 	mostraTelaTemporariaLcd = 1;
 	tempoMostraTelaTemporariaLcd = 0;
 	flagPiscaDigitoSenha = 1;
-
-
-
 } 
 //////////////////////////////////////////////////////////////////////////////////		
 //metodo que controla qual digito vai piscar quando definindo a senha         	//
@@ -968,29 +964,29 @@ void controlaPiscaDigitoProgSenha(void)
 	if (menuCalibraIndicador == menuVerificaSenhaCalibracao|| menuAcessaMenusProgramacao == verificaSenhaMenuAcessoProgramacao)
 #endif       
 #ifndef _senhaInicial
-		if (menuCalibraIndicador == menuVerificaSenhaCalibracao)
+	if (menuCalibraIndicador == menuVerificaSenhaCalibracao)
 #endif
+	{
+		if (++tempoPiscaSenha > 3)
 		{
-			if (++tempoPiscaSenha > 3)
+			tempoPiscaSenha = 0;
+			if (flagTempoPiscaDigitoSenha == 1){flagTempoPiscaDigitoSenha = 0;}
+			else{flagTempoPiscaDigitoSenha = 1;}
+
+
+			caracterLcd[16]= senhaTemp[0];
+			caracterLcd[17]= senhaTemp[1];
+			caracterLcd[18]= senhaTemp[2];
+			caracterLcd[19]= senhaTemp[3];
+			if (flagPiscaDigitoSenha == 1 & flagTempoPiscaDigitoSenha == 1)
 			{
-				tempoPiscaSenha = 0;
-				if (flagTempoPiscaDigitoSenha == 1){flagTempoPiscaDigitoSenha = 0;}
-				else{flagTempoPiscaDigitoSenha = 1;}
-
-
-				caracterLcd[16]= senhaTemp[0];
-				caracterLcd[17]= senhaTemp[1];
-				caracterLcd[18]= senhaTemp[2];
-				caracterLcd[19]= senhaTemp[3];
-				if (flagPiscaDigitoSenha == 1 & flagTempoPiscaDigitoSenha == 1)
-				{
-					if (digitoAtualProgramacao == programandoDigitoZero){caracterLcd[19] = ' ';}
-					if (digitoAtualProgramacao == programandoDigitoUm){caracterLcd[18] = ' ';}
-					if (digitoAtualProgramacao == programandoDigitoDois){caracterLcd[17] = ' ';}
-					if (digitoAtualProgramacao == programandoDigitoTres){caracterLcd[16] = ' ';}
-				}
+				if (digitoAtualProgramacao == programandoDigitoZero){caracterLcd[19] = ' ';}
+				if (digitoAtualProgramacao == programandoDigitoUm){caracterLcd[18] = ' ';}
+				if (digitoAtualProgramacao == programandoDigitoDois){caracterLcd[17] = ' ';}
+				if (digitoAtualProgramacao == programandoDigitoTres){caracterLcd[16] = ' ';}
 			}
 		}
+	}
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //apaga a senha digitada                                                     	//

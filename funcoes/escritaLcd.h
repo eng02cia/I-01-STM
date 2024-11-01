@@ -14,8 +14,6 @@ void controlaTempoExibeTelaTemporaria (void)
             transfereArrayToArray(32,&backupTelaLcd[0],&caracterLcd[0]);
         }
     }
-
-
 }
 //////////////////////////////////////////////////////////////////////////////////
 //Fun��o para apagar todos os caracteres do lcd                                	//
