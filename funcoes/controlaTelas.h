@@ -18,6 +18,7 @@ void metodoControleDasTelas(void)
 				|| menuCalibraIndicador != menuCalibraIndicadorEmEspera
 				|| menuConfiguraSerial_1 != menuConfiguraSerial_1EmEspera
 				|| menuModoTecnicoIndicador != menuModoTecnicoIndicadorEmEspera
+				|| menuProgramacaoRelogioAtual != menuProgramaRelogioEmEspera
 				|| menuProgramaDefinicaoFucionamento != menuDefinicaoFuncionamentoEmEspera)
 		{
 			if (trocarPaginaDwin == 1)
@@ -45,8 +46,16 @@ void metodoControleDasTelas(void)
 
 				if ((statusControleSobreCarga == 1) || (statusControleSubCarga == 1))
 				{
-					if (statusControleSobreCarga == 1){transfereConstToArray(&telaSobreCarga[0],&caracterLcd[16]);}
-					if (statusControleSubCarga == 1){transfereConstToArray(&telaSubCarga[0],&caracterLcd[16]);}
+					if (statusControleSobreCarga == 1){
+						if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&telaSobreCargaPT[0],&caracterLcd[16]);}
+						if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&telaSobreCargaING[0],&caracterLcd[16]);}
+						if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&telaSobreCargaESP[0],&caracterLcd[16]);}
+					}
+					if (statusControleSubCarga == 1) {
+						if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&telaSubCargaPT[0],&caracterLcd[16]);}
+						if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&telaSubCargaING[0],&caracterLcd[16]);}
+						if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&telaSubCargaESP[0],&caracterLcd[16]);}
+					}
 
 					controleTelaDwin = ocultaPeso;
 

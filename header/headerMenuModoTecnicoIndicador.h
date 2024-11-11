@@ -11,21 +11,38 @@ void telaTempoBackLightLigado(void);
 //contantes utilizadas na fun��o                
 // telas de programa�ao
                                                  
+// TELA PROG PORTUGUES
+const char charTelaConfiguraLimiteZeroPT[]=      {"LIMITE ZERO     ""                "};
+const char charTelaModoPesagemIndicadorPT[]=     {"ZERO POWER ON   ""                "};
+const char charTelaModoFuncBackLightPT[]=        {"MODO BACK LIGHT ""                "};
+const char charTelaTempoBackLightPT[]=           {"TEMPO BACK LIGHT""                "};
+const char charTelaAtivadoPT[]=                  {"ATIVADO"};
+const char charTelaDesativadoPT[]=               {"DESATIVADO"};
+const char charTelaLigadoPT[]=                   {"LIGADO"};
+const char charTelaLigadoPorTempoPT[]=           {"LIGADO/TEMPO"};
+const char charTelaDesligadoPT[]=                {"DESLIGADO"};
 
-const char charTelaConfiguraLimiteZero[]=      {"LIMITE ZERO     ""                "};
-const char charTelaModoPesagemIndicador[]=     {"ZERO POWER ON   ""                "};
-//const char charTelaTempoCongelaPeso[]=         {"T/CONGELA PESO  ""                "};
-//const char charTelaQtDivisoesCargaViva[]=      {"QT/DIVISOES CARG""A VIVA          "};
-const char charTelaModoFuncBackLight[]=        {"MODO BACK LIGHT ""                "};
-const char charTelaTempoBackLight[]=           {"TEMPO BACK LIGHT""                "};
+// TELA PROG ESPANHOL
+const char charTelaConfiguraLimiteZeroESP[]=        {"LIMITE CERO     ""                "};
+const char charTelaModoPesagemIndicadorESP[]=       {"CERO POWER ON   ""                "};
+const char charTelaModoFuncBackLightESP[]=          {"MODO LUZ D FONDO""                "};
+const char charTelaTempoBackLightESP[]=             {"TIEMPO LUZ FONDO""                "};
+const char charTelaAtivadoESP[]=                    {"ACTIVADO"};
+const char charTelaDesativadoESP[]=                 {"DESACTIVADO"};
+const char charTelaLigadoESP[]=                     {"ENCENDIDO"};
+const char charTelaLigadoPorTempoESP[]=             {"TEMPORARIO"};
+const char charTelaDesligadoESP[]=                  {"APAGADO"};
 
-
-const char charTelaAtivado[]=    {"ATIVADO"};
-const char charTelaDesativado[]= {"DESATIVADO"};
-
-const char charTelaLigado[]=           {"LIGADO"};
-const char charTelaLigadoPorTempo[]=   {"LIGADO/TEMPO"};
-const char charTelaDesligado[]=        {"DESLIGADO"};
+// TELA PROG INGLES
+const char charTelaConfiguraLimiteZeroING[]=        {"ZERO LIMIT      ""                "};
+const char charTelaModoPesagemIndicadorING[]=       {"ZERO POWER ON   ""                "};
+const char charTelaModoFuncBackLightING[]=          {"BACKLIGHT MODE""                  "};
+const char charTelaTempoBackLightING[]=             {"BACKLIGHT TIME""                  "};
+const char charTelaAtivadoING[]=                    {"ENABLED"};
+const char charTelaDesativadoING[]=                 {"DISABLED"};
+const char charTelaLigadoING[]=                     {"ON"};
+const char charTelaLigadoPorTempoING[]=             {"ON BY TIME"};
+const char charTelaDesligadoING[]=                  {"OFF"};
 
 
 
@@ -39,8 +56,8 @@ static unsigned char tempConfigIndicador;
 //																							//
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
-const char charTelaConfiguraLimiteZeroNextion[]=      {"LIMITE ZERO     "};
-const char charTelaConfiguraLimiteZeroNextion2[]=      {"        "};
+const char charTelaConfiguraLimiteZeroPTNextion[]=      {"LIMITE ZERO     "};
+const char charTelaConfiguraLimiteZeroPTNextion2[]=      {"        "};
 
 const char charTelaConfigurTempoBackLightNextion[]=      {"        "};
 
@@ -69,5 +86,5 @@ enum menuModoTecnicoIndicador
 #define _limiteProgLimiteDeZero 5
 #define _limiteProgValorFiltroDigital 20
 #define _limiteStatusProgramacaoZeroAoLigar 1
-//flags utilizados na programa��o
+//flags utilizados na programacao
 

@@ -320,6 +320,9 @@ void limpaLinha1Dwin(void)
 	transfereConstToArrayLoop(4,&tx16BytesDwin[0],&frameTxDwin[0]);
 	frameTxDwin[4] = 0x12;
 	frameTxDwin[5] = 0x00;
+
+	removeCaracteresEspeciaisDwin(6,16);
+
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],22,50);
 }
 void limpaLinha2Dwin(void)
@@ -328,6 +331,9 @@ void limpaLinha2Dwin(void)
 	transfereConstToArrayLoop(4,&tx16BytesDwin[0],&frameTxDwin[0]);
 	frameTxDwin[4] = 0x13;
 	frameTxDwin[5] = 0x00;
+
+	removeCaracteresEspeciaisDwin(6,16);
+
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],22,50);
 }
 void transfereCaracterDwinLinha1Aplicacao(void)
@@ -336,6 +342,9 @@ void transfereCaracterDwinLinha1Aplicacao(void)
 	transfereConstToArrayLoop(4,&tx16BytesDwin[0],&frameTxDwin[0]);
 	frameTxDwin[4] = 0x12;
 	frameTxDwin[5] = 0x00;
+
+	removeCaracteresEspeciaisDwin(6,16);
+
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],22,50);
 }
 void transfereCaracterDwinLinha2Aplicacao(void)
@@ -345,6 +354,9 @@ void transfereCaracterDwinLinha2Aplicacao(void)
 	frameTxDwin[4] = 0x13;
 	frameTxDwin[5] = 0x00;
 	transfereArrayToArray(7,&caracterLcd[9],&frameTxDwin[14]);
+
+	removeCaracteresEspeciaisDwin(6,16);
+
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],22,50);
 }
 void transfereCaracterDwinTelaInicial(void)
@@ -353,6 +365,9 @@ void transfereCaracterDwinTelaInicial(void)
 	frameTxDwin[4] = 0x18;
 	frameTxDwin[5] = 0x00;
 	transfereConstToArray(&telaInicialVersao[0],&frameTxDwin[6]);
+
+	removeCaracteresEspeciaisDwin(6,16);
+
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],22,50);
 }
 
@@ -361,6 +376,9 @@ void mostraModeloIndicadorDwin (void) {
 	frameTxDwin[4] = 0x12;
 	frameTxDwin[5] = 0x00;
 	transfereConstToArrayLoop(16,&telaInicialIndicador[0],&frameTxDwin[6]);	
+
+	removeCaracteresEspeciaisDwin(6,16);
+
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],22,50);
 }
 
@@ -369,6 +387,9 @@ void mostraNomeTelaIndicadorDwin (void) {
 	frameTxDwin[4] = 0x12;
 	frameTxDwin[5] = 0x00;
 	transfereConstToArrayLoop(16,&nomeTelaIndicadorMem[0],&frameTxDwin[6]);	
+
+	removeCaracteresEspeciaisDwin(6,16);
+
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],22,50);
 }
 
@@ -390,34 +411,4 @@ void backLightDwinMinimo(void)
 	frameTxDwin[7] = 0x0A;// bacht light 30%
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],8,10);
 }
-/*
-void transfereCaracterDwinLinhasCorrente(void)
-{
-	carregaArrayComEspacoAscii(32, &tempFrameDwin[0]);
 
-	f = busvoltage;
-	buf = ftoa();
-	while(loopConverteCorrente< 5)
-	    {
-			tempArrayCorrente[loopConverteCorrente] = *buf;
-	        buf++;
-	        loopConverteCorrente++;
-	    }
-	loopConverteCorrente = 0;
-	transfereArrayToArray(5,&tempArrayCorrente[0],&frameDwin0x5100[0]);
-	writeVariableDWIN(19,0x1200,&frameDwin0x5100[0]);
-	carregaArrayComEspacoAscii(32, &tempArrayCorrente[0]);
-
-	f = current_mA;
-	buf = ftoa();
-	while(loopConverteCorrente< 5)
-	    {
-			tempArrayCorrente[loopConverteCorrente] = *buf;
-	        buf++;
-	        loopConverteCorrente++;	    }
-	loopConverteCorrente = 0;
-	transfereArrayToArray(5,&tempArrayCorrente[0],&frameDwin0x5100[0]);
-	writeVariableDWIN(19,0x1300,&frameDwin0x5100[0]);
-	carregaArrayComEspacoAscii(32, &tempArrayCorrente[0]);
-
-}*/

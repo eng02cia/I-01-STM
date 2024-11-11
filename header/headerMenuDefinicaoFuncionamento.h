@@ -24,30 +24,30 @@ void telaMostraEscolheDuplaCalibracao(void);
 void telaMostraAtivaDesativaWifi(void);
 void telaMostraAtivaDesativaBluetooth(void);
 void telaMostraProgNomeAcii(void);
+void telaMostraSelecionaLinguagem(void);
 //contantes utilizadas na fun��o                
 // telas de programa�ao
 
 
 // PRIMEIRAMENTE TESTANDO APENAS COM MUDANCA DE TELA INICIAL
-// 		Tambem devera contemplar escolha de idioma e ajuste de relogio
-const char charTelaDefineTelaInicial[]=                     {"TELA INICIAL                    "};
+// 	Tambem devera contemplar escolha de idioma e ajuste de relogio
+// TELA PROG PORTUGUES
+const char charTelaDefineTelaInicialPT[]=				{"TELA INICIAL                   "};
+// TELA PROG ESPANHOL
+const char charTelaDefineTelaInicialESP[]=				{"PANTALLA DE INICIO             "};
+// TELA PROG INGLES
+const char charTelaDefineTelaInicialING[]=				{"HOME SCREEN                    "};
 
+const char charTelaSelecionaLinguagemPT[]=				{"ESCOLHER IDIOMA ""               "};
+const char charTelaSelecionaLinguagemESP[]=				{"ELEGIR IDIOMA   ""               "};
+const char charTelaSelecionaLinguagemING[]=				{"CHOOSE LANGUAGE ""               "};
 
+const char charTelaPortugues[]=        				{"PORTUGUES      "};
+const char charTelaEspanhol[]=        			    {"ESPANHOL       "};
+const char charTelaIngles[]=        				{"ENGLISH        "};
 
-const char charVersaoIcv01[]=    {"VERSAO ICV-01"};
-const char charVersaoIcv02[]=    {"VERSAO ICV-03"};
-const char charErroSenhaWifi[]= {"NO MINIMO 8 CARACTERES"};
-const char charModo_1[]= {"FONTE 9V"};
-const char charModo_2[]= {"FONTE 9 A 15V"};
-const char charDesativ[]={"DESATIVA"};
-const char charAtiv[]={"ATIVA"};
-const char charBovina[]={"BOVINA"};
-const char charAvicula[]={"AVICULA"};
-const char charMonoConect[]={"MONO CONECT"};
-const char charMultConect[]={"MULT CONECT"};
-
-const char charUmaCalibracao[]={"UMA CALIBRACAO"};
-const char charDuasCalibracao[]={"DUAS CALIBRACAO"};
+// const char charUmaCalibracao[]={"UMA CALIBRACAO"};
+// const char charDuasCalibracao[]={"DUAS CALIBRACAO"};
 
 //variaveis utilizadas
 static unsigned char nomeProgTemp[16];
@@ -56,14 +56,7 @@ static unsigned char posicaoDigitoControleCadastro;
 //indica qual o menu atual que esta sendo programado
 enum menuProgramaDefinicaoFucionamento
 {
-	defineModoFuncionamentoPesagem,
-	defineModoFuncionamentoSupervisaoBateria,
-	defineVersaoFuncionamentoICV,
-	defineMultiBalanca,
-	defineModoFuncionamentoWifi,
-	defineNomeRedeWifi,
-	defineSenhaRedeWifi,
-	defineModoFuncionamentoBluetooth,
+	defineSelecionaLinguagem,
 	defineNomeTelaPrincipal,
 	menuDefinicaoFuncionamentoEmEspera,
 }menuProgramaDefinicaoFucionamento = menuDefinicaoFuncionamentoEmEspera;

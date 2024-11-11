@@ -81,11 +81,6 @@
 			<locationURI>PROJECT_LOC/libC/funcoes/converteHexadecimalParaAscii.c</locationURI>
 		</link>
 		<link>
-			<name>Core/funcoes/flashh.c</name>
-			<type>1</type>
-			<locationURI>PROJECT_LOC/libC/funcoes/flashh.c</locationURI>
-		</link>
-		<link>
 			<name>Core/funcoes/ftoa.c</name>
 			<type>1</type>
 			<locationURI>PROJECT_LOC/libC/funcoes/ftoa.c</locationURI>

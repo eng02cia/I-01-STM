@@ -162,7 +162,7 @@ void trataPesoLiquidoIndicador(void)
     else
     {
         valorPesoTempIndicador = 0;
-valorTaraIndicador = valorZeroIndicador;
+        valorTaraIndicador = valorZeroIndicador;
     }
     fazArredondamentoPeso();
     trataPesoAdIndicador();

@@ -14,15 +14,24 @@ unsigned char tempControlaTelas;
 static unsigned char exibeVersionControl;
 static unsigned char transmitindoErro;
 unsigned char trocaTelaPeso;
-//frases utilizadas 
 
-        
-const char telaInicialIndicador[] =     {" INDICADOR I-01 "};
-const char telaInicialVersao[] =        {"  V3.0          "};
-const char telaStatusPrincipal[] =      {"                ""                "};
-const char telaSobreCarga[] =           {"  SOBRE CARGA   "};
-const char telaSubCarga[] =             {"  SUB CARGA     "};
-const char telaSemCelulaCarga[] =       {"  CONECT/CABO   "};
+//frases utilizadas 
+const char telaStatusPrincipal[] =        {"                ""                "};
+const char telaInicialVersao[] =          {"  V3.0          "};
+const char telaInicialIndicador[] =       {" INDICADOR I-01 "};
+
+//  TELA PROG EM PORTUGUES
+const char telaSobreCargaPT[] =           {"  SOBRE CARGA   "};
+const char telaSubCargaPT[] =             {"  SUB CARGA     "};
+const char telaSemCelulaCargaPT[] =       {"  CONECT/CABO   "};
+// TELA PROG EM ESPANHOL
+const char telaSobreCargaESP[]=           {"   SOBRE PESO   "};
+const char telaSubCargaESP[]=             {"    BAJO PESO   "};
+const char telaSemCelulaCargaESP[]=       {"CONECTE EL CABLE"};
+// TELA PROG EM INGLES
+const char telaSobreCargaING[]=           {"   OVERLOAD     "};
+const char telaSubCargaING[]=             {"   UNDER LOAD   "};
+const char telaSemCelulaCargaING[]=       {"  CONNECT/CABLE "};
 //const char paradoLcd[]= {"PARADO"};
 //const char descarregueLcd[]= {"DESCARREGUE"};
 //const char descarregandoLcd[]= {"DESCARREGANDO"};
@@ -35,3 +44,7 @@ const char telaSemCelulaCarga[] =       {"  CONECT/CABO   "};
 #ifdef indicadorI01_1_5_3
 #define pinoBackLight  PORTCbits.RC2 
 #endif
+
+#define _PORTUGUES 	0
+#define _INGLES		1
+#define _ESPANHOL	2

@@ -81,7 +81,9 @@ void funcaoAcessaMenusProgramacao(void)
 void telaAcessaMenuModoTecnicoIndicador(void)
 {
     menuAcessaMenusProgramacao = acessaMenuModoTecnicoIndicador;
-    escreveDadoLcd(&charTelaAcessaMenuModoTecnicoIndicador[0],&caracterLcd[0]);  
+    if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaAcessaMenuModoTecnicoIndicadorPT[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaAcessaMenuModoTecnicoIndicadorING[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaAcessaMenuModoTecnicoIndicadorESP[0],&caracterLcd[0]);}    
     caracterLcd[30] = caracterIncremento;
     caracterLcd[31] = caracterSalva;       
 }
@@ -91,7 +93,9 @@ void telaAcessaMenuModoTecnicoIndicador(void)
 void telaAcessaMenuConfiguraSerial_1(void)
 {
     menuAcessaMenusProgramacao = acessaMenuProgramaSerial_1;
-    escreveDadoLcd(&charTelaAcessaMenuConfiguraSerial_1[0],&caracterLcd[0]);
+    if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaAcessaMenuConfiguraSerial_1PT[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaAcessaMenuConfiguraSerial_1ING[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaAcessaMenuConfiguraSerial_1ESP[0],&caracterLcd[0]);}
     caracterLcd[30] = caracterIncremento;
     caracterLcd[31] = caracterSalva;       
 }
@@ -101,7 +105,9 @@ void telaAcessaMenuConfiguraSerial_1(void)
 void telaAcessaMenuFazCalibracao(void)
 {
     menuAcessaMenusProgramacao = acessaMenuCalibracao;
-    escreveDadoLcd(&charTelaAcessaMenuFazCalibracao[0],&caracterLcd[0]);
+    if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaAcessaMenuFazCalibracaoPT[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaAcessaMenuFazCalibracaoING[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaAcessaMenuFazCalibracaoESP[0],&caracterLcd[0]);}
     caracterLcd[30] = caracterIncremento;
     caracterLcd[31] = caracterSalva;       
 }

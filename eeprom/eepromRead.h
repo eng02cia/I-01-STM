@@ -9,46 +9,49 @@
 //////////////////////////////////////////////////////////////////////////////////		
 void le_i2c(void)
 {
-	statusComunicacaoSerial_1Mem =	Data_Write_I2c[0];
-	velocidadeTxSerial_1Mem = Data_Write_I2c[1];
-	statusPortaSerial_1Mem = Data_Write_I2c[2];
-	statusSaidaDadosSerial_1Mem = Data_Write_I2c[3];
-	statusSaidaDadosSerial_2Mem = Data_Write_I2c[4];
-	enderecoIndicadorMem = Data_Write_I2c[5];
-	qtFramePorSegundoMem= Data_Write_I2c[6];
-	statusPowerOnMem = Data_Write_I2c[7];
-	modoFuncionamentoBackLightMem = Data_Write_I2c[8];
-	tempoDesligaBackLightMem = Data_Write_I2c[9];
-	statusZeroAoLigarMem = Data_Write_I2c[10];
-	valorLimiteDeZeroMem = Data_Write_I2c[11];
-	valorFiltroDigitalMem = Data_Write_I2c[12];
-	posicaoPontoDecimalIndicadorMem = Data_Write_I2c[13];
-	degrauIndicadorMem = Data_Write_I2c[14];
+	statusComunicacaoSerial_1Mem =	Data_Write_I2c[endStatusComunicacaoSerial1Mem];
+	velocidadeTxSerial_1Mem = Data_Write_I2c[endVelocidadeTxSerial1Mem];
+	statusPortaSerial_1Mem = Data_Write_I2c[endStatusPortaSerial1Mem];
+	statusSaidaDadosSerial_1Mem = Data_Write_I2c[endStatusSaidaDadosSerial1Mem];
+	statusSaidaDadosSerial_2Mem = Data_Write_I2c[endStatusSaidaDadosSerial2Mem];
+	enderecoIndicadorMem = Data_Write_I2c[endEnderecoIndicadorMem];
+	qtFramePorSegundoMem= Data_Write_I2c[endQtFramePorSegundoMem];
+	statusPowerOnMem = Data_Write_I2c[endStatusPowerOnMem];
+	modoFuncionamentoBackLightMem = Data_Write_I2c[endModoFuncionamentoBacklightMem];
+	tempoDesligaBackLightMem = Data_Write_I2c[endTempoDesligaBacklightMem];
+	statusZeroAoLigarMem = Data_Write_I2c[endStatusZeroAoLigarMem];
+	valorLimiteDeZeroMem = Data_Write_I2c[endValorLimiteDeZeroMem];
+	valorFiltroDigitalMem = Data_Write_I2c[endValorFiltroDigitalMem];
+	posicaoPontoDecimalIndicadorMem = Data_Write_I2c[endPosicaoPontoDecimalIndicadorMem];
+	degrauIndicadorMem = Data_Write_I2c[endDegrauIndicadorMem];
 
 /* le o valor definido para status Transmite Automatico                         */
-	transfereArrayToArray(2,&Data_Write_I2c[15],&statusTransmiteAutomaticoMem[0]);
+	transfereArrayToArray(2,&Data_Write_I2c[endStatusTransmiteAutomaticoMem],&statusTransmiteAutomaticoMem[0]);
 
 /* le o peso definido como capacidade maxima para o indicador                   */
-	transfereArrayToArray(8,&Data_Write_I2c[17],&capacidadeMaximaIndicadorMem[0]);
+	transfereArrayToArray(8,&Data_Write_I2c[endCapacidadeMaximaIndicadorMem],&capacidadeMaximaIndicadorMem[0]);
 	carregaArrayComZeroAscii(10,&arrayInteiroTemp[0]);
 	transfereArrayToArray(8,&capacidadeMaximaIndicadorMem[0],&arrayInteiroTemp[2]);
 	rotacionaArrayInsere0Converte();
 	valorPesoCargaMaxima = atol(arrayInteiroTemp);
 
 /* le o peso definido como peso calibracao indicador           			        */
-	transfereArrayToArray(8,&Data_Write_I2c[25],&pesoCalibracaoIndicadorMem[0]);
+	transfereArrayToArray(8,&Data_Write_I2c[endPesoCalibracaoIndicadorMem],&pesoCalibracaoIndicadorMem[0]);
 
 /* le o peso definido como valor zero indicador             					*/
-	transfereArrayToArray(4,&Data_Write_I2c[33],&valorZeroIndicadorMem.array4[0]);
+	transfereArrayToArray(4,&Data_Write_I2c[endValorZeroIndicadorMem],&valorZeroIndicadorMem.array4[0]);
     valorZeroIndicador = valorZeroIndicadorMem.int32;
     valorTaraIndicador = valorZeroIndicador;
 
 /* le o peso definido como valor divisao indicador              				*/
-	transfereArrayToArray(4,&Data_Write_I2c[37],&valorDivisaoIndicadorMem.array4[0]);
+	transfereArrayToArray(4,&Data_Write_I2c[endValorDivisaoIndicadorMem],&valorDivisaoIndicadorMem.array4[0]);
 	valorDivisaoIndicador = valorDivisaoIndicadorMem.float32;
 
 /* le o nome definido para a tela inicial			              				*/
-	transfereArrayToArray(16,&Data_Write_I2c[41],&nomeTelaIndicadorMem[0]);
+	transfereArrayToArray(16,&Data_Write_I2c[endNomeTelaIniciallMem],&nomeTelaIndicadorMem[0]);
+
+/* le a linguagem definida */
+	linguagemSelecionadaMem = Data_Write_I2c[endlinguagemSelecionadaMem];
 }
 
 void leituraI2c_Default(void)

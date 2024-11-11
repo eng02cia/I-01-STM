@@ -29,7 +29,9 @@ void fazMediaAdCalibraIndicador(void)
                 valorTaraIndicador = tempAd; 
                 if (operacaoComTeclado == 1)
                 {
-                	transfereConstToArray(&charZeroOk[0],&caracterLcd[16]);
+                	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charZeroOkPT[0],&caracterLcd[16]);}
+                    if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charZeroOkING[0],&caracterLcd[16]);}
+                    if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charZeroOkESP[0],&caracterLcd[16]);}
                 }
 //                else{enviaConfirmaCalibracaoZero();}
             } 
@@ -64,11 +66,12 @@ void fazMediaAdCalibraIndicador(void)
 
                         if (operacaoComTeclado == 1)
                         {
+							if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charCertoPT[0],&caracterLcd[16]);}
+                            if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charCertoING[0],&caracterLcd[16]);}
+                            if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charCertoESP[0],&caracterLcd[16]);}
 
-							transfereConstToArray(&charCerto[0],&caracterLcd[16]);
                             flagFimCalibracao = 1;
                             flagFazMediaAd = 1;
-
                         }
          //               else{enviaConfirmaCalibracaoPeso();}
                     }

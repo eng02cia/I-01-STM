@@ -44,7 +44,16 @@ short flagTempoValidaTeclaSolta;
 short flagSaidaMenuProgramacao; 
 //short flagInibeTeclaSolta;
 short flagTempoExibeBackLight;
-const char telaErroLimiteZeroLcd[]={"ERRO LIMITE ZERO"};
+
+// TELA PROG PORTUGUES
+const char telaErroLimiteZeroLcdPT[]=   {"ERRO LIMITE ZERO"};
+
+// TELA PROG ESPANHOL
+const char telaErroLimiteZeroLcdESP[]=  {"ERRO LIMITE CERO"};
+
+// TELA PROG INGLES
+const char telaErroLimiteZeroLcdING[]=  {"ZERO LIMIT ERROR"};
+
 enum digitoProgramacao
 {
     programandoDigitoZero,

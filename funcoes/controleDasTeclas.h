@@ -90,6 +90,8 @@ void trataControleDasTeclas (void)
             if ( menuModoTecnicoIndicador != menuModoTecnicoIndicadorEmEspera){funcaoMenuModoTecnicoIndicador();}            
 //acessa o menu de programacao das definicoes de funcionamento do indicador   
             if(menuProgramaDefinicaoFucionamento != menuDefinicaoFuncionamentoEmEspera){funcaoProgramaDefinicaoFuncionamento();}
+//acessa o menu de programacao da hora e data
+            if(menuProgramacaoRelogioAtual != menuProgramaRelogioEmEspera){funcaoProgramaHoraData();}
         }
     }
 }	
@@ -109,6 +111,7 @@ void metodoLigaSistema(void)
     trocarPaginaDwin = 0;
 //    preparaSalvaStatusPowerOn();
     escreveDadoLcd(&telaInicialIndicador[0],&caracterLcd[0]);
+    escreveDadoLcd(&telaInicialVersao[0],&caracterLcd[16]);
     controleTara = _TARADESATIVADA;
 // o indicador sera zerado na inicialização caso o peso esteja dentro do limite de zero
     if (statusZeroAoLigarMem == 1){fazZeroIndicadorPeso = 1;}
@@ -206,7 +209,11 @@ void telaErroLimiteZero(void)
 {    
     mostraTelaTemporariaLcd = 1;
     transfereArrayToArray(32,&caracterLcd[0],&backupTelaLcd[0]);
-    transfereConstToArray(&telaErroLimiteZeroLcd[0],&caracterLcd[0]);
+    
+    if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&telaErroLimiteZeroLcdPT[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&telaErroLimiteZeroLcdING[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&telaErroLimiteZeroLcdESP[0],&caracterLcd[0]);}
+    
     transfereCaracterLcdLinha1Dwin();
 }
 //////////////////////////////////////////////////////////////////////////////////		

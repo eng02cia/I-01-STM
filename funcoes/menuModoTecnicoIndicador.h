@@ -187,8 +187,10 @@ void funcaoMenuModoTecnicoIndicador(void)
 //////////////////////////////////////////////////////////////////////////////////
 void telaMostraProgramacaoLimiteZero(void)
 {
+    if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaConfiguraLimiteZeroPT[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaConfiguraLimiteZeroING[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaConfiguraLimiteZeroESP[0],&caracterLcd[0]);}
 
-    escreveDadoLcd(&charTelaConfiguraLimiteZero[0],&caracterLcd[0]);
     caracterLcd[16] = tempConfigIndicador + '0';
     caracterLcd[18] = '%';
     caracterLcd[29] = caracterRetorna;
@@ -200,9 +202,10 @@ void telaMostraProgramacaoLimiteZero(void)
 //////////////////////////////////////////////////////////////////////////////////
 void telaValorFiltroDigitalModoTecnicoIndicador(void)
 {
+	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charValorFiltroDigitalPT[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charValorFiltroDigitalING[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charValorFiltroDigitalESP[0],&caracterLcd[0]);}
 
-
-	transfereConstToArray(&charValorFiltroDigital[0],&caracterLcd[0]);
     if (tempConfigIndicador < 10){caracterLcd[16] = tempConfigIndicador + '0';}
     else if (tempConfigIndicador < 100){inteiroTo2BytesAscii(tempConfigIndicador,&caracterLcd[16]);}
     else{inteiroTo3BytesAscii(tempConfigIndicador,&caracterLcd[16]);}
@@ -215,10 +218,19 @@ void telaValorFiltroDigitalModoTecnicoIndicador(void)
 //////////////////////////////////////////////////////////////////////////////////
 void telaMostraProgramacaoStatusZeroLigarIndicador(void)
 {
+    if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaModoPesagemIndicadorPT[0],&caracterLcd[0]);}    
+    if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaModoPesagemIndicadorING[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaModoPesagemIndicadorESP[0],&caracterLcd[0]);}
 
-    escreveDadoLcd(&charTelaModoPesagemIndicador[0],&caracterLcd[0]);  
-    if (tempConfigIndicador == 0){escreveDadoLcd(&charTelaDesativado[0],&caracterLcd[16]);}
-    else{escreveDadoLcd(&charTelaAtivado[0],&caracterLcd[16]);}
+    if (tempConfigIndicador == 0) {
+        if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaDesativadoPT[0],&caracterLcd[16]);}
+        if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaDesativadoING[0],&caracterLcd[16]);}
+        if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaDesativadoESP[0],&caracterLcd[16]);}
+    } else{
+        if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaAtivadoPT[0],&caracterLcd[16]);}
+        if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaAtivadoING[0],&caracterLcd[16]);}
+        if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaAtivadoESP[0],&caracterLcd[16]);}
+    }
     caracterLcd[29] = caracterRetorna;
     caracterLcd[30] = caracterIncremento;
     caracterLcd[31] = caracterSalva;    
@@ -228,11 +240,26 @@ void telaMostraProgramacaoStatusZeroLigarIndicador(void)
 //////////////////////////////////////////////////////////////////////////////////
 void telaMostraProgramacaoModoFuncionamentoBackLight(void)
 {
+    if (linguagemSelecionadaMem == _PORTUGUES) {
+        escreveDadoLcd(&charTelaModoFuncBackLightPT[0],&caracterLcd[0]);
+        if (tempConfigIndicador == 0){escreveDadoLcd(&charTelaDesligadoPT[0],&caracterLcd[16]);}
+        if (tempConfigIndicador == 1){escreveDadoLcd(&charTelaLigadoPT[0],&caracterLcd[16]);}
+        if (tempConfigIndicador == 2){escreveDadoLcd(&charTelaLigadoPorTempoPT[0],&caracterLcd[16]);}
+    }
+    
+    if(linguagemSelecionadaMem == _INGLES) {
+        escreveDadoLcd(&charTelaModoFuncBackLightING[0],&caracterLcd[0]);
+        if (tempConfigIndicador == 0){escreveDadoLcd(&charTelaDesligadoING[0],&caracterLcd[16]);}
+        if (tempConfigIndicador == 1){escreveDadoLcd(&charTelaLigadoING[0],&caracterLcd[16]);}
+        if (tempConfigIndicador == 2){escreveDadoLcd(&charTelaLigadoPorTempoING[0],&caracterLcd[16]);}
+    }
 
-	escreveDadoLcd(&charTelaModoFuncBackLight[0],&caracterLcd[0]);
-    if (tempConfigIndicador == 0){escreveDadoLcd(&charTelaDesligado[0],&caracterLcd[16]);}
-    if (tempConfigIndicador == 1){escreveDadoLcd(&charTelaLigado[0],&caracterLcd[16]);}
-    if (tempConfigIndicador == 2){escreveDadoLcd(&charTelaLigadoPorTempo[0],&caracterLcd[16]);}
+    if(linguagemSelecionadaMem == _ESPANHOL) {
+        escreveDadoLcd(&charTelaModoFuncBackLightESP[0],&caracterLcd[0]);
+        if (tempConfigIndicador == 0){escreveDadoLcd(&charTelaDesligadoESP[0],&caracterLcd[16]);}
+        if (tempConfigIndicador == 1){escreveDadoLcd(&charTelaLigadoESP[0],&caracterLcd[16]);}
+        if (tempConfigIndicador == 2){escreveDadoLcd(&charTelaLigadoPorTempoESP[0],&caracterLcd[16]);}
+    }
 
     caracterLcd[29] = caracterRetorna;
     caracterLcd[30] = caracterIncremento;
@@ -243,10 +270,17 @@ void telaMostraProgramacaoModoFuncionamentoBackLight(void)
 //////////////////////////////////////////////////////////////////////////////////
 void telaTempoBackLightLigado(void)
 {
-    escreveDadoLcd(&charTelaTempoBackLight[0],&caracterLcd[0]);
+    if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaTempoBackLightPT[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaTempoBackLightING[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaTempoBackLightESP[0],&caracterLcd[0]);}
+
     inteiroTo2BytesAscii(tempConfigIndicador,&caracterLcd[16]);
     caracterLcd[19] = 'M';
-	if (modoFuncionamentoBackLightMem == _BACKLIGHT_LIGADO){escreveDadoLcd(&charTelaDesligado[0],&caracterLcd[16]);}
+	if (modoFuncionamentoBackLightMem == _BACKLIGHT_LIGADO) {
+        if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaDesligadoPT[0],&caracterLcd[16]);}
+        if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaDesligadoING[0],&caracterLcd[16]);}
+        if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaDesligadoESP[0],&caracterLcd[16]);}
+    }
 	caracterLcd[29] = caracterRetorna;
 	caracterLcd[30] = caracterIncremento;
 	caracterLcd[31] = caracterSalva;

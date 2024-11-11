@@ -13,6 +13,30 @@
 //									 									       	//			
 //////////////////////////////////////////////////////////////////////////////////
 
+#define endStatusComunicacaoSerial1Mem			0
+#define endVelocidadeTxSerial1Mem				1
+#define	endStatusPortaSerial1Mem				2
+#define endStatusSaidaDadosSerial1Mem			3
+#define	endStatusSaidaDadosSerial2Mem			4
+#define endEnderecoIndicadorMem					5
+#define endQtFramePorSegundoMem					6
+#define endStatusPowerOnMem						7
+#define endModoFuncionamentoBacklightMem		8
+#define endTempoDesligaBacklightMem				9
+#define endStatusZeroAoLigarMem					10
+#define endValorLimiteDeZeroMem					11
+#define endValorFiltroDigitalMem				12
+#define endPosicaoPontoDecimalIndicadorMem		13
+#define endDegrauIndicadorMem					14
+#define endStatusTransmiteAutomaticoMem			15 // 2 bytes
+#define endCapacidadeMaximaIndicadorMem			17 // 8 bytes
+#define endPesoCalibracaoIndicadorMem			25 // 8 bytes
+#define endValorZeroIndicadorMem				33 // 4 bytes
+#define endValorDivisaoIndicadorMem				37 // 4 bytes
+#define endNomeTelaIniciallMem					41 // 16 bytes
+#define endlinguagemSelecionadaMem				57 // 1 byte
+
+
 const char defaultEeprom[] = {
 	_SERIAL_1ATIVADA,
 	velocidade9600Kbps,
@@ -35,7 +59,8 @@ const char defaultEeprom[] = {
 	' ',' ',' ',' ', 													// 37
 	' ',' ',' ',' ',													// 41	
 	'I','N','D','I','C','A','D','O','R',' ','I','-','0','1',' ',' ',	// 57
-	' ',' ',' ',' ',' ',' ',1,											// 64 																	
+	_PORTUGUES,
+	' ',' ',' ',' ',' ',1,											// 64 																	
 };
 
 //////////////////////////////////////////////////////////////////////////////////		
@@ -107,6 +132,7 @@ static unsigned char modoFuncionamentoBackLightMem;
 static unsigned char tempoDesligaBackLightMem;
 
 static unsigned char nomeTelaIndicadorMem[16];
+static unsigned char linguagemSelecionadaMem;
 
 //controle da velocidade comunica��o
 //enum 

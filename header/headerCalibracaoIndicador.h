@@ -24,29 +24,71 @@ void telaPesoZeroIndicador(void);
 void telaMostraValorProDivisaoInterna(void);
 void calculaDivisaoInterna();
 void rotacionaArrayTelaValorDivisao(void);
-//telas 
-const char telaVerificaSenhaLcd[]  =      {"DIGITE SENHA    ""                "};
-const char telaMostraSenhaLcd[]  =        {"DIGITE SENHA    ""                "};
-const char charValorFiltroDigital[]=      {"FILTRO DIGITAL  ""                "};
-const char charPosicaoPontoDecimal[]=     {"POSICAO PONTO   ""                "};
-const char charDegrauPesoIndicador[]=     {"DEGRAU PESO     ""                "};
-const char charCapacidadeMaxIndicador[]=  {"CAPACIDADE MAX  ""                "};
-const char charPesoCalibracaoIndicador[]= {"PESO CALIBRACAO ""                "};
-const char charSemPesoIndicador[]=        {"SEM PESO        ""                "};
-const char charComPesoIndicador[]=        {"COM PESO        ""                "};
-const char telaSenhaInvalidaLcd[]=        {"SENHA INVALIDA  ""                "};
 
-const char charErroPesoCargaMaxima[]=     {"P/CALIBRACAO MA ""IOR CARGA MAXIMA"};
-const char charErroPesoCalibracao[]=      {" ERRO DIVISAO   ""  MUITO BAIXA   "};
+//telas PORTUGUES
+const char telaVerificaSenhaLcdPT[]  =      {"DIGITE SENHA    ""                "};
+const char telaMostraSenhaLcdPT[]  =        {"DIGITE SENHA    ""                "};
+const char charValorFiltroDigitalPT[]=      {"FILTRO DIGITAL  ""                "};
+const char charPosicaoPontoDecimalPT[]=     {"POSICAO PONTO   ""                "};
+const char charDegrauPesoIndicadorPT[]=     {"DEGRAU PESO     ""                "};
+const char charCapacidadeMaxIndicadorPT[]=  {"CAPACIDADE MAX  ""                "};
+const char charPesoCalibracaoIndicadorPT[]= {"PESO CALIBRACAO ""                "};
+const char charSemPesoIndicadorPT[]=        {"SEM PESO        ""                "};
+const char charComPesoIndicadorPT[]=        {"COM PESO        ""                "};
+const char telaSenhaInvalidaLcdPT[]=        {"SENHA INVALIDA  ""                "};
+const char charErroPesoCargaMaximaPT[]=     {"P/CALIBRACAO MA ""IOR CARGA MAXIMA"};
+const char charErroPesoCalibracaoPT[]=      {"ERRO: DIVISAO   ""  MUITO BAIXA   "};
+
+//telas INGLES
+const char telaVerificaSenhaLcdING[]  =      {"TYPE PASSWORD   ""                "};
+const char telaMostraSenhaLcdING[]  =        {"TYPE PASSWORD   ""                "};
+const char charValorFiltroDigitalING[]=      {"DIGITAL FILTER  ""                "};
+const char charPosicaoPontoDecimalING[]=     {"DOT POSITION    ""                "};
+const char charDegrauPesoIndicadorING[]=     {"WEIGHT STEP     ""                "};
+const char charCapacidadeMaxIndicadorING[]=  {"MAX CAPACITY    ""                "};
+const char charPesoCalibracaoIndicadorING[]= {"CALIB. WEIGHT   ""                "};
+const char charSemPesoIndicadorING[]=        {"NO WEIGHT       ""                "};
+const char charComPesoIndicadorING[]=        {"WITH WEIGHT     ""                "};
+const char telaSenhaInvalidaLcdING[]=        {"INVALID PASSWORD""                "};
+const char charErroPesoCargaMaximaING[]=     {"CALIB. WEIGHT   ""GREATER THAN MAX"};
+const char charErroPesoCalibracaoING[]=      {"ERROR: DIVISION ""  TOO LOW       "};
+
+//telas ESPANHOL
+const char telaVerificaSenhaLcdESP[]  =      {"CONTRASENA      ""                "};
+const char telaMostraSenhaLcdESP[]  =        {"CONTRASENA      ""                "};
+const char charValorFiltroDigitalESP[]=      {"FILTRO DIGITAL  ""                "};
+const char charPosicaoPontoDecimalESP[]=     {"POSICION PUNTO  ""                "};
+const char charDegrauPesoIndicadorESP[]=     {"PASO DE PESO    ""                "};
+const char charCapacidadeMaxIndicadorESP[]=  {"CAPACIDAD MAXIMA""                "};
+const char charPesoCalibracaoIndicadorESP[]= {"PESO CALIBRACION""                "};
+const char charSemPesoIndicadorESP[]=        {"SIN PESO        ""                "};
+const char charComPesoIndicadorESP[]=        {"CON PESO        ""                "};
+const char telaSenhaInvalidaLcdESP[]=        {"CONTRASENA NO VA""LIDA            "};
+const char charErroPesoCargaMaximaESP[]=     {"PESO DE CALIBRAC""ION MUY ALTO    "};
+const char charErroPesoCalibracaoESP[]=      {"ERROR: DIVISION ""DEMASIADO BAJA  "};
+
 
 const char charSemPonto[]=          {"00000."};
 const char charCemGramasPonto[]=    {"0000.0"};
 const char charDezGramasPonto[]=    {"000.00"};
 const char charUmaGramasPonto[]=    {"00.000"};
 const char charUmDecigramaPonto[]=  {"0.0000"};
-const char charAguarde[]=   {"AGUARDE   "};
-const char charZeroOk[]=    {"ZERO OK   "};
-const char charCerto[]=     {"CERTO     "};
+
+// telas portugues
+const char charAguardePT[]=   {"AGUARDE   "};
+const char charZeroOkPT[]=    {"ZERO OK   "};
+const char charCertoPT[]=     {"CERTO     "};
+
+// telas ingles
+const char charAguardeING[]=   {"WAIT      "};
+const char charZeroOkING[]=    {"ZERO OK   "};
+const char charCertoING[]=     {"DONE      "};
+
+// telas espanhol
+const char charAguardeESP[]=   {"ESPERAR   "};
+const char charZeroOkESP[]=    {"CERO OK   "};
+const char charCertoESP[]=     {"HECHO     "};
+
 const char senhaTecnica[]= {"4358"};
 const char senhaProgDivisao[]={"6752"};
 

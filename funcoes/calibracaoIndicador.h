@@ -20,7 +20,9 @@ void controleCalibraIndicador(void)
 
 		verificaSenhaAcessoCalibracao();
 
-		transfereConstToArray(&telaMostraSenhaLcd[0],&caracterLcd[0]);
+		if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&telaMostraSenhaLcdPT[0],&caracterLcd[0]);}
+		if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&telaMostraSenhaLcdING[0],&caracterLcd[0]);}
+		if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&telaMostraSenhaLcdESP[0],&caracterLcd[0]);}
 		caracterLcd[16]= senhaTemp[0];
 		caracterLcd[17]= senhaTemp[1];
 		caracterLcd[18]= senhaTemp[2];
@@ -149,7 +151,9 @@ void controleCalibraIndicador(void)
 			else
 			{
 				transfereArrayToArray(32,&caracterLcd[0],&backupTelaLcd[0]);
-				transfereConstToArray(&charErroPesoCalibracao[0],&caracterLcd[0]);
+				if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charErroPesoCalibracaoPT[0],&caracterLcd[0]);}
+				if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charErroPesoCalibracaoING[0],&caracterLcd[0]);}
+				if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charErroPesoCalibracaoESP[0],&caracterLcd[0]);}
 				transfereCaracterLcdMenu1Dwin();
 				transfereCaracterLcdMenu2Dwin();
 				mostraTelaTemporariaLcd = 1;
@@ -351,7 +355,7 @@ else{tempProgIndicador = 1;}
 								converteArrayAsciiParaDecimal(6,&arrayTemp2Indicador[0]);
 
 								tempProgIndicador = comparaValoresArray(6,&arrayTemp1Indicador[0],&arrayTemp2Indicador[0]);
-								if (tempProgIndicador == 2)
+								if (tempProgIndicador == 1)
 								{
 									carregaArrayComZeroAscii(8,&pesoCalibracaoIndicadorMem[0]);
 									carregaArrayComZeroAscii(10,&arrayInteiroTemp[0]);
@@ -393,13 +397,17 @@ else{tempProgIndicador = 1;}
 										flagFazMediaAd = 1;
 										loopMediaCalibracao = 0;
 										operacaoComTeclado = 1;
-										transfereConstToArray(&charAguarde[0],&caracterLcd[16]);
+										if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charAguardePT[0],&caracterLcd[16]);}
+										if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charAguardeING[0],&caracterLcd[16]);}
+										if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charAguardeESP[0],&caracterLcd[16]);}
 										break;
 										//tecla Ok
 									case teclaSalva:
 										teclaPressionadaAtual = teclaSolta;
 										menuCalibraIndicador = menuComPeso;
-										transfereConstToArray(&charComPesoIndicador[0],&caracterLcd[0]);
+										if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charComPesoIndicadorPT[0],&caracterLcd[0]);}
+										if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charComPesoIndicadorING[0],&caracterLcd[0]);}
+										if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charComPesoIndicadorESP[0],&caracterLcd[0]);}
 										caracterLcd[29] = caracterRetorna;
 										caracterLcd[30] = '<';
 										caracterLcd[31] = caracterSalva;
@@ -429,7 +437,9 @@ else{tempProgIndicador = 1;}
 										flagFazMediaAd = 1;
 										loopMediaCalibracao = 0;
 										operacaoComTeclado = 1;
-										transfereConstToArray(&charAguarde[0],&caracterLcd[16]);
+										if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charAguardePT[0],&caracterLcd[16]);}
+										if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charAguardeING[0],&caracterLcd[16]);}
+										if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charAguardeESP[0],&caracterLcd[16]);}
 										break;
 										//tecla Ok
 									case teclaSalva:
@@ -452,7 +462,9 @@ void telaSenhaDeAcessoCalibracao(void)
 	menuCalibraIndicador = menuVerificaSenhaCalibracao;
 
 
-	transfereConstToArray(&telaVerificaSenhaLcd[0],&caracterLcd[0]);
+	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&telaVerificaSenhaLcdPT[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&telaVerificaSenhaLcdING[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&telaVerificaSenhaLcdESP[0],&caracterLcd[0]);}
 	menuAcessaMenusProgramacao = menuAcessaMenusProgramacaoEmEspera;
 
 	caracterLcd[29] = '<';
@@ -469,7 +481,9 @@ void telaSenhaDeAcessoCalibracao(void)
 void telaValorFiltroDigitalIndicador(void)
 {
 	menuCalibraIndicador = menuFiltroDigital;
-	transfereConstToArray(&charValorFiltroDigital[0],&caracterLcd[0]);
+	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charValorFiltroDigitalPT[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charValorFiltroDigitalING[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charValorFiltroDigitalESP[0],&caracterLcd[0]);}
 	if (tempProgIndicador < 10){caracterLcd[16] = tempProgIndicador + '0';}
 	else if (tempProgIndicador < 100){inteiroTo2BytesAscii(tempProgIndicador,&caracterLcd[16]);}
 	else{inteiroTo3BytesAscii(tempProgIndicador,&caracterLcd[16]);}
@@ -484,7 +498,11 @@ void telaValorFiltroDigitalIndicador(void)
 void telaPosicaoPontoDecimalIndicador(void)
 {
 	menuCalibraIndicador = menuDefinePontoDecimal;
-	transfereConstToArray(&charPosicaoPontoDecimal[0],&caracterLcd[0]);
+	
+	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charPosicaoPontoDecimalPT[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charPosicaoPontoDecimalING[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charPosicaoPontoDecimalESP[0],&caracterLcd[0]);}
+
 	if (tempProgIndicador == _SEM_PONTO){transfereConstToArray(&charSemPonto[0],&caracterLcd[16]);}
 	if (tempProgIndicador == _CEMGRAMAS){transfereConstToArray(&charCemGramasPonto[0],&caracterLcd[16]);}
 	if (tempProgIndicador == _DEZGRAMAS){transfereConstToArray(&charDezGramasPonto[0],&caracterLcd[16]);}
@@ -501,7 +519,10 @@ void telaPosicaoPontoDecimalIndicador(void)
 //////////////////////////////////////////////////////////////////////////////////
 void telaDefineDegrauPesoIndicador(void)
 { 
-	transfereConstToArray(&charDegrauPesoIndicador[0],&caracterLcd[0]);
+	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charDegrauPesoIndicadorPT[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charDegrauPesoIndicadorING[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charDegrauPesoIndicadorESP[0],&caracterLcd[0]);}
+
 	menuCalibraIndicador = menuDefineDegrauPeso;
 	telaControlaIncrementoDegralIndicador();
 
@@ -518,7 +539,11 @@ void telaPesoCargaMaximaIndicador(void)
 	flagPiscaProgIndicador = 1;
 	digitoAtualIndicador = digitoZero;
 	menuCalibraIndicador = menuCapacidadeMaxima;
-	transfereConstToArray(&charCapacidadeMaxIndicador[0],&caracterLcd[0]);
+
+	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charCapacidadeMaxIndicadorPT[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charCapacidadeMaxIndicadorING[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charCapacidadeMaxIndicadorESP[0],&caracterLcd[0]);}
+
 	transfereArrayToArray(6,&capacidadeMaximaIndicadorMem[2],&arrayTempIndicador[0]);
 
 	caracterLcd[28] = caracterRetorna;
@@ -535,7 +560,11 @@ void telaPesoCalibracaoIndicador(void)
 	flagPiscaProgIndicador = 1;
 	digitoAtualIndicador = digitoZero;
 	menuCalibraIndicador = menuPesoCalibracao;
-	transfereConstToArray(&charPesoCalibracaoIndicador[0],&caracterLcd[0]);
+
+	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charPesoCalibracaoIndicadorPT[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charPesoCalibracaoIndicadorING[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charPesoCalibracaoIndicadorESP[0],&caracterLcd[0]);}
+	
 	transfereArrayToArray(6,&pesoCalibracaoIndicadorMem[2],&arrayTempIndicador[0]);
 
 	caracterLcd[28] = caracterRetorna;
@@ -549,12 +578,14 @@ void telaPesoCalibracaoIndicador(void)
 void telaPesoZeroIndicador(void)
 {
 	menuCalibraIndicador = menuSemPeso;
-	transfereConstToArray(&charSemPesoIndicador[0],&caracterLcd[0]);
+
+	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charSemPesoIndicadorPT[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charSemPesoIndicadorING[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charSemPesoIndicadorESP[0],&caracterLcd[0]);}
 
 	caracterLcd[29] = caracterRetorna;
 	caracterLcd[30] = '<';
 	caracterLcd[31] = caracterSalva;
-
 }
 //////////////////////////////////////////////////////////////////////////////////
 //tela que controla a programa��o do valor do degral do indicador              //
@@ -807,14 +838,19 @@ void manipulacaoDoDigitoDoIndicador(void)
 /*tela de erro do peso de calibracao                                            */
 void telaErroPesoCalibracao (void)
 {    
-	transfereConstToArray(&charComPesoIndicador[0],&backupTelaLcd[0]);
+	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charComPesoIndicadorPT[0],&backupTelaLcd[0]);}
+	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charComPesoIndicadorING[0],&backupTelaLcd[0]);}
+	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charComPesoIndicadorESP[0],&backupTelaLcd[0]);}
 
 	backupTelaLcd[28] = caracterRetorna;
 	backupTelaLcd[29] = caracterIncremento;
 	backupTelaLcd[30] = '<';
 	backupTelaLcd[31] = caracterSalva;
 
-	transfereConstToArray(&charErroPesoCalibracao[0],&caracterLcd[0]);
+	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charErroPesoCalibracaoPT[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charErroPesoCalibracaoING[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charErroPesoCalibracaoESP[0],&caracterLcd[0]);}
+	
 	transfereCaracterLcdMenu1Dwin();
 	transfereCaracterLcdMenu2Dwin();
 	mostraTelaTemporariaLcd = 1;
@@ -824,19 +860,24 @@ void telaErroPesoCalibracao (void)
 /*tela de erro na capacidade maxima programada                                */
 void telaErroCapacidadeMaxima (void)
 {    
-	transfereConstToArray(&charPesoCalibracaoIndicador[0],&backupTelaLcd[0]);
+	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charPesoCalibracaoIndicadorPT[0],&backupTelaLcd[0]);}
+	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charPesoCalibracaoIndicadorING[0],&backupTelaLcd[0]);}
+	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charPesoCalibracaoIndicadorESP[0],&backupTelaLcd[0]);}
 
 	backupTelaLcd[28] = caracterRetorna;
 	backupTelaLcd[29] = caracterIncremento;
 	backupTelaLcd[30] = '<';
 	backupTelaLcd[31] = caracterSalva;
 
-	transfereConstToArray(&charErroPesoCargaMaxima[0],&caracterLcd[0]);
+	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charErroPesoCargaMaximaPT[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charErroPesoCargaMaximaING[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charErroPesoCargaMaximaESP[0],&caracterLcd[0]);}
+
 	transfereCaracterLcdMenu1Dwin();
 	transfereCaracterLcdMenu2Dwin();
 	mostraTelaTemporariaLcd = 1;
 	tempoMostraTelaTemporariaLcd = 1;
-	}
+}
 //////////////////////////////////////////////////////////////////////////////////		
 //Metodo que define a senha usada para acesso a calibra��o                      //
 //                                                                              // 
@@ -943,7 +984,11 @@ void telaErroSenhaTecnica(void)
 {
 
 	transfereArrayToArray(32,&caracterLcd[0],&backupTelaLcd[0]);
-	transfereConstToArray(&telaSenhaInvalidaLcd[0],&caracterLcd[0]);
+
+	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&telaSenhaInvalidaLcdPT[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&telaSenhaInvalidaLcdING[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&telaSenhaInvalidaLcdESP[0],&caracterLcd[0]);}
+	
 	transfereCaracterLcdMenu1Dwin();
 	transfereCaracterLcdMenu2Dwin();
 	mostraTelaTemporariaLcd = 1;

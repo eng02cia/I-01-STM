@@ -8,8 +8,9 @@
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaStatusFuncionamentoTxSerial_1Mem(void)
 {    
-	Data_Write_I2c[0] = statusComunicacaoSerial_1Mem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 0, tamanhoPagina, &Data_Write_I2c[0], umBit, 10);
+	Data_Write_I2c[endStatusComunicacaoSerial1Mem] = statusComunicacaoSerial_1Mem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 0, tamanhoPagina, 
+		&Data_Write_I2c[endStatusComunicacaoSerial1Mem], umBit, 10);
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //Fun��o que prepara os dados para salvar a velocidade de comunicacao       	//
@@ -17,8 +18,9 @@ void salvaStatusFuncionamentoTxSerial_1Mem(void)
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaVelocidadeTxSerial_1Mem(void)
 {    
-	Data_Write_I2c[1] = velocidadeTxSerial_1Mem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 1, tamanhoPagina, &Data_Write_I2c[1], umBit, 10);
+	Data_Write_I2c[endVelocidadeTxSerial1Mem] = velocidadeTxSerial_1Mem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 1, tamanhoPagina, 
+		&Data_Write_I2c[endVelocidadeTxSerial1Mem], umBit, 10);
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //Fun��o que prepara os dados para salvar o status da saida da serial 1       	//
@@ -26,8 +28,9 @@ void salvaVelocidadeTxSerial_1Mem(void)
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaStatusSaidaPortaSerial_1Mem(void)
 {    
-	Data_Write_I2c[2] = statusPortaSerial_1Mem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 2, tamanhoPagina, &Data_Write_I2c[2], umBit, 10);
+	Data_Write_I2c[endStatusPortaSerial1Mem] = statusPortaSerial_1Mem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 2, tamanhoPagina, 
+		&Data_Write_I2c[endStatusPortaSerial1Mem], umBit, 10);
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //Fun��o que prepara os dados para salvar a forma de saida de dados pela serial //
@@ -35,8 +38,9 @@ void salvaStatusSaidaPortaSerial_1Mem(void)
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaStatusSaidaDadosSerial_1Mem(void)
 {    
-	Data_Write_I2c[3] = statusSaidaDadosSerial_1Mem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 3, tamanhoPagina, &Data_Write_I2c[3], umBit, 10);
+	Data_Write_I2c[endStatusSaidaDadosSerial1Mem] = statusSaidaDadosSerial_1Mem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 3, tamanhoPagina, 
+		&Data_Write_I2c[endStatusSaidaDadosSerial1Mem], umBit, 10);
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //Fun��o que prepara os dados para salvar a forma de saida de dados pela serial //
@@ -44,16 +48,18 @@ void salvaStatusSaidaDadosSerial_1Mem(void)
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaStatusSaidaDadosSerial_2Mem(void)
 {    
-	Data_Write_I2c[4] = statusSaidaDadosSerial_2Mem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 4, tamanhoPagina, &Data_Write_I2c[4], umBit, 10);
+	Data_Write_I2c[endStatusSaidaDadosSerial2Mem] = statusSaidaDadosSerial_2Mem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 4, tamanhoPagina,
+		&Data_Write_I2c[endStatusSaidaDadosSerial2Mem], umBit, 10);
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //Fun��o que prepara os dados para salvar o endere�o Indicador              	//
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaEnderecoIndicadorMem(void)
 {    
-	Data_Write_I2c[5] = enderecoIndicadorMem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 5, tamanhoPagina, &Data_Write_I2c[5], umBit, 10);
+	Data_Write_I2c[endEnderecoIndicadorMem] = enderecoIndicadorMem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 5, tamanhoPagina, 
+		&Data_Write_I2c[endEnderecoIndicadorMem], umBit, 10);
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //Fun��o que salva a quantidade de frames que ser�o transmitidas por segundo  	//
@@ -61,8 +67,9 @@ void salvaEnderecoIndicadorMem(void)
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaQtFramePorSegundoMem(void)
 {    
-	Data_Write_I2c[6] = qtFramePorSegundoMem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 6, tamanhoPagina, &Data_Write_I2c[6], umBit, 10);
+	Data_Write_I2c[endQtFramePorSegundoMem] = qtFramePorSegundoMem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 6, tamanhoPagina, 
+		&Data_Write_I2c[endQtFramePorSegundoMem], umBit, 10);
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //Fun��o que prepara os dados para salvar o status de de ligado/deligado    	//
@@ -70,16 +77,18 @@ void salvaQtFramePorSegundoMem(void)
 //////////////////////////////////////////////////////////////////////////////////		
 void preparaSalvaStatusPowerOnMem(void)
 {
-	Data_Write_I2c[7] = statusPowerOnMem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 7, tamanhoPagina, &Data_Write_I2c[7], umBit, 10);
+	Data_Write_I2c[endStatusPowerOnMem] = statusPowerOnMem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 7, tamanhoPagina, 
+		&Data_Write_I2c[endStatusPowerOnMem], umBit, 10);
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //Fun��o que prepara os dados para salvar o modo de funcionamento do back light //
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaModoFuncionamentoBackLightMem(void)
 {    
-	Data_Write_I2c[8] = modoFuncionamentoBackLightMem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 8, tamanhoPagina, &Data_Write_I2c[8], umBit, 10);
+	Data_Write_I2c[endModoFuncionamentoBacklightMem] = modoFuncionamentoBackLightMem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 8, tamanhoPagina, 
+		&Data_Write_I2c[endModoFuncionamentoBacklightMem], umBit, 10);
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //Fun��o que prepara os dados para salvar o tempo para desligamento do          //
@@ -87,8 +96,9 @@ void salvaModoFuncionamentoBackLightMem(void)
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaTempoDesligaBackLightMem(void)
 {    
-	Data_Write_I2c[9] = modoFuncionamentoBackLightMem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 9, tamanhoPagina, &Data_Write_I2c[9], umBit, 10);
+	Data_Write_I2c[endTempoDesligaBacklightMem] = modoFuncionamentoBackLightMem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 9, tamanhoPagina, 
+		&Data_Write_I2c[endTempoDesligaBacklightMem], umBit, 10);
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //Fun��o que prepara os dados para salvar o status da execu��o do zero ao ligar //
@@ -96,32 +106,37 @@ void salvaTempoDesligaBackLightMem(void)
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaStatusZeroPowerMem(void)
 {    
-	Data_Write_I2c[10] = statusZeroAoLigarMem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 10, tamanhoPagina, &Data_Write_I2c[10], umBit, 10);
+	Data_Write_I2c[endStatusZeroAoLigarMem] = statusZeroAoLigarMem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 10, tamanhoPagina, 
+		&Data_Write_I2c[endStatusZeroAoLigarMem], umBit, 10);
 }
 /*salva valor do limite de zero permitido*/
 void salvaValorLimiteDeZeroMem(void)
 {
-	Data_Write_I2c[11] = valorLimiteDeZeroMem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 11, tamanhoPagina, &Data_Write_I2c[11], umBit, 10);
+	Data_Write_I2c[endValorLimiteDeZeroMem] = valorLimiteDeZeroMem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 11, tamanhoPagina, 
+		&Data_Write_I2c[endValorLimiteDeZeroMem], umBit, 10);
 }
 /* salva o valor do filtro digital                                              */
 void salvaValorFiltroDigitalMem(void)
 {
-	Data_Write_I2c[12] = valorFiltroDigitalMem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 12, tamanhoPagina, &Data_Write_I2c[12], umBit, 10);
+	Data_Write_I2c[endValorFiltroDigitalMem] = valorFiltroDigitalMem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 12, tamanhoPagina, 
+		&Data_Write_I2c[endValorFiltroDigitalMem], umBit, 10);
 }
 /* salva o valor da posi��o do ponto decimal                                  */
 void salvaPosicaoPontoDecimalIndicadorMem(void)
 {
-	Data_Write_I2c[13] = posicaoPontoDecimalIndicadorMem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 13, tamanhoPagina, &Data_Write_I2c[13], umBit, 10);
+	Data_Write_I2c[endPosicaoPontoDecimalIndicadorMem] = posicaoPontoDecimalIndicadorMem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 13, tamanhoPagina, 
+		&Data_Write_I2c[endPosicaoPontoDecimalIndicadorMem], umBit, 10);
 }
 /* salva o valor do degral do indicador de peso                               */
 void salvaPosicaoDegrauIndicadorMem(void)
 {
-	Data_Write_I2c[14] = degrauIndicadorMem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 14, tamanhoPagina, &Data_Write_I2c[14], umBit, 10);
+	Data_Write_I2c[endDegrauIndicadorMem] = degrauIndicadorMem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 14, tamanhoPagina, 
+		&Data_Write_I2c[endDegrauIndicadorMem], umBit, 10);
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //Funcao que prepara os dados para se a transmis�o automatica de dados esta   	//
@@ -129,39 +144,55 @@ void salvaPosicaoDegrauIndicadorMem(void)
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaStatusTransmisaoAutomaticoMem(void)
 {    
-    transfereArrayToArray(2,&statusTransmiteAutomaticoMem[0],&Data_Write_I2c[15]);
-    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 15, tamanhoPagina, &Data_Write_I2c[15], 2, 20);
+    transfereArrayToArray(2,&statusTransmiteAutomaticoMem[0],
+		&Data_Write_I2c[endStatusTransmiteAutomaticoMem]);
+    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 15, tamanhoPagina, 
+		&Data_Write_I2c[endStatusTransmiteAutomaticoMem], 2, 20);
 }
 /* salva o peso definido como capacidade maxima para o indicador              */
 void salvaPesoCapacidadeMaxIndicadorMem(void)
 {
-    transfereArrayToArray(8,&capacidadeMaximaIndicadorMem[0],&Data_Write_I2c[17]);
-    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 17, tamanhoPagina, &Data_Write_I2c[17], 8, 50);
+    transfereArrayToArray(8,&capacidadeMaximaIndicadorMem[0],
+		&Data_Write_I2c[endCapacidadeMaximaIndicadorMem]);
+    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 17, tamanhoPagina, 
+		&Data_Write_I2c[endCapacidadeMaximaIndicadorMem], 8, 50);
 }
 /* salva o peso definido como peso de calibra��o                              */
 void salvaPesoCalibracaoIndicadorMem(void)
 {
-    transfereArrayToArray(8,&pesoCalibracaoIndicadorMem[0],&Data_Write_I2c[25]);
-    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 25, tamanhoPagina, &Data_Write_I2c[25], 8, 50);
+    transfereArrayToArray(8,&pesoCalibracaoIndicadorMem[0],
+		&Data_Write_I2c[endPesoCalibracaoIndicadorMem]);
+    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 25, tamanhoPagina, 
+		&Data_Write_I2c[endPesoCalibracaoIndicadorMem], 8, 50);
 }
 /* salva o valor ad definido com zero do indicador                             */
 void salvaValorAdZeroIndicadorMem(void)
 {
-    transfereArrayToArray(4,&valorZeroIndicadorMem.array4[0],&Data_Write_I2c[33]);
-    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 33, tamanhoPagina, &Data_Write_I2c[33], 4, 50);
+    transfereArrayToArray(4,&valorZeroIndicadorMem.array4[0],
+		&Data_Write_I2c[endValorZeroIndicadorMem]);
+    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 33, tamanhoPagina, 
+		&Data_Write_I2c[endValorZeroIndicadorMem], 4, 50);
 }
 /* salva o valor da divisao do peso                                              */
 void salvaValorDivisaoIndicadorMem(void)
 {
-    transfereArrayToArray(4,&valorDivisaoIndicadorMem.array4[0],&Data_Write_I2c[37]);
-    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 37, tamanhoPagina, &Data_Write_I2c[37], 4, 50);
+    transfereArrayToArray(4,&valorDivisaoIndicadorMem.array4[0],
+		&Data_Write_I2c[endValorDivisaoIndicadorMem]);
+    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 37, tamanhoPagina, 
+		&Data_Write_I2c[endValorDivisaoIndicadorMem], 4, 50);
 }
 /* salva o nome do indicador na tela inicial 									*/
 void salvaNomeTelaIndicadorMem(void)//16BITS
 {
-	transfereArrayToArray(16,&nomeTelaIndicadorMem[0],&Data_Write_I2c[41]);
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 41, tamanhoPagina, &Data_Write_I2c[41], 16, 50);
+	transfereArrayToArray(16,&nomeTelaIndicadorMem[0],
+		&Data_Write_I2c[endNomeTelaIniciallMem]);
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 41, tamanhoPagina, 
+		&Data_Write_I2c[endNomeTelaIniciallMem], 16, 50);
 }
-//////////////////////////////////////////////////////////////////////////////////		
-//fun��o loop salvamento de dados na Memrom     								//
-//////////////////////////////////////////////////////////////////////////////////	
+/* salve a linguagem selecionada */
+void salvaLinguagemSelecionadaMem(void)
+{
+	Data_Write_I2c[endlinguagemSelecionadaMem] = linguagemSelecionadaMem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, endlinguagemSelecionadaMem, tamanhoPagina, 
+		&Data_Write_I2c[endlinguagemSelecionadaMem], umBit, 10);
+}

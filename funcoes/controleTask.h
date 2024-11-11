@@ -40,7 +40,7 @@ void ControleMultTask(void)
 ///////////////////////////////////////////////////////////////////////        
 //funcoes executadas a cada 1 mile segundo               			 //
 ///////////////////////////////////////////////////////////////////////
-		if (++micro_segundos == 5) //
+		if (++micro_segundos >= 5) //
 		{
             micro_segundos = 0;	
             controlaEscritaLcd();
@@ -59,7 +59,7 @@ void ControleMultTask(void)
 ///////////////////////////////////////////////////////////////////////        
 //funcoes executadas a cada 10 mile segundo                			 //
 ///////////////////////////////////////////////////////////////////////       
-		if  (++mile_segundos == 50)
+		if  (++mile_segundos >= 50)
 		{
             mile_segundos=0;	
             funcaoVerificaSalvaModBusRtu();
@@ -69,7 +69,7 @@ void ControleMultTask(void)
 ///////////////////////////////////////////////////////////////////////        
 //funcoes executadas a cada 100 mile segundo               			 //
 ///////////////////////////////////////////////////////////////////////           
-		if	(++deze_segundos == 500)
+		if	(++deze_segundos >= 500)
 		{
             deze_segundos = 0;
             controlaPiscaDigitoProgSenha();
@@ -85,7 +85,7 @@ void ControleMultTask(void)
 ///////////////////////////////////////////////////////////////////////        
 //funcoes executadas a cada 1000 mile segundo (1 segundo)  			 //
 /////////////////////////////////////////////////////////////////////// 
-		if	(++cente_segundos == 5000)
+		if	(++cente_segundos >= 5000)
 		{
             cente_segundos = 0;
             if (sistemaInicializado == 0)
