@@ -13,15 +13,30 @@
 //									 									       	//			
 //////////////////////////////////////////////////////////////////////////////////
 
-const char defaultEeprom[] = {1,4,0,2,0,1,4,1,//7
-							  2,3,0,2,2,0,1,' ',//15
-							  2,4,' ',' ',' ',' ',' ',' ',//23
-							  '0','0','0','1','0','0','0','0',//31
-							  '0','0','0','0','1','0','0','0',//39
-							  0xC8,0xE6,0x0F,0x4A,0x17,0x39,0x59,0x44,//47
-							  ' ',' ',' ',' ',' ',0,' ',' ',//55
-							  ' ',' ',' ',' ',' ',' ',' ',1,//63
-							 };
+const char defaultEeprom[] = {
+	_SERIAL_1ATIVADA,
+	velocidade9600Kbps,
+	_RS485,
+	_MODBUS_RTU,
+	_TRANSMISSAOCONTINUA_1,
+	1,
+	4,
+	_LIGADO,
+	_BACKLIGHT_TEMPORIZADO,
+	3,
+	_DESLIGADO,
+	2,
+	2,
+	0,
+	1,
+	2,4,															 	// 17
+	'0','0','0','2','0','0','0','0', 									// 25
+	'0','0','0','0','0','0','0','0', 									// 33
+	' ',' ',' ',' ', 													// 37
+	' ',' ',' ',' ',													// 41	
+	'I','N','D','I','C','A','D','O','R',' ','I','-','0','1',' ',' ',	// 57
+	' ',' ',' ',' ',' ',' ',1,											// 64 																	
+};
 
 //////////////////////////////////////////////////////////////////////////////////		
 //prototipos de fun��o utilizados												//
@@ -90,6 +105,8 @@ static unsigned char capacidadeMaximaIndicadorMem[8];
 static unsigned char pesoCalibracaoIndicadorMem[8];
 static unsigned char modoFuncionamentoBackLightMem;
 static unsigned char tempoDesligaBackLightMem;
+
+static unsigned char nomeTelaIndicadorMem[16];
 
 //controle da velocidade comunica��o
 //enum 

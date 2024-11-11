@@ -74,15 +74,6 @@ void preparaSalvaStatusPowerOnMem(void)
 	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 7, tamanhoPagina, &Data_Write_I2c[7], umBit, 10);
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//Fun��o que prepara os dados para se a transmis�o automatica de dados esta   	//
-//ativa ou desativada                                                           //
-//////////////////////////////////////////////////////////////////////////////////	
-void salvaStatusTransmisaoAutomaticoMem(void)
-{    
-    transfereArrayToArray(2,&statusTransmiteAutomaticoMem[0],&Data_Write_I2c[16]);
-    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 16, tamanhoPagina, &Data_Write_I2c[16], 2, 20);
-}
-//////////////////////////////////////////////////////////////////////////////////		
 //Fun��o que prepara os dados para salvar o modo de funcionamento do back light //
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaModoFuncionamentoBackLightMem(void)
@@ -132,29 +123,44 @@ void salvaPosicaoDegrauIndicadorMem(void)
 	Data_Write_I2c[14] = degrauIndicadorMem;
 	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 14, tamanhoPagina, &Data_Write_I2c[14], umBit, 10);
 }
+//////////////////////////////////////////////////////////////////////////////////		
+//Funcao que prepara os dados para se a transmis�o automatica de dados esta   	//
+//ativa ou desativada                                                           //
+//////////////////////////////////////////////////////////////////////////////////	
+void salvaStatusTransmisaoAutomaticoMem(void)
+{    
+    transfereArrayToArray(2,&statusTransmiteAutomaticoMem[0],&Data_Write_I2c[15]);
+    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 15, tamanhoPagina, &Data_Write_I2c[15], 2, 20);
+}
 /* salva o peso definido como capacidade maxima para o indicador              */
 void salvaPesoCapacidadeMaxIndicadorMem(void)
 {
-    transfereArrayToArray(8,&capacidadeMaximaIndicadorMem[0],&Data_Write_I2c[24]);
-    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 24, tamanhoPagina, &Data_Write_I2c[24], 8, 50);
+    transfereArrayToArray(8,&capacidadeMaximaIndicadorMem[0],&Data_Write_I2c[17]);
+    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 17, tamanhoPagina, &Data_Write_I2c[17], 8, 50);
 }
 /* salva o peso definido como peso de calibra��o                              */
 void salvaPesoCalibracaoIndicadorMem(void)
 {
-    transfereArrayToArray(8,&pesoCalibracaoIndicadorMem[0],&Data_Write_I2c[32]);
-    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 32, tamanhoPagina, &Data_Write_I2c[32], 8, 50);
+    transfereArrayToArray(8,&pesoCalibracaoIndicadorMem[0],&Data_Write_I2c[25]);
+    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 25, tamanhoPagina, &Data_Write_I2c[25], 8, 50);
 }
 /* salva o valor ad definido com zero do indicador                             */
 void salvaValorAdZeroIndicadorMem(void)
 {
-    transfereArrayToArray(4,&valorZeroIndicadorMem.array4[0],&Data_Write_I2c[40]);
-    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 40, tamanhoPagina, &Data_Write_I2c[40], 4, 50);
+    transfereArrayToArray(4,&valorZeroIndicadorMem.array4[0],&Data_Write_I2c[33]);
+    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 33, tamanhoPagina, &Data_Write_I2c[33], 4, 50);
 }
 /* salva o valor da divisao do peso                                              */
 void salvaValorDivisaoIndicadorMem(void)
 {
-    transfereArrayToArray(4,&valorDivisaoIndicadorMem.array4[0],&Data_Write_I2c[44]);
-    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 44, tamanhoPagina, &Data_Write_I2c[44], 4, 50);
+    transfereArrayToArray(4,&valorDivisaoIndicadorMem.array4[0],&Data_Write_I2c[37]);
+    HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 37, tamanhoPagina, &Data_Write_I2c[37], 4, 50);
+}
+/* salva o nome do indicador na tela inicial 									*/
+void salvaNomeTelaIndicadorMem(void)//16BITS
+{
+	transfereArrayToArray(16,&nomeTelaIndicadorMem[0],&Data_Write_I2c[41]);
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 41, tamanhoPagina, &Data_Write_I2c[41], 16, 50);
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //fun��o loop salvamento de dados na Memrom     								//

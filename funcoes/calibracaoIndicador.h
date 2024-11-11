@@ -317,6 +317,7 @@ else{tempProgIndicador = 1;}
 
 							salvaPesoCapacidadeMaxIndicadorMem();
 
+							carregaArrayComZeroAscii(8,&pesoCalibracaoIndicadorMem[0]);
 							telaPesoCalibracaoIndicador();
 							break;
 						}
@@ -350,7 +351,7 @@ else{tempProgIndicador = 1;}
 								converteArrayAsciiParaDecimal(6,&arrayTemp2Indicador[0]);
 
 								tempProgIndicador = comparaValoresArray(6,&arrayTemp1Indicador[0],&arrayTemp2Indicador[0]);
-								if ( tempProgIndicador == 1)
+								if (tempProgIndicador == 2)
 								{
 									carregaArrayComZeroAscii(8,&pesoCalibracaoIndicadorMem[0]);
 									carregaArrayComZeroAscii(10,&arrayInteiroTemp[0]);
@@ -541,7 +542,6 @@ void telaPesoCalibracaoIndicador(void)
 	caracterLcd[29] = caracterIncremento;
 	caracterLcd[30] = '<';
 	caracterLcd[31] = caracterSalva;
-
 }
 //////////////////////////////////////////////////////////////////////////////////
 //tela que faz a leitura da indicaodr sem peso (zero)                           //

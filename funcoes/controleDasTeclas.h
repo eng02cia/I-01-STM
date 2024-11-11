@@ -11,9 +11,9 @@ void iniciaTeclaExterna (void)
 //////////////////////////////////////////////////////////////////////////////////			
 void trataControleDasTeclas (void)
 {
-    if (trataTeclaValidaIndicador == 1 && teclaPresionda == 0 && exibeVersionControl == 0)
+    if (((trataTeclaValidaIndicador == 1) || (teclaValidaPs2 == 1)) && teclaPressionada == 0 && exibeVersionControl == 0)
 	{
-        teclaPresionda = 1;
+        teclaPressionada = 1;
         trataTeclaValidaIndicador = 0;
 //controle back light por tempo        
         if (statusLigaDesliga == _LIGADO && modoFuncionamentoBackLightMem == _BACKLIGHT_TEMPORIZADO)
@@ -27,7 +27,8 @@ void trataControleDasTeclas (void)
         if (menuAcessaMenusProgramacao == menuAcessaMenusProgramacaoEmEspera
            && menuCalibraIndicador == menuCalibraIndicadorEmEspera
            && menuConfiguraSerial_1 == menuConfiguraSerial_1EmEspera
-           && menuModoTecnicoIndicador == menuModoTecnicoIndicadorEmEspera)
+           && menuModoTecnicoIndicador == menuModoTecnicoIndicadorEmEspera
+           && menuProgramaDefinicaoFucionamento == menuDefinicaoFuncionamentoEmEspera)
         {
 //verifica se liga ou desliga o indicador de peso      
             if (teclaPressionadaAtual == teclaLigaDesliga)
@@ -38,6 +39,16 @@ void trataControleDasTeclas (void)
 //acesso liberado somente com o indicador ligado
             if (statusLigaDesliga == _LIGADO)
             {
+
+                if(teclasEditaProgramaAtualPs2 == teclaFuncao1)
+                {
+                    teclasEditaProgramaAtualPs2 = teclaSoltaPs2;
+                    // transmiteCargaCompleta = 0;
+                    // transmiteSemFonte = 0;
+                    // transmiteCarregando = 0;
+                    // transmiteSemBateria = 0;
+                    acessaMenuProgramaNomeTelaInicial();
+                }  
 //////////////////////////////////////////////////////////////////////////////////		
 //Verifica o acesso aos menus de programação                          		 	//
 //////////////////////////////////////////////////////////////////////////////////		
@@ -77,6 +88,8 @@ void trataControleDasTeclas (void)
             if (menuConfiguraSerial_1 != menuConfiguraSerial_1EmEspera){funcaoMenusConfiguraSerial_1();} 
 //acessa os menus de programação tecnica do indicador de peso
             if ( menuModoTecnicoIndicador != menuModoTecnicoIndicadorEmEspera){funcaoMenuModoTecnicoIndicador();}            
+//acessa o menu de programacao das definicoes de funcionamento do indicador   
+            if(menuProgramaDefinicaoFucionamento != menuDefinicaoFuncionamentoEmEspera){funcaoProgramaDefinicaoFuncionamento();}
         }
     }
 }	
@@ -90,6 +103,10 @@ void metodoLigaSistema(void)
     exibeVersionControl = 1;
     statusPowerOnMem = _LIGADO;
     trocarPaginaPeso = 1;
+    carregaTela11();
+    transfereCaracterDwinTelaInicial();  
+    fazTelaInicialPesoDwin = 0;
+    trocarPaginaDwin = 0;
 //    preparaSalvaStatusPowerOn();
     escreveDadoLcd(&telaInicialIndicador[0],&caracterLcd[0]);
     controleTara = _TARADESATIVADA;
@@ -105,6 +122,8 @@ void metodoDesligaSistema(void)
     HAL_GPIO_WritePin(pinoBackLight_GPIO_Port, pinoBackLight_Pin,GPIO_PIN_RESET);
     statusLigaDesliga = _DESLIGADO;
     statusPowerOnMem = _DESLIGADO;
+
+    carregaTela0();
 
 	HAL_UART_Transmit(&huart3, "sleep=1", 7, 25);
 	HAL_UART_Transmit(&huart3, cmd_end, 3, 25);
@@ -130,7 +149,7 @@ void funcaoTempoAcessoMenuProgramacao(void)
 		{
             tempoAcessoMenuProgramacao = 0;
             flagTempoAcessoMenuProgramacao = 0;
-            teclaPresionda = 1;
+            teclaPressionada = 1;
             flagTempoValidaTeclaSolta = 0;
             tempoValidaTeclaSolta = 0;
 //Acesso aos menus de programação tecnica

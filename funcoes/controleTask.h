@@ -49,6 +49,10 @@ void ControleMultTask(void)
             controleTxFrameSerial_1();
             controleTxFrameSerial_2();
 
+			tempoValidaTeclaPs2();
+			metodoIniciaConfigTecladoPs2();
+			metodoTempoControleConfigPs2();
+
             if (statusLigaDesliga == _LIGADO){controlaBackLightOscilaPeso();}
             else{HAL_GPIO_WritePin(pinoBackLight_GPIO_Port, pinoBackLight_Pin, GPIO_PIN_RESET);}
 		}

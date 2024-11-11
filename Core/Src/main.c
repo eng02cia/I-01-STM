@@ -115,6 +115,7 @@ int main(void)
 	HAL_TIM_Base_Start_IT(&htim3);
 
   flagFazLeituraI2c = 1;
+  inicializaComunicacaoPs2();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -340,7 +341,7 @@ static void MX_UART5_Init(void)
 
   /* USER CODE END UART5_Init 1 */
   huart5.Instance = UART5;
-  huart5.Init.BaudRate = 115200;
+  huart5.Init.BaudRate = 9600;
   huart5.Init.WordLength = UART_WORDLENGTH_8B;
   huart5.Init.StopBits = UART_STOPBITS_1;
   huart5.Init.Parity = UART_PARITY_NONE;
@@ -373,7 +374,7 @@ static void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
+  huart1.Init.BaudRate = 9600;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
@@ -406,7 +407,7 @@ static void MX_USART2_UART_Init(void)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 115200;
+  huart2.Init.BaudRate = 9600;
   huart2.Init.WordLength = UART_WORDLENGTH_8B;
   huart2.Init.StopBits = UART_STOPBITS_1;
   huart2.Init.Parity = UART_PARITY_NONE;
@@ -451,8 +452,6 @@ static void MX_USART3_UART_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN USART3_Init 2 */
-  carregaTela11();
-  transfereCaracterDwinTelaInicial();  
   /* USER CODE END USART3_Init 2 */
 
 }
@@ -496,20 +495,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : pinoDataPs2_Pin */
-  GPIO_InitStruct.Pin = pinoDataPs2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(pinoDataPs2_GPIO_Port, &GPIO_InitStruct);
-
   /*Configure GPIO pin : pinoClockPs2_Pin */
   GPIO_InitStruct.Pin = pinoClockPs2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(pinoClockPs2_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : FC1_Pin FC2_Pin */
-  GPIO_InitStruct.Pin = FC1_Pin|FC2_Pin;
+  /*Configure GPIO pins : pinoDataPs2_Pin FC1_Pin FC2_Pin */
+  GPIO_InitStruct.Pin = pinoDataPs2_Pin|FC1_Pin|FC2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
@@ -640,6 +633,15 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 		HAL_UART_AbortTransmit_IT(&huart5);
 	}
 
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	if(!HAL_GPIO_ReadPin(pinoClockPs2_GPIO_Port,pinoClockPs2_Pin))
+	{
+		if(statusInterruptPs2Atual == interruptRxPs2){recebeDadoTecladoPs2Interrupt();}
+		if(statusInterruptPs2Atual == interruptTxPs2){transmiteDadoTecladoPs2Interrupt();}
+	}
 }
 /* USER CODE END 4 */
 

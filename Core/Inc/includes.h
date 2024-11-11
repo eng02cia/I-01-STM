@@ -14,7 +14,6 @@
 #include "transfereConstToArray.h"
 uint8_t cmd_end[3] ={0xFF, 0xFF, 0xFF};
 uint8_t Rx_ModbusSerial_1[10];
-#include "headerEeprom.h"
 #include "headerPilhaSaveEeprom.h"
 #include "headerControleTask.h"
 #include "headerControlaTelas.h"
@@ -40,8 +39,12 @@ uint8_t Rx_ModbusSerial_1[10];
 #include "headerDisplayNextion.h"
 #include "headerfuncaoI2c.h"
 #include "headerDisplayDwin.h"
-#include "DWIN.h"
+#include "headerTecladoPs2.h"
+#include "headerMenuDefinicaoFuncionamento.h"
+#include "headerEeprom.h"
 
+#include "DWIN.h"
+#include "tecladoPs2.h"
 #include "controleTask.h"
 #include "controleFlash.h"
 #include "escritaLcd.h"
@@ -68,5 +71,6 @@ uint8_t Rx_ModbusSerial_1[10];
 #include "eepromRead.h"
 #include "eepromSave.h"
 #include "funcaoDwin.h"
+#include "menuDefinicaoFuncionamento.h"
 
 #endif /* INC_INCLUDES_H_ */

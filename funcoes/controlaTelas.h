@@ -17,7 +17,8 @@ void metodoControleDasTelas(void)
 		if (menuAcessaMenusProgramacao != menuAcessaMenusProgramacaoEmEspera
 				|| menuCalibraIndicador != menuCalibraIndicadorEmEspera
 				|| menuConfiguraSerial_1 != menuConfiguraSerial_1EmEspera
-				|| menuModoTecnicoIndicador != menuModoTecnicoIndicadorEmEspera)
+				|| menuModoTecnicoIndicador != menuModoTecnicoIndicadorEmEspera
+				|| menuProgramaDefinicaoFucionamento != menuDefinicaoFuncionamentoEmEspera)
 		{
 			if (trocarPaginaDwin == 1)
 			{
@@ -54,7 +55,8 @@ void metodoControleDasTelas(void)
 				}
 				else
 				{
-					mostraModeloIndicadorDwin();
+					// mostraModeloIndicadorDwin();
+					mostraNomeTelaIndicadorDwin();
 					limpaLinha2Dwin();					
 
 					if (controleTara == _TARAATIVADA)

@@ -18,7 +18,7 @@ unsigned char trocaTelaPeso;
 
         
 const char telaInicialIndicador[] =     {" INDICADOR I-01 "};
-const char telaInicialVersao[] =        {"Vx.y.z          "};
+const char telaInicialVersao[] =        {"  V3.0          "};
 const char telaStatusPrincipal[] =      {"                ""                "};
 const char telaSobreCarga[] =           {"  SOBRE CARGA   "};
 const char telaSubCarga[] =             {"  SUB CARGA     "};

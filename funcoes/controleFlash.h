@@ -10,7 +10,7 @@
 #include "transfereConstToArray.h"
 #include "transfereArrayToArray.h"
 #include "transfereConstToArrayLoop.h"
-unsigned char bytesDataFlash[60];
+unsigned char bytesDataFlash[64];
 
 const char configFabrica[] = 
 {		
@@ -34,6 +34,7 @@ const char configFabrica[] =
 	' ',' ',' ',' ',' ',' ',' ',' ',
 	' ',' ',' ',' ',
 	' ',' ',' ',' ',	
+	'I','N','D','I','C','A','D','O','R',' ','I','-','0','1',' ',' ', // 64
 };
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -69,6 +70,7 @@ void gravaFlash (void)
 
 	transfereArrayToArray(4,&valorDivisaoIndicadorMem.array4[0],&bytesDataFlash[44]);
 
+	transfereArrayToArray(16,&nomeTelaIndicadorMem[0],&bytesDataFlash[48]);
 
 	Flash_Write_Data(0x0807F000 , (uint32_t *)bytesDataFlash, 12);
 
@@ -116,6 +118,8 @@ void leituraFlash (void)
 	transfereArrayToArray(4,&bytesDataFlash[40],&valorDivisaoIndicadorMem.array4[0]);
 	valorDivisaoIndicador = valorDivisaoIndicadorMem.float32;
 
+/* le o nome a mostrar na tela principal */
+	transfereArrayToArray(16,&bytesDataFlash[48],&nomeTelaIndicadorMem[0]);
 }
 //////////////////////////////////////////////////////////////////////////////////
 //FUNCAO QUE FAZ LEITURA DA FLASH CASO ZERE O PROCESSADOR A 0xFFFFFFF           //
@@ -138,13 +142,13 @@ void leituraConfiguracao (void)
 void TimerReadFlash (void)
 {
 	if (flagFazLeituraFlash == 1)
-			{
-					if (++tempoLeituraFlash > 5)
-					{
-						flagFazLeituraFlash = 0;
-						tempoLeituraFlash = 0;
-						leituraConfiguracao();
-					}
-			}
+	{
+		if (++tempoLeituraFlash > 5)
+		{
+			flagFazLeituraFlash = 0;
+			tempoLeituraFlash = 0;
+			leituraConfiguracao();
+		}
+	}
 }
 #endif /* INC_FLASH_H_ */

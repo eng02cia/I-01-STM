@@ -116,7 +116,7 @@ void metodoDecodificaTeclado(void)
     }                
     if (flagTeclaPressionadaTemp == 0 )
     {
-        teclaPresionda = 0;
+        teclaPressionada = 0;
         trataTeclaValidaIndicador = 0;
         tempoAcessoMenuProgramacao = 0;
         flagTempoAcessoMenuProgramacao = 0;  
@@ -196,7 +196,7 @@ void verificaLigaDesligaExterno(void)
         if (teclaExternaLigaDesligaSolta == 1)
         {   
             teclaExternaLigaDesligaSolta = 0;    
-            teclaPresionda = 0;
+            teclaPressionada = 0;
         }
     }
 }

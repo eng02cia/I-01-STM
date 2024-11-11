@@ -25,7 +25,7 @@ static unsigned char tempoValidaZeroExterno;
 static unsigned char tempoValidaTaraExterno;
 static unsigned char tempoValidaPrintExterno;
 static unsigned char statusLigaDesliga;
-static unsigned char teclaPresionda;
+static unsigned char teclaPressionada;
 static unsigned char trataTeclaValidaIndicador;
 unsigned char tempTecla;
 unsigned char tempValorTecla;

@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////////		
-//prototipos de função utilizados												//
+//prototipos de funï¿½ï¿½o utilizados												//
 //////////////////////////////////////////////////////////////////////////////////	
 void inicializaDecodificaTeclado(void);
 void metodoDecodificaTeclado(void);
@@ -25,7 +25,7 @@ static unsigned char tempoValidaZeroExterno;
 static unsigned char tempoValidaTaraExterno;
 static unsigned char tempoValidaPrintExterno;
 static unsigned char statusLigaDesliga;
-static unsigned char teclaPresionda;
+static unsigned char teclaPressionada;
 static unsigned char trataTeclaValidaIndicador;
 unsigned char tempTecla;
 
@@ -60,7 +60,7 @@ enum teclaAtualValida
 #define teclaRegistra           7
 #define teclaNaoUsada           8
 
-// pinos utilizados na funcao de decodificação das teclas
+// pinos utilizados na funcao de decodificaï¿½ï¿½o das teclas
 #if _18F46K40
 #define	pinoColuna1              LATDbits.LATD1
 #define	pinoColuna2              LATDbits.LATD0

@@ -2,10 +2,10 @@
 #include "carregaArrayComZeroAscii.h"
 //////////////////////////////////////////////////////////////////////////////////		
 //                                                                            	//
-//              funcoes de Escrita e grava��o an eeprom	                  		//		
+//              funcoes de Escrita e gravacao an eeprom	                  		//		
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////		
-//Fun��o que le os dados da eeprom na inicialzia��o               				//
+//Funcao que le os dados da eeprom na inicialziacao		            			//
 //////////////////////////////////////////////////////////////////////////////////		
 void le_i2c(void)
 {
@@ -26,27 +26,29 @@ void le_i2c(void)
 	degrauIndicadorMem = Data_Write_I2c[14];
 
 /* le o valor definido para status Transmite Automatico                         */
-	transfereArrayToArray(2,&Data_Write_I2c[16],&statusTransmiteAutomaticoMem[0]);
+	transfereArrayToArray(2,&Data_Write_I2c[15],&statusTransmiteAutomaticoMem[0]);
 
 /* le o peso definido como capacidade maxima para o indicador                   */
-	transfereArrayToArray(8,&Data_Write_I2c[24],&capacidadeMaximaIndicadorMem[0]);
+	transfereArrayToArray(8,&Data_Write_I2c[17],&capacidadeMaximaIndicadorMem[0]);
 	carregaArrayComZeroAscii(10,&arrayInteiroTemp[0]);
 	transfereArrayToArray(8,&capacidadeMaximaIndicadorMem[0],&arrayInteiroTemp[2]);
 	rotacionaArrayInsere0Converte();
 	valorPesoCargaMaxima = atol(arrayInteiroTemp);
 
-	/* le o peso definido como peso calibracao indicador           			        */
-	transfereArrayToArray(8,&Data_Write_I2c[38],&pesoCalibracaoIndicadorMem[0]);
+/* le o peso definido como peso calibracao indicador           			        */
+	transfereArrayToArray(8,&Data_Write_I2c[25],&pesoCalibracaoIndicadorMem[0]);
 
 /* le o peso definido como valor zero indicador             					*/
-	transfereArrayToArray(4,&Data_Write_I2c[40],&valorZeroIndicadorMem.array4[0]);
+	transfereArrayToArray(4,&Data_Write_I2c[33],&valorZeroIndicadorMem.array4[0]);
     valorZeroIndicador = valorZeroIndicadorMem.int32;
     valorTaraIndicador = valorZeroIndicador;
 
 /* le o peso definido como valor divisao indicador              				*/
-	transfereArrayToArray(4,&Data_Write_I2c[44],&valorDivisaoIndicadorMem.array4[0]);
+	transfereArrayToArray(4,&Data_Write_I2c[37],&valorDivisaoIndicadorMem.array4[0]);
 	valorDivisaoIndicador = valorDivisaoIndicadorMem.float32;
 
+/* le o nome definido para a tela inicial			              				*/
+	transfereArrayToArray(16,&Data_Write_I2c[41],&nomeTelaIndicadorMem[0]);
 }
 
 void leituraI2c_Default(void)

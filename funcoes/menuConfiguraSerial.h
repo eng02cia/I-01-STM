@@ -63,9 +63,8 @@ void funcaoMenusConfiguraSerial_1(void)
                     iniciaVariaveisTxSerial_1();
                     salvaStatusSaidaDadosSerial_1Mem();
                     tempConfigSerial = statusPortaSerial_1Mem;
-                    menuConfiguraSerial_1 = definePortaSerial_1;
-                    telaMostraTipoPortaSerial_1();
-
+                    menuConfiguraSerial_1 = ativaDesativaSerial_1;
+                    telaMostraAtivaDesativaSerial_1();
                 break;
             }            
             break; 
@@ -90,11 +89,10 @@ void funcaoMenusConfiguraSerial_1(void)
                 case teclaSalva:
                     teclaPressionadaAtual = teclaSolta;  
                     statusComunicacaoSerial_1Mem = tempConfigSerial;
-                    salvaStatusSaidaDadosSerial_1Mem();
+                    salvaStatusFuncionamentoTxSerial_1Mem();
                     tempConfigSerial = statusPortaSerial_1Mem;
                     menuConfiguraSerial_1 = definePortaSerial_1;
                     telaMostraTipoPortaSerial_1();
-
                     break;
 
             }            
@@ -315,7 +313,7 @@ void telaMostraTipoPortaSerial_1(void)
 //////////////////////////////////////////////////////////////////////////////////
 void telaMostraTipoSaidaDadosSerial_1(void)
 {
-    escreveDadoLcd(&charTelaConfiguraVelocidadeSerial[0],&caracterLcd[0]);
+    escreveDadoLcd(&charTelaFormaSaidaDadosSerial_1[0],&caracterLcd[0]);
     if (tempConfigSerial == _TRANSMISSAOCONTINUA_1){escreveDadoLcd(&charTcContinua_1[0],&caracterLcd[16]);}
 	if (tempConfigSerial == _TRANSMISSAOCONTINUA_2){escreveDadoLcd(&charTcContinua_2[0],&caracterLcd[16]);}
     if (tempConfigSerial == _MODBUS_RTU){escreveDadoLcd(&charModBusRtu[0],&caracterLcd[16]);}

@@ -6,6 +6,12 @@ extern UART_HandleTypeDef huart1;
 #include "inteiroTo2BytesAscii.h"
 #include "transfereConstToArrayLoop.h"
 
+void carregaTela0(void)
+{
+	transfereConstToArrayLoop(10,&charTela0Dwin[0],&frameTxDwin[0]);
+	HAL_UART_Transmit(&huart3,&frameTxDwin[0],10,100);
+}
+
 void carregaTela1(void)
 {
 	transfereConstToArrayLoop(10,&charTela1Dwin[0],&frameTxDwin[0]);
@@ -123,11 +129,10 @@ void mostraPesoDwin(void)
 	{
 		tempPosicaoPontoDwin = 0;
 
-
 		switch(controleTelaDwin)
 		{
 			case ocultaPeso:
-				transfereConstToArrayLoop(4,&pesoTraco[0],&telaPesoDwin[0]);
+				transfereConstToArray(&pesoTraco[0],&telaPesoDwin[0]);
 				controleTelaDwin = pesoReal;
 				tempPosicaoPontoDwin = 0;
 				break;
@@ -136,7 +141,7 @@ void mostraPesoDwin(void)
 				controleTelaDwin = pesoReal;
 				break;
 			case pesoReal:
-				transfereArrayToArray(7,&pesoBrutoIndicadorAscii[0],&telaPesoDwin[0]);// TESTE
+				transfereArrayToArray(7,&pesoBrutoIndicadorAscii[0],&telaPesoDwin[0]); // TESTE - Necessario utilizar peso tratado
 				break;
 		}
 		if(tempPosicaoPontoDwin != 0)
@@ -249,15 +254,15 @@ void retiraPontoDecimalDwin(void)
 	telaPesoDwin[0]= ' ';
 }
 
-void removeCaracteresEspeciaisDwin (void) {
+void removeCaracteresEspeciaisDwin (uint8_t posicaoInicial, uint8_t qtdCaracteres) {
 	uint8_t i = 0;
 
-	// Apenas ultimas posicoes
-	for (i = 28; i < 32; i++) {
-		if ((caracterLcd[i] == caracterRetorna) || (caracterLcd[i] == caracterAtivo)
-				|| (caracterLcd[i] == caracterIncremento) || (caracterLcd[i] == caractersetaParaCima)
-				|| (caracterLcd[i] == caractersetaDupla) || (caracterLcd[i] == caracterDecremento)) {
-			caracterLcd[i] = ' ';
+	for (i = posicaoInicial; i < qtdCaracteres; i++) {
+		if ((frameTxDwin[i] == caracterRetorna) || (frameTxDwin[i] == caracterSalva)
+				|| (frameTxDwin[i] == caracterIncremento) || (frameTxDwin[i] == caracterAtivo)
+				|| (frameTxDwin[i] == caracterSetaParaBaixo) || (frameTxDwin[i] == caractersetaParaCima)
+				|| (frameTxDwin[i] == caractersetaDupla) || (frameTxDwin[i] == caracterDecremento)) {
+			frameTxDwin[i] = ' ';
 		}
 	}
 }
@@ -268,17 +273,21 @@ void transfereCaracterLcdLinha1Dwin(void)
 	frameTxDwin[4] = 0x12;
 	frameTxDwin[5] = 0x00;
 	transfereArrayToArray(16,&caracterLcd[0],&frameTxDwin[6]);
-	HAL_UART_Transmit(&huart3,&frameTxDwin[0],22,50);
 
+	removeCaracteresEspeciaisDwin(6,16);
+
+	HAL_UART_Transmit(&huart3,&frameTxDwin[0],22,50);
 }
+
 void transfereCaracterLcdLinha2Dwin(void)
 {
-	removeCaracteresEspeciaisDwin();
-
 	transfereConstToArrayLoop(4,&tx16BytesDwin[0],&frameTxDwin[0]);
 	frameTxDwin[4] = 0x13;
 	frameTxDwin[5] = 0x00;
 	transfereArrayToArray(16,&caracterLcd[16],&frameTxDwin[6]);
+
+	removeCaracteresEspeciaisDwin(6,16);
+
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],22,50);
 }
 void transfereCaracterLcdMenu1Dwin(void)
@@ -287,17 +296,22 @@ void transfereCaracterLcdMenu1Dwin(void)
 	frameTxDwin[4] = 0x14;
 	frameTxDwin[5] = 0x00;
 	transfereArrayToArray(16,&caracterLcd[0],&frameTxDwin[6]);
+
+	removeCaracteresEspeciaisDwin(6,16);
+
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],22,50);
 }
 
 void transfereCaracterLcdMenu2Dwin(void)
 {
-	removeCaracteresEspeciaisDwin();
 
 	transfereConstToArrayLoop(4,&tx16BytesDwin[0],&frameTxDwin[0]);
 	frameTxDwin[4] = 0x15;
 	frameTxDwin[5] = 0x00;
 	transfereArrayToArray(16,&caracterLcd[16],&frameTxDwin[6]);
+	
+	removeCaracteresEspeciaisDwin(6,16);
+
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],22,50);
 }
 void limpaLinha1Dwin(void)
@@ -347,6 +361,14 @@ void mostraModeloIndicadorDwin (void) {
 	frameTxDwin[4] = 0x12;
 	frameTxDwin[5] = 0x00;
 	transfereConstToArrayLoop(16,&telaInicialIndicador[0],&frameTxDwin[6]);	
+	HAL_UART_Transmit(&huart3,&frameTxDwin[0],22,50);
+}
+
+void mostraNomeTelaIndicadorDwin (void) {
+	transfereConstToArrayLoop(4,&tx16BytesDwin[0],&frameTxDwin[0]);
+	frameTxDwin[4] = 0x12;
+	frameTxDwin[5] = 0x00;
+	transfereConstToArrayLoop(16,&nomeTelaIndicadorMem[0],&frameTxDwin[6]);	
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],22,50);
 }
 

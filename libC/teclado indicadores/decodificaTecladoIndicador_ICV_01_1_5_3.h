@@ -160,7 +160,7 @@ void metodoDecodificaTeclado(void)
     && menuModoTecnicoIndicador == menuModoTecnicoIndicadorEmEspera
     && menuProgramacaoRelogioAtual == menuProgramaRelogioEmEspera
     && menuConfiguraWifi == menuConfiguraWifiEmEspera
-    && menuProgramaDifinicaoFucionamento == menuDefinicaoFuncionamentoEmEspera
+    && menuProgramaDefinicaoFucionamento == menuDefinicaoFuncionamentoEmEspera
     && menuConfiguraAplicacao == menuConfiguraAplicacaoEmEspera)
    {
        ledZeroTaraDireto();
