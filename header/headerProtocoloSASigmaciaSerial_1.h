@@ -2,7 +2,7 @@
 //      Header que controlam a transmis�o de dados pela serial 1         		//		
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////		
-//prototipos de fun��o utilizados												//
+//prototipos de funcao utilizados												//
 //////////////////////////////////////////////////////////////////////////////////		
 void serial_1RxInterruptProtocoloSa(void);
 void rxSerial_1ProtocoloSa(void);
@@ -67,7 +67,7 @@ const char charSolicitaPesoLiquido[] ={"PL:ST"};
 const char charSolicitaVersao[] ={"VE:ST"};
 const char charControleTxAutomatico[] ={"TA:CF"};
 const char charStatusFuncionamento[] ={"FU:ST"};
-//comandos de calibra��o
+//comandos de calibracao
 const char charCapacidadeMaxima[] ={"CM:CF"};
 const char charStatusCapacidadeMaxima[] ={"CM:ST"};
 const char charPesoCalibracao[] ={"PC:CF"};

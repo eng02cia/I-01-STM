@@ -35,7 +35,7 @@ short controleDasTasks;
 short flagTaskHx711;
 
 //////////////////////////////////////////////////////////////////////																		
-//Inicializ��o do timer utilizado para controle das tasks  			//
+//Inicializcao do timer utilizado para controle das tasks  			//
 //////////////////////////////////////////////////////////////////////
 //5000 CICLOS IGUAL A 250 MICRO SEGUNDOS
 

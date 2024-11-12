@@ -24,7 +24,7 @@ void delayMicroSegundosPs2(unsigned int DelayInterno);
 void metodoIniciaConfigTecladoPs2(void);
 void metodoTempoControleConfigPs2(void);
 //////////////////////////////////////////////////////////////////////////////////
-//declara��o de variaveis                                                       //
+//declaracao de variaveis                                                       //
 //////////////////////////////////////////////////////////////////////////////////
 static unsigned char dataTeclaPresPs2[20];
 static unsigned char dataRxTecladoPs2;
@@ -55,13 +55,13 @@ static unsigned char rloopTxPs2;
 static unsigned char tempTxPs2;
 static unsigned char dataTxPs2;
 static unsigned char dataTxPs2Backup;
-// enumera��o de controle da interrup��o do teclado ps2
+// enumeracao de controle da interrupcao do teclado ps2
 enum statusInterruptPs2
 {
     interruptTxPs2,
     interruptRxPs2,
 }statusInterruptPs2Atual = interruptRxPs2;
-//enumera��o de controle da recep��o de dados do teclado ps2
+//enumeracao de controle da recepcao de dados do teclado ps2
 enum statusRxPs2
 {
     rxPs2Start,
@@ -79,7 +79,7 @@ union
         unsigned char Byte;
 	}paridadeRxPs2;
     
-//enumera��o de controle do inicio da transmis�o de dados para o teclado ps2
+//enumeracao de controle do inicio da transmis�o de dados para o teclado ps2
 enum statusTxPs2
 {
     txPs2Start,
@@ -88,7 +88,7 @@ enum statusTxPs2
     txPs2BitAcknowledge,
     txPs2ChecaAcknowledge,
 } statusTxPs2Atual = txPs2Start;
-//enumera��o de tratamento da tecla pressionada
+//enumeracao de tratamento da tecla pressionada
 enum teclaPressionadaPs2
 {
     tipoTecla,
@@ -97,8 +97,8 @@ enum teclaPressionadaPs2
     aguardaFinalRepeticaoTecla,
     aguardaFinalFrame,
 } teclaPressionadaPs2 = tipoTecla;
-//enumera��o de controle de teclas consideradas especiais
-//teclas utilizadas para na navega��o  e edi��o de programa��o
+//enumeracao de controle de teclas consideradas especiais
+//teclas utilizadas para na navegacao  e edicao de programacao
 enum teclasEditaPrograma
 {
     teclaSoltaPs2,

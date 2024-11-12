@@ -72,7 +72,7 @@ void metodoTempoLeituraRelogio(void);
 unsigned char transformaBcdParaDecimal(unsigned char valor);
 unsigned char transformaDecimalParaBcd(unsigned char valor);
 //////////////////////////////////////////////////////////////////////////////////
-//declara��o de variaveis                                                       //
+//declaracao de variaveis                                                       //
 //////////////////////////////////////////////////////////////////////////////////
 //static unsigned char frameDataRelogio[7];
 static unsigned char segundoRelogio;
@@ -99,7 +99,7 @@ static unsigned char statusLeituraRelogio;
 //short fazLeituraRelogio;
 //short fazEscritaRelogio;
 short flagRelogioInicializado;
-// enumera��o de controle do barramento I2C 
+// enumeracao de controle do barramento I2C 
 
 
 //////////////////////////////////////////////////////////////////////////////////

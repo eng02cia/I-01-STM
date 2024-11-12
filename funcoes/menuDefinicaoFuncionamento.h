@@ -1,7 +1,7 @@
 #include "comparaValoresArray.h"
 #include "transfereArrayToArray.h"
 //////////////////////////////////////////////////////////////////////////////////		
-//Menu qyue da acesso ao menus secundarios de programa��o                       //
+//Menu qyue da acesso ao menus secundarios de programacao                       //
 //////////////////////////////////////////////////////////////////////////////////
 void funcaoProgramaDefinicaoFuncionamento(void)
 {
@@ -72,7 +72,7 @@ void funcaoProgramaDefinicaoFuncionamento(void)
     }
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//menu faz a programa��o de  um nome com 16 caracteres                         	//
+//menu faz a programacao de  um nome com 16 caracteres                         	//
 //////////////////////////////////////////////////////////////////////////////////
 void digita16CaracteresAscii(void)
 {
@@ -125,7 +125,7 @@ void acessaMenuModoFuncionamentoLiguagem(void)
 }
 
 //////////////////////////////////////////////////////////////////////////////////		
-//tela mostra o acesso a programa��o do nome da tela                          	//
+//tela mostra o acesso a programacao do nome da tela                          	//
 //////////////////////////////////////////////////////////////////////////////////
 void telaMostraProgNomeAcii(void)
 {

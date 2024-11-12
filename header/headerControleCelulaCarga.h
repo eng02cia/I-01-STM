@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////		
 //         funcoes de controle das medi��es da celula de carga           		//	
 //////////////////////////////////////////////////////////////////////////////////
-//prototipos de fun��o utilizadas
+//prototipos de funcao utilizadas
 void inicializaLedsIndicador(void);
 void mostraPesoIndicador(void);
 void trataPesoAdIndicador(void);
@@ -93,7 +93,7 @@ static unsigned char arrayPesoConvertidoCelulaCarga[9];
 static unsigned char loopConvertePesoCelulaCarga;
 static unsigned char loopTestePeso;
 static unsigned char controleTipoZero;
-static unsigned char valorLimiteZeroInicial;//usado na inicializa��o
+static unsigned char valorLimiteZeroInicial;//usado na inicializacao
 short flagLimiteZeroInicial;
 #define _PESOPOSITIVO 1
 #define _PESONEGATIVO 0

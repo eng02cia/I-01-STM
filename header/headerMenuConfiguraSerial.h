@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////		
-//hederes do menu de acesso a programa��o do sistema                            //
+//hederes do menu de acesso a programacao do sistema                            //
 //////////////////////////////////////////////////////////////////////////////////
-//prototipos de fun��o
+//prototipos de funcao
 void funcaoMenusConfiguraSerial_1(void);
 void controlaTxSerial_1(void);
 void telaMostraAtivaDesativaSerial_1(void);
@@ -12,7 +12,7 @@ void telaMostraTipoSaidaDadosSerial_2(void);
 void telaMostraEnderecoIndicador(void);
 void telaMostraQtFramePorSegundo(void);
 void telaMostraProgVelocidadeSerial_1(void);
-//contantes utilizadas na fun��o                
+//contantes utilizadas na funcao                
 
 // telas portugues                                                 
 const char charTelaConfiguraVelocidadeSerialPT[]={"VELOCID/SERIAL 1""                "};
@@ -121,5 +121,5 @@ enum velocidadeTxSerial_1
 #define _TRANSMISSAOCONTINUA_2 1
 #define _MODBUS_RTU 2
 
-//flags utilizados na programa��o
+//flags utilizados na programacao
 

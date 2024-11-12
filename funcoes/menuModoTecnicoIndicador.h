@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////		
-//Menu qyue da acesso ao menus secundarios de programa��o                       //
+//Menu qyue da acesso ao menus secundarios de programacao                       //
 //////////////////////////////////////////////////////////////////////////////////
 void funcaoMenuModoTecnicoIndicador(void)
 {
@@ -214,7 +214,7 @@ void telaValorFiltroDigitalModoTecnicoIndicador(void)
     caracterLcd[31] = caracterSalva;    
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//tela mostra a programa��o do modo de pesagem do indicador                   	//
+//tela mostra a programacao do modo de pesagem do indicador                   	//
 //////////////////////////////////////////////////////////////////////////////////
 void telaMostraProgramacaoStatusZeroLigarIndicador(void)
 {
@@ -236,7 +236,7 @@ void telaMostraProgramacaoStatusZeroLigarIndicador(void)
     caracterLcd[31] = caracterSalva;    
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//tela mostra a programa��o do modo de funcinamento do backlight             	//
+//tela mostra a programacao do modo de funcinamento do backlight             	//
 //////////////////////////////////////////////////////////////////////////////////
 void telaMostraProgramacaoModoFuncionamentoBackLight(void)
 {
@@ -266,7 +266,7 @@ void telaMostraProgramacaoModoFuncionamentoBackLight(void)
     caracterLcd[31] = caracterSalva;    
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//tela mostra a programa��o do tempo que o back light fica ligado               //
+//tela mostra a programacao do tempo que o back light fica ligado               //
 //////////////////////////////////////////////////////////////////////////////////
 void telaTempoBackLightLigado(void)
 {

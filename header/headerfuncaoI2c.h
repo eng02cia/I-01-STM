@@ -14,7 +14,7 @@ uint8_t Data_read[16];
 
 
 uint16_t tamanhoPagina = 32;
-uint16_t umBit = 1;
+uint16_t umByte = 1;
 uint8_t Data_Write_I2c[162];
 uint8_t tempCarregaValorArray[32];
 

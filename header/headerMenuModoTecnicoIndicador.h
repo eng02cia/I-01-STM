@@ -1,14 +1,14 @@
 //////////////////////////////////////////////////////////////////////////////////		
-//hederes do menu de configura��o do indicador                                  //
+//hederes do menu de configuracao do indicador                                  //
 //////////////////////////////////////////////////////////////////////////////////
-//prototipos de fun��o
+//prototipos de funcao
 void funcaoMenuModoTecnicoIndicador(void);
 void telaMostraProgramacaoLimiteZero(void);
 void telaValorFiltroDigitalModoTecnicoIndicador(void);
 void telaMostraProgramacaoStatusZeroLigarIndicador(void);
 void telaMostraProgramacaoModoFuncionamentoBackLight(void);
 void telaTempoBackLightLigado(void);
-//contantes utilizadas na fun��o                
+//contantes utilizadas na funcao                
 // telas de programa�ao
                                                  
 // TELA PROG PORTUGUES

@@ -20,7 +20,7 @@ void iniciaVariaveisTxSerial_1(void)
     if (velocidadeTxSerial_1 == velocidade115200Kbps){velocidadeSerial_1_115200Kbps();}
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//fun��o que faz a transmis�o de dados pela serial 1   		        			//
+//funcao que faz a transmis�o de dados pela serial 1   		        			//
 //////////////////////////////////////////////////////////////////////////////////		
 void controleTxSerial_1(void)
 {
@@ -48,7 +48,7 @@ void controleTxSerial_1(void)
 	}	*/
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//fun��o que controla a transmis�o de dados pela serial 1   					//
+//funcao que controla a transmis�o de dados pela serial 1   					//
 //////////////////////////////////////////////////////////////////////////////////	
 void controleTxFrameSerial_1(void)
 {
@@ -148,7 +148,7 @@ void controleTxFrameSerial_1(void)
     {
     	
 //////////////////////////////////////////////////////////////////////////////////		
-//retorna uma confirma��o de recebimento valida do Client						//
+//retorna uma confirmacao de recebimento valida do Client						//
 //////////////////////////////////////////////////////////////////////////////////		
         if (flagTxSerial_1.enviaConfirmacaoDeRecebimento == 1 & flagTxSerial_1.transmitindoSerial_1 == 0)
         {

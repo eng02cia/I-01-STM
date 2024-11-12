@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////		
-//funcoes de programa��o do peso do corte                                       //
+//funcoes de programacao do peso do corte                                       //
 //////////////////////////////////////////////////////////////////////////////////
 //prototipos de funcoes
 void controleCalibraIndicador(void);
@@ -161,7 +161,7 @@ enum
     menuSemPeso, 
     menuComPeso,      
 }menuCalibraIndicador = menuCalibraIndicadorEmEspera;
-//gerencia a manipula��o dos digitos de um algarimos durante a programa��o
+//gerencia a manipulacao dos digitos de um algarimos durante a programacao
 enum
 {
     digitoZero,
@@ -184,5 +184,5 @@ enum
 #define _VMAX_FILTRO_DIGITAL 30
 #endif
 //#define limiteProgFiltroDigital 121
-//flags utilizados na programa��o
+//flags utilizados na programacao
 

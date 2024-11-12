@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////		
 //                  header hx711                        		          		//	
 //////////////////////////////////////////////////////////////////////////////////
-//prototipos de fun��o utilizadas
+//prototipos de funcao utilizadas
 void inicializaHx711(void);
 void readHx711(void);
 void delayReadHx711(void);
@@ -17,7 +17,7 @@ static float dataAdHx711;
 //static unsigned char loopTesteAd;
 
 //strutura de dados utilizadas na leitura dos bits de dados do barramento
-//de comunica��o do hx711
+//de comunicacao do hx711
 union
 	{
 	struct

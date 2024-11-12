@@ -1,13 +1,13 @@
 //////////////////////////////////////////////////////////////////////////////////		
 //                  Header do controle das telas        		          		//	
 //////////////////////////////////////////////////////////////////////////////////
-//prototipos de fun��o utilizadas
+//prototipos de funcao utilizadas
 void metodoControleDasTelas(void);
 void funcaoTempoTelaInicial (void);
 
 //variaveis utilizadas
 static unsigned char tempoExibeTelaInicial;
-//static unsigned char PesoAtualProcessoCorte[9];//mostra o peso progamado do corte que esta em execu��o
+//static unsigned char PesoAtualProcessoCorte[9];//mostra o peso progamado do corte que esta em execucao
 unsigned char tempControlaTelas;
 
 //flags utilizados para controle das telas

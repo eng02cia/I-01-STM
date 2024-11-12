@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////		
-//                        Fun��o de escrita no lcd 16x2                   		//
+//                        Funcao de escrita no lcd 16x2                   		//
 //////////////////////////////////////////////////////////////////////////////////	
-//variaveis utilizadas na fun��o
+//variaveis utilizadas na funcao
 static unsigned char delayLcd = 0;
 static unsigned char caracterLcd[32];
 static unsigned char backupTelaLcd[32];
@@ -40,7 +40,7 @@ union
 		}Flag;
 		unsigned char Byte;
 	}byteDataLcd;
-//Enumera��o de controle da escrita no lcd   
+//Enumeracao de controle da escrita no lcd   
 static enum controlaEscritaLcd
 {
     inicializaLcd,
@@ -52,7 +52,7 @@ static enum controlaEscritaLcd
 }statusAtualEscritaLcd = inicializaLcd ;
 
 
-//contantes utilizadas na fun��o
+//contantes utilizadas na funcao
 #define delayExterno30Mls               150;
 #define delayExterno5Mls                25;
 #define delayExterno500Micro            2;
@@ -63,7 +63,7 @@ static enum controlaEscritaLcd
 #define EnderecoLinha1                  0x80;
 #define EnderecoLinha2                  0xC0;
 
-//defini�ao de pinos utilziados na fun��o
+//defini�ao de pinos utilziados na funcao
 #if _18F46K40
 #define	pinoEnable              LATEbits.LATE1
 #define	pinoSelectRegister  	LATEbits.LATE2
@@ -119,7 +119,7 @@ const char tabelaCgRam[] = {
 //    0x08,0x10,0x1F,0x11,0x09,0x01,0x1F,0x00,
 //	0x1F,0x1F,0x1F,0x1F,0x1F,0x1F,0x1F,0x1F};
     
-//declara��o de prototipos das funcoes utilizadas para escrever no lcd
+//declaracao de prototipos das funcoes utilizadas para escrever no lcd
 void enviaComandoLcd (void);
 void enviaCaracterLcd (void);
 void transmiteByteLcd(void);

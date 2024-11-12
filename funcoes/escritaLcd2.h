@@ -1,6 +1,6 @@
 #include "carregaArrayComEspacoAscii.h"
 //////////////////////////////////////////////////////////////////////////////////
-//Fun��o que controla o tempo de ixibi��o da tela temporaria                  	//
+//Funcao que controla o tempo de ixibicao da tela temporaria                  	//
 //////////////////////////////////////////////////////////////////////////////////
 void controlaTempoExibeTelaTemporaria (void)
 {
@@ -15,7 +15,7 @@ void controlaTempoExibeTelaTemporaria (void)
     }
 }
 //////////////////////////////////////////////////////////////////////////////////
-//Fun��o para apagar todos os caracteres do lcd                                	//
+//Funcao para apagar todos os caracteres do lcd                                	//
 //////////////////////////////////////////////////////////////////////////////////
 unsigned char indexApagaLcd;
 void apagaLcd(void)
@@ -28,7 +28,7 @@ void apagaLcd(void)
   }  
 }
 //////////////////////////////////////////////////////////////////////////////////
-//Fun��o para apagar a linha 1 do lcd                                          	//
+//Funcao para apagar a linha 1 do lcd                                          	//
 //////////////////////////////////////////////////////////////////////////////////
 void apagaLinha_1Lcd(void)
 {
@@ -40,7 +40,7 @@ void apagaLinha_1Lcd(void)
   }  
 }
 //////////////////////////////////////////////////////////////////////////////////
-//Fun��o para apagar a linha 2 do lcd                                          	//
+//Funcao para apagar a linha 2 do lcd                                          	//
 //////////////////////////////////////////////////////////////////////////////////
 void apagaLinha_2Lcd(void)
 {
@@ -52,7 +52,7 @@ void apagaLinha_2Lcd(void)
   }  
 }
 //////////////////////////////////////////////////////////////////////////////////
-//Fun��o utilizada para transferir uma array de string para ser escrita na   	//
+//Funcao utilizada para transferir uma array de string para ser escrita na   	//
 //no lcd                                                                        //
 //////////////////////////////////////////////////////////////////////////////////
 int escreveDadoLcd(const char *charOrigem,unsigned char*charDestino)
@@ -95,7 +95,7 @@ void controlaEscritaLcd (void)
                 }
                 else
                 {
-//Faz efetivamente a inicialzia��o do lcd
+//Faz efetivamente a inicialziacao do lcd
                     if (quantidadeByteLcd >= 5)
                     {
                         quantidadeByteLcd--;

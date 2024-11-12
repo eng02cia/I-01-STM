@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////////////////////		
 //                                                                            	//
-// Fun��es de comunica��o com teclado PS2                                   	//
+// Funcoes de comunicacao com teclado PS2                                   	//
 //////////////////////////////////////////////////////////////////////////////////
-//  DESCRI��O DO PROTOCOLO:													  	//
+//  DESCRICAO DO PROTOCOLO:													  	//
 //  Pinos Utilizados
 // Portb 00 clock
 // Portb 01 data
@@ -10,7 +10,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////		
-//fun��o que inicializa o barramento de comunica��o com teclado ps2 			//
+//funcao que inicializa o barramento de comunicacao com teclado ps2 			//
 //////////////////////////////////////////////////////////////////////////////////		
 void inicializaComunicacaoI2c(void)
 {
@@ -41,7 +41,7 @@ void inicializaComunicacaoI2c(void)
     			minutoTemp = 1;// minuto
     			horaTemp = 1;// hora
     			diaTemp = 1;// dia
-    			mesTemp = 1;//m�s
+    			mesTemp = 1;//mes
     			anoTemp = 22;//ano
     			grava_Relogio_i2c(0,minutoTemp,horaTemp,0,diaTemp,mesTemp,anoTemp);
     		}

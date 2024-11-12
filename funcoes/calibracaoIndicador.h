@@ -7,7 +7,7 @@
 extern UART_HandleTypeDef huart3;
 //#define _senhaInicial
 //////////////////////////////////////////////////////////////////////////////////		
-//Fun�oes de calibra��o do indicador de peso                                    //
+//Funcoes de calibracao do indicador de peso                                    //
 //////////////////////////////////////////////////////////////////////////////////
 void controleCalibraIndicador(void)
 {
@@ -208,7 +208,7 @@ break;
 			}
 			break;
 			//////////////////////////////////////////////////////////////////////////////////
-			//define a posi��o do ponto decimal                                             //
+			//define a posicao do ponto decimal                                             //
 			//////////////////////////////////////////////////////////////////////////////////
 			case menuDefinePontoDecimal:
 				//tecla incremento
@@ -327,7 +327,7 @@ else{tempProgIndicador = 1;}
 						}
 						break;
 						//////////////////////////////////////////////////////////////////////////////////
-						//Define o peso de calibra��o                                                   //
+						//Define o peso de calibracao                                                   //
 						//////////////////////////////////////////////////////////////////////////////////
 						case menuPesoCalibracao:
 							//tecla incremento
@@ -417,7 +417,7 @@ else{tempProgIndicador = 1;}
 									break;
 								}
 								//////////////////////////////////////////////////////////////////////////////////
-								//faz a leitura da celula do valor equivalente ao peso de calibra��o            //
+								//faz a leitura da celula do valor equivalente ao peso de calibracao            //
 								//////////////////////////////////////////////////////////////////////////////////
 							case menuComPeso:
 								//tecla incremento
@@ -455,7 +455,7 @@ else{tempProgIndicador = 1;}
 }
 
 //////////////////////////////////////////////////////////////////////////////////
-/*tela de checagem da senha de acesso a calibra��o                              */
+/*tela de checagem da senha de acesso a calibracao                              */
 //////////////////////////////////////////////////////////////////////////////////
 void telaSenhaDeAcessoCalibracao(void)
 {
@@ -476,7 +476,7 @@ void telaSenhaDeAcessoCalibracao(void)
 	apagaSenha();
 }
 //////////////////////////////////////////////////////////////////////////////////
-/*tela que mostra a programa��o do filtro digital                               */
+/*tela que mostra a programacao do filtro digital                               */
 //////////////////////////////////////////////////////////////////////////////////
 void telaValorFiltroDigitalIndicador(void)
 {
@@ -493,7 +493,7 @@ void telaValorFiltroDigitalIndicador(void)
 
 }
 //////////////////////////////////////////////////////////////////////////////////
-/*tela de programacao da posi��o doponto decimal                                */
+/*tela de programacao da posicao doponto decimal                                */
 //////////////////////////////////////////////////////////////////////////////////
 void telaPosicaoPontoDecimalIndicador(void)
 {
@@ -515,7 +515,7 @@ void telaPosicaoPontoDecimalIndicador(void)
 
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//carrega a tela programa��o do degrau do indicador 1,2,5,10 e 20            	//
+//carrega a tela programacao do degrau do indicador 1,2,5,10 e 20            	//
 //////////////////////////////////////////////////////////////////////////////////
 void telaDefineDegrauPesoIndicador(void)
 { 
@@ -532,7 +532,7 @@ void telaDefineDegrauPesoIndicador(void)
 
 }
 //////////////////////////////////////////////////////////////////////////////////
-//tela que mostra a programa��o da carga maxima do indicador                    //
+//tela que mostra a programacao da carga maxima do indicador                    //
 //////////////////////////////////////////////////////////////////////////////////
 void telaPesoCargaMaximaIndicador(void)
 {
@@ -553,7 +553,7 @@ void telaPesoCargaMaximaIndicador(void)
 
 }
 //////////////////////////////////////////////////////////////////////////////////
-//tela que mostra a programa��o do peso de calibra��o do indicador              //
+//tela que mostra a programacao do peso de calibracao do indicador              //
 //////////////////////////////////////////////////////////////////////////////////
 void telaPesoCalibracaoIndicador(void)
 {
@@ -588,7 +588,7 @@ void telaPesoZeroIndicador(void)
 	caracterLcd[31] = caracterSalva;
 }
 //////////////////////////////////////////////////////////////////////////////////
-//tela que controla a programa��o do valor do degral do indicador              //
+//tela que controla a programacao do valor do degral do indicador              //
 //////////////////////////////////////////////////////////////////////////////////
 void telaControlaIncrementoDegralIndicador(void)
 {
@@ -617,7 +617,7 @@ void metodoPiscaProgIndicador(void)
 	}
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//metodo que controla qual digito vai piscar durante a programa��o do indicador //
+//metodo que controla qual digito vai piscar durante a programacao do indicador //
 //////////////////////////////////////////////////////////////////////////////////
 
 void piscaDigitoProgIndicador(void)
@@ -722,7 +722,7 @@ void piscaDigitoProgIndicador(void)
 }
 //////////////////////////////////////////////////////////////////////////////////
 //                                                                              //
-//Faz a programa��o dos digitos do peso na programa��o do indicador             //
+//Faz a programacao dos digitos do peso na programacao do indicador             //
 //                                                                              //
 //////////////////////////////////////////////////////////////////////////////////       
 void manipulacaoDoDigitoDoIndicador(void)       
@@ -738,7 +738,7 @@ void manipulacaoDoDigitoDoIndicador(void)
 	switch (digitoAtualIndicador)
 	{
 	//////////////////////////////////////////////////////////////////////////////////
-	//programa��o do digito zero (digito menos siginificativo)                      //
+	//programacao do digito zero (digito menos siginificativo)                      //
 	//////////////////////////////////////////////////////////////////////////////////
 	case digitoZero:
 		switch (teclaPressionadaAtual)
@@ -747,14 +747,14 @@ void manipulacaoDoDigitoDoIndicador(void)
 		case teclaImprimeSetaAcima:
 			if (++arrayTempIndicador[5] > '9'|| arrayTempIndicador[5] < '0'){arrayTempIndicador[5] = '0';}
 			break;
-			//Direciona programa��o para digito a esquerda
+			//Direciona programacao para digito a esquerda
 		case teclaTaraSetaEsquerda:
 			digitoAtualIndicador = digitoUm;
 			break;
 		}
 		break;
 		//////////////////////////////////////////////////////////////////////////////////
-		//programa��o do digito um                                                      //
+		//programacao do digito um                                                      //
 		//////////////////////////////////////////////////////////////////////////////////
 		case digitoUm:
 			switch (teclaPressionadaAtual )
@@ -763,14 +763,14 @@ void manipulacaoDoDigitoDoIndicador(void)
 			case teclaImprimeSetaAcima:
 				if (++arrayTempIndicador[4] > '9'|| arrayTempIndicador[4] < '0'){arrayTempIndicador[4] = '0';}
 				break;
-				//Direciona programa��o para digito a esquerda
+				//Direciona programacao para digito a esquerda
 			case teclaTaraSetaEsquerda:
 				digitoAtualIndicador = digitoDois;
 				break;
 			}
 			break;
 			//////////////////////////////////////////////////////////////////////////////////
-			//programa��o do digito dois                                                    //
+			//programacao do digito dois                                                    //
 			//////////////////////////////////////////////////////////////////////////////////
 			case digitoDois:
 				switch (teclaPressionadaAtual )
@@ -779,14 +779,14 @@ void manipulacaoDoDigitoDoIndicador(void)
 				case teclaImprimeSetaAcima:
 					if (++arrayTempIndicador[3] > '9'|| arrayTempIndicador[3] < '0'){arrayTempIndicador[3] = '0';}
 					break;
-					//Direciona programa��o para digito a esquerda
+					//Direciona programacao para digito a esquerda
 				case teclaTaraSetaEsquerda:
 					digitoAtualIndicador = digitoTres;
 					break;
 				}
 				break;
 				//////////////////////////////////////////////////////////////////////////////////
-				//programa��o do digito tres                                                    //
+				//programacao do digito tres                                                    //
 				//////////////////////////////////////////////////////////////////////////////////
 				case digitoTres:
 					switch (teclaPressionadaAtual)
@@ -795,14 +795,14 @@ void manipulacaoDoDigitoDoIndicador(void)
 					case teclaImprimeSetaAcima:
 						if (++arrayTempIndicador[2] > '9'|| arrayTempIndicador[2] < '0'){arrayTempIndicador[2] = '0';}
 						break;
-						//Direciona programa��o para digito a esquerda
+						//Direciona programacao para digito a esquerda
 					case teclaTaraSetaEsquerda:
 						digitoAtualIndicador = digitoQuatro;
 						break;
 					}
 					break;
 					//////////////////////////////////////////////////////////////////////////////////
-					//programa��o do digito quatro                                                  //
+					//programacao do digito quatro                                                  //
 					//////////////////////////////////////////////////////////////////////////////////
 					case digitoQuatro:
 						switch (teclaPressionadaAtual )
@@ -811,14 +811,14 @@ void manipulacaoDoDigitoDoIndicador(void)
 						case teclaImprimeSetaAcima:
 							if (++arrayTempIndicador[1] > '9'|| arrayTempIndicador[1] < '0'){arrayTempIndicador[1] = '0';}
 							break;
-							//Direciona programa��o para digito a esquerda
+							//Direciona programacao para digito a esquerda
 						case teclaTaraSetaEsquerda:
 							digitoAtualIndicador = digitoCinco;
 							break;
 						}
 						break;
 						//////////////////////////////////////////////////////////////////////////////////
-						//programa��o do digito cinco                                                   //
+						//programacao do digito cinco                                                   //
 						//////////////////////////////////////////////////////////////////////////////////
 						case digitoCinco:
 							switch (teclaPressionadaAtual )
@@ -827,7 +827,7 @@ void manipulacaoDoDigitoDoIndicador(void)
 							case teclaImprimeSetaAcima:
 								if (++arrayTempIndicador[0] > '9'|| arrayTempIndicador[0] < '0'){arrayTempIndicador[0] = '0';}
 								break;
-								//Direciona programa��o para digito a esquerda
+								//Direciona programacao para digito a esquerda
 							case teclaTaraSetaEsquerda:
 								digitoAtualIndicador = digitoZero;
 								break;
@@ -879,7 +879,7 @@ void telaErroCapacidadeMaxima (void)
 	tempoMostraTelaTemporariaLcd = 1;
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//Metodo que define a senha usada para acesso a calibra��o                      //
+//Metodo que define a senha usada para acesso a calibracao                      //
 //                                                                              // 
 //////////////////////////////////////////////////////////////////////////////////
 void verificaSenhaAcessoCalibracao(void)
@@ -887,7 +887,7 @@ void verificaSenhaAcessoCalibracao(void)
 	switch (digitoAtualProgramacao)
 	{
 	//////////////////////////////////////////////////////////////////////////////////
-	//programa��o do digito zero (digito menos siginificativo)                      //
+	//programacao do digito zero (digito menos siginificativo)                      //
 	//////////////////////////////////////////////////////////////////////////////////
 	case programandoDigitoZero:
 		switch (teclaPressionadaAtual )
@@ -898,7 +898,7 @@ void verificaSenhaAcessoCalibracao(void)
 			senhaTemp[3]++;
 			if (senhaTemp[3] > '9'){senhaTemp[3] = '0';}
 			break;
-			//Direciona programa��o para digito a esquerda
+			//Direciona programacao para digito a esquerda
 		case teclaTaraSetaEsquerda:
 			flagPiscaDigitoSenha = 1;
 			digitoAtualProgramacao = programandoDigitoTres;
@@ -906,7 +906,7 @@ void verificaSenhaAcessoCalibracao(void)
 		}
 		break;
 		//////////////////////////////////////////////////////////////////////////////////
-		//programa��o do digito um                                                      //
+		//programacao do digito um                                                      //
 		//////////////////////////////////////////////////////////////////////////////////
 		case programandoDigitoUm:
 			switch (teclaPressionadaAtual )
@@ -917,7 +917,7 @@ void verificaSenhaAcessoCalibracao(void)
 				senhaTemp[2]++;
 				if (senhaTemp[2] > '9'){senhaTemp[2] = '0';}
 				break;
-				//Direciona programa��o para digito a esquerda
+				//Direciona programacao para digito a esquerda
 			case teclaTaraSetaEsquerda:
 				flagPiscaDigitoSenha = 1;
 				digitoAtualProgramacao = programandoDigitoZero;
@@ -925,7 +925,7 @@ void verificaSenhaAcessoCalibracao(void)
 			}
 			break;
 			//////////////////////////////////////////////////////////////////////////////////
-			//programa��o do digito dois                                                    //
+			//programacao do digito dois                                                    //
 			//////////////////////////////////////////////////////////////////////////////////
 			case programandoDigitoDois:
 				switch (teclaPressionadaAtual )
@@ -943,7 +943,7 @@ void verificaSenhaAcessoCalibracao(void)
 				}
 				break;
 				//////////////////////////////////////////////////////////////////////////////////
-				//programa��o do digito tres                                                    //
+				//programacao do digito tres                                                    //
 				//////////////////////////////////////////////////////////////////////////////////
 				case programandoDigitoTres:
 					switch (teclaPressionadaAtual)
@@ -954,7 +954,7 @@ void verificaSenhaAcessoCalibracao(void)
 						senhaTemp[0]++;
 						if (senhaTemp[0] > '9'){senhaTemp[0] = '0';}
 						break;
-						//Direciona programa��o para digito a esquerda
+						//Direciona programacao para digito a esquerda
 					case teclaTaraSetaEsquerda:
 						flagPiscaDigitoSenha = 1;
 						digitoAtualProgramacao = programandoDigitoDois;
@@ -964,7 +964,7 @@ void verificaSenhaAcessoCalibracao(void)
 	}
 }
 //////////////////////////////////////////////////////////////////////////////////
-//tela que mostra a programa��o da divisao interna                              //
+//tela que mostra a programacao da divisao interna                              //
 //////////////////////////////////////////////////////////////////////////////////
 void telaMostraValorProDivisaoInterna(void)
 {

@@ -9,7 +9,7 @@
 #include "inteiroTo3BytesAscii.h"
 
 //////////////////////////////////////////////////////////////////////////////////
-//interrup��o da serial 1                                                       //
+//interrupcao da serial 1                                                       //
 //////////////////////////////////////////////////////////////////////////////////
 void serial_1RxInterruptProtocoloSa(void)
 {
@@ -37,7 +37,7 @@ void serial_1RxInterruptProtocoloSa(void)
     }
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//fun��o da recep��o de dados quando protocolo AudioTeck               			//
+//funcao da recepcao de dados quando protocolo AudioTeck               			//
 //////////////////////////////////////////////////////////////////////////////////	
 void rxSerial_1ProtocoloSa(void)
 {
@@ -75,7 +75,7 @@ void rxSerial_1ProtocoloSa(void)
     } 
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//fun��o de tratamento dos dados recebidos quando protocolo AudioTeck   		//
+//funcao de tratamento dos dados recebidos quando protocolo AudioTeck   		//
 //////////////////////////////////////////////////////////////////////////////////	
 void trataFrameProtocoloSa(void)
 {   
@@ -92,7 +92,7 @@ void trataFrameProtocoloSa(void)
         exibeVersionControl = 1;
         escreveDadoLcd(&telaInicialIndicador[0],&caracterLcd[0]); 
         controleTara = _TARADESATIVADA;
-// o indicador sera zerado na inicializa��o caso o peso esteja dentro do limite de zero
+// o indicador sera zerado na inicializacao caso o peso esteja dentro do limite de zero
         fazZeroIndicadorPeso = 1;        
         transfereArrayToArray(9,&frameRxSerial_1[0],&frameTempTxSerial_1[0]);          
         quantidadeTempBytesTxSerial_1 = 9;
@@ -270,7 +270,7 @@ void trataFrameProtocoloSa(void)
             }
         } 
  /////////////////////////////////////////////////////////////////////////////////    
-//verifica se recebe a solicita��o do status para o limte de zero               //
+//verifica se recebe a solicitacao do status para o limte de zero               //
 //////////////////////////////////////////////////////////////////////////////////  
         tempProtocolo = comparaConstComArray(&charStatusLimiteZero[0],&frameRxSerial_1[2]); 
         if (tempProtocolo == 0)
@@ -313,7 +313,7 @@ void trataFrameProtocoloSa(void)
             }
         } 
  /////////////////////////////////////////////////////////////////////////////////    
-//verifica se recebe a solicita��o do status para filtro digital                //
+//verifica se recebe a solicitacao do status para filtro digital                //
 //////////////////////////////////////////////////////////////////////////////////  
         tempProtocolo = comparaConstComArray(&charStatusFiltroDigital[0],&frameRxSerial_1[2]); 
         if (tempProtocolo == 0)
@@ -401,7 +401,7 @@ void trataFrameProtocoloSa(void)
             flagTxSerial_1.enviaConfirmacaoDeRecebimento = 1;                      
         }        
 //////////////////////////////////////////////////////////////////////////////////    
-//verifica se � a solicita��o de numero de serie                                //
+//verifica se � a solicitacao de numero de serie                                //
 //////////////////////////////////////////////////////////////////////////////////  
         tempProtocolo = comparaConstComArray(&charSolicitaVersao[0],&frameRxSerial_1[2]); 
         if (tempProtocolo == 0)
@@ -413,7 +413,7 @@ void trataFrameProtocoloSa(void)
             flagTxSerial_1.enviaConfirmacaoDeRecebimento = 1;           
         }     
 //////////////////////////////////////////////////////////////////////////////////    
-//verifica se recebe dados da configura��o para transmiss�o autom�tica de dados //
+//verifica se recebe dados da configuracao para transmiss�o autom�tica de dados //
 //////////////////////////////////////////////////////////////////////////////////  
         tempProtocolo = comparaConstComArray(&charControleTxAutomatico[0],&frameRxSerial_1[2]); 
         if (tempProtocolo == 0)
@@ -430,7 +430,7 @@ void trataFrameProtocoloSa(void)
             flagTxSerial_1.enviaConfirmacaoDeRecebimento = 1;              
         }       
 //////////////////////////////////////////////////////////////////////////////////    
-//verifica se recebe a configura��o para capacidade maxima                      //
+//verifica se recebe a configuracao para capacidade maxima                      //
 //////////////////////////////////////////////////////////////////////////////////  
         tempProtocolo = comparaConstComArray(&charCapacidadeMaxima[0],&frameRxSerial_1[2]); 
         if (tempProtocolo == 0)
@@ -459,7 +459,7 @@ void trataFrameProtocoloSa(void)
             }         
         }  
 //////////////////////////////////////////////////////////////////////////////////    
-//verifica se recebe a solicita��o do status da programa��o para a capacidade   //
+//verifica se recebe a solicitacao do status da programacao para a capacidade   //
 // maxima de peso                                                               //
 //////////////////////////////////////////////////////////////////////////////////  
         tempProtocolo = comparaConstComArray(&charStatusCapacidadeMaxima[0],&frameRxSerial_1[2]); 
@@ -475,7 +475,7 @@ void trataFrameProtocoloSa(void)
             flagTxSerial_1.enviaConfirmacaoDeRecebimento = 1; 
         }
 //////////////////////////////////////////////////////////////////////////////////    
-//verifica se recebe a configura��o para o peso de calibra��o                   //
+//verifica se recebe a configuracao para o peso de calibracao                   //
 //////////////////////////////////////////////////////////////////////////////////  
         tempProtocolo = comparaConstComArray(&charPesoCalibracao[0],&frameRxSerial_1[2]); 
         if (tempProtocolo == 0)
@@ -520,8 +520,8 @@ void trataFrameProtocoloSa(void)
             }
         } 
 //////////////////////////////////////////////////////////////////////////////////    
-//verifica se recebe a solicita��o do status da programa��o para o peso de      //
-//calibra��o                                                                    //
+//verifica se recebe a solicitacao do status da programacao para o peso de      //
+//calibracao                                                                    //
 //////////////////////////////////////////////////////////////////////////////////  
         tempProtocolo = comparaConstComArray(&charStatusPesoCalibracao[0],&frameRxSerial_1[2]); 
         if (tempProtocolo == 0)
@@ -536,7 +536,7 @@ void trataFrameProtocoloSa(void)
             flagTxSerial_1.enviaConfirmacaoDeRecebimento = 1; 
         }        
 //////////////////////////////////////////////////////////////////////////////////    
-//verifica se recebe a configura��o para o ponto decimal                        //
+//verifica se recebe a configuracao para o ponto decimal                        //
 //////////////////////////////////////////////////////////////////////////////////  
         tempProtocolo = comparaConstComArray(&charPontoDecimal[0],&frameRxSerial_1[2]); 
         if (tempProtocolo == 0)
@@ -563,7 +563,7 @@ void trataFrameProtocoloSa(void)
             }
         }
 //////////////////////////////////////////////////////////////////////////////////    
-//verifica se recebe a solicita��o do status da programa��o para o ponto decimal //
+//verifica se recebe a solicitacao do status da programacao para o ponto decimal //
 ///////////////////////////////////////////////////////////////////////////////////  
         tempProtocolo = comparaConstComArray(&charStatusPontoDecimal[0],&frameRxSerial_1[2]); 
         if (tempProtocolo == 0)
@@ -578,7 +578,7 @@ void trataFrameProtocoloSa(void)
             flagTxSerial_1.enviaConfirmacaoDeRecebimento = 1; 
         }           
 //////////////////////////////////////////////////////////////////////////////////    
-//verifica se recebe a configura��o para o degrau do peso                       //
+//verifica se recebe a configuracao para o degrau do peso                       //
 //////////////////////////////////////////////////////////////////////////////////  
         tempProtocolo = comparaConstComArray(&charDegrauPeso[0],&frameRxSerial_1[2]); 
         if (tempProtocolo == 0)
@@ -605,7 +605,7 @@ void trataFrameProtocoloSa(void)
             }   
         }
 //////////////////////////////////////////////////////////////////////////////////    
-//verifica se recebe a solicita��o do status da programa��o para o degral do peso//
+//verifica se recebe a solicitacao do status da programacao para o degral do peso//
 ///////////////////////////////////////////////////////////////////////////////////  
         tempProtocolo = comparaConstComArray(&charStatusDegrauPeso[0],&frameRxSerial_1[2]); 
         if (tempProtocolo == 0)
@@ -620,7 +620,7 @@ void trataFrameProtocoloSa(void)
             flagTxSerial_1.enviaConfirmacaoDeRecebimento = 1; 
         }               
 //////////////////////////////////////////////////////////////////////////////////    
-//verifica se recebe o comando para calibra��o do zero                          //
+//verifica se recebe o comando para calibracao do zero                          //
 //////////////////////////////////////////////////////////////////////////////////  
         tempProtocolo = comparaConstComArray(&charCalibraZero[0],&frameRxSerial_1[2]); 
         if (tempProtocolo == 0)
@@ -635,7 +635,7 @@ void trataFrameProtocoloSa(void)
             flagTxSerial_1.enviaConfirmacaoDeRecebimento = 1;             
         }   
 //////////////////////////////////////////////////////////////////////////////////    
-//verifica se recebe o comando para calibra��o com peso                         //
+//verifica se recebe o comando para calibracao com peso                         //
 //////////////////////////////////////////////////////////////////////////////////  
         tempProtocolo = comparaConstComArray(&charCalibraPeso[0],&frameRxSerial_1[2]); 
         if (tempProtocolo == 0)
@@ -672,7 +672,7 @@ void trataFrameProtocoloSa(void)
     }
 }
 //////////////////////////////////////////////////////////////////////////////////    
-//mensagem enviada com confirma��o da calibra��o do zero                        //
+//mensagem enviada com confirmacao da calibracao do zero                        //
 //////////////////////////////////////////////////////////////////////////////////  
 void enviaConfirmaCalibracaoZero(void)
 {
@@ -683,7 +683,7 @@ void enviaConfirmaCalibracaoZero(void)
     flagTxSerial_1.enviaConfirmacaoDeRecebimento = 1;            
 }
 //////////////////////////////////////////////////////////////////////////////////    
-//mensagem enviada com confirma��o da calibra��o do zero                        //
+//mensagem enviada com confirmacao da calibracao do zero                        //
 //////////////////////////////////////////////////////////////////////////////////  
 void enviaConfirmaCalibracaoPeso(void)
 {
@@ -694,7 +694,7 @@ void enviaConfirmaCalibracaoPeso(void)
     flagTxSerial_1.enviaConfirmacaoDeRecebimento = 1;            
 }
 //////////////////////////////////////////////////////////////////////////////////    
-//mensagem enviada com informa��o de erro na calibra��o                         //
+//mensagem enviada com informacao de erro na calibracao                         //
 //////////////////////////////////////////////////////////////////////////////////  
 void enviaErroCalibracaoPeso(void)
 {
@@ -705,7 +705,7 @@ void enviaErroCalibracaoPeso(void)
 }
 //////////////////////////////////////////////////////////////////////////////////    
 //verifica se os dados de determinado frame � valido                            //
-// usado apra chegar se o frame de capacidade maxima e peso de calibra��o est�o  //
+// usado apra chegar se o frame de capacidade maxima e peso de calibracao est�o  //
 //corretos  valores validos entre 0 ascii e 9 ascii                             //
 //////////////////////////////////////////////////////////////////////////////////  
 int checaFrameAsciiValido(unsigned char qtBytes, unsigned char *index)
@@ -721,7 +721,7 @@ int checaFrameAsciiValido(unsigned char qtBytes, unsigned char *index)
 	return tempComparaValidade;
 }
 //////////////////////////////////////////////////////////////////////////////////    
-//tempo maximo permitido para recep��o de um frame valido                       //
+//tempo maximo permitido para recepcao de um frame valido                       //
 //////////////////////////////////////////////////////////////////////////////////
 void funcTempoMaxRxSerial_1(void)
 {

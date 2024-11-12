@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////////		
-//prototipos de fun��o utilizados												//
+//prototipos de funcao utilizados												//
 //////////////////////////////////////////////////////////////////////////////////	
 void inicializaDecodificaTeclado(void);
 void metodoDecodificaTeclado(void);
@@ -64,7 +64,7 @@ enum teclaAtualValida
 #define teclaRegistra           7
 #define teclaNaoUsada           8
 
-// pinos utilizados na funcao de decodifica��o das teclas
+// pinos utilizados na funcao de decodificacao das teclas
 
 //#define	ledIndicadorLigado       LATAbits.LATA1
 

@@ -1,6 +1,6 @@
 #include "transfereArrayToArrayInvertido.h"
 //////////////////////////////////////////////////////////////////////////////////		
-//fun��o que carrega os valores da memoria intena modbus para ser transmitida   //	
+//funcao que carrega os valores da memoria intena modbus para ser transmitida   //	
 //////////////////////////////////////////////////////////////////////////////////
 void funcaoValoresTxModBusRtu(unsigned char qtBytesTx,unsigned char*origem,unsigned char *destino)
 {
@@ -13,7 +13,7 @@ void funcaoValoresTxModBusRtu(unsigned char qtBytesTx,unsigned char*origem,unsig
     }
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//      funcoes de interliga��o da modbus com a memoria do indicador      		//	
+//      funcoes de interligacao da modbus com a memoria do indicador      		//	
 //////////////////////////////////////////////////////////////////////////////////
 void funcaoLeituraDadosMemoriaModBusRtu(void)
 {
@@ -69,7 +69,7 @@ void funcaoLeituraDadosMemoriaModBusRtu(void)
         transfereArrayToArray(35,&arrayMemoriaModbusRtu[0],&arrayMemoriaModbusRtuEspenho[0]); 
  }
 //////////////////////////////////////////////////////////////////////////////////		
-//      funcoes de interliga��o da modbus verifica se salva frame recebido		//	
+//      funcoes de interligacao da modbus verifica se salva frame recebido		//	
 //////////////////////////////////////////////////////////////////////////////////
 void funcaoVerificaSalvaModBusRtu(void)
 {
@@ -144,7 +144,7 @@ void funcaoVerificaSalvaModBusRtu(void)
     }
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//fun��o utilizada para transoforma o peso recebido no formato modbus Rtu   	//
+//funcao utilizada para transoforma o peso recebido no formato modbus Rtu   	//
 //////////////////////////////////////////////////////////////////////////////////
 void transformaPesoParaPadraoModbus(void)
 {

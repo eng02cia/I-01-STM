@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////		
-//Fun��es de programa��o do peso do corte                                       //
+//Fun��es de programacao do peso do corte                                       //
 //////////////////////////////////////////////////////////////////////////////////
-//prototipos de fun��o
+//prototipos de funcao
 void funcaoProgramaHoraData(void);
 void verificaHoraValida (void);
 void verificaMinutoValido (void);
@@ -57,7 +57,7 @@ enum
     menuProgramaRelogioEmEspera,
 }   menuProgramacaoRelogioAtual = menuProgramaRelogioEmEspera;
 
-// constantes utilizadas na fun��o
+// constantes utilizadas na funcao
 #define         mesFevereiro				02
 
 //TELA PROG PORTUGUES

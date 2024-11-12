@@ -2,7 +2,7 @@
 //      Header que controlam a transmis�o de dados pela serial 1         		//		
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////		
-//prototipos de fun��o utilizados												//
+//prototipos de funcao utilizados												//
 //////////////////////////////////////////////////////////////////////////////////		
 void funcaoLeituraDadosMemoria(void);
 void funcaoControleModBusRtu(void);
@@ -14,7 +14,7 @@ void funcaoVerificaSalvaModBusRtu(void);
 void funcaoControleEepronModBusRtu(void);
 void converteLongIntToArray(void);
 void fazArredondamentoPesoModBusRtu(void);
-//declara��o de variaveis utilizadas
+//declaracao de variaveis utilizadas
 static unsigned char arrayMemoriaModbusRtu[36];
 static unsigned char arrayMemoriaModbusRtuEspenho[36];
 static unsigned char arrayTempConverteInt[8];

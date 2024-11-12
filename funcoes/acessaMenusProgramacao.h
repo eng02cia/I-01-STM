@@ -1,6 +1,6 @@
 #include "transfereConstToArray.h"
 //////////////////////////////////////////////////////////////////////////////////		
-//Menu qyue da acesso ao menus secundarios de programa��o                       //
+//Menu qyue da acesso ao menus secundarios de programacao                       //
 //////////////////////////////////////////////////////////////////////////////////
 void funcaoAcessaMenusProgramacao(void)
 {
@@ -34,7 +34,7 @@ void funcaoAcessaMenusProgramacao(void)
             }            
         break;                 
 //////////////////////////////////////////////////////////////////////////////////
-//Verifica se da acesso a programa��o dos paramentos da serial 1                //
+//Verifica se da acesso a programacao dos paramentos da serial 1                //
 //////////////////////////////////////////////////////////////////////////////////
         case acessaMenuProgramaSerial_1:
             switch (teclaPressionadaAtual)
@@ -53,7 +53,7 @@ void funcaoAcessaMenusProgramacao(void)
             }            
         break;          
 //////////////////////////////////////////////////////////////////////////////////
-//Verifica se da acesso ao menu de calibra��o                                   //
+//Verifica se da acesso ao menu de calibracao                                   //
 //////////////////////////////////////////////////////////////////////////////////
         case acessaMenuCalibracao:
             switch (teclaPressionadaAtual)
@@ -76,7 +76,7 @@ void funcaoAcessaMenusProgramacao(void)
     }
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//tela de acesso a configura��o geral                                          	//
+//tela de acesso a configuracao geral                                          	//
 //////////////////////////////////////////////////////////////////////////////////
 void telaAcessaMenuModoTecnicoIndicador(void)
 {
@@ -88,7 +88,7 @@ void telaAcessaMenuModoTecnicoIndicador(void)
     caracterLcd[31] = caracterSalva;       
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//tela de acesso a configura��o da serial                                     	//
+//tela de acesso a configuracao da serial                                     	//
 //////////////////////////////////////////////////////////////////////////////////
 void telaAcessaMenuConfiguraSerial_1(void)
 {
@@ -100,7 +100,7 @@ void telaAcessaMenuConfiguraSerial_1(void)
     caracterLcd[31] = caracterSalva;       
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//tela de acesso a calibra��o do indicador                                     	//
+//tela de acesso a calibracao do indicador                                     	//
 //////////////////////////////////////////////////////////////////////////////////
 void telaAcessaMenuFazCalibracao(void)
 {

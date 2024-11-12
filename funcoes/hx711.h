@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////////////////////
-//funcoes de comuni��o do o ad hx711                                           	//
+//funcoes de comunicao do o ad hx711                                           	//
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
-//inicializa os pinos para comunica��o com hx711                                //
+//inicializa os pinos para comunicacao com hx711                                //
 //////////////////////////////////////////////////////////////////////////////////
 void inicializaHx711(void)
 {
@@ -39,7 +39,7 @@ void readHx711(void)
         arrayDataHx711[0] = ~ arrayDataHx711[0];
         hx711TipoPeso = _PESO_POSITIVO_CELULA_CARGA;
         hx711StatusSatura = _CELULA_CARGA_NAO_SATURADA;
-//verifica se o a medi��o esta saturada
+//verifica se o a medicao esta saturada
 //satura negativo
         if (arrayDataHx711[2] & 0x80)
         {
@@ -52,7 +52,7 @@ void readHx711(void)
             arrayDataHx711[2] =  0xFF & arrayDataHx711[2];
             hx711StatusSatura = _CELULA_CARGA_SATURADA;
         }
-//verifica se medi��o negativa da celula de carga
+//verifica se medicao negativa da celula de carga
         if (arrayDataHx711[2] & 0x80)
         {
             arrayDataHx711[2] = ~ arrayDataHx711[2];

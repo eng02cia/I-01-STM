@@ -2,7 +2,7 @@
 #include "transfereConstToArray.h"
 #include "inteiroTo2BytesAscii.h"
 //////////////////////////////////////////////////////////////////////////////////		
-//Fun��es de programa��o da data e hora do sistema                              //
+//Fun��es de programacao da data e hora do sistema                              //
 //                                                                              //	
 //////////////////////////////////////////////////////////////////////////////////
 void funcaoProgramaHoraData(void)
@@ -389,7 +389,7 @@ void telaMostraProgHoraData(void)
             caracterLcd[27] = '/';
             caracterLcd[28]= arrayProgAno[0];
             caracterLcd[29]= arrayProgAno[1];  
-//controla a visualiza��o da programa��o da hora        
+//controla a visualizacao da programacao da hora        
             if(menuProgramacaoRelogioAtual == menuProgramaHoraH)
             {
                 if(piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[16] = '_';}
@@ -399,7 +399,7 @@ void telaMostraProgHoraData(void)
                 if(piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[17] = '_';}
             }            
             
-//controla a visualiza��o da programa��o da minuto        
+//controla a visualizacao da programacao da minuto        
             if(menuProgramacaoRelogioAtual == menuProgramaMinutoH)
             {
                 if(piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[19] = '_';}
@@ -408,7 +408,7 @@ void telaMostraProgHoraData(void)
             {
                 if(piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[20] = '_';}
             }                    
-//controla a visualiza��o da programa��o do dia        
+//controla a visualizacao da programacao do dia        
             if(menuProgramacaoRelogioAtual == menuProgramaDiaH)
             {
                 if(piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[22] = '_';}
@@ -417,7 +417,7 @@ void telaMostraProgHoraData(void)
             {
                 if(piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[23] = '_';}
             }                                      
-//controla a visualiza��o da programa��o do m�s        
+//controla a visualizacao da programacao do m�s        
             if(menuProgramacaoRelogioAtual == menuProgramaMesH)
             {
                 if(piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[25] = '_';}
@@ -426,7 +426,7 @@ void telaMostraProgHoraData(void)
             {
                 if(piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[26] = '_';}
             }                             
-//controla a visualiza��o da programa��o do ano        
+//controla a visualizacao da programacao do ano        
             if(menuProgramacaoRelogioAtual == menuProgramaAnoH)
             {
                 if(piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[28] = '_';}

@@ -7,7 +7,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////
-//Fun��o que inicializa a utilia��o dos canais digitais                         //
+//Funcao que inicializa a utiliacao dos canais digitais                         //
 //////////////////////////////////////////////////////////////////////////////////
 void inicializaDecodificaTeclado(void)
 {
@@ -138,7 +138,7 @@ void metodoDecodificaTeclado(void)
    }       
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//Fun��o que faz a leitura das teclas multplexadas com os pinos de controle do 	//
+//Funcao que faz a leitura das teclas multplexadas com os pinos de controle do 	//
 //diplay																		//
 //////////////////////////////////////////////////////////////////////////////////		
 void metodoValidaTeclaPresionada(void)
@@ -306,7 +306,7 @@ void verificaComandoPrintExterno(void)
 //////////////////////////////////////////////////////////////////////////////////		
 //Liga leds direto                                                          	//
 //quando no modo indicador liga leds do corte para indicar status da tara e zero//
-//nesta configura��o so cortes nao s�o utilizados                               //
+//nesta configuracao so cortes nao s�o utilizados                               //
 //////////////////////////////////////////////////////////////////////////////////
 void ledZeroTaraDireto(void)
 {

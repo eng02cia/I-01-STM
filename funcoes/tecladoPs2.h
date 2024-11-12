@@ -1,14 +1,14 @@
 extern  GPIO_InitTypeDef GPIO_InitStruct = {0};
 //////////////////////////////////////////////////////////////////////////////////		
 //                                                                            	//
-// Fun��es de comunica��o com teclado PS2                                   	//
+// Fun��es de comunicacao com teclado PS2                                   	//
 //////////////////////////////////////////////////////////////////////////////////
-//  DESCRI��O DO PROTOCOLO:													  	//
+//  DESCRIcao DO PROTOCOLO:													  	//
 //  Pinos Utilizados
 // Portb 00 clock
 // Portb 01 data
 //////////////////////////////////////////////////////////////////////////////////		
-//fun��o que inicializa o barramento de comunica��o com teclado ps2 			//
+//funcao que inicializa o barramento de comunicacao com teclado ps2 			//
 //////////////////////////////////////////////////////////////////////////////////		
 void inicializaComunicacaoPs2(void)
 {
@@ -35,7 +35,7 @@ void inicializaComunicacaoPs2(void)
     }
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//Fun��o que faz a recep��o de dados do teclado ps2                         	//
+//Funcao que faz a recepcao de dados do teclado ps2                         	//
 //          																	//
 //////////////////////////////////////////////////////////////////////////////////		
 void recebeDadoTecladoPs2Interrupt(void)	
@@ -124,10 +124,10 @@ void recebeDadoTecladoPs2Interrupt(void)
                         funcaoVerificaTeclaValidaPs2();
                     }
                 }
-//verifica se � confirma��o do recebimento do pedido de configura��o do teclado
+//verifica se � confirmacao do recebimento do pedido de configuracao do teclado
                 if(dataRxTecladoPs2 == 0xFA)
                 {
-//verifica se � configura��o do teclado                
+//verifica se � configuracao do teclado                
                     if(configuraTecladoPs2 == 1)
                     {
                         dataTxPs2 = statusTecladoPs2.Byte;
@@ -147,7 +147,7 @@ void recebeDadoTecladoPs2Interrupt(void)
     }
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//Fun��o que inicia a transmis�o de dados para o teclado                       	//
+//Funcao que inicia a transmis�o de dados para o teclado                       	//
 //          																	//
 //////////////////////////////////////////////////////////////////////////////////	
 void startTxTecladoPs2Interrupt(void)	
@@ -194,7 +194,7 @@ void startTxTecladoPs2Interrupt(void)
     statusTxPs2Atual = txPs2Start; 
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//Fun��o que transmite dados para o teclado interrup��o                       	//
+//Funcao que transmite dados para o teclado interrupcao                       	//
 //          																	//
 //////////////////////////////////////////////////////////////////////////////////	
 void transmiteDadoTecladoPs2Interrupt (void)	
@@ -272,7 +272,7 @@ void delayMicroSegundosPs2(unsigned int delayInterno)
     }
 }
 //////////////////////////////////////////////////////////////////////////////////
-//Metodo que controla o tempo maximo premitido para configura��o do teclado     //
+//Metodo que controla o tempo maximo premitido para configuracao do teclado     //
 //////////////////////////////////////////////////////////////////////////////////
 void metodoTempoControleConfigPs2(void)
 {
@@ -286,7 +286,7 @@ void metodoTempoControleConfigPs2(void)
     }    
 }
 //////////////////////////////////////////////////////////////////////////////////
-//Metodo que ativa a fun��o scrolllock do teclado Ps2                           //
+//Metodo que ativa a funcao scrolllock do teclado Ps2                           //
 //////////////////////////////////////////////////////////////////////////////////
 void metodoAtivascrollLockTecladoPs2(void)
 {
@@ -298,7 +298,7 @@ void metodoAtivascrollLockTecladoPs2(void)
     startTxTecladoPs2Interrupt();
 }
 //////////////////////////////////////////////////////////////////////////////////
-//Metodo que ativa a fun��o NumLock do teclado Ps2                              //
+//Metodo que ativa a funcao NumLock do teclado Ps2                              //
 //////////////////////////////////////////////////////////////////////////////////
 void metodoAtivaNumLockTecladoPs2(void)
 {
@@ -322,7 +322,7 @@ void metodoAtivaCapsLockTecladoPs2(void)
     startTxTecladoPs2Interrupt();
 }
 //////////////////////////////////////////////////////////////////////////////////
-//Metodo que ativa a fun��o scrolllock do teclado Ps2                           //
+//Metodo que ativa a funcao scrolllock do teclado Ps2                           //
 //////////////////////////////////////////////////////////////////////////////////
 void metodoDesativascrollLockTecladoPs2(void)
 {
@@ -334,7 +334,7 @@ void metodoDesativascrollLockTecladoPs2(void)
     startTxTecladoPs2Interrupt();    
 }
 //////////////////////////////////////////////////////////////////////////////////
-//Metodo que Desativa a fun��o NumLock do teclado Ps2                              //
+//Metodo que Desativa a funcao NumLock do teclado Ps2                              //
 //////////////////////////////////////////////////////////////////////////////////
 void metodoDesativaNumLockTecladoPs2(void)
 {
@@ -346,7 +346,7 @@ void metodoDesativaNumLockTecladoPs2(void)
     startTxTecladoPs2Interrupt();    
 }
 //////////////////////////////////////////////////////////////////////////////////
-//Metodo que Desativa a fun��o capsLock do teclado Ps2                          //
+//Metodo que Desativa a funcao capsLock do teclado Ps2                          //
 //////////////////////////////////////////////////////////////////////////////////
 void metodoDesativaCapsLockTecladoPs2(void)
 {
@@ -358,7 +358,7 @@ void metodoDesativaCapsLockTecladoPs2(void)
     startTxTecladoPs2Interrupt();    
 }
 //////////////////////////////////////////////////////////////////////////////////
-//Metodo que controla o tempo maximo para recep��o de uma tecla valida          //
+//Metodo que controla o tempo maximo para recepcao de uma tecla valida          //
 //////////////////////////////////////////////////////////////////////////////////
 void tempoValidaTeclaPs2(void)
 {
@@ -407,7 +407,7 @@ void funcaoVerificaTeclaValidaPs2(void)
                 {
                     if(dataTeclaPs2 != 0xF0 && dataTeclaPs2 != 0xE0 && dataTeclaPs2 != 0x12 && dataTeclaPs2 != 0x59 && dataTeclaPs2 != 0xAA && dataTeclaPs2 != 0xFA)
                     {
-//verifca se a fun��o caps lock esta ativa
+//verifca se a funcao caps lock esta ativa
                        if(statusTecladoPs2.St.capsLock == 1)
                         {
                             if(dataTeclaPs2 < _TAMANHO_MAXIMO_TABELA)
@@ -527,7 +527,7 @@ void funcaoVerificaTeclaValidaPs2(void)
 }
 
 //////////////////////////////////////////////////////////////////////////////////
-//metodo checa tecla de edi��odo teclado ps2                                    //
+//metodo checa tecla de edicaodo teclado ps2                                    //
 //////////////////////////////////////////////////////////////////////////////////
 void checaTeclaEdicaoTecladoPs2(void)
 {
@@ -618,7 +618,7 @@ void checaTeclaEdicaoTecladoPs2(void)
    }   
 }  
 //////////////////////////////////////////////////////////////////////////////////
-//metodo que faz o sistema aguardar um tempo antes de iniciar a configura��o    //
+//metodo que faz o sistema aguardar um tempo antes de iniciar a configuracao    //
 // do teclado ps2                                                               //
 //////////////////////////////////////////////////////////////////////////////////
 void metodoIniciaConfigTecladoPs2(void)

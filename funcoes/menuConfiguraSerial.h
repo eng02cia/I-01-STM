@@ -1,6 +1,6 @@
 
 //////////////////////////////////////////////////////////////////////////////////		
-//Menu qyue da acesso ao menus secundarios de programa��o                       //
+//Menu qyue da acesso ao menus secundarios de programacao                       //
 //////////////////////////////////////////////////////////////////////////////////
 void funcaoMenusConfiguraSerial_1(void)
 {
@@ -373,7 +373,7 @@ void telaMostraEnderecoIndicador(void)
     caracterLcd[31] = caracterSalva;     
 } 
 //////////////////////////////////////////////////////////////////////////////////		
-//tela mostra a programa��o da quantidade de frames por segundo                	//
+//tela mostra a programacao da quantidade de frames por segundo                	//
 //////////////////////////////////////////////////////////////////////////////////
 void telaMostraQtFramePorSegundo(void)
 {

@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////////		
 //                                                                            	//
-//              funcoes de Escrita e grava��o an eeprom	                  		//
+//              funcoes de Escrita e gravacao an eeprom	                  		//
 //                                                                            	//
 //                        	Desenvolvido por   		                           	//
 //                                                                           	//
@@ -35,6 +35,7 @@
 #define endValorDivisaoIndicadorMem				37 // 4 bytes
 #define endNomeTelaIniciallMem					41 // 16 bytes
 #define endlinguagemSelecionadaMem				57 // 1 byte
+#define endDefineFuncionamentoUsoRelogio		58 // 1 byte
 
 
 const char defaultEeprom[] = {
@@ -64,7 +65,7 @@ const char defaultEeprom[] = {
 };
 
 //////////////////////////////////////////////////////////////////////////////////		
-//prototipos de fun��o utilizados												//
+//prototipos de funcao utilizados												//
 //////////////////////////////////////////////////////////////////////////////////		
 void inicializaDadosEeprom(void);
 void funcaoQtBytesSalvaEeprom(void);
@@ -105,7 +106,7 @@ void salvaModoFuncionamentoBackLightMem(void);
 void salvaTempoDesligaBackLightMem(void);
 void salvaStatusZeroPowerMem(void);
 //////////////////////////////////////////////////////////////////////////////////		
-//declara��o de variaveis utilziadas nesta fun��o								//
+//declaracao de variaveis utilziadas nesta funcao								//
 //////////////////////////////////////////////////////////////////////////////////		
 static unsigned char statusComunicacaoSerial_1Mem;
 static unsigned char velocidadeTxSerial_1Mem;
@@ -120,7 +121,7 @@ static unsigned char statusPowerOnMem;
 static unsigned char statusZeroAoLigarMem;
 static unsigned char statusLigaDesliga;
 //static unsigned char valorDivisaoCargaVivaMem;
-//variaveis referente as fun�oes do indicador de peso
+//variaveis referente as funcoes do indicador de peso
 static unsigned char valorLimiteDeZeroMem;//porcentagem
 static unsigned char valorZeroMilPorcentoMem;// 0.1 porcento
 static unsigned char valorFiltroDigitalMem;
@@ -130,11 +131,11 @@ static unsigned char capacidadeMaximaIndicadorMem[8];
 static unsigned char pesoCalibracaoIndicadorMem[8];
 static unsigned char modoFuncionamentoBackLightMem;
 static unsigned char tempoDesligaBackLightMem;
-
 static unsigned char nomeTelaIndicadorMem[16];
 static unsigned char linguagemSelecionadaMem;
+static unsigned char defineFuncionamentoUsoRelogioMem;
 
-//controle da velocidade comunica��o
+//controle da velocidade comunicacao
 //enum 
 //{
 //    velocidade1200Kbps,

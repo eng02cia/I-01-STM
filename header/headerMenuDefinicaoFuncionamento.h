@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////		
-//hederes do menu de acesso a programa��o do sistema                            //
+//hederes do menu de acesso a programacao do sistema                            //
 //////////////////////////////////////////////////////////////////////////////////
-//prototipos de fun��o
+//prototipos de funcao
 void funcaoProgramaDefinicaoFuncionamento(void);
 void programaNomeTelaInicial(void);
 int programaLetraDoNome(unsigned char letraTemp);
@@ -25,7 +25,7 @@ void telaMostraAtivaDesativaWifi(void);
 void telaMostraAtivaDesativaBluetooth(void);
 void telaMostraProgNomeAcii(void);
 void telaMostraSelecionaLinguagem(void);
-//contantes utilizadas na fun��o                
+//contantes utilizadas na funcao                
 // telas de programa�ao
 
 

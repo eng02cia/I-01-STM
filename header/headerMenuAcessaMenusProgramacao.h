@@ -1,14 +1,14 @@
 //////////////////////////////////////////////////////////////////////////////////		
-//hederes do menu de acesso a programa��o do sistema                            //
+//hederes do menu de acesso a programacao do sistema                            //
 //////////////////////////////////////////////////////////////////////////////////
-//prototipos de fun��o
+//prototipos de funcao
 void funcaoAcessaMenusProgramacao(void);
 void telaAcessaMenuModoTecnicoCorte(void);
 void telaAcessaMenuModoTecnicoIndicador(void);
 void telaAcessaMenuConfiguraSerial_1(void);
 void telaAcessaMenuFazCalibracao(void);
 void telaAcessaMenuTesteDasSaidas(void);
-//contantes utilizadas na fun��o                
+//contantes utilizadas na funcao                
 // telas de programa�ao
                                                  
 // TELA PROG PORTUGUES
@@ -59,5 +59,5 @@ enum menuAcessaMenusProgramacao
     acessaMenuCalibracao,
 }menuAcessaMenusProgramacao = menuAcessaMenusProgramacaoEmEspera;
 
-//flags utilizados na programa��o
+//flags utilizados na programacao
 

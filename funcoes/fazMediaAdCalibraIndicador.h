@@ -51,7 +51,7 @@ void fazMediaAdCalibraIndicador(void)
                     tempAd = tempAd - valorZeroIndicadorMem.int32;
                     if (tempAd < 0){tempAd *=-1;}//transforma peso em positivo caso valor negativo
                     valorAdPesoCalibracao = tempAd;
-//converter o peso de calibra��o para 32 bits 
+//converter o peso de calibracao para 32 bits 
                     carregaArrayComZeroAscii(10,&arrayInteiroTemp[0]);      
                     transfereArrayToArray(8,&pesoCalibracaoIndicadorMem[0],&arrayInteiroTemp[2]);
                     rotacionaArrayInsere0Converte();
