@@ -32,7 +32,7 @@ void funcaoAcessaMenusProgramacao(void)
                     menuAcessaMenusProgramacao = menuAcessaMenusProgramacaoEmEspera;
                     break;
             }            
-        break;                 
+            break;                 
 //////////////////////////////////////////////////////////////////////////////////
 //Verifica se da acesso a programacao dos paramentos da serial 1                //
 //////////////////////////////////////////////////////////////////////////////////
@@ -42,7 +42,7 @@ void funcaoAcessaMenusProgramacao(void)
                 case teclaImprimeSetaAcima:     
                     teclaPressionadaAtual = teclaSolta; 
                     telaAcessaMenuFazCalibracao();        
-                break;            
+                    break;            
                 case teclaSalva:
                     teclaPressionadaAtual = teclaSolta;
                     velocidadeTxSerial_1 = velocidadeTxSerial_1Mem;
@@ -51,7 +51,7 @@ void funcaoAcessaMenusProgramacao(void)
                     menuAcessaMenusProgramacao = menuAcessaMenusProgramacaoEmEspera;
                     break;
             }            
-        break;          
+            break;          
 //////////////////////////////////////////////////////////////////////////////////
 //Verifica se da acesso ao menu de calibracao                                   //
 //////////////////////////////////////////////////////////////////////////////////
@@ -60,18 +60,33 @@ void funcaoAcessaMenusProgramacao(void)
             {
                 case teclaImprimeSetaAcima:
                     teclaPressionadaAtual = teclaSolta; 
-                    telaAcessaMenuModoTecnicoIndicador();                               
+                    telaAcessaMenuConfiguraRelogio();                               
                     break;                 
                 case teclaSalva:
                     teclaPressionadaAtual = teclaSolta;
-//                    controleTara = _TARADESATIVADA;
-//                    tempProgIndicador = valorFiltroDigitalMem;
-//                    telaValorFiltroDigitalIndicador();  
-//                    menuAcessaMenusProgramacao = menuAcessaMenusProgramacaoEmEspera;
+                    // menuAcessaMenusProgramacao = menuAcessaMenusProgramacaoEmEspera;
                     telaSenhaDeAcessoCalibracao();
-                break;
+                    break;
             }            
-        break;                                       
+            break;          
+        case acessaMenuProgRelogio:
+ 			switch(teclaPressionadaAtual)
+ 			{
+                case teclaImprimeSetaAcima:
+                    teclaPressionadaAtual = teclaSolta;
+                    telaAcessaMenuModoTecnicoIndicador();
+                    break;
+                case teclaSalva:
+                    teclaPressionadaAtual = teclaSolta;
+                    menuAcessaMenusProgramacao = menuAcessaMenusProgramacaoEmEspera;
+                    tempProgDataHora = exibeRelogioMem;
+                    menuProgramacaoRelogioAtual = menuProgramaExibeRelogio;
+                    break;
+                default:
+                    /* do nothing*/
+                    break;
+ 			}
+            break;    
         }               
     }
 }
@@ -110,4 +125,14 @@ void telaAcessaMenuFazCalibracao(void)
     if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaAcessaMenuFazCalibracaoESP[0],&caracterLcd[0]);}
     caracterLcd[30] = caracterIncremento;
     caracterLcd[31] = caracterSalva;       
+}
+//////////////////////////////////////////////////////////////////////////////////
+//tela de acesso a configuracao do relogio                                   	//
+//////////////////////////////////////////////////////////////////////////////////
+void telaAcessaMenuConfiguraRelogio(void)
+{
+	menuAcessaMenusProgramacao = acessaMenuProgRelogio;
+    if(linguagemSelecionadaMem == _PORTUGUES){escreveDadoLcd(&charTelaAcessaMenuProgRelogioPT[0],&caracterLcd[0]);}
+    if(linguagemSelecionadaMem == _INGLES){escreveDadoLcd(&charTelaAcessaMenuProgRelogioING[0],&caracterLcd[0]);}
+    if(linguagemSelecionadaMem == _ESPANHOL){escreveDadoLcd(&charTelaAcessaMenuProgRelogioESP[0],&caracterLcd[0]);}
 }

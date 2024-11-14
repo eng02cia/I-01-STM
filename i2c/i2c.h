@@ -1,14 +1,4 @@
-//////////////////////////////////////////////////////////////////////////////////		
-//                                                                            	//
-// Funcoes de comunicacao com teclado PS2                                   	//
-//////////////////////////////////////////////////////////////////////////////////
-//  DESCRICAO DO PROTOCOLO:													  	//
-//  Pinos Utilizados
-// Portb 00 clock
-// Portb 01 data
-
-
-//////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////		
 //funcao que inicializa o barramento de comunicacao com teclado ps2 			//
 //////////////////////////////////////////////////////////////////////////////////		
@@ -36,13 +26,13 @@ void inicializaComunicacaoI2c(void)
     	if(flagRelogioInicializado == 0)
     	{
     		flagRelogioInicializado = 1;
-    		if(anoRelogio < 22)
+    		if(anoRelogio < 24)
     		{
     			minutoTemp = 1;// minuto
     			horaTemp = 1;// hora
     			diaTemp = 1;// dia
     			mesTemp = 1;//mes
-    			anoTemp = 22;//ano
+    			anoTemp = 24;//ano
     			grava_Relogio_i2c(0,minutoTemp,horaTemp,0,diaTemp,mesTemp,anoTemp);
     		}
     	}
@@ -60,14 +50,9 @@ void metodoTempoLeituraRelogio(void)
         if(mostraTelaTemporariaLcd == 0
         && exibeVersionControl == 0
         && menuAcessaMenusProgramacao == menuAcessaMenusProgramacaoEmEspera
-//        && menuProgramacao2 == menuProgramacao2EmEspera
     	&& menuCalibraIndicador == menuCalibraIndicadorEmEspera
-//        && menuResetFabrica == menuResetFabricaEmEspera
         && menuModoTecnicoIndicador == menuModoTecnicoIndicadorEmEspera
-//		&& menuModoTecnicoIndicadorI01 == menuModoTecnicoIndicadorI01EmEspera
-//        && menuDadosPesagemCargaViva == menuDadosPesagemCargaVivaEmEspera
         && menuProgramacaoRelogioAtual == menuProgramaRelogioEmEspera
-//        && menuConfiguraSemFio == menuConfiguraSemFioEmEspera
         && menuProgramaDefinicaoFucionamento == menuDefinicaoFuncionamentoEmEspera)
 //        && menuStatusHomologacao == menuStatusHomologacaoEmEspera)
         {

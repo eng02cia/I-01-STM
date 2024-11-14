@@ -12,7 +12,7 @@ void funcaoProgramaHoraData(void)
         menuProgramacaoRelogioAtual = menuProgramaRelogioEmEspera;
         teclaPressionadaAtual = teclaSolta;    
         flagInibeTeclaSolta = 1;  
-     //   telaAcessaMenuConfiguraRelogio();
+        telaAcessaMenuConfiguraRelogio();
     }
     else
     {
@@ -21,6 +21,35 @@ void funcaoProgramaHoraData(void)
 //////////////////////////////////////////////////////////////////////////////////
         switch(menuProgramacaoRelogioAtual)
         {
+//verifica se exibe ou não o relogio na tela principal
+            case menuProgramaExibeRelogio:
+                if (teclaPressionadaAtual == teclaImprimeSetaAcima) 
+                {
+                    teclaPressionadaAtual = teclaSolta;                    
+                    if (tempProgDataHora == 1){tempProgDataHora = 0;}
+                    else{tempProgDataHora = 1;}    
+                }
+                if (teclaPressionadaAtual == teclaSalva )
+                {
+                    teclaPressionadaAtual = teclaSolta;  
+                    exibeRelogioMem = tempProgDataHora;
+                    salvaExibeRelogio();
+
+                    if(exibeRelogioMem == _EXIBE_RELOGIO_HABILITADO){
+                        inteiroTo2BytesAscii(horaRelogio,&arrayProgHora[0]);
+                        inteiroTo2BytesAscii(minutoRelogio,&arrayProgMinuto[0]);
+                        inteiroTo2BytesAscii(diaMesRelogio,&arrayProgDia[0]);
+                        inteiroTo2BytesAscii(mesRelogio,&arrayProgMes[0]);
+                        inteiroTo2BytesAscii(anoRelogio,&arrayProgAno[0]);
+                        tempProgDataHora = arrayProgHora[0];
+                        marcaEdicao = 1;
+                        menuProgramacaoRelogioAtual = menuProgramaHoraH;
+                    } else {
+                        menuProgramacaoRelogioAtual = menuProgramaRelogioEmEspera;
+                        telaAcessaMenuConfiguraRelogio();
+                    }
+                }
+                break;
 //verifica se insere dado no campo hora H
             case menuProgramaHoraH:
                 if(teclaPressionadaAtual == teclaImprimeSetaAcima)
@@ -267,9 +296,9 @@ void verificaMinutoValido(void)
         marcaEdicao = 1;
         mostraTelaTemporariaLcd = 1;
         transfereArrayToArray(32,&caracterLcd[0],&backupTelaLcd[0]);
-        if(linguagemSelecionadaMem == 0){transfereConstToArray(&telaHoraInvalidaLcdPT[0],&caracterLcd[0]);}
-        if(linguagemSelecionadaMem == 1){transfereConstToArray(&telaHoraInvalidaLcdING[0],&caracterLcd[0]);}
-        if(linguagemSelecionadaMem == 2){transfereConstToArray(&telaHoraInvalidaLcdESP[0],&caracterLcd[0]);}
+        if(linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&telaHoraInvalidaLcdPT[0],&caracterLcd[0]);}
+        if(linguagemSelecionadaMem == _INGLES){transfereConstToArray(&telaHoraInvalidaLcdING[0],&caracterLcd[0]);}
+        if(linguagemSelecionadaMem == _ESPANHOL){transfereConstToArray(&telaHoraInvalidaLcdESP[0],&caracterLcd[0]);}
     }
     else
     {
@@ -294,16 +323,14 @@ void verificaDataValida(void)
         tempProgDataHora = arrayProgDia[0] - '0';   
         marcaEdicao = 1;
         transfereArrayToArray(32,&caracterLcd[0],&backupTelaLcd[0]);
-        if(linguagemSelecionadaMem == 0){transfereConstToArray(&telaDataInvalidaLcdPT[0],&caracterLcd[0]);}
-        if(linguagemSelecionadaMem == 1){transfereConstToArray(&telaDataInvalidaLcdING[0],&caracterLcd[0]);}
-        if(linguagemSelecionadaMem == 2){transfereConstToArray(&telaDataInvalidaLcdESP[0],&caracterLcd[0]);}
+        if(linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&telaDataInvalidaLcdPT[0],&caracterLcd[0]);}
+        if(linguagemSelecionadaMem == _INGLES){transfereConstToArray(&telaDataInvalidaLcdING[0],&caracterLcd[0]);}
+        if(linguagemSelecionadaMem == _ESPANHOL){transfereConstToArray(&telaDataInvalidaLcdESP[0],&caracterLcd[0]);}
     }
     else
     {
         menuProgramacaoRelogioAtual = menuProgramaRelogioEmEspera;
-//        if(defineFuncionamentoMultCalibracaoMem == modoIcvHomologacao){telaAcessaProgRelogioI01();}
-//        if(defineFuncionamentoMultCalibracaoMem != modoIcvHomologacao){telaAcessaMenuConfiguraRelogio();}
-        //telaAcessaMenuConfiguraRelogio();
+        telaAcessaMenuConfiguraRelogio();
         horaRelogio = horaTemp;
         minutoRelogio = minutoTemp;
         diaMesRelogio = diaTemp;
@@ -370,11 +397,29 @@ void telaMostraProgHoraData(void)
 {
     if(menuProgramacaoRelogioAtual != menuProgramaRelogioEmEspera)
     {
-        if(mostraTelaTemporariaLcd == 0)
+        if (menuProgramacaoRelogioAtual == menuProgramaExibeRelogio) {
+            if(linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&telaProgExibeRelogioPT[0],&caracterLcd[0]);}
+        	if(linguagemSelecionadaMem == _INGLES){transfereConstToArray(&telaProgExibeRelogioING[0],&caracterLcd[0]);}
+        	if(linguagemSelecionadaMem == _ESPANHOL){transfereConstToArray(&telaProgExibeRelogioESP[0],&caracterLcd[0]);}
+
+            if (tempProgDataHora == 1){
+                if(linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&telaHabilitadoPT[0],&caracterLcd[16]);}
+                if(linguagemSelecionadaMem == _INGLES){transfereConstToArray(&telaHabilitadoING[0],&caracterLcd[16]);}
+                if(linguagemSelecionadaMem == _ESPANHOL){transfereConstToArray(&telaHabilitadoESP[0],&caracterLcd[16]);}
+            } else {
+                if(linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&telaDesabilitadoPT[0],&caracterLcd[16]);}
+                if(linguagemSelecionadaMem == _INGLES){transfereConstToArray(&telaDesabilitadoING[0],&caracterLcd[16]);}   
+                if(linguagemSelecionadaMem == -_ESPANHOL){transfereConstToArray(&telaDesabilitadoESP[0],&caracterLcd[16]);}
+            }
+
+            caracterLcd[30] = caracterRetorna;
+            caracterLcd[31] = caracterSalva;  
+        } 
+        else if(mostraTelaTemporariaLcd == 0)
         { 
-        	if(linguagemSelecionadaMem == 0){transfereConstToArray(&telaProgHoraDataLcdPT[0],&caracterLcd[0]);}
-        	if(linguagemSelecionadaMem == 1){transfereConstToArray(&telaProgHoraDataLcdING[0],&caracterLcd[0]);}
-        	if(linguagemSelecionadaMem == 2){transfereConstToArray(&telaProgHoraDataLcdESP[0],&caracterLcd[0]);}
+        	if(linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&telaProgHoraDataLcdPT[0],&caracterLcd[0]);}
+        	if(linguagemSelecionadaMem == _INGLES){transfereConstToArray(&telaProgHoraDataLcdING[0],&caracterLcd[0]);}
+        	if(linguagemSelecionadaMem == _ESPANHOL){transfereConstToArray(&telaProgHoraDataLcdESP[0],&caracterLcd[0]);}
             caracterLcd[16]= arrayProgHora[0];
             caracterLcd[17]= arrayProgHora[1];
             caracterLcd[18] = ':';

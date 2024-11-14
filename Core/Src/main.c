@@ -116,6 +116,7 @@ int main(void)
 
   flagFazLeituraI2c = 1;
   inicializaComunicacaoPs2();
+  inicializaComunicacaoI2c();
   /* USER CODE END 2 */
 
   /* Infinite loop */

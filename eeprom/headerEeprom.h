@@ -35,8 +35,7 @@
 #define endValorDivisaoIndicadorMem				37 // 4 bytes
 #define endNomeTelaIniciallMem					41 // 16 bytes
 #define endlinguagemSelecionadaMem				57 // 1 byte
-#define endDefineFuncionamentoUsoRelogio		58 // 1 byte
-
+#define endExibeRelogioMem						58 // 1 byte
 
 const char defaultEeprom[] = {
 	_SERIAL_1ATIVADA,
@@ -61,7 +60,8 @@ const char defaultEeprom[] = {
 	' ',' ',' ',' ',													// 41	
 	'I','N','D','I','C','A','D','O','R',' ','I','-','0','1',' ',' ',	// 57
 	_PORTUGUES,
-	' ',' ',' ',' ',' ',1,											// 64 																	
+	_EXIBE_RELOGIO_DESABILITADO,
+	' ',' ',' ',' ',1,											// 64 																	
 };
 
 //////////////////////////////////////////////////////////////////////////////////		
@@ -133,7 +133,7 @@ static unsigned char modoFuncionamentoBackLightMem;
 static unsigned char tempoDesligaBackLightMem;
 static unsigned char nomeTelaIndicadorMem[16];
 static unsigned char linguagemSelecionadaMem;
-static unsigned char defineFuncionamentoUsoRelogioMem;
+static unsigned char exibeRelogioMem;
 
 //controle da velocidade comunicacao
 //enum 

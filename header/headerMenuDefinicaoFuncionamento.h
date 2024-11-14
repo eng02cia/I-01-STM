@@ -26,15 +26,13 @@ void telaMostraAtivaDesativaBluetooth(void);
 void telaMostraProgNomeAcii(void);
 void telaMostraSelecionaLinguagem(void);
 //contantes utilizadas na funcao                
-// telas de programa�ao
 
+// telas de programacao
 
-// PRIMEIRAMENTE TESTANDO APENAS COM MUDANCA DE TELA INICIAL
-// 	Tambem devera contemplar escolha de idioma e ajuste de relogio
 // TELA PROG PORTUGUES
 const char charTelaDefineTelaInicialPT[]=				{"TELA INICIAL                   "};
 // TELA PROG ESPANHOL
-const char charTelaDefineTelaInicialESP[]=				{"PANTALLA DE INICIO             "};
+const char charTelaDefineTelaInicialESP[]=				{"PANTALLA INICIO             "};
 // TELA PROG INGLES
 const char charTelaDefineTelaInicialING[]=				{"HOME SCREEN                    "};
 
@@ -75,6 +73,5 @@ enum menuProgramaDefinicaoFucionamento
 
 #define _displayGrafico 2
 #define _txContinua 1
-#define _bovina 0
-#define _avicula 1
+
 

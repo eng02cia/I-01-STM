@@ -64,9 +64,14 @@ void metodoControleDasTelas(void)
 				}
 				else
 				{
-					// mostraModeloIndicadorDwin();
-					mostraNomeTelaIndicadorDwin();
-					limpaLinha2Dwin();					
+					if (exibeRelogioMem == _EXIBE_RELOGIO_DESABILITADO) {
+						mostraNomeTelaIndicadorDwin();
+					}				
+					if (exibeRelogioMem == _EXIBE_RELOGIO_HABILITADO) { 
+						telaMostraHoraData();
+						transfereCaracterLcdLinha1Dwin();
+					}
+					limpaLinha2Dwin();
 
 					if (controleTara == _TARAATIVADA)
 					{
@@ -103,3 +108,41 @@ void funcaoTempoTelaInicial (void)
 	}
 }
 
+//////////////////////////////////////////////////////////////////////////////////
+//Mostra hora e data do indicaodr de peso                                     	//
+//////////////////////////////////////////////////////////////////////////////////
+void telaMostraHoraData(void)
+{
+	inteiroTo2BytesAscii(horaRelogio,&caracterLcd[2]);
+	
+	if (piscaCaracter == 1) {
+		caracterLcd[4] = ':';
+	} else {
+		caracterLcd[4] = ' ';
+	}
+	
+	inteiroTo2BytesAscii(minutoRelogio,&caracterLcd[5]);
+	caracterLcd[7] = ' ';
+	inteiroTo2BytesAscii(diaMesRelogio,&caracterLcd[8]);
+	caracterLcd[10] = '/';
+	inteiroTo2BytesAscii(mesRelogio,&caracterLcd[11]);
+	caracterLcd[13] = '/';
+	inteiroTo2BytesAscii(anoRelogio,&caracterLcd[14]);
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+//Função que controla a velocidade de pisca de caracteres                    	//
+//recurso usado na programação de campos de porgramação                         //
+//////////////////////////////////////////////////////////////////////////////////
+void funcaoPiscaCaracter(void)
+{
+	if (++tempoPiscaCaracter == 5) {
+		tempoPiscaCaracter = 0;
+
+		if (piscaCaracter == 1) {
+			piscaCaracter = 0;
+		} else {
+			piscaCaracter = 1;
+		}
+	}
+}

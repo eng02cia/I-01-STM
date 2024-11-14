@@ -17,7 +17,7 @@ unsigned char trocaTelaPeso;
 
 //frases utilizadas 
 const char telaStatusPrincipal[] =        {"                ""                "};
-const char telaInicialVersao[] =          {"  V3.0          "};
+const char telaInicialVersao[] =          {" V3.0          "};
 const char telaInicialIndicador[] =       {" INDICADOR I-01 "};
 
 //  TELA PROG EM PORTUGUES
@@ -29,7 +29,7 @@ const char telaSobreCargaESP[]=           {"   SOBRE PESO   "};
 const char telaSubCargaESP[]=             {"    BAJO PESO   "};
 const char telaSemCelulaCargaESP[]=       {"CONECTE EL CABLE"};
 // TELA PROG EM INGLES
-const char telaSobreCargaING[]=           {"   OVERLOAD     "};
+const char telaSobreCargaING[]=           {"    OVERLOAD    "};
 const char telaSubCargaING[]=             {"   UNDER LOAD   "};
 const char telaSemCelulaCargaING[]=       {"  CONNECT/CABLE "};
 //const char paradoLcd[]= {"PARADO"};

@@ -11,7 +11,6 @@ void carregaTela0(void)
 	transfereConstToArrayLoop(10,&charTela0Dwin[0],&frameTxDwin[0]);
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],10,100);
 }
-
 void carregaTela1(void)
 {
 	transfereConstToArrayLoop(10,&charTela1Dwin[0],&frameTxDwin[0]);
@@ -127,7 +126,7 @@ void mostraPesoDwin(void)
 
 	if(fazTelaInicialPesoDwin == 1)
 	{
-		tempPosicaoPontoDwin = 0;
+		tempPosicaoPontoDwin = posicaoPontoDecimalIndicadorMem;
 
 		switch(controleTelaDwin)
 		{
@@ -135,10 +134,6 @@ void mostraPesoDwin(void)
 				transfereConstToArray(&pesoTraco[0],&telaPesoDwin[0]);
 				controleTelaDwin = pesoReal;
 				tempPosicaoPontoDwin = 0;
-				break;
-			case holdPeso: // VERIFICAR
-				//transfereArrayToArray(7,&pesoConvertidoKiloCargaVivaHolding[0],&telaPesoDwin[0]);
-				controleTelaDwin = pesoReal;
 				break;
 			case pesoReal:
 				transfereArrayToArray(7,&pesoBrutoIndicadorAscii[0],&telaPesoDwin[0]); // TESTE - Necessario utilizar peso tratado
@@ -411,4 +406,3 @@ void backLightDwinMinimo(void)
 	frameTxDwin[7] = 0x0A;// bacht light 30%
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],8,10);
 }
-

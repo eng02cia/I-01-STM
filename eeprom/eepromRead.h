@@ -52,6 +52,8 @@ void le_i2c(void)
 
 /* le a linguagem definida */
 	linguagemSelecionadaMem = Data_Write_I2c[endlinguagemSelecionadaMem];
+
+	exibeRelogioMem = Data_Write_I2c[endExibeRelogioMem];
 }
 
 void leituraI2c_Default(void)

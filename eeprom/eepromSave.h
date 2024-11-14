@@ -196,9 +196,10 @@ void salvaLinguagemSelecionadaMem(void)
 	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, endlinguagemSelecionadaMem, tamanhoPagina, 
 		&Data_Write_I2c[endlinguagemSelecionadaMem], umByte, 10);
 }
-/* salva o funcionamento do relogio */
-void salvaDefinicaoFuncionamentoRelogio(void)
+/* salva o funcionamento de exibicao do relogio */
+void salvaExibeRelogio(void)
 {
-	Data_Write_I2c[endDefineFuncionamentoUsoRelogio] = defineFuncionamentoUsoRelogioMem;
-	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, endDefineFuncionamentoUsoRelogio, tamanhoPagina, &Data_Write_I2c[endDefineFuncionamentoUsoRelogio], umByte, 10);
+	Data_Write_I2c[endExibeRelogioMem] = exibeRelogioMem;
+	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, endExibeRelogioMem, tamanhoPagina, 
+		&Data_Write_I2c[endExibeRelogioMem], umByte, 10);
 }

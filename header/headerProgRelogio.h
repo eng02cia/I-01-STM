@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////		
-//Fun��es de programacao do peso do corte                                       //
+//Funcoes de programacao do peso do corte                                       //
 //////////////////////////////////////////////////////////////////////////////////
 //prototipos de funcao
 void funcaoProgramaHoraData(void);
@@ -44,6 +44,7 @@ static unsigned char marcaEdicao;
 //indica qual o menu atual que esta sendo programado
 enum 
 {
+    menuProgramaExibeRelogio,
     menuProgramaHoraH, 
     menuProgramaHoraL,     
     menuProgramaMinutoH,  
@@ -64,13 +65,25 @@ enum
 const char telaProgHoraDataLcdPT[]=   	{"PROG HORA/DATA  ""                "};
 const char telaHoraInvalidaLcdPT[]=   	{"HORA INVALIDA   ""                "};
 const char telaDataInvalidaLcdPT[]=   	{"DATA INVALIDA   ""                "};
+const char telaProgExibeRelogioPT[]=    {"EXIBE HORA/DATA ""                "};
+const char telaHabilitadoPT[]=          {"HABILITADO      ""                "};
+const char telaDesabilitadoPT[]=        {"DESABILITADO    ""                "};
 
 //TELA PROG ESPANHOL
 const char telaProgHoraDataLcdESP[]=   	{"PROG HORA/FECHA ""                "};
 const char telaHoraInvalidaLcdESP[]=  	{"HORA INVALIDO   ""                "};
 const char telaDataInvalidaLcdESP[]=   	{"FECHA INVALIDO  ""                "};
+const char telaProgExibeRelogioESP[]=   {"MOSTRAR LA HORA ""                "};
+const char telaHabilitadoESP[]=         {"ACTIVADO        ""                "};
+const char telaDesabilitadoESP[]=       {"DESACTIVADO     ""                "};
 
 //TELA PROG INGLES
 const char telaProgHoraDataLcdING[]=   	{"PROG TIME/DATE  ""                "};
 const char telaHoraInvalidaLcdING[]=   	{"INVALID HOUR    ""                "};
 const char telaDataInvalidaLcdING[]=   	{"INVALID DATE    ""                "};
+const char telaProgExibeRelogioING[]=   {"SHOW TIME/DATE  ""                "};
+const char telaHabilitadoING[]=         {"ENABLED         ""                "};
+const char telaDesabilitadoING[]=       {"DISABLED        ""                "};
+
+#define _EXIBE_RELOGIO_HABILITADO           1
+#define _EXIBE_RELOGIO_DESABILITADO         0    

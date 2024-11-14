@@ -72,6 +72,8 @@ void ControleMultTask(void)
 		if	(++deze_segundos >= 500)
 		{
             deze_segundos = 0;
+			telaMostraProgHoraData();
+			funcaoPiscaCaracter();
             controlaPiscaDigitoProgSenha();
             metodoPiscaProgIndicador();
             funcaoTempoAcessoMenuProgramacao();
@@ -88,6 +90,9 @@ void ControleMultTask(void)
 		if	(++cente_segundos >= 5000)
 		{
             cente_segundos = 0;
+			metodoTempoLeituraRelogio();
+            funcaoTempoBackLight();
+
             if (sistemaInicializado == 0)
             {
             	sistemaInicializado = 1;
@@ -96,9 +101,6 @@ void ControleMultTask(void)
                 	metodoLigaSistema();
                 }
             }
-
-            funcaoTempoBackLight();
-
 		}
 	}
 }

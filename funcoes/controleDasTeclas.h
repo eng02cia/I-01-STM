@@ -28,7 +28,8 @@ void trataControleDasTeclas (void)
            && menuCalibraIndicador == menuCalibraIndicadorEmEspera
            && menuConfiguraSerial_1 == menuConfiguraSerial_1EmEspera
            && menuModoTecnicoIndicador == menuModoTecnicoIndicadorEmEspera
-           && menuProgramaDefinicaoFucionamento == menuDefinicaoFuncionamentoEmEspera)
+           && menuProgramaDefinicaoFucionamento == menuDefinicaoFuncionamentoEmEspera
+           && menuProgramacaoRelogioAtual == menuProgramaRelogioEmEspera)
         {
 //verifica se liga ou desliga o indicador de peso      
             if (teclaPressionadaAtual == teclaLigaDesliga)

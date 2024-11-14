@@ -40,9 +40,9 @@ uint8_t Rx_ModbusSerial_1[10];
 #include "headerDisplayDwin.h"
 #include "headerTecladoPs2.h"
 #include "headerMenuDefinicaoFuncionamento.h"
+#include "headerProgRelogio.h"
 #include "headerEeprom.h"
 #include "headeri2c.h"
-#include "headerProgRelogio.h"
 
 
 #include "i2c.h"
