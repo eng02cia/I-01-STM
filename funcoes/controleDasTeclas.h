@@ -101,7 +101,15 @@ void trataControleDasTeclas (void)
 //////////////////////////////////////////////////////////////////////////////////		
 void metodoLigaSistema(void)
 {
-    if (modoFuncionamentoBackLightMem == _BACKLIGHT_DESLIGADO){HAL_GPIO_WritePin(pinoBackLight_GPIO_Port, pinoBackLight_Pin,GPIO_PIN_SET);}
+    if (modoFuncionamentoBackLightMem != _BACKLIGHT_DESLIGADO) {
+    	HAL_GPIO_WritePin(pinoBackLight_GPIO_Port, pinoBackLight_Pin,GPIO_PIN_SET);
+    	backLightDwinMaximo();
+    }
+    if(modoFuncionamentoBackLightMem == _BACKLIGHT_DESLIGADO)
+    {
+    	HAL_GPIO_WritePin(pinoBackLight_GPIO_Port, pinoBackLight_Pin,GPIO_PIN_RESET);
+    	backLightDwinMinimo();
+    }
     statusLigaDesliga = _LIGADO;
     exibeVersionControl = 1;
     statusPowerOnMem = _LIGADO;
@@ -124,18 +132,11 @@ void metodoDesligaSistema(void)
 {
     carregaArrayComEspacoAscii(32,&caracterLcd[0]);
     HAL_GPIO_WritePin(pinoBackLight_GPIO_Port, pinoBackLight_Pin,GPIO_PIN_RESET);
+    backLightDwinMinimo();
     statusLigaDesliga = _DESLIGADO;
     statusPowerOnMem = _DESLIGADO;
 
     carregaTela0();
-
-	HAL_UART_Transmit(&huart3, "sleep=1", 7, 25);
-	HAL_UART_Transmit(&huart3, cmd_end, 3, 25);
-
-	HAL_UART_Transmit(&huart3, "page START", 10, 25);
-	HAL_UART_Transmit(&huart3, cmd_end, 3, 25);
-
-
 //    preparaSalvaStatusPowerOn();
     controleTara = _TARADESATIVADA;
     tempoSegundoBacklightLigado = 0;

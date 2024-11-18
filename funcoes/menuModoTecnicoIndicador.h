@@ -125,9 +125,10 @@ void funcaoMenuModoTecnicoIndicador(void)
                     if (modoFuncionamentoBackLightMem == _BACKLIGHT_LIGADO 
                         || modoFuncionamentoBackLightMem == _BACKLIGHT_DESLIGADO)
                     {
-                        if (modoFuncionamentoBackLightMem == _BACKLIGHT_DESLIGADO)
+                        if (modoFuncionamentoBackLightMem == _BACKLIGHT_LIGADO)
                         {
                         	HAL_GPIO_WritePin(pinoBackLight_GPIO_Port, pinoBackLight_Pin,GPIO_PIN_SET);
+                            backLightDwinMaximo();
                         	tempoBacklightLigado = 0;
                             tempoSegundoBacklightLigado = 0;
                             flagTempoExibeBackLight = 0;
@@ -135,9 +136,10 @@ void funcaoMenuModoTecnicoIndicador(void)
                         	tempConfigIndicador = valorLimiteDeZeroMem;
                         	telaMostraProgramacaoLimiteZero();
                         }
-                        if (modoFuncionamentoBackLightMem == _BACKLIGHT_LIGADO)
+                        if (modoFuncionamentoBackLightMem == _BACKLIGHT_DESLIGADO)
                         {
                         	HAL_GPIO_WritePin(pinoBackLight_GPIO_Port, pinoBackLight_Pin,GPIO_PIN_RESET);
+                            backLightDwinMinimo();
                         	menuModoTecnicoIndicador = defineLimiteDeZero;
                         	tempConfigIndicador = valorLimiteDeZeroMem;
                         	telaMostraProgramacaoLimiteZero();

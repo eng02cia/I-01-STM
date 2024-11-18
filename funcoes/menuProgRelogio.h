@@ -248,7 +248,14 @@ void funcaoProgramaHoraData(void)
                     marcaEdicao = 0;
                 }         
 //valida o ano programado                          
-                if(teclaPressionadaAtual == teclaSalva || teclaPressionadaAtual == teclaTaraSetaEsquerda)
+                if (teclaPressionadaAtual == teclaTaraSetaEsquerda) 
+                {
+                    teclaPressionadaAtual = teclaSolta; 
+                    marcaEdicao = 1;
+                    menuProgramacaoRelogioAtual = menuProgramaHoraH;
+                }
+                
+                if(teclaPressionadaAtual == teclaSalva)
                 {
                     teclaPressionadaAtual = teclaSolta; 
                     verificaDataValida();

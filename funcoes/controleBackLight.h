@@ -5,7 +5,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 void controlaBackLightOscilaPeso(void)
 {
-    if ( modoFuncionamentoBackLightMem == _BACKLIGHT_TEMPORIZADO)
+    if (modoFuncionamentoBackLightMem == _BACKLIGHT_TEMPORIZADO)
     {
         if (controleTara ==_TARADESATIVADA)
         {

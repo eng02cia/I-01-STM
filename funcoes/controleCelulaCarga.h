@@ -63,22 +63,19 @@ void mostraPesoIndicador(void)
             offSetPesoAtual = offSetFaixaPeso_2Mem;
         }
     }
-
-#endif
     dataAdMediaPronta = dataAdHx711;
     valorCorrigidoAd = valorZeroIndicador;
     valorCorrigidoAd = dataAdMediaPronta - valorCorrigidoAd;
     valorPesoTempIndicador = valorCorrigidoAd/valorDivisaoIndicador;
     fazArredondamentoPeso();
-#ifdef _indicadorCurturme
     valorPesoBrutoCarregamento = valorPesoTempIndicador;
     if (valorPesoTempIndicador > 30)
     {
         valorPesoBrutoCarregamento = valorPesoBrutoCarregamento + offSetTempPesoAtual;
     }
-#endif
     trataPesoAdIndicador();
     transfereArrayToArray(7,&arrayPesoTemp[0],&pesoCarregamentoAscii[0]);
+#endif
 //media do valor ad para ajudar na estabilidade
 //filtro digital
 
@@ -128,6 +125,7 @@ void trataPesoBrutoIndicador(void)
     trataPesoAdIndicador();
     valorPesoBrutoIntIndicador = atol(arrayConverteToInteiro);
     transfereArrayToArray(7,&arrayPesoTemp[0],&pesoBrutoIndicadorAscii[0]);
+
     floatTemp = valorPesoCargaMaxima;
     statusControleSobreCarga  = 0;
     statusControleSubCarga = 0;
@@ -135,6 +133,7 @@ void trataPesoBrutoIndicador(void)
     floatTemp *=-1;
     if (valorPesoTempIndicador  <= floatTemp){statusControleSubCarga = 1;}
     trantandoPesoBruto = 0;
+    // statusMostraPesoNegativo = statusPesoNegativoTemp;
 }
 //////////////////////////////////////////////////////////////////////////////////
 //faz o tratamento do peso tara                                               //
@@ -181,7 +180,7 @@ void trataPesoAdIndicador(void)
     buf = ftoa();
     loopConvertePesoCelulaCarga = 0;
 //transoforma valor float em array de peso
-    while(loopConvertePesoCelulaCarga< 9)
+    while (loopConvertePesoCelulaCarga < 9)
     {
         arrayPesoConvertidoCelulaCarga[loopConvertePesoCelulaCarga] = *buf;
         buf++;
@@ -192,7 +191,7 @@ void trataPesoAdIndicador(void)
     index2Indicador = &arrayPesoTemp[0];
     index1Indicador = &arrayPesoConvertidoCelulaCarga[0];
     loopConvertePesoCelulaCarga = 0;
-    while(loopConvertePesoCelulaCarga != 7)
+    while (loopConvertePesoCelulaCarga != 7)
     {
         *index2Indicador = *index1Indicador;
         index1Indicador++;
@@ -227,7 +226,7 @@ void trataPesoAdIndicador(void)
         *index1Indicador--;
         loopTempIndicador--;
     }
-//faz tratamento do degral do peso
+//faz tratamento do degrau do peso
     converteArrayAsciiParaDecimal(7,&arrayPesoTemp[0]);
     carregaArrayComZeroDecimal(7,&arrayPesoTemp1[0]);
     if (degrauIndicadorMem == 2)
