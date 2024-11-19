@@ -21,7 +21,6 @@ static unsigned int deze_segundos;
 static unsigned int cente_segundos;
 static unsigned char loopMediaTaskReadAd;
 static float dataMediaHx711Task;
-static tStatusControlePeso controleLeituraPesoI01;
 //static unsigned char tempoTaskControlePeso;
 short controleDasTasks;
 short flagTaskHx711;
