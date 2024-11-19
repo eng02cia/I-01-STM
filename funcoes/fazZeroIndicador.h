@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////
-/*metodo utilizado para zerar a balan�a                                          */
+/*metodo utilizado para zerar a balanca                                          */
 //////////////////////////////////////////////////////////////////////////////////
 void metodoFazZeroIndicadorPeso(void)
 {
@@ -38,7 +38,7 @@ void metodoFazZeroIndicadorPeso(void)
                 }
             }
         }
-//cancela o zero da balan�a caso for capturado algum peso fora da faixa de zero        
+//cancela o zero da balanca caso for capturado algum peso fora da faixa de zero        
         else
         {
             loopMediaCalibracao = 0;

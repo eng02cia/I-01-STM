@@ -13,7 +13,7 @@ int checaAutorizaZeroIndicador(void)
         floatTemp = floatTemp * valorLimiteDeZeroMem;
         floatTemp = floatTemp/10;      
     }
-// Limite de zero n�o decimal limite de zero minimo de 1%        
+// Limite de zero nao decimal limite de zero minimo de 1%        
     if (controleTipoZero == _CEMPORCENTO)
     {   
         if (flagLimiteZeroInicial == 1){floatTemp = floatTemp * valorLimiteZeroInicial;}

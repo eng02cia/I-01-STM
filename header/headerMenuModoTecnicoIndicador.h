@@ -9,7 +9,7 @@ void telaMostraProgramacaoStatusZeroLigarIndicador(void);
 void telaMostraProgramacaoModoFuncionamentoBackLight(void);
 void telaTempoBackLightLigado(void);
 //contantes utilizadas na funcao                
-// telas de programa�ao
+// telas de programacao
                                                  
 // TELA PROG PORTUGUES
 const char charTelaConfiguraLimiteZeroPT[]=      {"LIMITE ZERO     ""                "};
@@ -52,7 +52,7 @@ static unsigned char tempConfigIndicador;
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 //																							//
-//FUNÇOES DISPLAY																			/
+//FUNcOES DISPLAY																			/
 //																							//
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////

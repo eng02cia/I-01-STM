@@ -30,7 +30,7 @@ void pilhaSalvaDadosEeprom(void)
         {
             pilhaEeprom.salvaDegrauPeso = 0;
             pilhaEeprom.pausaSalvaDadosEeprom  = 1;
-            salvaPosicaoDegralIndicador();
+            salvaPosicaodegrauIndicador();
 //            controleEepronOcupada = 1;             
         } 
 //////////////////////////////////////////////////////////////////////////////////             

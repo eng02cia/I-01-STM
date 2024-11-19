@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////		
-//         funcoes de controle das medi��es da celula de carga           		//	
+//         funcoes de controle das medicoes da celula de carga           		//	
 //////////////////////////////////////////////////////////////////////////////////
 //prototipos de funcao utilizadas
 void inicializaLedsIndicador(void);
@@ -11,17 +11,17 @@ void trataPesoTaraIndicador(void);
 void trataPesoLiquidoIndicador(void);
 
 
-
 void tempoEstabilidadeCargaViva(void);
-//variaveis utilizadas no calculo dopeso
-//registra o peso atual da balan�a 01
+//variaveis utilizadas no calculo do peso
+//registra o peso atual da balanca 01
 
-static unsigned char pesoBrutoIndicadorAscii[7] =   {' ',' ',' ',' ',' ',' ','0'};
-static unsigned char pesoTaraIndicadorAscii[7] =    {' ',' ',' ',' ',' ',' ','0'};
-static unsigned char pesoLiquidoIndicadorAscii[7] = {' ',' ',' ',' ',' ',' ','0'};
+static unsigned char pesoBrutoIndicadorAscii[7];
+static unsigned char pesoTaraIndicadorAscii[7];
+static unsigned char pesoLiquidoIndicadorAscii[7];
+static unsigned char pesoConvertido[7];
 static unsigned char pesoCarregamentoAscii[7] =     {' ',' ',' ',' ',' ',' ','0'};
-//static unsigned char pesoTempIndicadorAscii[7];
-static unsigned char arrayTempCalculaPeso[9];
+// static unsigned char arrayTempCalculaPeso[9];
+static unsigned char referenciaPesoEstavelAscii[7];
 
 static unsigned long int valorPesoBrutoIntIndicador;
 static unsigned long int valorPesoTaraIntIndicador;
@@ -30,6 +30,7 @@ static unsigned long int valorPesoLiquidoIntIndicador;
 static float valorPesoBrutoFloatIndicador;
 static float valorPesoTaraFloatIndicador;
 static float valorPesoLiquidoFloatIndicador;
+static float valorPesoConvertidoFloatIndicador;
 
 //static unsigned long int valorPesoBrutoIndicador;
 //static unsigned long int valorPesoTaraIndicador;
@@ -37,6 +38,8 @@ static float valorPesoLiquidoFloatIndicador;
 
 static float valorPesoBrutoCarregamento;//nao mudar do tipo float
 static float valorPesoTempIndicador;
+static float valorPesoTESTE1;
+static float valorPesoTESTE2;
 
 static float valorPesoAnteriorCargaViva;
 float f;
@@ -76,6 +79,8 @@ static float offSetTempPesoAtual;
 //short statusPesoPositivoNegativoInidicador;
 short statusControleSobreCarga;
 short statusControleSubCarga;
+short statusControleMostraPesoNegativo;
+short statusPesoNegativoTemp;
 short trantandoPesoBruto;
 short flagFazMediaAd;
 short flagFimCalibracao;
@@ -94,7 +99,13 @@ static unsigned char loopConvertePesoCelulaCarga;
 static unsigned char loopTestePeso;
 static unsigned char controleTipoZero;
 static unsigned char valorLimiteZeroInicial;//usado na inicializacao
+static unsigned char tempComparaCeluCarga;
+static unsigned char tempoIndicaPesoEstavel;
+
 short flagLimiteZeroInicial;
+short flagIndicaPesoEstavel;
+
+
 #define _PESOPOSITIVO 1
 #define _PESONEGATIVO 0
 #define _TARAATIVADA  1

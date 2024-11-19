@@ -13,7 +13,7 @@ void metodoControleDasTelas(void)
 {
 	if ((exibeVersionControl == 0) && (mostraTelaTemporariaLcd == 0) && (sistemaInicializado == 1))
 	{
-		//Menu de programação
+		//Menu de programacao
 		if (menuAcessaMenusProgramacao != menuAcessaMenusProgramacaoEmEspera
 				|| menuCalibraIndicador != menuCalibraIndicadorEmEspera
 				|| menuConfiguraSerial_1 != menuConfiguraSerial_1EmEspera
@@ -79,7 +79,6 @@ void metodoControleDasTelas(void)
 					}
 					else
 					{
-						//                        caracterLcd[16] = testeEndModbus +'0';
 						transfereArrayToArray(7,&pesoBrutoIndicadorAscii[0],&caracterLcd[22]);
 					}
 					caracterLcd[30] = 'K';
@@ -92,7 +91,7 @@ void metodoControleDasTelas(void)
 	}
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//Função que controla o tempo de ixibição da tela inicial                     	//
+//Funcao que controla o tempo de ixibicao da tela inicial                     	//
 //////////////////////////////////////////////////////////////////////////////////		
 void funcaoTempoTelaInicial (void)
 {
@@ -102,7 +101,6 @@ void funcaoTempoTelaInicial (void)
 		{
 			tempoExibeTelaInicial = 0;
 			exibeVersionControl = 0;
-			trocarPaginaPeso = 1;
 			iniciaVariaveisTxSerial_1();
 		}
 	}
@@ -131,8 +129,8 @@ void telaMostraHoraData(void)
 }
 
 //////////////////////////////////////////////////////////////////////////////////
-//Função que controla a velocidade de pisca de caracteres                    	//
-//recurso usado na programação de campos de porgramação                         //
+//Funcao que controla a velocidade de pisca de caracteres                    	//
+//recurso usado na programacao de campos de porgramacao                         //
 //////////////////////////////////////////////////////////////////////////////////
 void funcaoPiscaCaracter(void)
 {

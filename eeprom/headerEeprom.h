@@ -172,7 +172,7 @@ static unsigned char posicaoEpromDadosBatelada;
 unsigned char tempMem;
 //short flagSalvaByteEepron;
 //short flagApagaMemoria;
-//endere�o memoria eeprom
+//endereco memoria eeprom
 union
 {
 	struct

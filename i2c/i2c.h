@@ -8,7 +8,7 @@ void inicializaComunicacaoI2c(void)
     tempoLeituraRelogio = 2;
 
     le_Relogio_i2c();
-    if(statusLeituraRelogio == comRelogio)
+    if (statusLeituraRelogio == comRelogio)
     {
     	segundoRelogio = bcdToDec(set_time[0]);
     	minutoRelogio = bcdToDec(set_time[1]);
@@ -23,10 +23,10 @@ void inicializaComunicacaoI2c(void)
     	inteiroTo2BytesAscii(mesRelogio,&arrayMes[0]);
     	inteiroTo2BytesAscii(anoRelogio,&arrayAno[0]);
     	//em caso de data incorreta reinicia relogio
-    	if(flagRelogioInicializado == 0)
+    	if (flagRelogioInicializado == 0)
     	{
     		flagRelogioInicializado = 1;
-    		if(anoRelogio < 24)
+    		if (anoRelogio < 24)
     		{
     			minutoTemp = 1;// minuto
     			horaTemp = 1;// hora
@@ -44,10 +44,10 @@ void inicializaComunicacaoI2c(void)
 //////////////////////////////////////////////////////////////////////////////////
 void metodoTempoLeituraRelogio(void)
 {
-    if(++ tempoLeituraRelogio > 4)
+    if (++ tempoLeituraRelogio > 4)
     {
         tempoLeituraRelogio = 0;
-        if(mostraTelaTemporariaLcd == 0
+        if (mostraTelaTemporariaLcd == 0
         && exibeVersionControl == 0
         && menuAcessaMenusProgramacao == menuAcessaMenusProgramacaoEmEspera
     	&& menuCalibraIndicador == menuCalibraIndicadorEmEspera
@@ -99,7 +99,7 @@ void le_Relogio_i2c(void)
 	time.diaDoMes = bcdToDec(set_time[4]);
 	time.mes = bcdToDec(set_time[5]);
 	time.ano = bcdToDec(set_time[6]);
-	if(time.segundos == 0 && time.minutos == 0 && time.horas == 0 && time.diaDaSemana == 0 && time.diaDoMes == 0 && time.mes == 0 && time.ano == 0)
+	if (time.segundos == 0 && time.minutos == 0 && time.horas == 0 && time.diaDaSemana == 0 && time.diaDoMes == 0 && time.mes == 0 && time.ano == 0)
 	{
 		statusLeituraRelogio = semRelogio;
 	}
@@ -129,7 +129,7 @@ unsigned char transformaDecimalParaBcd(unsigned char valor)
     
     valorTemp = valor;
     valor = 0;
-    while(valorTemp > 9)
+    while (valorTemp > 9)
     {
         valorTemp = valorTemp - 10;
         valor++;   

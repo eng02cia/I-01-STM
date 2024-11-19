@@ -476,7 +476,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, CONTROL485_Pin|pinoData6_Pin|pinoData5_Pin|pinoColuna3_Pin
-                          |pinoLinha2_Pin|pinoLinha3_Pin|rele3_Pin, GPIO_PIN_RESET);
+                          |pinoLinha2_Pin|pinoLinha3_Pin|led_pesoEstavel_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, pinoColuna2_Pin|pinoBackLight_Pin|adas_Pin|pinoData7_Pin
@@ -488,9 +488,9 @@ static void MX_GPIO_Init(void)
                           |rele1_Pin|rele2_Pin|CONTROL_MD_Pin|pinoClockHx711_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : CONTROL485_Pin pinoData6_Pin pinoData5_Pin pinoColuna3_Pin
-                           pinoLinha2_Pin pinoLinha3_Pin rele3_Pin */
+                           pinoLinha2_Pin pinoLinha3_Pin led_pesoEstavel_Pin */
   GPIO_InitStruct.Pin = CONTROL485_Pin|pinoData6_Pin|pinoData5_Pin|pinoColuna3_Pin
-                          |pinoLinha2_Pin|pinoLinha3_Pin|rele3_Pin;
+                          |pinoLinha2_Pin|pinoLinha3_Pin|led_pesoEstavel_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -638,10 +638,10 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	if(!HAL_GPIO_ReadPin(pinoClockPs2_GPIO_Port,pinoClockPs2_Pin))
+	if (!HAL_GPIO_ReadPin(pinoClockPs2_GPIO_Port,pinoClockPs2_Pin))
 	{
-		if(statusInterruptPs2Atual == interruptRxPs2){recebeDadoTecladoPs2Interrupt();}
-		if(statusInterruptPs2Atual == interruptTxPs2){transmiteDadoTecladoPs2Interrupt();}
+		if (statusInterruptPs2Atual == interruptRxPs2){recebeDadoTecladoPs2Interrupt();}
+		if (statusInterruptPs2Atual == interruptTxPs2){transmiteDadoTecladoPs2Interrupt();}
 	}
 }
 /* USER CODE END 4 */

@@ -31,12 +31,7 @@ void controleCalibraIndicador(void)
 		{
 			teclaPressionadaAtual = teclaSolta;
 			menuCalibraIndicador = menuCalibraIndicadorEmEspera;
-#ifndef _indicadorBatelada
 			telaAcessaMenuFazCalibracao();
-#endif
-#ifdef _indicadorBatelada
-			telaAcessaMenuModoTecnicoBatelada();
-#endif
 		}
 		//tecla Seta acima
 		if (teclaPressionadaAtual == teclaSalva)
@@ -65,7 +60,7 @@ void controleCalibraIndicador(void)
 					//                        buf = ftoa(valorDivisaoIndicador,status);
 					loopConverteDivisaoInterna = 0;
 					carregaArrayComEspacoAscii(10,&valorAtualDivisaoInterna[0]);
-					while(loopConverteDivisaoInterna < 9)
+					while (loopConverteDivisaoInterna < 9)
 					{
 						valorAtualDivisaoInterna[loopConverteDivisaoInterna] = *buf;
 						buf++;
@@ -187,15 +182,10 @@ void controleCalibraIndicador(void)
 			break;
 		case teclaImprimeSetaAcima:
 			teclaPressionadaAtual = teclaSolta;
-#ifdef indicadorCargaViva       
-if (++tempProgIndicador >= _VMAX_FILTRO_DIGITAL){tempProgIndicador = 0;}
-#endif 
-#ifndef indicadorCargaViva  
-tempProgIndicador++;
-if (tempProgIndicador >= _VMAX_FILTRO_DIGITAL){tempProgIndicador = 0;}
-#endif                        
-telaValorFiltroDigitalIndicador();
-break;
+			tempProgIndicador++;
+			if (tempProgIndicador >= _VMAX_FILTRO_DIGITALI01){tempProgIndicador = 0;}                      
+			telaValorFiltroDigitalIndicador();
+			break;
 //tecla Ok
 			case teclaSalva:
 				teclaPressionadaAtual = teclaSolta;
@@ -227,7 +217,7 @@ break;
 			//tecla Seta acima
 		case teclaImprimeSetaAcima:
 			teclaPressionadaAtual = teclaSolta;
-			if (++tempProgIndicador > 4){tempProgIndicador =0;};
+			if (++tempProgIndicador > 3){tempProgIndicador = 0;};
 			telaPosicaoPontoDecimalIndicador();
 			break;
 			//tecla Ok
@@ -252,7 +242,7 @@ break;
 		case teclaTaraSetaEsquerda:
 			teclaPressionadaAtual = teclaSolta;
 			tempProgIndicador = 1;
-			telaControlaIncrementoDegralIndicador();
+			telaControlaIncrementodegrauIndicador();
 			break;
 			//retorna ao menu anterior
 		case teclaZeroRetorna:
@@ -275,7 +265,7 @@ else{tempProgIndicador = 1;}
 			else if (tempProgIndicador == 20){tempProgIndicador = 1;}
 			else{tempProgIndicador = 1;}
 #endif                          
-			telaControlaIncrementoDegralIndicador();
+			telaControlaIncrementodegrauIndicador();
 			break;
 			//tecla Ok
 		case teclaSalva:
@@ -353,7 +343,7 @@ else{tempProgIndicador = 1;}
 			converteArrayAsciiParaDecimal(6,&arrayTemp2Indicador[0]);
 
 			tempProgIndicador = comparaValoresArray(6,&arrayTemp1Indicador[0],&arrayTemp2Indicador[0]);
-			if (tempProgIndicador == 1)
+			if (tempProgIndicador != 2) // pode ser maior ou igual
 			{
 				carregaArrayComZeroAscii(8,&pesoCalibracaoIndicadorMem[0]);
 				carregaArrayComZeroAscii(10,&arrayInteiroTemp[0]);
@@ -522,7 +512,7 @@ void telaDefineDegrauPesoIndicador(void)
 	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charDegrauPesoIndicadorESP[0],&caracterLcd[0]);}
 
 	menuCalibraIndicador = menuDefineDegrauPeso;
-	telaControlaIncrementoDegralIndicador();
+	telaControlaIncrementodegrauIndicador();
 
 	caracterLcd[29] = caracterRetorna;
 	caracterLcd[30] = caracterIncremento;
@@ -586,9 +576,9 @@ void telaPesoZeroIndicador(void)
 	caracterLcd[31] = caracterSalva;
 }
 //////////////////////////////////////////////////////////////////////////////////
-//tela que controla a programacao do valor do degral do indicador              //
+//tela que controla a programacao do valor do degrau do indicador              //
 //////////////////////////////////////////////////////////////////////////////////
-void telaControlaIncrementoDegralIndicador(void)
+void telaControlaIncrementodegrauIndicador(void)
 {
 	if (tempProgIndicador == 10 || tempProgIndicador == 20){inteiroTo2BytesAscii(tempProgIndicador,&caracterLcd[16]);}
 	else
@@ -853,6 +843,16 @@ void telaErroPesoCalibracao (void)
 	transfereCaracterLcdMenu2Dwin();
 	mostraTelaTemporariaLcd = 1;
 	tempoMostraTelaTemporariaLcd = 1;
+
+#ifdef displaySeteSegmentosLcd
+	transfereArrayToArray(6,&dadoLcdSetSegmentos[0],&backupDigitosLcdSeteSegmentos[0]);
+	dadoLcdSetSegmentos[1] = 'E';
+	dadoLcdSetSegmentos[2] = 'R';
+	dadoLcdSetSegmentos[3] = 'R';
+	dadoLcdSetSegmentos[4] = 'O';
+	dadoLcdSetSegmentos[5] = 'R';
+	dadoLcdSetSegmentos[6] = '6';
+#endif
 }
 
 /*tela de erro na capacidade maxima programada                                */
@@ -888,16 +888,18 @@ void verificaSenhaAcessoCalibracao(void)
 	//programacao do digito zero (digito menos siginificativo)                      //
 	//////////////////////////////////////////////////////////////////////////////////
 	case programandoDigitoZero:
-		switch (teclaPressionadaAtual )
+		switch (teclaPressionadaAtual)
 		{
 		// tecla incrementa o valor do digito
 		case teclaImprimeSetaAcima:
+			teclaPressionadaAtual = teclaSolta;
 			flagPiscaDigitoSenha = 0;
 			senhaTemp[3]++;
 			if (senhaTemp[3] > '9'){senhaTemp[3] = '0';}
 			break;
 			//Direciona programacao para digito a esquerda
 		case teclaTaraSetaEsquerda:
+			teclaPressionadaAtual = teclaSolta;
 			flagPiscaDigitoSenha = 1;
 			digitoAtualProgramacao = programandoDigitoTres;
 			break;
@@ -913,12 +915,14 @@ void verificaSenhaAcessoCalibracao(void)
 		{
 		// tecla incrementa o valor do digito
 		case teclaImprimeSetaAcima:
+			teclaPressionadaAtual = teclaSolta;
 			flagPiscaDigitoSenha = 0;
 			senhaTemp[2]++;
 			if (senhaTemp[2] > '9'){senhaTemp[2] = '0';}
 			break;
 			//Direciona programacao para digito a esquerda
 		case teclaTaraSetaEsquerda:
+			teclaPressionadaAtual = teclaSolta;
 			flagPiscaDigitoSenha = 1;
 			digitoAtualProgramacao = programandoDigitoZero;
 			break;
@@ -934,11 +938,13 @@ void verificaSenhaAcessoCalibracao(void)
 		{
 		// tecla incrementa o valor do digito
 		case teclaImprimeSetaAcima:
+			teclaPressionadaAtual = teclaSolta;
 			flagPiscaDigitoSenha = 0;
 			senhaTemp[1]++;
 			if (senhaTemp[1] > '9'){senhaTemp[1] = '0';}
 			break;
 		case teclaTaraSetaEsquerda:
+			teclaPressionadaAtual = teclaSolta;
 			flagPiscaDigitoSenha = 1;
 			digitoAtualProgramacao = programandoDigitoUm;
 			break;
@@ -954,12 +960,14 @@ void verificaSenhaAcessoCalibracao(void)
 		{
 		// tecla incrementa o valor do digito
 		case teclaImprimeSetaAcima:
+			teclaPressionadaAtual = teclaSolta;
 			flagPiscaDigitoSenha = 0;
 			senhaTemp[0]++;
 			if (senhaTemp[0] > '9'){senhaTemp[0] = '0';}
 			break;
 			//Direciona programacao para digito a esquerda
 		case teclaTaraSetaEsquerda:
+			teclaPressionadaAtual = teclaSolta;
 			flagPiscaDigitoSenha = 1;
 			digitoAtualProgramacao = programandoDigitoDois;
 			break;
@@ -967,8 +975,8 @@ void verificaSenhaAcessoCalibracao(void)
 			break;
 		}
 		break;
-		default:
-			break;
+	default:
+		break;
 	}
 }
 //////////////////////////////////////////////////////////////////////////////////
@@ -1032,7 +1040,7 @@ void controlaPiscaDigitoProgSenha(void)
 				if (digitoAtualProgramacao == programandoDigitoZero){caracterLcd[19] = '_';}
 				if (digitoAtualProgramacao == programandoDigitoUm){caracterLcd[18] = '_';}
 				if (digitoAtualProgramacao == programandoDigitoDois){caracterLcd[17] = '_';}
-				if (digitoAtualProgramacao == programandoDigitoTres){caracterLcd[16] = '';}
+				if (digitoAtualProgramacao == programandoDigitoTres){caracterLcd[16] = '_';}
 			}
 		}
 	}
@@ -1052,7 +1060,7 @@ void apagaSenha(void)
 ////////////////////////////////////////////////////////////////////////////////// 
 void rotacionaArrayTelaValorDivisao(void)
 { 
-	while(valorAtualDivisaoInterna[9] == ' ' || valorAtualDivisaoInterna[9] == '0')
+	while (valorAtualDivisaoInterna[9] == ' ' || valorAtualDivisaoInterna[9] == '0')
 	{
 		valorAtualDivisaoInterna[9] = valorAtualDivisaoInterna[8];
 		valorAtualDivisaoInterna[8] = valorAtualDivisaoInterna[7];

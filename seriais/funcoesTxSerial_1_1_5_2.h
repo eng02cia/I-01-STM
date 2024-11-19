@@ -1,11 +1,11 @@
 //////////////////////////////////////////////////////////////////////////////////		
-//      funcoes que controlam a transmis�o de dados pela serial 1         		//	
+//      funcoes que controlam a transmissao de dados pela serial 1         		//	
 //////////////////////////////////////////////////////////////////////////////////
 #include "transfereArrayToArray.h"
 extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart5;
 //////////////////////////////////////////////////////////////////////////////////		
-//Inicializa as variaveis utilizadas na Transmis�o da serial 1					//
+//Inicializa as variaveis utilizadas na transmissao da serial 1					//
 //////////////////////////////////////////////////////////////////////////////////		
 void iniciaVariaveisTxSerial_1(void)
 {
@@ -20,7 +20,7 @@ void iniciaVariaveisTxSerial_1(void)
     if (velocidadeTxSerial_1 == velocidade115200Kbps){velocidadeSerial_1_115200Kbps();}
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//funcao que faz a transmis�o de dados pela serial 1   		        			//
+//funcao que faz a transmissao de dados pela serial 1   		        			//
 //////////////////////////////////////////////////////////////////////////////////		
 void controleTxSerial_1(void)
 {
@@ -48,7 +48,7 @@ void controleTxSerial_1(void)
 	}	*/
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//funcao que controla a transmis�o de dados pela serial 1   					//
+//funcao que controla a transmissao de dados pela serial 1   					//
 //////////////////////////////////////////////////////////////////////////////////	
 void controleTxFrameSerial_1(void)
 {
@@ -115,7 +115,7 @@ void controleTxFrameSerial_1(void)
                 frameTxSerial_1[0] = 0xD;               
                 transfereArrayToArray(6,&pesoBrutoIndicadorAscii[1],&frameTxSerial_1[1]);
                 indexCorrigePeso = &frameTxSerial_1[1];   
-                while(*indexCorrigePeso == ' ')
+                while (*indexCorrigePeso == ' ')
                 {    
                     *indexCorrigePeso = '0';
                     indexCorrigePeso++;

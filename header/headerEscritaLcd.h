@@ -63,7 +63,7 @@ static enum controlaEscritaLcd
 #define EnderecoLinha1                  0x80;
 #define EnderecoLinha2                  0xC0;
 
-//defini�ao de pinos utilziados na funcao
+//definicao de pinos utilziados na funcao
 #if _18F46K40
 #define	pinoEnable              LATEbits.LATE1
 #define	pinoSelectRegister  	LATEbits.LATE2

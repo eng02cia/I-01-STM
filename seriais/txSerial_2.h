@@ -112,7 +112,7 @@ void controleTxFrameSerial_2(void)
                         transfereArrayToArray(6,&pesoBrutoIndicadorAscii[1],&frameTxSerial_2[1]);
                     }                    
                     indexCorrigePeso = &frameTxSerial_2[1];    
-                    while(*indexCorrigePeso == ' ')
+                    while (*indexCorrigePeso == ' ')
                     {    
                         *indexCorrigePeso = '0';
                         indexCorrigePeso++;

@@ -306,7 +306,7 @@ void verificaComandoPrintExterno(void)
 //////////////////////////////////////////////////////////////////////////////////		
 //Liga leds direto                                                          	//
 //quando no modo indicador liga leds do corte para indicar status da tara e zero//
-//nesta configuracao so cortes nao s�o utilizados                               //
+//nesta configuracao so cortes nao sao utilizados                               //
 //////////////////////////////////////////////////////////////////////////////////
 void ledZeroTaraDireto(void)
 {

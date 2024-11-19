@@ -55,7 +55,7 @@ void funcaoMenuModoTecnicoIndicador(void)
                 case teclaImprimeSetaAcima:
                     teclaPressionadaAtual = teclaSolta;
                     tempConfigIndicador++;
-                    if (tempConfigIndicador >= _VMAX_FILTRO_DIGITAL){tempConfigIndicador = 0;}                   
+                    if (tempConfigIndicador >= _VMAX_FILTRO_DIGITALI01){tempConfigIndicador = 0;}                   
                     telaValorFiltroDigitalModoTecnicoIndicador();
                     break;
 //tecla Ok
@@ -249,14 +249,14 @@ void telaMostraProgramacaoModoFuncionamentoBackLight(void)
         if (tempConfigIndicador == 2){escreveDadoLcd(&charTelaLigadoPorTempoPT[0],&caracterLcd[16]);}
     }
     
-    if(linguagemSelecionadaMem == _INGLES) {
+    if (linguagemSelecionadaMem == _INGLES) {
         escreveDadoLcd(&charTelaModoFuncBackLightING[0],&caracterLcd[0]);
         if (tempConfigIndicador == 0){escreveDadoLcd(&charTelaDesligadoING[0],&caracterLcd[16]);}
         if (tempConfigIndicador == 1){escreveDadoLcd(&charTelaLigadoING[0],&caracterLcd[16]);}
         if (tempConfigIndicador == 2){escreveDadoLcd(&charTelaLigadoPorTempoING[0],&caracterLcd[16]);}
     }
 
-    if(linguagemSelecionadaMem == _ESPANHOL) {
+    if (linguagemSelecionadaMem == _ESPANHOL) {
         escreveDadoLcd(&charTelaModoFuncBackLightESP[0],&caracterLcd[0]);
         if (tempConfigIndicador == 0){escreveDadoLcd(&charTelaDesligadoESP[0],&caracterLcd[16]);}
         if (tempConfigIndicador == 1){escreveDadoLcd(&charTelaLigadoESP[0],&caracterLcd[16]);}

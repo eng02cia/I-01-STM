@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 void funcaoValoresTxModBusRtu(unsigned char qtBytesTx,unsigned char*origem,unsigned char *destino)
 {
-    while(qtBytesTx != 0)
+    while (qtBytesTx != 0)
     {
         *destino = *origem;
         destino++;
@@ -162,7 +162,7 @@ void transformaPesoParaPadraoModbus(void)
     peso32BitsModbus.statusL.stBit.subCarga = statusControleSubCarga;
 }
 //////////////////////////////////////////////////////////////////////////////////
-/*Rotaciona a array e insere zero para limite de convers�o de array para inteiro*/
+/*Rotaciona a array e insere zero para limite de conversao de array para inteiro*/
 /* modbus                                                                       */
 //////////////////////////////////////////////////////////////////////////////////
 void rotacionaArrayInsere0ConverteParaInteiroModBus(void)

@@ -17,7 +17,7 @@ unsigned char trocaTelaPeso;
 
 //frases utilizadas 
 const char telaStatusPrincipal[] =        {"                ""                "};
-const char telaInicialVersao[] =          {" V3.0          "};
+const char telaInicialVersao[] =          {" V3.0           "};
 const char telaInicialIndicador[] =       {" INDICADOR I-01 "};
 
 //  TELA PROG EM PORTUGUES

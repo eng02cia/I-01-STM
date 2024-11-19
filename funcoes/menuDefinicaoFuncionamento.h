@@ -5,7 +5,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 void funcaoProgramaDefinicaoFuncionamento(void)
 {
-    if(teclasEditaProgramaAtualPs2 == teclaEsc)
+    if (teclasEditaProgramaAtualPs2 == teclaEsc)
     {        
         menuProgramaDefinicaoFucionamento = menuDefinicaoFuncionamentoEmEspera;
         teclasEditaProgramaAtualPs2 = teclaSoltaPs2;  
@@ -20,7 +20,7 @@ void funcaoProgramaDefinicaoFuncionamento(void)
 //////////////////////////////////////////////////////////////////////////////////
             case defineNomeTelaPrincipal:
                 digita16CaracteresAscii();
-                if(teclasEditaProgramaAtualPs2 == teclaEnter)
+                if (teclasEditaProgramaAtualPs2 == teclaEnter)
                 {
                     posicaoDigitoControleCadastro = 0;
                     teclasEditaProgramaAtualPs2 = teclaSoltaPs2;
@@ -44,13 +44,13 @@ void funcaoProgramaDefinicaoFuncionamento(void)
     				case teclaSetaParaCima:
     					teclasEditaProgramaAtualPs2 = teclaSoltaPs2;
     					tempConfigModoFuncionamento++;
-    					if(tempConfigModoFuncionamento > 2){tempConfigModoFuncionamento = 0;}
+    					if (tempConfigModoFuncionamento > 2){tempConfigModoFuncionamento = 0;}
     					telaMostraSelecionaLinguagem();
     					break;
     				case teclaSetaParaBaixo:
     					teclasEditaProgramaAtualPs2 = teclaSoltaPs2;
     					tempConfigModoFuncionamento--;
-    					if(tempConfigModoFuncionamento == 255){tempConfigModoFuncionamento = 2;}
+    					if (tempConfigModoFuncionamento == 255){tempConfigModoFuncionamento = 2;}
     					telaMostraSelecionaLinguagem();
     					break;
     				case teclaEnter:
@@ -76,9 +76,9 @@ void funcaoProgramaDefinicaoFuncionamento(void)
 //////////////////////////////////////////////////////////////////////////////////
 void digita16CaracteresAscii(void)
 {
-    if(teclaPs2Press != 0)
+    if (teclaPs2Press != 0)
     {                
-        if(posicaoDigitoControleCadastro < 16)
+        if (posicaoDigitoControleCadastro < 16)
        {          
             nomeProgTemp[posicaoDigitoControleCadastro++] = teclaPs2Press;
             telaMostraProgNomeAcii();
@@ -86,7 +86,7 @@ void digita16CaracteresAscii(void)
         teclaPs2Press = 0;
     }
 //verifica se apaga o nome 
-    if(teclasEditaProgramaAtualPs2 == teclaDel)
+    if (teclasEditaProgramaAtualPs2 == teclaDel)
     {
         teclasEditaProgramaAtualPs2 = teclaSoltaPs2;
         posicaoDigitoControleCadastro = 0;
@@ -94,10 +94,10 @@ void digita16CaracteresAscii(void)
         telaMostraProgNomeAcii();
     }
 //verifica se apaga um caracter
-    if(teclasEditaProgramaAtualPs2 == teclaBackSpace)
+    if (teclasEditaProgramaAtualPs2 == teclaBackSpace)
     {
         teclasEditaProgramaAtualPs2 = teclaSoltaPs2;
-        if(posicaoDigitoControleCadastro != 0)
+        if (posicaoDigitoControleCadastro != 0)
         {
              nomeProgTemp[--posicaoDigitoControleCadastro] = ' ';
             telaMostraProgNomeAcii();
@@ -115,7 +115,7 @@ void acessaMenuProgramaNomeTelaInicial(void)
 }
 
 //////////////////////////////////////////////////////////////////////////////////
-//acessaa programação da liguagem utiliziada pelo indicador de peso          	//
+//acessaa programacao da liguagem utiliziada pelo indicador de peso          	//
 //////////////////////////////////////////////////////////////////////////////////
 void acessaMenuModoFuncionamentoLiguagem(void)
 {
@@ -129,15 +129,7 @@ void acessaMenuModoFuncionamentoLiguagem(void)
 //////////////////////////////////////////////////////////////////////////////////
 void telaMostraProgNomeAcii(void)
 {
-    //  if(menuProgramaDefinicaoFucionamento == defineNomeRedeWifi)
-    // {
-    //     escreveDadoLcd(&charTelaDefineNomeRedeWifi[0],&caracterLcd[0]); 
-    // } 
-    // if(menuProgramaDefinicaoFucionamento == defineSenhaRedeWifi)
-    // {
-    //     escreveDadoLcd(&charTelaDefineSenhaWifi[0],&caracterLcd[0]);
-    // }
-    if(menuProgramaDefinicaoFucionamento == defineNomeTelaPrincipal)
+    if (menuProgramaDefinicaoFucionamento == defineNomeTelaPrincipal)
     {
         if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaDefineTelaInicialPT[0],&caracterLcd[0]);}
         if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaDefineTelaInicialING[0],&caracterLcd[0]);}
@@ -150,21 +142,21 @@ void telaMostraProgNomeAcii(void)
 }
 
 //////////////////////////////////////////////////////////////////////////////////
-//tela mostra a configuração da linguagem utilizada                         	//
+//tela mostra a configuracao da linguagem utilizada                         	//
 //////////////////////////////////////////////////////////////////////////////////
 void telaMostraSelecionaLinguagem(void)
 {
-	if(tempConfigModoFuncionamento == _PORTUGUES)
+	if (tempConfigModoFuncionamento == _PORTUGUES)
 	{
 	    escreveDadoLcd(&charTelaSelecionaLinguagemPT[0],&caracterLcd[0]);
 		escreveDadoLcd(&charTelaPortugues[0],&caracterLcd[16]);
 	}
-	if(tempConfigModoFuncionamento == _INGLES)
+	if (tempConfigModoFuncionamento == _INGLES)
 	{
         escreveDadoLcd(&charTelaSelecionaLinguagemING[0],&caracterLcd[0]);
 		escreveDadoLcd(&charTelaIngles[0],&caracterLcd[16]);
 	}
-	if(tempConfigModoFuncionamento == _ESPANHOL)
+	if (tempConfigModoFuncionamento == _ESPANHOL)
 	{
         escreveDadoLcd(&charTelaSelecionaLinguagemESP[0],&caracterLcd[0]);
 		escreveDadoLcd(&charTelaEspanhol[0],&caracterLcd[16]);

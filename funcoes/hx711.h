@@ -16,7 +16,7 @@ void readHx711(void)
     if (HAL_GPIO_ReadPin(GPIOB,pinoDataHx711_Pin) == 0)//indica que o hx 711 esta pronto
     {
         countReadHx711 = 24;
-        while(countReadHx711 != 0)
+        while (countReadHx711 != 0)
         {
         	HAL_GPIO_WritePin(pinoClockHx711_GPIO_Port, pinoClockHx711_Pin,GPIO_PIN_SET);
             delayReadHx711();
@@ -80,7 +80,7 @@ void readHx711(void)
 void delayReadHx711(void)
 {
     delayHx711 = 5;
-    while(delayHx711!=0){delayHx711--;}
+    while (delayHx711!=0){delayHx711--;}
 }
 
 //////////////////////////////////////////////////////////////////////////////////

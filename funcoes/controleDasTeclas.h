@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////		
-//metodo que inicia a utilização da entrada externa do botão liga Desliga       //
+//metodo que inicia a utilizacao da entrada externa do botao liga Desliga       //
 //////////////////////////////////////////////////////////////////////////////////
 extern UART_HandleTypeDef huart3;
 void iniciaTeclaExterna (void)
@@ -7,7 +7,7 @@ void iniciaTeclaExterna (void)
 
 }
 //////////////////////////////////////////////////////////////////////////////////
-//Funções de tratamento das teclas utilizadas                                   //
+//Funcoes de tratamento das teclas utilizadas                                   //
 //////////////////////////////////////////////////////////////////////////////////			
 void trataControleDasTeclas (void)
 {
@@ -23,7 +23,7 @@ void trataControleDasTeclas (void)
             tempoBacklightLigado = 0;
 			flagTempoExibeBackLight = 1;
         }
-//teclas do menu principal disponiveis somente fora da programação
+//teclas do menu principal disponiveis somente fora da programacao
         if (menuAcessaMenusProgramacao == menuAcessaMenusProgramacaoEmEspera
            && menuCalibraIndicador == menuCalibraIndicadorEmEspera
            && menuConfiguraSerial_1 == menuConfiguraSerial_1EmEspera
@@ -41,7 +41,7 @@ void trataControleDasTeclas (void)
             if (statusLigaDesliga == _LIGADO)
             {
 
-                if(teclasEditaProgramaAtualPs2 == teclaFuncao1)
+                if (teclasEditaProgramaAtualPs2 == teclaFuncao1)
                 {
                     teclasEditaProgramaAtualPs2 = teclaSoltaPs2;
                     // transmiteCargaCompleta = 0;
@@ -51,7 +51,7 @@ void trataControleDasTeclas (void)
                     acessaMenuProgramaNomeTelaInicial();
                 }  
 //////////////////////////////////////////////////////////////////////////////////		
-//Verifica o acesso aos menus de programação                          		 	//
+//Verifica o acesso aos menus de programacao                          		 	//
 //////////////////////////////////////////////////////////////////////////////////		
                 if (menuAcessaMenusProgramacao == menuAcessaMenusProgramacaoEmEspera)
                 {
@@ -62,7 +62,7 @@ void trataControleDasTeclas (void)
 // tecla tara peso indicador
                 if (teclaPressionadaAtual == teclaTaraSetaEsquerda)
                 {
-//não aceita tara quando indicador em zero
+//nao aceita tara quando indicador em zero
                     if (controleTara == _TARADESATIVADA)
                     {
                         if (indicadorEmZero != 1) 
@@ -81,18 +81,18 @@ void trataControleDasTeclas (void)
         }
         else
         {
-//Acesso ao Menu de calibração do indicador
+//Acesso ao Menu de calibracao do indicador
             if (menuCalibraIndicador != menuCalibraIndicadorEmEspera){controleCalibraIndicador();}
-//acessa os menus de seleção dos menus de programação
+//acessa os menus de selecao dos menus de programacao
             if (menuAcessaMenusProgramacao != menuAcessaMenusProgramacaoEmEspera){funcaoAcessaMenusProgramacao();}
-//acessa os menus de programação da serial 1
+//acessa os menus de programacao da serial 1
             if (menuConfiguraSerial_1 != menuConfiguraSerial_1EmEspera){funcaoMenusConfiguraSerial_1();} 
-//acessa os menus de programação tecnica do indicador de peso
+//acessa os menus de programacao tecnica do indicador de peso
             if ( menuModoTecnicoIndicador != menuModoTecnicoIndicadorEmEspera){funcaoMenuModoTecnicoIndicador();}            
 //acessa o menu de programacao das definicoes de funcionamento do indicador   
-            if(menuProgramaDefinicaoFucionamento != menuDefinicaoFuncionamentoEmEspera){funcaoProgramaDefinicaoFuncionamento();}
+            if (menuProgramaDefinicaoFucionamento != menuDefinicaoFuncionamentoEmEspera){funcaoProgramaDefinicaoFuncionamento();}
 //acessa o menu de programacao da hora e data
-            if(menuProgramacaoRelogioAtual != menuProgramaRelogioEmEspera){funcaoProgramaHoraData();}
+            if (menuProgramacaoRelogioAtual != menuProgramaRelogioEmEspera){funcaoProgramaHoraData();}
         }
     }
 }	
@@ -105,7 +105,7 @@ void metodoLigaSistema(void)
     	HAL_GPIO_WritePin(pinoBackLight_GPIO_Port, pinoBackLight_Pin,GPIO_PIN_SET);
     	backLightDwinMaximo();
     }
-    if(modoFuncionamentoBackLightMem == _BACKLIGHT_DESLIGADO)
+    if (modoFuncionamentoBackLightMem == _BACKLIGHT_DESLIGADO)
     {
     	HAL_GPIO_WritePin(pinoBackLight_GPIO_Port, pinoBackLight_Pin,GPIO_PIN_RESET);
     	backLightDwinMinimo();
@@ -113,7 +113,6 @@ void metodoLigaSistema(void)
     statusLigaDesliga = _LIGADO;
     exibeVersionControl = 1;
     statusPowerOnMem = _LIGADO;
-    trocarPaginaPeso = 1;
     carregaTela11();
     transfereCaracterDwinTelaInicial();  
     fazTelaInicialPesoDwin = 0;
@@ -122,7 +121,7 @@ void metodoLigaSistema(void)
     escreveDadoLcd(&telaInicialIndicador[0],&caracterLcd[0]);
     escreveDadoLcd(&telaInicialVersao[0],&caracterLcd[16]);
     controleTara = _TARADESATIVADA;
-// o indicador sera zerado na inicialização caso o peso esteja dentro do limite de zero
+// o indicador sera zerado na inicializacao caso o peso esteja dentro do limite de zero
     if (statusZeroAoLigarMem == 1){fazZeroIndicadorPeso = 1;}
 }
 //////////////////////////////////////////////////////////////////////////////////		
@@ -144,7 +143,7 @@ void metodoDesligaSistema(void)
     flagTempoExibeBackLight = 0;
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//Função que controla o tempo para liberar o acesso ao menu de programação  	//
+//Funcao que controla o tempo para liberar o acesso ao menu de programacao  	//
 //////////////////////////////////////////////////////////////////////////////////		
 void funcaoTempoAcessoMenuProgramacao(void)
 {
@@ -157,7 +156,7 @@ void funcaoTempoAcessoMenuProgramacao(void)
             teclaPressionada = 1;
             flagTempoValidaTeclaSolta = 0;
             tempoValidaTeclaSolta = 0;
-//Acesso aos menus de programação tecnica
+//Acesso aos menus de programacao tecnica
             if (teclaPressionadaAtual == teclaSalva)
             {
                 teclaPressionadaAtual = teclaSolta;
@@ -167,10 +166,10 @@ void funcaoTempoAcessoMenuProgramacao(void)
 	}
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//Função que controla o tempo de tecla solta                                  	//
-// quando a tecla momoria 1 ou memoria 2 é solta antes do tempo para            //
-// para acesso a programação o acesso a programação é cancelado e a momoria     //
-//correspondente a tecla é ativada                                              //
+//Funcao que controla o tempo de tecla solta                                  	//
+// quando a tecla momoria 1 ou memoria 2 e solta antes do tempo para            //
+// para acesso a programacao o acesso a programacao e cancelado e a momoria     //
+//correspondente a tecla e ativada                                              //
 //////////////////////////////////////////////////////////////////////////////////	
 void tempoValidaTeclaQuandoSolta (void)
 {
@@ -219,7 +218,7 @@ void telaErroLimiteZero(void)
     transfereCaracterLcdLinha1Dwin();
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//função de controle do tempo para apagar o backlight quando backlight amarelo	//
+//funcao de controle do tempo para apagar o backlight quando backlight amarelo	//
 //////////////////////////////////////////////////////////////////////////////////		
 void funcaoTempoBackLight(void)
 {

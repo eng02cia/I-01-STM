@@ -27,11 +27,9 @@ void fazMediaAdCalibraIndicador(void)
                 valorZeroIndicador = valorZeroIndicadorMem.int32;
                 salvaValorAdZeroIndicadorMem();
                 valorTaraIndicador = tempAd; 
-                if (operacaoComTeclado == 1)
+                if (operacaoComTeclado == 1) // VER DO QUE SE TRATA ISSO AQUI
                 {
-                	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charZeroOkPT[0],&caracterLcd[16]);}
-                    if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charZeroOkING[0],&caracterLcd[16]);}
-                    if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charZeroOkESP[0],&caracterLcd[16]);}
+                    telaZeroOkCalibracao();
                 }
 //                else{enviaConfirmaCalibracaoZero();}
             } 
@@ -86,16 +84,13 @@ void fazMediaAdCalibraIndicador(void)
             }          
         }
     }
-
-
-
 }
 //////////////////////////////////////////////////////////////////////////////////
 /*Calcula a divisao interna                                                     */
 //////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////
-/*Rotaciona a array e insere zero para limite de ocnvers�o de array             */
+/*Rotaciona a array e insere zero para limite de conversao de array             */
 //////////////////////////////////////////////////////////////////////////////////
 void rotacionaArrayInsere0Converte(void)
 {
@@ -109,7 +104,7 @@ void rotacionaArrayInsere0Converte(void)
 	if (arrayInteiroTemp[6] == '.')	{indexRetiraPonto = 5;}
   	if (arrayInteiroTemp[5] == '.')	{indexRetiraPonto = 4;}
     loop = indexRetiraPonto;
-    while(loop != 0)
+    while (loop != 0)
     {
         temp = arrayInteiroTemp[indexRetiraPonto++];
         arrayInteiroTemp[indexRetiraPonto] = temp;
@@ -128,3 +123,79 @@ void rotacionaArrayInsere0Converte(void)
     arrayInteiroTemp[9] = 0;    
 }
 
+//////////////////////////////////////////////////////////////////////////////////
+/*tela zero ok na calibracao										             */
+//////////////////////////////////////////////////////////////////////////////////
+void telaZeroOkCalibracao(void)
+{
+	if (linguagemSelecionadaMem == 0){transfereConstToArray(&charZeroOkPT[0],&caracterLcd[16]);}
+	if (linguagemSelecionadaMem == 1){transfereConstToArray(&charZeroOkING[0],&caracterLcd[16]);}
+	if (linguagemSelecionadaMem == 2){transfereConstToArray(&charZeroOkESP[0],&caracterLcd[16]);}
+#ifdef displaySeteSegmentosLcd
+	if (linguagemSelecionadaMem == portugues)
+	{
+		dadoLcdSetSegmentos[1] = 'Z';
+		dadoLcdSetSegmentos[2] = 'E';
+		dadoLcdSetSegmentos[3] = 'R';
+		dadoLcdSetSegmentos[4] = ' ';
+		dadoLcdSetSegmentos[5] = 'O';
+		dadoLcdSetSegmentos[6] = 'K';
+	}
+	if (linguagemSelecionadaMem == ingles)
+	{
+		dadoLcdSetSegmentos[1] = 'Z';
+		dadoLcdSetSegmentos[2] = 'E';
+		dadoLcdSetSegmentos[3] = 'R';
+		dadoLcdSetSegmentos[4] = ' ';
+		dadoLcdSetSegmentos[5] = 'O';
+		dadoLcdSetSegmentos[6] = 'K';
+	}
+	if (linguagemSelecionadaMem == espanhol)
+	{
+		dadoLcdSetSegmentos[1] = 'C';
+		dadoLcdSetSegmentos[2] = 'E';
+		dadoLcdSetSegmentos[3] = 'R';
+		dadoLcdSetSegmentos[4] = ' ';
+		dadoLcdSetSegmentos[5] = 'O';
+		dadoLcdSetSegmentos[6] = 'K';
+	}
+#endif
+}
+//////////////////////////////////////////////////////////////////////////////////
+/*tela calibracao correta											             */
+//////////////////////////////////////////////////////////////////////////////////
+void telaCertoCalibracao(void)
+{
+	if (linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&charCertoPT[0],&caracterLcd[16]);}
+	if (linguagemSelecionadaMem == _INGLES){transfereConstToArray(&charCertoING[0],&caracterLcd[16]);}
+	if (linguagemSelecionadaMem == _ESPANHOL){transfereConstToArray(&charCertoESP[0],&caracterLcd[16]);}
+#ifdef displaySeteSegmentosLcd
+	if (linguagemSelecionadaMem == portugues)
+	{
+		dadoLcdSetSegmentos[1] = 'C';
+		dadoLcdSetSegmentos[2] = 'E';
+		dadoLcdSetSegmentos[3] = 'R';
+		dadoLcdSetSegmentos[4] = 'T';
+		dadoLcdSetSegmentos[5] = 'O';
+		dadoLcdSetSegmentos[6] = ' ';
+	}
+	if (linguagemSelecionadaMem == ingles)
+	{
+		dadoLcdSetSegmentos[1] = 'R';
+		dadoLcdSetSegmentos[2] = 'I';
+		dadoLcdSetSegmentos[3] = 'G';
+		dadoLcdSetSegmentos[4] = 'H';
+		dadoLcdSetSegmentos[5] = 'T';
+		dadoLcdSetSegmentos[6] = ' ';
+	}
+	if (linguagemSelecionadaMem == espanhol)
+	{
+		dadoLcdSetSegmentos[1] = 'B';
+		dadoLcdSetSegmentos[2] = 'I';
+		dadoLcdSetSegmentos[3] = 'E';
+		dadoLcdSetSegmentos[4] = 'N';
+		dadoLcdSetSegmentos[5] = ' ';
+		dadoLcdSetSegmentos[6] = ' ';
+	}
+#endif
+}

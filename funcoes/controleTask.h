@@ -64,7 +64,7 @@ void ControleMultTask(void)
             mile_segundos=0;	
             funcaoVerificaSalvaModBusRtu();
             funcaoLeituraDadosMemoriaModBusRtu();
-            funcaoControleLeituraPeso();
+			funcaoControleLeituraPeso();
 		}
 ///////////////////////////////////////////////////////////////////////        
 //funcoes executadas a cada 100 mile segundo               			 //
@@ -83,6 +83,7 @@ void ControleMultTask(void)
             metodoFazZeroIndicadorPeso();
             metodoControleDasTelas();  
             TimerReadi2c();
+			controlIndicacaoPesoEstavelLinhaI();
 		}
 ///////////////////////////////////////////////////////////////////////        
 //funcoes executadas a cada 1000 mile segundo (1 segundo)  			 //
@@ -110,33 +111,16 @@ void ControleMultTask(void)
 ////////////////////////////////////////////////////////////////////////////////
 void funcaoControleLeituraPeso(void)
 {    
-	if (flagModBusRtu.transmitindoModBusRtu == 0)
-	{
-		switch (controleLeituraPesoI01) {
-			case kStatusControlePeso_LendoHx711:
-				readHx711();
-				controleLeituraPesoI01++;
-				break;
-			case kStatusControlePeso_MostraPeso:
-				mostraPesoIndicador();
-				controleLeituraPesoI01++;
-				break;
-			case kStatusControlePeso_TrataPesoBruto:
-				trataPesoBrutoIndicador();
-				controleLeituraPesoI01++;
-				break;
-			case kStatusControlePeso_TrataPesoTara:
-				trataPesoTaraIndicador();
-				controleLeituraPesoI01++;
-				break;
-			case kStatusControlePeso_TrataPesoLiquido:
-				trataPesoLiquidoIndicador();
-				controleLeituraPesoI01 = 0;
-				break;
-			default:
-				controleLeituraPesoI01 = 0;
-				break;
-		}
+	readHx711();
+	mostraPesoIndicadorI01();
+	trataPesoBrutoIndicadorI01();
+	trataPesoTaraIndicadorI01();
+	trataPesoLiquidoIndicadorI01();
+
+	if (controleTara == _TARAATIVADA) {
+		transfereArrayToArray(7,&pesoLiquidoIndicadorAscii[0],&pesoConvertido[0]);
+	} else {
+		transfereArrayToArray(7,&pesoBrutoIndicadorAscii[0],&pesoConvertido[0]);
 	}
 }
 

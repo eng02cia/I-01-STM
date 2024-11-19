@@ -111,8 +111,8 @@ void Error_Handler(void);
 #define pinoLinha2_GPIO_Port GPIOC
 #define pinoLinha3_Pin GPIO_PIN_8
 #define pinoLinha3_GPIO_Port GPIOC
-#define rele3_Pin GPIO_PIN_9
-#define rele3_GPIO_Port GPIOC
+#define led_pesoEstavel_Pin GPIO_PIN_9
+#define led_pesoEstavel_GPIO_Port GPIOC
 #define led_Zero_Pin GPIO_PIN_8
 #define led_Zero_GPIO_Port GPIOA
 #define led_Tara_Pin GPIO_PIN_9

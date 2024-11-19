@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////////////////	
 
 //////////////////////////////////////////////////////////////////////////////////
-//prototipo de fun��es                                                          //
+//prototipo de funcoes                                                          //
 //////////////////////////////////////////////////////////////////////////////////
 //void inicializaComunicacaoPs2(void);
 void recebeDadoTecladoPs2Interrupt(void);
@@ -79,7 +79,7 @@ union
         unsigned char Byte;
 	}paridadeRxPs2;
     
-//enumeracao de controle do inicio da transmis�o de dados para o teclado ps2
+//enumeracao de controle do inicio da transmissao de dados para o teclado ps2
 enum statusTxPs2
 {
     txPs2Start,
@@ -126,7 +126,7 @@ enum teclasEditaPrograma
     teclaPageDown,
     teclaPower,
 }teclasEditaProgramaAtualPs2 = teclaSoltaPs2;
-// uni�o de controle paridade       
+// uniao de controle paridade       
 union
 {
 	struct

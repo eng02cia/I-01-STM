@@ -24,7 +24,7 @@ void salvaVelocidadeTxSerial_1Mem(void)
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //Funcao que prepara os dados para salvar o status da saida da serial 1       	//
-//se ser� rs 232 ou rs485                                                       //
+//se sera rs 232 ou rs485                                                       //
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaStatusSaidaPortaSerial_1Mem(void)
 {    
@@ -53,7 +53,7 @@ void salvaStatusSaidaDadosSerial_2Mem(void)
 		&Data_Write_I2c[endStatusSaidaDadosSerial2Mem], umByte, 10);
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//Funcao que prepara os dados para salvar o endere�o Indicador              	//
+//Funcao que prepara os dados para salvar o endereco Indicador              	//
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaEnderecoIndicadorMem(void)
 {    
@@ -62,8 +62,8 @@ void salvaEnderecoIndicadorMem(void)
 		&Data_Write_I2c[endEnderecoIndicadorMem], umByte, 10);
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//Funcao que salva a quantidade de frames que ser�o transmitidas por segundo  	//
-//quando no modo transmis�o continua                                            //
+//Funcao que salva a quantidade de frames que serao transmitidas por segundo  	//
+//quando no modo transmissao continua                                            //
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaQtFramePorSegundoMem(void)
 {    
@@ -131,7 +131,7 @@ void salvaPosicaoPontoDecimalIndicadorMem(void)
 	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, endPosicaoPontoDecimalIndicadorMem, tamanhoPagina, 
 		&Data_Write_I2c[endPosicaoPontoDecimalIndicadorMem], umByte, 10);
 }
-/* salva o valor do degral do indicador de peso                               */
+/* salva o valor do degrau do indicador de peso                               */
 void salvaPosicaoDegrauIndicadorMem(void)
 {
 	Data_Write_I2c[endDegrauIndicadorMem] = degrauIndicadorMem;
@@ -139,7 +139,7 @@ void salvaPosicaoDegrauIndicadorMem(void)
 		&Data_Write_I2c[endDegrauIndicadorMem], umByte, 10);
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//Funcao que prepara os dados para se a transmis�o automatica de dados esta   	//
+//Funcao que prepara os dados para se a transmissao automatica de dados esta   	//
 //ativa ou desativada                                                           //
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaStatusTransmisaoAutomaticoMem(void)

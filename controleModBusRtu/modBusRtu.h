@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////		
-//      Funções que controlam a transmisão de dados pela serial 1         		//
+//      Funcoes que controlam a transmisao de dados pela serial 1         		//
 //////////////////////////////////////////////////////////////////////////////////
 #include "transfereConstToArray.h"
 #include "transfereArrayToArray.h"
@@ -14,7 +14,7 @@ extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart5;
 
 //////////////////////////////////////////////////////////////////////////////////		
-//função que controla a transmisão de dados pela serial 1   					//
+//funcao que controla a transmisao de dados pela serial 1   					//
 //////////////////////////////////////////////////////////////////////////////////		
 void controleTxFrameSerial_1ModBusRtu(void)
 {
@@ -22,18 +22,18 @@ void controleTxFrameSerial_1ModBusRtu(void)
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //                                                                              //
-//metodos relacionados a transmissão e recpção quando mo modo modbus rtu      	//
+//metodos relacionados a transmissao e recpcao quando mo modo modbus rtu      	//
 //                                                                              //
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////		
-//metodo que inicia a comunicaçãomodBus Rtu                                    	//
+//metodo que inicia a comunicacaomodBus Rtu                                    	//
 //////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////		
-//descrição do padrao modbus adotado pelo indicador de peso                   	//
+//descricao do padrao modbus adotado pelo indicador de peso                   	//
 //escrita leitura em varios registradores
-// byte 1 endereço (1 a 99)
-// byte 2 função modbus escrita em um unico registradore (0x03)
+// byte 1 endereco (1 a 99)
+// byte 2 funcao modbus escrita em um unico registradore (0x03)
 // byte 3 numero do registrador  H                  (0x00)
 // byte 4 numero do registrador  L                  (0x10)
 // byte 5 quantidade de bytes a serem lidos H       (0x00)
@@ -42,11 +42,11 @@ void controleTxFrameSerial_1ModBusRtu(void)
 // byte 8 valor cks H
 //////////////////////////////////////////////////////////////////////////////////	
 //////////////////////////////////////////////////////////////////////////////////
-//interrupção da serial 1                                                       //
+//interrupcao da serial 1                                                       //
 //////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////		
-//função da recepção quando no modo modbus rtu                        			//
+//funcao da recepcao quando no modo modbus rtu                        			//
 //////////////////////////////////////////////////////////////////////////////////	
 void rxSerialModBusRtu(void)
 {
@@ -63,7 +63,7 @@ void rxSerialModBusRtu(void)
     } 
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//função de tratamento dos dados recebidos quando no modo modbus Rtu   			//
+//funcao de tratamento dos dados recebidos quando no modo modbus Rtu   			//
 //considerar time out                                                           //
 //////////////////////////////////////////////////////////////////////////////////	
 void trataFrameRxModBusRtu(void)
@@ -105,7 +105,7 @@ void trataFrameRxModBusRtu(void)
     }    
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//função utilizada para transoforma os dados para retornar                  	//
+//funcao utilizada para transoforma os dados para retornar                  	//
 //////////////////////////////////////////////////////////////////////////////////	
 void trataModBusRtu(void)
 {
@@ -117,19 +117,19 @@ void trataModBusRtu(void)
 //////////////////////////////////////////////////////////////////////////////////	        
         if (tempModBusRtu >= 0x01 && tempModBusRtu <= _qtMaxLeituraRegistradorValido16Bits)
         {
-//endereço inicial
-//tempModBusRtu = valor do endereço inicial
+//endereco inicial
+//tempModBusRtu = valor do endereco inicial
             tempModBusRtu = tempModBusRtu - 1;
             tempModBusRtu = tempModBusRtu * 2;            
 //quantidade de registradores
 //temp1ModBusRtu = valor com a quantidade de registradores          
             temp1ModBusRtu = ((frameRxModBusRtu[4]*255)+ frameRxModBusRtu[5]); 
             temp1ModBusRtu = temp1ModBusRtu *2;
-//verifica se não estrapolou a quatidade maxima de registradores a serem lidos
+//verifica se nao estrapolou a quatidade maxima de registradores a serem lidos
             temp2ModBusRtu = tempModBusRtu + temp1ModBusRtu;
             if (temp2ModBusRtu <= _qtMaxLeituraRegistradorValido8Bits)
             {
-            //construção da resposta
+            //construcao da resposta
 //temp2ModBusRtu = valor com a quantidade de bytes para resposta
                 frameTxModBusRtu[0] = enderecoIndicadorMem;
                 frameTxModBusRtu[1] = 0x03;
@@ -180,11 +180,11 @@ void trataModBusRtu(void)
 //verifica numero do registrador inicial
         tempModBusRtu = ((frameRxModBusRtu[2]*255)+ frameRxModBusRtu[3]);
 //////////////////////////////////////////////////////////////////////////////////	        
-// endereço inicial permitido para salvar dados
+// endereco inicial permitido para salvar dados
         if (tempModBusRtu >= 0x0D && tempModBusRtu <= _qtMaxEscritaRegistradorValido16Bits)
         {
-//endereço inicial
-//tempModBusRtu = valor do endereço inicial
+//endereco inicial
+//tempModBusRtu = valor do endereco inicial
             tempModBusRtu = tempModBusRtu - 1;     
             tempModBusRtu = tempModBusRtu * 2;            
             funcaoValoresTxModBusRtu(2,&frameRxModBusRtu[4],&arrayMemoriaModbusRtuEspenho[tempModBusRtu]);
@@ -219,11 +219,11 @@ void trataModBusRtu(void)
 //verifica numero do registrador inicial
         tempModBusRtu = ((frameRxModBusRtu[2]*255)+ frameRxModBusRtu[3]);
 //////////////////////////////////////////////////////////////////////////////////	        
-// endereço inicial permitido para salvar dados
+// endereco inicial permitido para salvar dados
         if (tempModBusRtu >= 0x0D && tempModBusRtu <= _qtMaxEscritaRegistradorValido16Bits)
         {
-//endereço inicial
-//tempModBusRtu = valor do endereço inicial
+//endereco inicial
+//tempModBusRtu = valor do endereco inicial
             tempModBusRtu = tempModBusRtu - 1;    
             tempModBusRtu = tempModBusRtu * 2;
 //quantidade de registradores
@@ -236,7 +236,7 @@ void trataModBusRtu(void)
             {
                 if (temp2ModBusRtu <= _qtMaxEscritaRegistradorValido8Bits)
                 {                        
-//construção da resposta
+//construcao da resposta
                     funcaoValoresTxModBusRtu(temp1ModBusRtu,&frameRxModBusRtu[7],&arrayMemoriaModbusRtuEspenho[tempModBusRtu]);            
                     flagVerificaSalvaFrameModBusRtu = 1;
 //temp2ModBusRtu = valor com a quantidade de bytes para resposta
@@ -292,7 +292,7 @@ void trataModBusRtu(void)
             iniciaTxModbus();
         }
     }     
-//implementa erro função invalida
+//implementa erro funcao invalida
     if (flagModBusRtu.txModBusRtu == 0)
     {
         frameTxModBusRtu[0] = enderecoIndicadorMem;

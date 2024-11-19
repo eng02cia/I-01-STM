@@ -9,7 +9,7 @@ void piscaDigitoProgIndicador(void);
 void piscaDigitoProgIndicadorNextion(void);
 void manipulacaoDoDigitoDoIndicador(void);
 void metodoPiscaProgIndicador(void);
-void telaControlaIncrementoDegralIndicador(void);
+void telaControlaIncrementodegrauIndicador(void);
 void telaValorFiltroDigitalIndicador(void);
 void telaErroPesoCalibracao (void);
 void telaErroCapacidadeMaxima(void);
@@ -75,19 +75,19 @@ const char charUmaGramasPonto[]=    {"00.000"};
 const char charUmDecigramaPonto[]=  {"0.0000"};
 
 // telas portugues
-const char charAguardePT[]=   {"AGUARDE   "};
-const char charZeroOkPT[]=    {"ZERO OK   "};
-const char charCertoPT[]=     {"CERTO     "};
+const char charAguardePT[]=   {" AGUARDE  "};
+const char charZeroOkPT[]=    {" ZERO OK  "};
+const char charCertoPT[]=     {" CERTO    "};
 
 // telas ingles
-const char charAguardeING[]=   {"WAIT      "};
-const char charZeroOkING[]=    {"ZERO OK   "};
-const char charCertoING[]=     {"DONE      "};
+const char charAguardeING[]=   {" WAIT     "};
+const char charZeroOkING[]=    {" ZERO OK  "};
+const char charCertoING[]=     {" DONE     "};
 
 // telas espanhol
-const char charAguardeESP[]=   {"ESPERAR   "};
-const char charZeroOkESP[]=    {"CERO OK   "};
-const char charCertoESP[]=     {"HECHO     "};
+const char charAguardeESP[]=   {" ESPERAR  "};
+const char charZeroOkESP[]=    {" CERO OK  "};
+const char charCertoESP[]=     {" HECHO    "};
 
 const char senhaTecnica[]= {"4358"};
 const char senhaProgDivisao[]={"6752"};
@@ -177,12 +177,8 @@ enum
 #define _DEZGRAMAS    2
 #define _UMGRAMA     3
 #define _DECIGRAMA    4
-#ifdef indicadorCargaViva
-#define _VMAX_FILTRO_DIGITAL 4
-#endif
-#ifndef indicadorCargaViva
-#define _VMAX_FILTRO_DIGITAL 30
-#endif
+
+#define _VMAX_FILTRO_DIGITALI01 11
 //#define limiteProgFiltroDigital 121
 //flags utilizados na programacao
 

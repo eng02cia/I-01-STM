@@ -69,7 +69,7 @@ void funcaoMenusConfiguraSerial_1(void)
             }            
             break; 
 //////////////////////////////////////////////////////////////////////////////////
-//ativa desativa a transmis�o pela serial 1                                     //
+//ativa desativa a transmissao pela serial 1                                     //
 //////////////////////////////////////////////////////////////////////////////////
         case ativaDesativaSerial_1:
             switch (teclaPressionadaAtual)
@@ -158,7 +158,7 @@ void funcaoMenusConfiguraSerial_1(void)
             }            
             break;                                   
 //////////////////////////////////////////////////////////////////////////////////
-//quando modbus-rtu ou Sigmacia SA define o endere�o do indicador de peso       //
+//quando modbus-rtu ou Sigmacia SA define o endereco do indicador de peso       //
 //////////////////////////////////////////////////////////////////////////////////
         case defineEnderecoIndicadorSerial_1:
             switch (teclaPressionadaAtual)
@@ -188,7 +188,7 @@ void funcaoMenusConfiguraSerial_1(void)
             }            
             break;
 //////////////////////////////////////////////////////////////////////////////////
-//quando na transmiss�o continua define a quantidade de frames por segundo      //
+//quando na transmissao continua define a quantidade de frames por segundo      //
 //////////////////////////////////////////////////////////////////////////////////
         case defineQtFramePorSegundoSerial_1:
             switch (teclaPressionadaAtual)
@@ -359,7 +359,7 @@ void telaMostraTipoSaidaDadosSerial_2(void)
     caracterLcd[31] = caracterSalva;     
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//tela mostra o endere�o definido para a modbus-rtu e Sigmacia SA              	//
+//tela mostra o endereco definido para a modbus-rtu e Sigmacia SA              	//
 //////////////////////////////////////////////////////////////////////////////////
 void telaMostraEnderecoIndicador(void)
 {

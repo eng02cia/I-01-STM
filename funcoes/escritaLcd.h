@@ -58,7 +58,7 @@ void apagaLinha_2Lcd(void)
 //////////////////////////////////////////////////////////////////////////////////
 int escreveDadoLcd(const char *charOrigem,unsigned char*charDestino)
 {
-	while(*charOrigem != 0)
+	while (*charOrigem != 0)
     {
         *charDestino = *charOrigem;
         charOrigem++;
@@ -144,7 +144,7 @@ void controlaEscritaLcd (void)
                     }               
                }            
             break;
-//muda endere�o para escrita na linha 1 do lcd
+//muda endereco para escrita na linha 1 do lcd
             case enviaComandoEscritaLinha_1Lcd:
                 statusAtualEscritaLcd = enviaCaracterLinha_1Lcd;
                 byteDataLcd.Byte = EnderecoLinha1;
@@ -152,7 +152,7 @@ void controlaEscritaLcd (void)
                 quantidadeByteLcd = 16;
                 enviaComandoLcd();
             break;
-//muda endere�o para escrita na linha 2 do lcd        
+//muda endereco para escrita na linha 2 do lcd        
             case enviaComandoEscritaLinha_2Lcd:
                 statusAtualEscritaLcd = enviaCaracterLinha_2Lcd;
                 byteDataLcd.Byte = EnderecoLinha2;
@@ -218,7 +218,7 @@ void transmiteByteLcd(void)
     HAL_GPIO_WritePin(pinoEnable_GPIO_Port, pinoEnable_Pin,GPIO_PIN_RESET);
 }
 //////////////////////////////////////////////////////////////////////////////////
-//Metodo que manda nible para o lcd, s�o dois nible por byte                    //
+//Metodo que manda nible para o lcd, sao dois nible por byte                    //
 //////////////////////////////////////////////////////////////////////////////////
 void transmiteNibleLcd (void)
 {

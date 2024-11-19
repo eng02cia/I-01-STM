@@ -15,14 +15,6 @@
 //Variaveis
 //#include "definicoes.h"
 
-typedef enum {
-    kStatusControlePeso_LendoHx711 = 0,
-    kStatusControlePeso_MostraPeso,
-    kStatusControlePeso_TrataPesoBruto,
-    kStatusControlePeso_TrataPesoTara,
-    kStatusControlePeso_TrataPesoLiquido,
-} tStatusControlePeso;
-
 static unsigned char micro_segundos;
 static unsigned char mile_segundos;
 static unsigned int deze_segundos;

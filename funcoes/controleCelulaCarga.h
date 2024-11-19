@@ -1,6 +1,6 @@
 
 ///////////////////////////////////////////////////////////////////////////////
-//funções de controle das medições da celula de carga                         	//
+//funcoes de controle das medicoes da celula de carga                         	//
 //////////////////////////////////////////////////////////////////////////////////
 #include "transfereArrayToArray.h"
 #include "carregaArrayComZeroAscii.h"
@@ -12,74 +12,70 @@
 #include "carregaArrayComZeroDecimal.h"
 #include "converteArrayDecimalParaAscii.h"
 #include "somaValorArray.h"
-/*
-*passos para transformação do peso
-* 1- verificar se o peso não esta saturado, se saturando tratar de forma diferente.
- *2- calcular o diferencial da celula de carga e usar a referencia de calibração
- * para calcular o peso.
- *
- * dados importantes:
- * valor do Ad
- * valor de calibração
- * carga maxima
- * valor de zero
+#include "comparaValoresArray.h"
 
-*/
-void inicializaLedsIndicador(void)
+//////////////////////////////////////////////////////////////////////////////////
+//faz o tratamento da estabilidade do peso                                      //
+//////////////////////////////////////////////////////////////////////////////////
+void controlIndicacaoPesoEstavelLinhaI(void)
 {
+    /* controla a visualizacao do led de estabilidade do peso
+    peso considerado estavel quando sem oscilacao por mais de 1,2 segundos. o inmetro permite um tempo de ate 2
+    segundos sem oscilacao. */
 
-}
-void mostraPesoIndicador(void)
-{
-//////////////////////////////////////////////////////////////////////////////////
- // captura o peso sem filtro digital, peso sem filtro utilizado na             //
- // pesagem das peças de couro                                                  //
-//////////////////////////////////////////////////////////////////////////////////
-//verifica qual divisão utilizar no calculo do peso
-#ifdef _indicadorCurturme
-    if (dataAdMediaPronta < valorPeso_1FloatMem.float32)
+    tempComparaCeluCarga = comparaValoresArray(7,&pesoConvertido[0],&referenciaPesoEstavelAscii[0]);
+    if (tempComparaCeluCarga == 0 && flagIndicaPesoEstavel == 0)
     {
-        if (valorDivisao_1IndicadorMem.float32 == 0)
+        if (++tempoIndicaPesoEstavel >= 12)
         {
-            valorDivisaoIndicador = valorDivisao_2IndicadorMem.float32;
-            offSetPesoAtual = offSetFaixaPeso_2Mem;
-        }
-        else
-        {
-            valorDivisaoIndicador = valorDivisao_1IndicadorMem.float32;
-            offSetPesoAtual = offSetFaixaPeso_1Mem;
+            flagIndicaPesoEstavel = 1;
+            tempoIndicaPesoEstavel = 0;
+            HAL_GPIO_WritePin(led_pesoEstavel_GPIO_Port,led_pesoEstavel_Pin,GPIO_PIN_SET);
         }
     }
     else
     {
-        if (valorDivisao_2IndicadorMem.float32 == 0)
+        if (tempComparaCeluCarga != 0)
         {
-            valorDivisaoIndicador = valorDivisao_1IndicadorMem.float32;
-            offSetPesoAtual = offSetFaixaPeso_1Mem;
-        }
-        else
-        {
-            valorDivisaoIndicador = valorDivisao_2IndicadorMem.float32;
-            offSetPesoAtual = offSetFaixaPeso_2Mem;
+            transfereArrayToArray(7,&pesoConvertido[0],&referenciaPesoEstavelAscii[0]);
+            flagIndicaPesoEstavel = 0;
+            tempoIndicaPesoEstavel = 0;
+            HAL_GPIO_WritePin(led_pesoEstavel_GPIO_Port,led_pesoEstavel_Pin,GPIO_PIN_RESET);
         }
     }
+}
+//////////////////////////////////////////////////////////////////////////////////
+//tempo                                      //
+//////////////////////////////////////////////////////////////////////////////////
+
+
+/*
+*passos para transformacao do peso
+* 1- verificar se o peso nao esta saturado, se saturando tratar de forma diferente.
+ *2- calcular o diferencial da celula de carga e usar a referencia de calibracao
+ * para calcular o peso.
+ *
+ * dados importantes:
+ * valor do Ad
+ * valor de calibracao
+ * carga maxima
+ * valor de zero
+*/
+void mostraPesoIndicadorI01(void)
+{
     dataAdMediaPronta = dataAdHx711;
     valorCorrigidoAd = valorZeroIndicador;
     valorCorrigidoAd = dataAdMediaPronta - valorCorrigidoAd;
     valorPesoTempIndicador = valorCorrigidoAd/valorDivisaoIndicador;
-    fazArredondamentoPeso();
-    valorPesoBrutoCarregamento = valorPesoTempIndicador;
-    if (valorPesoTempIndicador > 30)
-    {
-        valorPesoBrutoCarregamento = valorPesoBrutoCarregamento + offSetTempPesoAtual;
-    }
-    trataPesoAdIndicador();
+    fazArredondamentoPesoI01();
+
+    trataPesoAdIndicadorI01();
     transfereArrayToArray(7,&arrayPesoTemp[0],&pesoCarregamentoAscii[0]);
-#endif
+
 //media do valor ad para ajudar na estabilidade
 //filtro digital
 
-controleFiltroDigital = valorFiltroDigitalMem;
+    controleFiltroDigital = valorFiltroDigitalMem * 3;
     if (loopMediaAdPeso < controleFiltroDigital)
     {
         dataAdPeso = dataAdPeso + dataAdHx711;
@@ -98,84 +94,83 @@ controleFiltroDigital = valorFiltroDigitalMem;
 //////////////////////////////////////////////////////////////////////////////////
 //faz o tratamento do peso bruto                                                //
 //////////////////////////////////////////////////////////////////////////////////
-void trataPesoBrutoIndicador(void)
+void trataPesoBrutoIndicadorI01(void)
 {
     valorCorrigidoAd = valorZeroIndicador;
     valorCorrigidoAd = dataAdMediaPronta - valorCorrigidoAd;
     valorPesoTempIndicador = valorCorrigidoAd/valorDivisaoIndicador;
-#ifdef _indicadorCurturme
-    if (valorPesoTempIndicador > 30)
-    {
-        offSetTempPesoAtual = 0;
-        if (offSetPesoAtual > 15){offSetTempPesoAtual = offSetPesoAtual - 15;}
-        if (offSetPesoAtual < 15)
-        {
-            offSetTempPesoAtual = 15 - offSetPesoAtual;
-            offSetTempPesoAtual *= -1;
-        }
-    }
-    if (valorPesoTempIndicador > 30)
-    {
-        valorPesoTempIndicador = valorPesoTempIndicador + offSetTempPesoAtual;
-    }
-#endif
-    fazArredondamentoPeso();
+    fazArredondamentoPesoI01();
     valorPesoBrutoFloatIndicador = valorPesoTempIndicador;
     trantandoPesoBruto = 1;
-    trataPesoAdIndicador();
+    
+    trataPesoAdIndicadorI01();
     valorPesoBrutoIntIndicador = atol(arrayConverteToInteiro);
     transfereArrayToArray(7,&arrayPesoTemp[0],&pesoBrutoIndicadorAscii[0]);
 
     floatTemp = valorPesoCargaMaxima;
+    floatTemp = valorPesoCargaMaxima + 9;
     statusControleSobreCarga  = 0;
     statusControleSubCarga = 0;
+
+    floatTemp = valorPesoCargaMaxima + (degrauIndicadorMem * 9);
     if (valorPesoTempIndicador  >= floatTemp){statusControleSobreCarga = 1;}
-    floatTemp *=-1;
-    if (valorPesoTempIndicador  <= floatTemp){statusControleSubCarga = 1;}
+//   floatTemp *=-1;
+    float1Temp = (degrauIndicadorMem * 9);
+    float1Temp *=-1;
+    if (valorPesoTempIndicador  <= float1Temp){statusControleSubCarga = 1;}
     trantandoPesoBruto = 0;
-    // statusMostraPesoNegativo = statusPesoNegativoTemp;
+    if (controleTara == _TARADESATIVADA)
+    {
+    	statusControleMostraPesoNegativo = statusPesoNegativoTemp;
+    }
 }
 //////////////////////////////////////////////////////////////////////////////////
-//faz o tratamento do peso tara                                               //
+//faz o tratamento do peso tara                                               	//
 //////////////////////////////////////////////////////////////////////////////////
-void trataPesoTaraIndicador(void)
+void trataPesoTaraIndicadorI01(void)
 {
     valorPesoTempIndicador = valorTaraIndicador - valorZeroIndicador;
     valorPesoTempIndicador = valorPesoTempIndicador/valorDivisaoIndicador;
     valorPesoTaraFloatIndicador = valorPesoTempIndicador;
-    fazArredondamentoPeso();
-    trataPesoAdIndicador();
+    fazArredondamentoPesoI01();    
+    trataPesoAdIndicadorI01();       
     valorPesoTaraIntIndicador = atol(arrayConverteToInteiro);
     transfereArrayToArray(7,&arrayPesoTemp[0],&pesoTaraIndicadorAscii[0]);
 }
 //////////////////////////////////////////////////////////////////////////////////
 //faz o tratamento do peso liquido                                                //
 //////////////////////////////////////////////////////////////////////////////////
-void trataPesoLiquidoIndicador(void)
+void trataPesoLiquidoIndicadorI01(void)
 {
     if (controleTara == _TARAATIVADA)
     {
         valorPesoTempIndicador = valorPesoBrutoFloatIndicador - valorPesoTaraFloatIndicador;
         valorPesoLiquidoFloatIndicador = valorPesoTempIndicador;
+        valorPesoTempIndicador = (int)(valorPesoBrutoIntIndicador - valorPesoTaraIntIndicador);
     }
     else
     {
         valorPesoTempIndicador = 0;
         valorTaraIndicador = valorZeroIndicador;
     }
-    fazArredondamentoPeso();
-    trataPesoAdIndicador();
+    fazArredondamentoPesoI01();
+    
+    valorPesoTESTE1 = valorPesoTempIndicador;
+
+    trataPesoAdIndicadorI01();
     valorPesoLiquidoIntIndicador = atol(arrayConverteToInteiro);  
     transfereArrayToArray(7,&arrayPesoTemp[0],&pesoLiquidoIndicadorAscii[0]);
+    if (controleTara == _TARAATIVADA)
+    {
+    	 statusControleMostraPesoNegativo = statusPesoNegativoTemp;
+    }
 }
 //////////////////////////////////////////////////////////////////////////////////
 //faz o tratamento do peso recebido pela celula de carga                        //
 //////////////////////////////////////////////////////////////////////////////////
-void trataPesoAdIndicador(void)
+void trataPesoAdIndicadorI01(void)
 {
 //transforma zero negativo em zero
-//    tempLongInt = valorPesoTempIndicador;
-//    if (tempLongInt == 0){valorPesoTempIndicador = 0;}
     f = valorPesoTempIndicador;
     buf = ftoa();
     loopConvertePesoCelulaCarga = 0;
@@ -188,9 +183,11 @@ void trataPesoAdIndicador(void)
     }
 //carrega peso convertido
     carregaArrayComZeroDecimal(7,&arrayPesoTemp[0]);
+
     index2Indicador = &arrayPesoTemp[0];
     index1Indicador = &arrayPesoConvertidoCelulaCarga[0];
     loopConvertePesoCelulaCarga = 0;
+
     while (loopConvertePesoCelulaCarga != 7)
     {
         *index2Indicador = *index1Indicador;
@@ -198,10 +195,11 @@ void trataPesoAdIndicador(void)
         index2Indicador++;
         loopConvertePesoCelulaCarga++;
         if (*index1Indicador == '.'){loopConvertePesoCelulaCarga = 7;}
-    }
-//faz correção da array de peso
+    }   
+
+//faz correcao da array de peso
     index1Indicador = &arrayPesoTemp[6];
-    while(*index1Indicador == 0)
+    while (*index1Indicador == 0)
     {
         arrayPesoTemp[6] = arrayPesoTemp[5];
         arrayPesoTemp[5] = arrayPesoTemp[4];
@@ -211,15 +209,16 @@ void trataPesoAdIndicador(void)
         arrayPesoTemp[1] = arrayPesoTemp[0];
         arrayPesoTemp[0] = '0';
     }
+
 // trata peso quando negativo
-    statusPesoNegativo = 0;
+    statusPesoNegativoTemp = 0;
     index1Indicador = &arrayPesoTemp[6];
     loopTempIndicador = 7;
-    while(loopTempIndicador !=0)
+    while (loopTempIndicador != 0)
     {
         if (*index1Indicador == '-')
         {
-           statusPesoNegativo = 1;
+           statusPesoNegativoTemp = 1;
            *index1Indicador = '0';
            loopTempIndicador = 1;
         }
@@ -292,16 +291,16 @@ void trataPesoAdIndicador(void)
     {
         carregaArrayComZeroAscii(7,&arrayPesoTemp[0]);
         if (trantandoPesoBruto == 1){indicadorEmZero = 1;}
-        statusPesoNegativo = 0;
+        statusPesoNegativoTemp = 0;
     }
     if (posicaoPontoDecimalIndicadorMem != 0){inserePontoDecimal(posicaoPontoDecimalIndicadorMem,7,&arrayPesoTemp[0]);}
     zeroAsciiEsquerdaToVazioAscii(7,&arrayPesoTemp[0]);
-//insere traço quando peso negativo
-   if (statusPesoNegativo == 1)
+//insere traco quando peso negativo
+   if (statusPesoNegativoTemp == 1)
    {
         index1Indicador = &arrayPesoTemp[6];
         loopTempIndicador = 7;
-        while(loopTempIndicador !=0)
+        while (loopTempIndicador != 0)
         {
             if (*index1Indicador == ' ')
             {
@@ -316,7 +315,7 @@ void trataPesoAdIndicador(void)
 //////////////////////////////////////////////////////////////////////////////////
 //faz  com arredondamento quando peso negativo e qaundo peso positivo           //
 //////////////////////////////////////////////////////////////////////////////////
-void fazArredondamentoPeso(void)
+void fazArredondamentoPesoI01(void)
 {
     if (valorPesoTempIndicador < 0)
     {
@@ -324,7 +323,7 @@ void fazArredondamentoPeso(void)
         floatTemp1 *= -1;
         tempLongInt = floatTemp1;
         floatTemp1 = floatTemp1 - tempLongInt;
-        if (floatTemp1 >= 0.55){valorPesoTempIndicador = valorPesoTempIndicador - 1;}
+       if (floatTemp1 >= 0.55){valorPesoTempIndicador = valorPesoTempIndicador - 1;}
     }
     else
     {

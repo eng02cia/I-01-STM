@@ -1,7 +1,7 @@
 extern  GPIO_InitTypeDef GPIO_InitStruct = {0};
 //////////////////////////////////////////////////////////////////////////////////		
 //                                                                            	//
-// Fun��es de comunicacao com teclado PS2                                   	//
+// Funcoes de comunicacao com teclado PS2                                   	//
 //////////////////////////////////////////////////////////////////////////////////
 //  DESCRIcao DO PROTOCOLO:													  	//
 //  Pinos Utilizados
@@ -12,7 +12,7 @@ extern  GPIO_InitTypeDef GPIO_InitStruct = {0};
 //////////////////////////////////////////////////////////////////////////////////		
 void inicializaComunicacaoPs2(void)
 {
-    if(tecladoPs2Inicializado == 0)
+    if (tecladoPs2Inicializado == 0)
     {
     	HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
     	__HAL_RCC_GPIOC_CLK_DISABLE();
@@ -45,7 +45,7 @@ void recebeDadoTecladoPs2Interrupt(void)
 //////////////////////////////////////////////////////////////////////////////////        
         case rxPs2Start:
         	tempPinoData = HAL_GPIO_ReadPin(pinoDataPs2_GPIO_Port, pinoDataPs2_Pin);
-            if(tempPinoData == 0)
+            if (tempPinoData == 0)
             {
                 statusRxPs2Atual = rxPs2Byte;
                 rloopRxDataTeclado = 0;
@@ -56,7 +56,7 @@ void recebeDadoTecladoPs2Interrupt(void)
 //////////////////////////////////////////////////////////////////////////////////        
         case rxPs2Byte:
         	tempPinoData = HAL_GPIO_ReadPin(pinoDataPs2_GPIO_Port, pinoDataPs2_Pin);
-            if(tempPinoData == 0)
+            if (tempPinoData == 0)
             {
                 dataRxTecladoPs2 = dataRxTecladoPs2 + 0;
             }            
@@ -66,7 +66,7 @@ void recebeDadoTecladoPs2Interrupt(void)
                 paridadeRxPs2.Byte++;
             }
            
-            if(++rloopRxDataTeclado == 8 )
+            if (++rloopRxDataTeclado == 8 )
             {
                 statusRxPs2Atual = rxPs2Paridade;               
             }
@@ -78,10 +78,10 @@ void recebeDadoTecladoPs2Interrupt(void)
 //////////////////////////////////////////////////////////////////////////////////        
         case rxPs2Paridade:
 
-            if(paridadeRxPs2.St.bitParidade == 1)
+            if (paridadeRxPs2.St.bitParidade == 1)
             {
             	tempPinoData = HAL_GPIO_ReadPin(pinoDataPs2_GPIO_Port, pinoDataPs2_Pin);
-                if(tempPinoData == 0)
+                if (tempPinoData == 0)
                 {
                     statusRxPs2Atual = rxPs2Stop;
                 }
@@ -90,10 +90,10 @@ void recebeDadoTecladoPs2Interrupt(void)
                     statusRxPs2Atual = rxPs2Start;
                 }                
             }
-            if(paridadeRxPs2.St.bitParidade == 0)
+            if (paridadeRxPs2.St.bitParidade == 0)
             {
             	tempPinoData = HAL_GPIO_ReadPin(pinoDataPs2_GPIO_Port, pinoDataPs2_Pin);
-                if(tempPinoData == 1)
+                if (tempPinoData == 1)
                 {
                     statusRxPs2Atual = rxPs2Stop;
                 }
@@ -108,27 +108,27 @@ void recebeDadoTecladoPs2Interrupt(void)
             statusRxPs2Atual = rxPs2Start;                        
             dataTeclaPresPs2[indexDataTeclaPresPs2] = dataRxTecladoPs2; 
             indexDataTeclaPresPs2++;
-            if(indexDataTeclaPresPs2 > 19)
+            if (indexDataTeclaPresPs2 > 19)
             {
                 indexDataTeclaPresPs2 = 0;
             }
             tempPinoData = HAL_GPIO_ReadPin(pinoDataPs2_GPIO_Port, pinoDataPs2_Pin);
-            if(tempPinoData == 1)
+            if (tempPinoData == 1)
             {
-                if(configuraTecladoPs2 == 0)
+                if (configuraTecladoPs2 == 0)
                 {
-                    if(dataRxTecladoPs2 != 0xFE && dataRxTecladoPs2 != 0xFA)
+                    if (dataRxTecladoPs2 != 0xFE && dataRxTecladoPs2 != 0xFA)
                     {
                         dataTeclaPs2 = dataRxTecladoPs2;
                         flagTrataTeclaPs2 = 1; 
                         funcaoVerificaTeclaValidaPs2();
                     }
                 }
-//verifica se � confirmacao do recebimento do pedido de configuracao do teclado
-                if(dataRxTecladoPs2 == 0xFA)
+//verifica confirmacao do recebimento do pedido de configuracao do teclado
+                if (dataRxTecladoPs2 == 0xFA)
                 {
-//verifica se � configuracao do teclado                
-                    if(configuraTecladoPs2 == 1)
+//verifica configuracao do teclado                
+                    if (configuraTecladoPs2 == 1)
                     {
                         dataTxPs2 = statusTecladoPs2.Byte;
                         configuraTecladoPs2 = 0;
@@ -137,7 +137,7 @@ void recebeDadoTecladoPs2Interrupt(void)
                     }
                 }
 //verifica se esta sendo solicitado o reenvio do ultimo dado            
-                if(dataRxTecladoPs2 == 0xFE)
+                if (dataRxTecladoPs2 == 0xFE)
                 {
                     dataTxPs2 = dataTxPs2Backup;
                     startTxTecladoPs2Interrupt();                 
@@ -147,7 +147,7 @@ void recebeDadoTecladoPs2Interrupt(void)
     }
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//Funcao que inicia a transmis�o de dados para o teclado                       	//
+//Funcao que inicia a transmissao de dados para o teclado                       	//
 //          																	//
 //////////////////////////////////////////////////////////////////////////////////	
 void startTxTecladoPs2Interrupt(void)	
@@ -211,7 +211,7 @@ void transmiteDadoTecladoPs2Interrupt (void)
         case txPs2Byte: 
             tempTxPs2 = dataTxPs2;
             tempTxPs2 = tempTxPs2 & 0b00000001;            
-            if(tempTxPs2 == 0)
+            if (tempTxPs2 == 0)
             {
             	HAL_GPIO_WritePin(pinoDataPs2_GPIO_Port, pinoDataPs2_Pin, GPIO_PIN_RESET);
             }
@@ -221,14 +221,14 @@ void transmiteDadoTecladoPs2Interrupt (void)
                 HAL_GPIO_WritePin(pinoDataPs2_GPIO_Port, pinoDataPs2_Pin, GPIO_PIN_SET);
             }            
             dataTxPs2 = dataTxPs2 >> 1;
-            if(++rloopTxPs2 == 8)
+            if (++rloopTxPs2 == 8)
             {
                 statusTxPs2Atual = txPs2Paridade;
             }            
         break;    
 //////////////////////////////////////////////////////////////////////////////////        
         case txPs2Paridade: 
-            if(paridadeTxPs2.St.bitParidade == 0)
+            if (paridadeTxPs2.St.bitParidade == 0)
             {
             	HAL_GPIO_WritePin(pinoDataPs2_GPIO_Port, pinoDataPs2_Pin, GPIO_PIN_SET);
             }
@@ -254,7 +254,7 @@ void transmiteDadoTecladoPs2Interrupt (void)
 //////////////////////////////////////////////////////////////////////////////////
         case txPs2ChecaAcknowledge:
         	tempPinoData = HAL_GPIO_ReadPin(pinoDataPs2_GPIO_Port, pinoDataPs2_Pin);
-            if(tempPinoData == 0)
+            if (tempPinoData == 0)
             {
                 statusInterruptPs2Atual = interruptRxPs2;
             }
@@ -276,9 +276,9 @@ void delayMicroSegundosPs2(unsigned int delayInterno)
 //////////////////////////////////////////////////////////////////////////////////
 void metodoTempoControleConfigPs2(void)
 {
-    if(configuraTecladoPs2 == 1)
+    if (configuraTecladoPs2 == 1)
     {
-        if(++tempoMaxConfigTecladoPs2 > 500)
+        if (++tempoMaxConfigTecladoPs2 > 500)
         {
             tempoMaxConfigTecladoPs2 = 0;
             configuraTecladoPs2 = 0;            
@@ -364,7 +364,7 @@ void tempoValidaTeclaPs2(void)
 {
     if (flagRecebendoDadoTecladoPs2 == 1)
     {
-        if(++tempoRecebendoDadoTecladoPs2 > 500)
+        if (++tempoRecebendoDadoTecladoPs2 > 500)
         {
             flagRecebendoDadoTecladoPs2 = 0;
             tempoRecebendoDadoTecladoPs2 = 0;
@@ -378,7 +378,7 @@ void tempoValidaTeclaPs2(void)
 //////////////////////////////////////////////////////////////////////////////////
 void funcaoVerificaTeclaValidaPs2(void)
 {
-    if(flagTrataTeclaPs2 == 1)
+    if (flagTrataTeclaPs2 == 1)
     {
         flagRecebendoDadoTecladoPs2 = 1;
         flagTrataTeclaPs2 = 0;
@@ -387,33 +387,33 @@ void funcaoVerificaTeclaValidaPs2(void)
         {
             case tipoTecla:                   
 // verifica se o teclado acabou de ser conectado
-                if(dataTeclaPs2 == 0xAA)
+                if (dataTeclaPs2 == 0xAA)
                 {
                    configTecladoPs2 = 1;
 //                    configFuncaoNumLock = 1;        
                 }
-// verifica se � tecla shift
-                if(dataTeclaPs2 == 0x12 || dataTeclaPs2 == 0x59)
+// verifica tecla shift
+                if (dataTeclaPs2 == 0x12 || dataTeclaPs2 == 0x59)
                 {                
                     teclaPressionadaPs2 = teclaShift;
 //                    dataTempTeclaPs2 = dataTeclaPs2;
                 }        
-// verfica se � tecla especial 
-                if(dataTeclaPs2 == 0xE0)
+// verfica tecla especial 
+                if (dataTeclaPs2 == 0xE0)
                 {                
                     teclaPressionadaPs2 = teclaExtend;
                 }             
                 else
                 {
-                    if(dataTeclaPs2 != 0xF0 && dataTeclaPs2 != 0xE0 && dataTeclaPs2 != 0x12 && dataTeclaPs2 != 0x59 && dataTeclaPs2 != 0xAA && dataTeclaPs2 != 0xFA)
+                    if (dataTeclaPs2 != 0xF0 && dataTeclaPs2 != 0xE0 && dataTeclaPs2 != 0x12 && dataTeclaPs2 != 0x59 && dataTeclaPs2 != 0xAA && dataTeclaPs2 != 0xFA)
                     {
 //verifca se a funcao caps lock esta ativa
-                       if(statusTecladoPs2.St.capsLock == 1)
+                       if (statusTecladoPs2.St.capsLock == 1)
                         {
-                            if(dataTeclaPs2 < _TAMANHO_MAXIMO_TABELA)
+                            if (dataTeclaPs2 < _TAMANHO_MAXIMO_TABELA)
                             {
                                 teclaPs2Press = tabelaConvertePcKeyboardToAsciiMaiusculo[dataTeclaPs2];
-                                if(teclaPs2Press != 0)
+                                if (teclaPs2Press != 0)
                                 {
                                     teclaValidaPs2 = 1;
                                     teclasEditaProgramaAtualPs2 == teclaSoltaPs2;
@@ -425,12 +425,12 @@ void funcaoVerificaTeclaValidaPs2(void)
                                 }           
                             }                                                                      
                         }
-                        if(statusTecladoPs2.St.capsLock == 0)
+                        if (statusTecladoPs2.St.capsLock == 0)
                         {
-                            if(dataTeclaPs2 < _TAMANHO_MAXIMO_TABELA)
+                            if (dataTeclaPs2 < _TAMANHO_MAXIMO_TABELA)
                             {  
                                 teclaPs2Press = tabelaConvertePcKeyboardToAsciiMinusculo[dataTeclaPs2];
-                                if(teclaPs2Press != 0)
+                                if (teclaPs2Press != 0)
                                 {
                                     teclaValidaPs2 = 1;
                                     teclasEditaProgramaAtualPs2 == teclaSoltaPs2;
@@ -449,10 +449,10 @@ void funcaoVerificaTeclaValidaPs2(void)
                 break;
 //trata tecla quando pressionada a tecla shift
             case teclaShift:
-                if(dataTeclaPs2 != 0x12 && dataTeclaPs2 != 0x59 && dataTeclaPs2 != 0xF0)
+                if (dataTeclaPs2 != 0x12 && dataTeclaPs2 != 0x59 && dataTeclaPs2 != 0xF0)
                 {
                     teclaPs2Press = tabelaConvertePcKeyboardToAsciiMaiusculo[dataTeclaPs2];
-                    if(teclaPs2Press != 0){teclaValidaPs2 = 1;}
+                    if (teclaPs2Press != 0){teclaValidaPs2 = 1;}
                     dataTempTeclaPs2 = dataTeclaPs2;
                     teclaPressionadaPs2 = aguardaFinalRepeticaoTecla;
                 }
@@ -461,47 +461,47 @@ void funcaoVerificaTeclaValidaPs2(void)
             case teclaExtend:
                 teclaPressionadaPs2 = aguardaFinalRepeticaoTecla;
                 dataTempTeclaPs2 = dataTeclaPs2;
-                if(dataTeclaPs2 == 0x75)
+                if (dataTeclaPs2 == 0x75)
                 {
                     teclasEditaProgramaAtualPs2 = teclaSetaParaCima;
                     teclaValidaPs2 = 1;
                 }
-                if(dataTeclaPs2 == 0x72)
+                if (dataTeclaPs2 == 0x72)
                 {
                     teclasEditaProgramaAtualPs2 = teclaSetaParaBaixo;
                     teclaValidaPs2 = 1;
                 }            
-                if(dataTeclaPs2 == 0x6B)
+                if (dataTeclaPs2 == 0x6B)
                 {
                     teclasEditaProgramaAtualPs2 = teclaSetaParaEsquerda;
                     teclaValidaPs2 = 1;
                 }
-                if(dataTeclaPs2 == 0x74)
+                if (dataTeclaPs2 == 0x74)
                 {
                     teclasEditaProgramaAtualPs2 = teclaSetaParaDireita;
                     teclaValidaPs2 = 1;
                 }
-                if(dataTeclaPs2 == 0x71)
+                if (dataTeclaPs2 == 0x71)
                 { 
                     teclasEditaProgramaAtualPs2 = teclaDel;
                     teclaValidaPs2 = 1;
                 } 
-                if(dataTeclaPs2 == 0x5A)
+                if (dataTeclaPs2 == 0x5A)
                 {
                     teclasEditaProgramaAtualPs2 = teclaEnter;
                     teclaValidaPs2 = 1;
                 }
-                if(dataTeclaPs2 == 0x7D)
+                if (dataTeclaPs2 == 0x7D)
                 {
                     teclasEditaProgramaAtualPs2 = teclaPageUp;
                     teclaValidaPs2 = 1;
                 }   
-                if(dataTeclaPs2 == 0x7A)
+                if (dataTeclaPs2 == 0x7A)
                 {
                     teclasEditaProgramaAtualPs2 = teclaPageDown;
                     teclaValidaPs2 = 1;
                 }    
-                if(dataTeclaPs2 == 0x37)
+                if (dataTeclaPs2 == 0x37)
                 {
                     teclasEditaProgramaAtualPs2 = teclaPower;
                     teclaValidaPs2 = 1;
@@ -509,12 +509,12 @@ void funcaoVerificaTeclaValidaPs2(void)
                 break;
 //aguarda final repeticao da tecla
             case aguardaFinalRepeticaoTecla:
-                if(dataTeclaPs2 == 0xF0){teclaPressionadaPs2 = aguardaFinalFrame;}
+                if (dataTeclaPs2 == 0xF0){teclaPressionadaPs2 = aguardaFinalFrame;}
                 break;
                 
 //aguarda final do frame com valor da tecla
             case  aguardaFinalFrame:
-                if(dataTempTeclaPs2 == dataTeclaPs2)
+                if (dataTempTeclaPs2 == dataTeclaPs2)
                 {
                     verificaTeclaSoltaPs2 = 0;
                     teclaPressionadaPs2 = tipoTecla;             
@@ -531,87 +531,87 @@ void funcaoVerificaTeclaValidaPs2(void)
 //////////////////////////////////////////////////////////////////////////////////
 void checaTeclaEdicaoTecladoPs2(void)
 {
-    if(dataTeclaPs2 == 0x66)// telca back space
+    if (dataTeclaPs2 == 0x66)// telca back space
     {
         teclasEditaProgramaAtualPs2 = teclaBackSpace;
         teclaValidaPs2 = 1;
     }
-    if(dataTeclaPs2 == 0x5A)// tecla enter
+    if (dataTeclaPs2 == 0x5A)// tecla enter
     {
         teclasEditaProgramaAtualPs2 = teclaEnter; 
         teclaValidaPs2 = 1;
     }
-    if(dataTeclaPs2 == 0x76)// tecla Esc
+    if (dataTeclaPs2 == 0x76)// tecla Esc
     {
         teclasEditaProgramaAtualPs2 = teclaEsc; 
         teclaValidaPs2 = 1;
     } 
-    if(dataTeclaPs2 == 0x05)// tecla F1
+    if (dataTeclaPs2 == 0x05)// tecla F1
     {
         teclasEditaProgramaAtualPs2 = teclaFuncao1; 
         teclaValidaPs2 = 1;
     }
-    if(dataTeclaPs2 == 0x06)// tecla F2
+    if (dataTeclaPs2 == 0x06)// tecla F2
     {
         teclasEditaProgramaAtualPs2 = teclaFuncao2; 
         teclaValidaPs2 = 1;
     }            
-    if(dataTeclaPs2 == 0x04)// tecla F3
+    if (dataTeclaPs2 == 0x04)// tecla F3
     {
         teclasEditaProgramaAtualPs2 = teclaFuncao3; 
         teclaValidaPs2 = 1;
     } 
-    if(dataTeclaPs2 == 0x0C)// tecla F4
+    if (dataTeclaPs2 == 0x0C)// tecla F4
     {
         teclasEditaProgramaAtualPs2 = teclaFuncao4; 
         teclaValidaPs2 = 1;
     }
-    if(dataTeclaPs2 == 0x03)// tecla F5
+    if (dataTeclaPs2 == 0x03)// tecla F5
     {
         teclasEditaProgramaAtualPs2 = teclaFuncao5; 
         teclaValidaPs2 = 1;
     }  
-    if(dataTeclaPs2 == 0x0B)// tecla F6
+    if (dataTeclaPs2 == 0x0B)// tecla F6
     {
         teclasEditaProgramaAtualPs2 = teclaFuncao6; 
         teclaValidaPs2 = 1;
     }  
-    if(dataTeclaPs2 == 0x83)// tecla F7
+    if (dataTeclaPs2 == 0x83)// tecla F7
     {
         teclasEditaProgramaAtualPs2 = teclaFuncao7; 
         teclaValidaPs2 = 1;
     }                    
-    if(dataTeclaPs2 == 0x0A)// tecla F8
+    if (dataTeclaPs2 == 0x0A)// tecla F8
     {
         teclasEditaProgramaAtualPs2 = teclaFuncao8; 
         teclaValidaPs2 = 1;
     }                    
-    if(dataTeclaPs2 == 0x01)// tecla F9
+    if (dataTeclaPs2 == 0x01)// tecla F9
     {
         teclasEditaProgramaAtualPs2 = teclaFuncao9; 
         teclaValidaPs2 = 1;
    }                                           
-    if(dataTeclaPs2 == 0x09)// tecla F10
+    if (dataTeclaPs2 == 0x09)// tecla F10
     {
         teclasEditaProgramaAtualPs2 = teclaFuncao10; 
         teclaValidaPs2 = 1;
     }     
-    if(dataTeclaPs2 == 0x78)// tecla F11
+    if (dataTeclaPs2 == 0x78)// tecla F11
     {
         teclasEditaProgramaAtualPs2 = teclaFuncao11; 
         teclaValidaPs2 = 1;
     }                
-    if(dataTeclaPs2 == 0x07)// tecla F12
+    if (dataTeclaPs2 == 0x07)// tecla F12
     {
         teclasEditaProgramaAtualPs2 = teclaFuncao12; 
         teclaValidaPs2 = 1;
     }                                
-    if(dataTeclaPs2 == 0x58)// ativa desativa caps lock
+    if (dataTeclaPs2 == 0x58)// ativa desativa caps lock
     {
         configTecladoPs2 = 1;
         configFuncaoCapsLock = 1;            
     }
-    if(dataTeclaPs2 == 0x77)//ativa desativa num Lock
+    if (dataTeclaPs2 == 0x77)//ativa desativa num Lock
     {
         configTecladoPs2 = 1;
         configFuncaoNumLock = 1;     
@@ -623,16 +623,16 @@ void checaTeclaEdicaoTecladoPs2(void)
 //////////////////////////////////////////////////////////////////////////////////
 void metodoIniciaConfigTecladoPs2(void)
 {
-    if(configTecladoPs2 == 1)
+    if (configTecladoPs2 == 1)
     {
-        if(++tempoInicioConfigTecladoPs2 > 100)
+        if (++tempoInicioConfigTecladoPs2 > 100)
         {
             configTecladoPs2 = 0;
             tempoInicioConfigTecladoPs2 = 0;
-            if(configFuncaoCapsLock == 1)
+            if (configFuncaoCapsLock == 1)
             {
                 configFuncaoCapsLock = 0;
-                if(statusTecladoPs2.St.capsLock  == 1)
+                if (statusTecladoPs2.St.capsLock  == 1)
                 {
                     metodoDesativaCapsLockTecladoPs2();
                 }
@@ -641,10 +641,10 @@ void metodoIniciaConfigTecladoPs2(void)
                     metodoAtivaCapsLockTecladoPs2();
                 }                                
             }
-            if(configFuncaoNumLock == 1)
+            if (configFuncaoNumLock == 1)
             {
                 configFuncaoNumLock = 0;
-                if(statusTecladoPs2.St.numLock  == 1)
+                if (statusTecladoPs2.St.numLock  == 1)
                 {
                     metodoDesativaNumLockTecladoPs2();
                 }

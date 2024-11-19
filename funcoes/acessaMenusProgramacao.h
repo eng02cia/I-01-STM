@@ -132,7 +132,7 @@ void telaAcessaMenuFazCalibracao(void)
 void telaAcessaMenuConfiguraRelogio(void)
 {
 	menuAcessaMenusProgramacao = acessaMenuProgRelogio;
-    if(linguagemSelecionadaMem == _PORTUGUES){escreveDadoLcd(&charTelaAcessaMenuProgRelogioPT[0],&caracterLcd[0]);}
-    if(linguagemSelecionadaMem == _INGLES){escreveDadoLcd(&charTelaAcessaMenuProgRelogioING[0],&caracterLcd[0]);}
-    if(linguagemSelecionadaMem == _ESPANHOL){escreveDadoLcd(&charTelaAcessaMenuProgRelogioESP[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _PORTUGUES){escreveDadoLcd(&charTelaAcessaMenuProgRelogioPT[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _INGLES){escreveDadoLcd(&charTelaAcessaMenuProgRelogioING[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _ESPANHOL){escreveDadoLcd(&charTelaAcessaMenuProgRelogioESP[0],&caracterLcd[0]);}
 }

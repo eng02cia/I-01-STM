@@ -27,11 +27,11 @@ void carregaTela11 (void)
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],10,100);
 }
 //////////////////////////////////////////////////////////////////////////
-// FUNÇÃO QUE MOSTRA O PESO DA BALANÇA NO DWIN   						//
+// FUNCAO QUE MOSTRA O PESO DA BALANcA NO DWIN   						//
 //////////////////////////////////////////////////////////////////////////
 void mostraPesoDwin(void)
 {
-	if(fazTelaInicialPesoDwin == 0)
+	if (fazTelaInicialPesoDwin == 0)
 	{
 		contadorInicialTelaPesoDwin += 2;
 		switch(contadorInicialTelaPesoDwin)
@@ -124,7 +124,7 @@ void mostraPesoDwin(void)
 		}
 	}
 
-	if(fazTelaInicialPesoDwin == 1)
+	if (fazTelaInicialPesoDwin == 1)
 	{
 		tempPosicaoPontoDwin = posicaoPontoDecimalIndicadorMem;
 
@@ -136,10 +136,10 @@ void mostraPesoDwin(void)
 				tempPosicaoPontoDwin = 0;
 				break;
 			case pesoReal:
-				transfereArrayToArray(7,&pesoBrutoIndicadorAscii[0],&telaPesoDwin[0]); // TESTE - Necessario utilizar peso tratado
+				transfereArrayToArray(7,&pesoConvertido[0],&telaPesoDwin[0]);
 				break;
 		}
-		if(tempPosicaoPontoDwin != 0)
+		if (tempPosicaoPontoDwin != 0)
 		{
 			retiraPontoDecimalDwin();
 		}
@@ -201,44 +201,44 @@ void mostraPesoDwin(void)
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],8,50);
 
 	//////////////////////////////////////////////////////////////////////////
-	// controla posição ponto 100 gramas									//
+	// controla posicao ponto 100 gramas									//
 	//////////////////////////////////////////////////////////////////////////
 	transfereArrayToArray(4,&tx5BytesDwin[0],&frameTxDwin[0]);
 	frameTxDwin[4] = 0x20;
 	frameTxDwin[5] = 0x00;
 	frameTxDwin[6] = 0;
-	if(tempPosicaoPontoDwin == 1){frameTxDwin[7] = '.';}
+	if (tempPosicaoPontoDwin == 1){frameTxDwin[7] = '.';}
 	else{frameTxDwin[7] = ' ';}
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],8,50);
 	//////////////////////////////////////////////////////////////////////////
-	// controla posição ponto 10 gramas									//
+	// controla posicao ponto 10 gramas									//
 	//////////////////////////////////////////////////////////////////////////
 	transfereArrayToArray(4,&tx5BytesDwin[0],&frameTxDwin[0]);
 	frameTxDwin[4] = 0x20;
 	frameTxDwin[5] = 0x01;
 	frameTxDwin[6] = 0;
-	if(tempPosicaoPontoDwin == 2){frameTxDwin[7] = '.';}
+	if (tempPosicaoPontoDwin == 2){frameTxDwin[7] = '.';}
 	else{frameTxDwin[7] = ' ';}
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],8,50);
 	//////////////////////////////////////////////////////////////////////////
-	// controla posição ponto 1 grama					        			//
+	// controla posicao ponto 1 grama					        			//
 	//////////////////////////////////////////////////////////////////////////
 	transfereArrayToArray(4,&tx5BytesDwin[0],&frameTxDwin[0]);
 	frameTxDwin[4] = 0x20;
 	frameTxDwin[5] = 0x02;
 	frameTxDwin[6] = 0;
-	if(tempPosicaoPontoDwin == 3){frameTxDwin[7] = '.';}
+	if (tempPosicaoPontoDwin == 3){frameTxDwin[7] = '.';}
 	else{frameTxDwin[7] = ' ';}
 	HAL_UART_Transmit(&huart3,&frameTxDwin[0],8,50);
 }
 //////////////////////////////////////////////////////////////////////////
-// função que retira o ponto decimal				        			//
+// funcao que retira o ponto decimal				        			//
 //////////////////////////////////////////////////////////////////////////
 void retiraPontoDecimalDwin(void)
 {
 	loopRetiraPontoDwin = 6;
 	indexRetiraPontoDwin = 5 - tempPosicaoPontoDwin;
-	while(loopRetiraPontoDwin != 0)
+	while (loopRetiraPontoDwin != 0)
 	{
 		tempTelaDwin = telaPesoDwin[indexRetiraPontoDwin];
 		indexRetiraPontoDwin++;
