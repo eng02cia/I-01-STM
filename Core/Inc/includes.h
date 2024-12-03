@@ -41,7 +41,8 @@ uint8_t Rx_ModbusSerial_1[10];
 #include "headerProgRelogio.h"
 #include "headerEeprom.h"
 #include "headeri2c.h"
-
+#include "headerEscreveDisplayLcdSeteSegmentos.h"
+#include "headerTelaSeteSegmentos.h"
 
 #include "i2c.h"
 #include "menuProgRelogio.h"
@@ -71,5 +72,7 @@ uint8_t Rx_ModbusSerial_1[10];
 #include "eepromSave.h"
 #include "funcaoDwin.h"
 #include "menuDefinicaoFuncionamento.h"
+#include "telaLcdSeteSegmentos.h"
+#include "escreveLcdSeteSegmentos.h"
 
 #endif /* INC_INCLUDES_H_ */

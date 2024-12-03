@@ -15,11 +15,11 @@ void metodoControleDasTelas(void)
 	{
 		//Menu de programacao
 		if (menuAcessaMenusProgramacao != menuAcessaMenusProgramacaoEmEspera
-				|| menuCalibraIndicador != menuCalibraIndicadorEmEspera
-				|| menuConfiguraSerial_1 != menuConfiguraSerial_1EmEspera
-				|| menuModoTecnicoIndicador != menuModoTecnicoIndicadorEmEspera
-				|| menuProgramacaoRelogioAtual != menuProgramaRelogioEmEspera
-				|| menuProgramaDefinicaoFucionamento != menuDefinicaoFuncionamentoEmEspera)
+			|| menuCalibraIndicador != menuCalibraIndicadorEmEspera
+			|| menuConfiguraSerial_1 != menuConfiguraSerial_1EmEspera
+			|| menuModoTecnicoIndicador != menuModoTecnicoIndicadorEmEspera
+			|| menuProgramacaoRelogioAtual != menuProgramaRelogioEmEspera
+			|| menuProgramaDefinicaoFucionamento != menuDefinicaoFuncionamentoEmEspera)
 		{
 			if (trocarPaginaDwin == 1)
 			{
@@ -101,6 +101,7 @@ void funcaoTempoTelaInicial (void)
 		{
 			tempoExibeTelaInicial = 0;
 			exibeVersionControl = 0;
+			sistemaInicializado = 1;
 			iniciaVariaveisTxSerial_1();
 		}
 	}

@@ -64,7 +64,6 @@ void funcaoAcessaMenusProgramacao(void)
                     break;                 
                 case teclaSalva:
                     teclaPressionadaAtual = teclaSolta;
-                    // menuAcessaMenusProgramacao = menuAcessaMenusProgramacaoEmEspera;
                     telaSenhaDeAcessoCalibracao();
                     break;
             }            
@@ -99,8 +98,11 @@ void telaAcessaMenuModoTecnicoIndicador(void)
     if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaAcessaMenuModoTecnicoIndicadorPT[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaAcessaMenuModoTecnicoIndicadorING[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaAcessaMenuModoTecnicoIndicadorESP[0],&caracterLcd[0]);}    
+
     caracterLcd[30] = caracterIncremento;
     caracterLcd[31] = caracterSalva;       
+
+    telaAcessaMenuModoTecnicoSeteSegmentos();
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //tela de acesso a configuracao da serial                                     	//
@@ -111,8 +113,11 @@ void telaAcessaMenuConfiguraSerial_1(void)
     if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaAcessaMenuConfiguraSerial_1PT[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaAcessaMenuConfiguraSerial_1ING[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaAcessaMenuConfiguraSerial_1ESP[0],&caracterLcd[0]);}
+
     caracterLcd[30] = caracterIncremento;
     caracterLcd[31] = caracterSalva;       
+
+    telaConfigSerialSeteSegmentos();
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //tela de acesso a calibracao do indicador                                     	//
@@ -123,8 +128,11 @@ void telaAcessaMenuFazCalibracao(void)
     if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaAcessaMenuFazCalibracaoPT[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaAcessaMenuFazCalibracaoING[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaAcessaMenuFazCalibracaoESP[0],&caracterLcd[0]);}
+
     caracterLcd[30] = caracterIncremento;
     caracterLcd[31] = caracterSalva;       
+
+    telaAcessaMenuCalibracaoSeteSegmentos();
 }
 //////////////////////////////////////////////////////////////////////////////////
 //tela de acesso a configuracao do relogio                                   	//
@@ -135,4 +143,6 @@ void telaAcessaMenuConfiguraRelogio(void)
     if (linguagemSelecionadaMem == _PORTUGUES){escreveDadoLcd(&charTelaAcessaMenuProgRelogioPT[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _INGLES){escreveDadoLcd(&charTelaAcessaMenuProgRelogioING[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _ESPANHOL){escreveDadoLcd(&charTelaAcessaMenuProgRelogioESP[0],&caracterLcd[0]);}
+
+    telaMostraNaoSeAplicaSeteSegmentos();
 }

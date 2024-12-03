@@ -115,9 +115,11 @@ void metodoLigaSistema(void)
     statusPowerOnMem = _LIGADO;
     carregaTela11();
     transfereCaracterDwinTelaInicial();  
-    fazTelaInicialPesoDwin = 0;
     trocarPaginaDwin = 0;
 //    preparaSalvaStatusPowerOn();
+    telaVersaoSeteSegmentos();
+    fazTelaInicialPesoDwin = 0;
+    fazTelaInicialSeteSegmento = 0;
     escreveDadoLcd(&telaInicialIndicador[0],&caracterLcd[0]);
     escreveDadoLcd(&telaInicialVersao[0],&caracterLcd[16]);
     controleTara = _TARADESATIVADA;
@@ -134,9 +136,9 @@ void metodoDesligaSistema(void)
     backLightDwinMinimo();
     statusLigaDesliga = _DESLIGADO;
     statusPowerOnMem = _DESLIGADO;
-
     carregaTela0();
 //    preparaSalvaStatusPowerOn();
+    apagaLcdSeteSegmentos();
     controleTara = _TARADESATIVADA;
     tempoSegundoBacklightLigado = 0;
     tempoBacklightLigado = 0;
@@ -216,6 +218,16 @@ void telaErroLimiteZero(void)
     if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&telaErroLimiteZeroLcdESP[0],&caracterLcd[0]);}
     
     transfereCaracterLcdLinha1Dwin();
+
+#ifdef displaySeteSegmentosLcd
+	transfereArrayToArray(6,&dadoLcdSetSegmentos[0],&backupDigitosLcdSeteSegmentos[0]);
+	dadoLcdSetSegmentos[1] = 'E';
+	dadoLcdSetSegmentos[2] = 'R';
+	dadoLcdSetSegmentos[3] = 'R';
+	dadoLcdSetSegmentos[4] = 'O';
+	dadoLcdSetSegmentos[5] = 'R';
+	dadoLcdSetSegmentos[6] = '1';
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //funcao de controle do tempo para apagar o backlight quando backlight amarelo	//

@@ -12,6 +12,7 @@ void controlaTempoExibeTelaTemporaria (void)
             mostraTelaTemporariaLcd = 0;
             tempoMostraTelaTemporariaLcd = 0;
             transfereArrayToArray(32,&backupTelaLcd[0],&caracterLcd[0]);
+            transfereArrayToArray(6,&backupDigitosLcdSeteSegmentos[0],&dadoLcdSetSegmentos[0]);
         }
     }
 }
@@ -96,7 +97,7 @@ void controlaEscritaLcd (void)
                 else
                 {
 //Faz efetivamente a inicialziacao do lcd
-                    if (quantidadeByteLcd >= 5)
+                    if (quantidadeByteLcd == 5)
                     {
                         quantidadeByteLcd--;
                         HAL_GPIO_WritePin(pinoSelectRegister_GPIO_Port, pinoSelectRegister_Pin, GPIO_PIN_RESET);
@@ -108,11 +109,10 @@ void controlaEscritaLcd (void)
                         HAL_GPIO_WritePin(pinoEnable_GPIO_Port, pinoEnable_Pin, GPIO_PIN_RESET);
                     }
                     else
-                    {
-                       
+                    {                       
                         if (quantidadeByteLcd == 0)
                         {
-                               statusAtualEscritaLcd = escreveCaracterEspecialCgRam;
+                            statusAtualEscritaLcd = escreveCaracterEspecialCgRam;
                         }
                         else
                         {

@@ -22,10 +22,19 @@ void controleCalibraIndicador(void)
 		if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&telaMostraSenhaLcdPT[0],&caracterLcd[0]);}
 		if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&telaMostraSenhaLcdING[0],&caracterLcd[0]);}
 		if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&telaMostraSenhaLcdESP[0],&caracterLcd[0]);}
+
+		telaSenhaSeteSegmentos();
+
 		caracterLcd[16]= senhaTemp[0];
 		caracterLcd[17]= senhaTemp[1];
 		caracterLcd[18]= senhaTemp[2];
 		caracterLcd[19]= senhaTemp[3];
+
+		dadoLcdSetSegmentos[3] = senhaTemp[0];
+		dadoLcdSetSegmentos[4] = senhaTemp[1];
+		dadoLcdSetSegmentos[5] = senhaTemp[2];
+		dadoLcdSetSegmentos[6] = senhaTemp[3];
+
 		//retorna ao menu anterior
 		if (teclaPressionadaAtual == teclaZeroRetorna)
 		{
@@ -201,37 +210,37 @@ void controleCalibraIndicador(void)
 	//////////////////////////////////////////////////////////////////////////////////
 	case menuDefinePontoDecimal:
 		//tecla incremento
-		switch (teclaPressionadaAtual )
+		switch (teclaPressionadaAtual)
 		{
-		//retorna a tela anterior
-		case  teclaZeroRetorna:
-			teclaPressionadaAtual = teclaSolta;
-			tempProgIndicador = valorFiltroDigitalMem;
-			telaValorFiltroDigitalIndicador();
-			break;
-		case teclaTaraSetaEsquerda:
-			teclaPressionadaAtual = teclaSolta;
-			tempProgIndicador = 0;
-			telaPosicaoPontoDecimalIndicador();
-			break;
-			//tecla Seta acima
-		case teclaImprimeSetaAcima:
-			teclaPressionadaAtual = teclaSolta;
-			if (++tempProgIndicador > 3){tempProgIndicador = 0;};
-			telaPosicaoPontoDecimalIndicador();
-			break;
-			//tecla Ok
-		case teclaSalva:
-			teclaPressionadaAtual = teclaSolta;
-			posicaoPontoDecimalIndicadorMem = tempProgIndicador;
+			//retorna a tela anterior
+			case  teclaZeroRetorna:
+				teclaPressionadaAtual = teclaSolta;
+				tempProgIndicador = valorFiltroDigitalMem;
+				telaValorFiltroDigitalIndicador();
+				break;
+			case teclaTaraSetaEsquerda:
+				teclaPressionadaAtual = teclaSolta;
+				tempProgIndicador = 0;
+				telaPosicaoPontoDecimalIndicador();
+				break;
+				//tecla Seta acima
+			case teclaImprimeSetaAcima:
+				teclaPressionadaAtual = teclaSolta;
+				if (++tempProgIndicador > 3){tempProgIndicador = 0;};
+				telaPosicaoPontoDecimalIndicador();
+				break;
+				//tecla Ok
+			case teclaSalva:
+				teclaPressionadaAtual = teclaSolta;
+				posicaoPontoDecimalIndicadorMem = tempProgIndicador;
 
-			salvaPosicaoPontoDecimalIndicadorMem();
+				salvaPosicaoPontoDecimalIndicadorMem();
 
-			tempProgIndicador = degrauIndicadorMem;
-			telaDefineDegrauPesoIndicador();
-			break;
+				tempProgIndicador = degrauIndicadorMem;
+				telaDefineDegrauPesoIndicador();
+				break;
 		}
-			break;
+		break;
 	//////////////////////////////////////////////////////////////////////////////////
 	//define o degrau do peso 1, 2, 5, 10, 20                                       //
 	//////////////////////////////////////////////////////////////////////////////////
@@ -448,16 +457,17 @@ else{tempProgIndicador = 1;}
 void telaSenhaDeAcessoCalibracao(void)
 {
 	menuCalibraIndicador = menuVerificaSenhaCalibracao;
-
+	menuAcessaMenusProgramacao = menuAcessaMenusProgramacaoEmEspera;
 
 	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&telaVerificaSenhaLcdPT[0],&caracterLcd[0]);}
 	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&telaVerificaSenhaLcdING[0],&caracterLcd[0]);}
 	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&telaVerificaSenhaLcdESP[0],&caracterLcd[0]);}
-	menuAcessaMenusProgramacao = menuAcessaMenusProgramacaoEmEspera;
-
+	
 	caracterLcd[29] = '<';
 	caracterLcd[30] = caracterIncremento;
 	caracterLcd[31] = caracterSalva;
+
+	telaSenhaSeteSegmentos();
 
 	flagPiscaDigitoSenha = 1;
 	digitoAtualProgramacao = programandoDigitoTres;
@@ -479,12 +489,14 @@ void telaValorFiltroDigitalIndicador(void)
 	caracterLcd[30] = caracterIncremento;
 	caracterLcd[31] = caracterSalva;
 
+	telaValorFiltroDigitalSeteSegmentos();
 }
 //////////////////////////////////////////////////////////////////////////////////
 /*tela de programacao da posicao doponto decimal                                */
 //////////////////////////////////////////////////////////////////////////////////
 void telaPosicaoPontoDecimalIndicador(void)
 {
+	flagPiscaProgIndicador = 1;
 	menuCalibraIndicador = menuDefinePontoDecimal;
 	
 	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charPosicaoPontoDecimalPT[0],&caracterLcd[0]);}
@@ -501,17 +513,20 @@ void telaPosicaoPontoDecimalIndicador(void)
 	caracterLcd[30] = caracterIncremento;
 	caracterLcd[31] = caracterSalva;
 
+	telaPosicaoPontoSeteSegmentos();
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //carrega a tela programacao do degrau do indicador 1,2,5,10 e 20            	//
 //////////////////////////////////////////////////////////////////////////////////
 void telaDefineDegrauPesoIndicador(void)
 { 
+	menuCalibraIndicador = menuDefineDegrauPeso;
+	flagPiscaProgIndicador = 0;
+
 	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charDegrauPesoIndicadorPT[0],&caracterLcd[0]);}
 	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charDegrauPesoIndicadorING[0],&caracterLcd[0]);}
 	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charDegrauPesoIndicadorESP[0],&caracterLcd[0]);}
 
-	menuCalibraIndicador = menuDefineDegrauPeso;
 	telaControlaIncrementodegrauIndicador();
 
 	caracterLcd[29] = caracterRetorna;
@@ -559,6 +574,8 @@ void telaPesoCalibracaoIndicador(void)
 	caracterLcd[29] = caracterIncremento;
 	caracterLcd[30] = '<';
 	caracterLcd[31] = caracterSalva;
+
+	telaPesoCalibracaoSeteSeg();
 }
 //////////////////////////////////////////////////////////////////////////////////
 //tela que faz a leitura da indicaodr sem peso (zero)                           //
@@ -574,6 +591,8 @@ void telaPesoZeroIndicador(void)
 	caracterLcd[29] = caracterRetorna;
 	caracterLcd[30] = '<';
 	caracterLcd[31] = caracterSalva;
+
+	telaSemPesoSeteSeg();
 }
 //////////////////////////////////////////////////////////////////////////////////
 //tela que controla a programacao do valor do degrau do indicador              //
@@ -602,6 +621,8 @@ void metodoPiscaProgIndicador(void)
 	{
 		if (menuCalibraIndicador == menuCapacidadeMaxima){piscaDigitoProgIndicador();}
 		if (menuCalibraIndicador == menuPesoCalibracao){piscaDigitoProgIndicador();}
+
+		if (menuCalibraIndicador == menuDefinePontoDecimal){piscaPontoProgIndicador();}
 	}
 }
 //////////////////////////////////////////////////////////////////////////////////		
@@ -707,7 +728,53 @@ void piscaDigitoProgIndicador(void)
 			if (digitoAtualIndicador == digitoCinco){caracterLcd[16] = ' ';}
 		}
 	}
+	// referente a programação mostrada no display de sete segmentos
+	if(mostraTelaTemporariaLcd == 0)
+	{
+		dadoLcdSetSegmentos[1]= arrayTempIndicador[0];
+		dadoLcdSetSegmentos[2]= arrayTempIndicador[1];
+		dadoLcdSetSegmentos[3]= arrayTempIndicador[2];
+		dadoLcdSetSegmentos[4]= arrayTempIndicador[3];
+		dadoLcdSetSegmentos[5]= arrayTempIndicador[4];
+		dadoLcdSetSegmentos[6]= arrayTempIndicador[5];
+		
+		if(flagTempoPiscaProgIndicador == 1)
+		{
+			if ((flagPiscaProgIndicador == 1) && (flagTempoPiscaProgIndicador == 1))
+			{
+				if(digitoAtualIndicador == programandoDigitoZero){dadoLcdSetSegmentos[6] = ' ';}
+				if(digitoAtualIndicador == programandoDigitoUm){dadoLcdSetSegmentos[5] = ' ';}
+				if(digitoAtualIndicador == programandoDigitoDois){dadoLcdSetSegmentos[4] = ' ';}
+				if(digitoAtualIndicador == programandoDigitoTres){dadoLcdSetSegmentos[3] = ' ';}
+				if(digitoAtualIndicador == programandoDigitoQuatro){dadoLcdSetSegmentos[2] = ' ';}
+				if(digitoAtualIndicador == programandoDigitoCinco){dadoLcdSetSegmentos[1] = ' ';}
+			}
+		}
+	}
 }
+
+void piscaPontoProgIndicador(void) 
+{
+	uint8_t i;
+
+	if ((flagPiscaProgIndicador == 1) && (flagTempoPiscaProgIndicador == 1))
+	{
+		/* Display LCD 16x2 e display grafico */
+		caracterLcd[21 - tempProgIndicador] = ' ';
+
+		/* Display 7seg */
+		digitosLcdSeteSegmentos[6 - tempProgIndicador] -= ValorPontoDecimalDspSeteSegmentos;
+	}
+	else
+	{
+		/* Display LCD 16x2 e display grafico */
+		caracterLcd[21 - tempProgIndicador] = '.';
+
+		/* Display 7seg */
+		digitosLcdSeteSegmentos[6 - tempProgIndicador] += ValorPontoDecimalDspSeteSegmentos;
+	}
+}
+
 //////////////////////////////////////////////////////////////////////////////////
 //                                                                              //
 //Faz a programacao dos digitos do peso na programacao do indicador             //
@@ -875,6 +942,16 @@ void telaErroCapacidadeMaxima (void)
 	transfereCaracterLcdMenu2Dwin();
 	mostraTelaTemporariaLcd = 1;
 	tempoMostraTelaTemporariaLcd = 1;
+
+#ifdef displaySeteSegmentosLcd
+	transfereArrayToArray(6,&dadoLcdSetSegmentos[0],&backupDigitosLcdSeteSegmentos[0]);
+	dadoLcdSetSegmentos[1] = 'E';
+	dadoLcdSetSegmentos[2] = 'R';
+	dadoLcdSetSegmentos[3] = 'R';
+	dadoLcdSetSegmentos[4] = 'O';
+	dadoLcdSetSegmentos[5] = 'R';
+	dadoLcdSetSegmentos[6] = '5';
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //Metodo que define a senha usada para acesso a calibracao                      //
@@ -1010,6 +1087,16 @@ void telaErroSenhaTecnica(void)
 	flagPiscaDigitoSenha = 1;
 	mostraTelaTemporariaLcd = 1;
 	tempoMostraTelaTemporariaLcd = 1;
+
+#ifdef displaySeteSegmentosLcd
+	transfereArrayToArray(6,&dadoLcdSetSegmentos[0],&backupDigitosLcdSeteSegmentos[0]);
+	dadoLcdSetSegmentos[1] = 'E';
+	dadoLcdSetSegmentos[2] = 'R';
+	dadoLcdSetSegmentos[3] = 'R';
+	dadoLcdSetSegmentos[4] = 'O';
+	dadoLcdSetSegmentos[5] = 'R';
+	dadoLcdSetSegmentos[6] = '3';
+#endif
 } 
 //////////////////////////////////////////////////////////////////////////////////		
 //metodo que controla qual digito vai piscar quando definindo a senha         	//
@@ -1027,20 +1114,42 @@ void controlaPiscaDigitoProgSenha(void)
 		if (++tempoPiscaSenha > 3)
 		{
 			tempoPiscaSenha = 0;
+
 			if (flagTempoPiscaDigitoSenha == 1){flagTempoPiscaDigitoSenha = 0;}
 			else{flagTempoPiscaDigitoSenha = 1;}
-
 
 			caracterLcd[16]= senhaTemp[0];
 			caracterLcd[17]= senhaTemp[1];
 			caracterLcd[18]= senhaTemp[2];
 			caracterLcd[19]= senhaTemp[3];
-			if (flagPiscaDigitoSenha == 1 & flagTempoPiscaDigitoSenha == 1)
+
+			dadoLcdSetSegmentos[3] = senhaTemp[0];
+			dadoLcdSetSegmentos[4] = senhaTemp[1];
+			dadoLcdSetSegmentos[5] = senhaTemp[2];
+			dadoLcdSetSegmentos[6] = senhaTemp[3];
+
+			if ((flagPiscaDigitoSenha == 1) && (flagTempoPiscaDigitoSenha == 1))
 			{
-				if (digitoAtualProgramacao == programandoDigitoZero){caracterLcd[19] = '_';}
-				if (digitoAtualProgramacao == programandoDigitoUm){caracterLcd[18] = '_';}
-				if (digitoAtualProgramacao == programandoDigitoDois){caracterLcd[17] = '_';}
-				if (digitoAtualProgramacao == programandoDigitoTres){caracterLcd[16] = '_';}
+				if (digitoAtualProgramacao == programandoDigitoTres)
+				{
+					caracterLcd[16] = '_';
+					dadoLcdSetSegmentos[3] = ' ';
+				}
+				if (digitoAtualProgramacao == programandoDigitoDois)
+				{
+					caracterLcd[17] = '_';
+					dadoLcdSetSegmentos[4] = ' ';
+				}
+				if (digitoAtualProgramacao == programandoDigitoUm)
+				{
+					caracterLcd[18] = '_';
+					dadoLcdSetSegmentos[5] = ' ';
+				}
+				if (digitoAtualProgramacao == programandoDigitoZero)
+				{
+					caracterLcd[19] = '_';
+					dadoLcdSetSegmentos[6] = ' ';
+				}
 			}
 		}
 	}

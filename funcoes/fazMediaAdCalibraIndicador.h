@@ -132,7 +132,7 @@ void telaZeroOkCalibracao(void)
 	if (linguagemSelecionadaMem == 1){transfereConstToArray(&charZeroOkING[0],&caracterLcd[16]);}
 	if (linguagemSelecionadaMem == 2){transfereConstToArray(&charZeroOkESP[0],&caracterLcd[16]);}
 #ifdef displaySeteSegmentosLcd
-	if (linguagemSelecionadaMem == portugues)
+	if (linguagemSelecionadaMem == _PORTUGUES)
 	{
 		dadoLcdSetSegmentos[1] = 'Z';
 		dadoLcdSetSegmentos[2] = 'E';
@@ -141,7 +141,7 @@ void telaZeroOkCalibracao(void)
 		dadoLcdSetSegmentos[5] = 'O';
 		dadoLcdSetSegmentos[6] = 'K';
 	}
-	if (linguagemSelecionadaMem == ingles)
+	if (linguagemSelecionadaMem == _INGLES)
 	{
 		dadoLcdSetSegmentos[1] = 'Z';
 		dadoLcdSetSegmentos[2] = 'E';
@@ -150,7 +150,7 @@ void telaZeroOkCalibracao(void)
 		dadoLcdSetSegmentos[5] = 'O';
 		dadoLcdSetSegmentos[6] = 'K';
 	}
-	if (linguagemSelecionadaMem == espanhol)
+	if (linguagemSelecionadaMem == _ESPANHOL)
 	{
 		dadoLcdSetSegmentos[1] = 'C';
 		dadoLcdSetSegmentos[2] = 'E';
@@ -169,8 +169,9 @@ void telaCertoCalibracao(void)
 	if (linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&charCertoPT[0],&caracterLcd[16]);}
 	if (linguagemSelecionadaMem == _INGLES){transfereConstToArray(&charCertoING[0],&caracterLcd[16]);}
 	if (linguagemSelecionadaMem == _ESPANHOL){transfereConstToArray(&charCertoESP[0],&caracterLcd[16]);}
+
 #ifdef displaySeteSegmentosLcd
-	if (linguagemSelecionadaMem == portugues)
+	if (linguagemSelecionadaMem == _PORTUGUES)
 	{
 		dadoLcdSetSegmentos[1] = 'C';
 		dadoLcdSetSegmentos[2] = 'E';
@@ -179,7 +180,7 @@ void telaCertoCalibracao(void)
 		dadoLcdSetSegmentos[5] = 'O';
 		dadoLcdSetSegmentos[6] = ' ';
 	}
-	if (linguagemSelecionadaMem == ingles)
+	if (linguagemSelecionadaMem == _INGLES)
 	{
 		dadoLcdSetSegmentos[1] = 'R';
 		dadoLcdSetSegmentos[2] = 'I';
@@ -188,7 +189,7 @@ void telaCertoCalibracao(void)
 		dadoLcdSetSegmentos[5] = 'T';
 		dadoLcdSetSegmentos[6] = ' ';
 	}
-	if (linguagemSelecionadaMem == espanhol)
+	if (linguagemSelecionadaMem == _ESPANHOL)
 	{
 		dadoLcdSetSegmentos[1] = 'B';
 		dadoLcdSetSegmentos[2] = 'I';

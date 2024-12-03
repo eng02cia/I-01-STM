@@ -43,7 +43,9 @@ void ControleMultTask(void)
 		if (++micro_segundos >= 5) //
 		{
             micro_segundos = 0;	
+#ifndef displaySeteSegmentosLcd
             controlaEscritaLcd();
+#endif
             tempoValidaTeclaQuandoSolta();
             metodoDecodificaTeclado();
             controleTxFrameSerial_1();
@@ -52,7 +54,10 @@ void ControleMultTask(void)
 			tempoValidaTeclaPs2();
 			metodoIniciaConfigTecladoPs2();
 			metodoTempoControleConfigPs2();
-
+#ifdef  displaySeteSegmentosLcd
+            tempoEscreveLcdSeteSegmentos();
+            telaMostraDadoLcdSeteSegmentos();
+#endif
             if (statusLigaDesliga == _LIGADO){controlaBackLightOscilaPeso();}
             else{HAL_GPIO_WritePin(pinoBackLight_GPIO_Port, pinoBackLight_Pin, GPIO_PIN_RESET);}
 		}

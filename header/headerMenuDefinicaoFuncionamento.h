@@ -24,7 +24,7 @@ void telaMostraEscolheDuplaCalibracao(void);
 void telaMostraAtivaDesativaWifi(void);
 void telaMostraAtivaDesativaBluetooth(void);
 void telaMostraProgNomeAcii(void);
-void telaMostraSelecionaLinguagem(void);
+void telaMostraSelecionaIdioma(void);
 //contantes utilizadas na funcao                
 
 // telas de programacao

@@ -162,7 +162,7 @@ void trataPesoLiquidoIndicadorI01(void)
     transfereArrayToArray(7,&arrayPesoTemp[0],&pesoLiquidoIndicadorAscii[0]);
     if (controleTara == _TARAATIVADA)
     {
-    	 statusControleMostraPesoNegativo = statusPesoNegativoTemp;
+    	statusControleMostraPesoNegativo = statusPesoNegativoTemp;
     }
 }
 //////////////////////////////////////////////////////////////////////////////////

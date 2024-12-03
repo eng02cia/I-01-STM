@@ -39,19 +39,19 @@ void funcaoProgramaDefinicaoFuncionamento(void)
             		case teclaDel:
     					teclasEditaProgramaAtualPs2 = teclaSoltaPs2;
     					tempConfigModoFuncionamento = 0;
-	            		telaMostraSelecionaLinguagem();
+	            		telaMostraSelecionaIdioma();
 	            		break;
     				case teclaSetaParaCima:
     					teclasEditaProgramaAtualPs2 = teclaSoltaPs2;
     					tempConfigModoFuncionamento++;
     					if (tempConfigModoFuncionamento > 2){tempConfigModoFuncionamento = 0;}
-    					telaMostraSelecionaLinguagem();
+    					telaMostraSelecionaIdioma();
     					break;
     				case teclaSetaParaBaixo:
     					teclasEditaProgramaAtualPs2 = teclaSoltaPs2;
     					tempConfigModoFuncionamento--;
     					if (tempConfigModoFuncionamento == 255){tempConfigModoFuncionamento = 2;}
-    					telaMostraSelecionaLinguagem();
+    					telaMostraSelecionaIdioma();
     					break;
     				case teclaEnter:
 		           		teclasEditaProgramaAtualPs2 = teclaSoltaPs2;  
@@ -62,6 +62,7 @@ void funcaoProgramaDefinicaoFuncionamento(void)
 						acessaMenuProgramaNomeTelaInicial();
 				      	break;
 				   default:
+                        // do nothing
 				  		break;
             	}
                 break;
@@ -121,7 +122,7 @@ void acessaMenuModoFuncionamentoLiguagem(void)
 {
 	menuProgramaDefinicaoFucionamento = defineSelecionaLinguagem;
 	tempConfigModoFuncionamento = linguagemSelecionadaMem;
-	telaMostraSelecionaLinguagem();
+	telaMostraSelecionaIdioma();
 }
 
 //////////////////////////////////////////////////////////////////////////////////		
@@ -139,12 +140,14 @@ void telaMostraProgNomeAcii(void)
     caracterLcd[13] = caracterRetorna;
     caracterLcd[14] = caracterIncremento;
     caracterLcd[15] = caracterSalva;
+
+    telaMostraNaoSeAplicaSeteSegmentos();
 }
 
 //////////////////////////////////////////////////////////////////////////////////
 //tela mostra a configuracao da linguagem utilizada                         	//
 //////////////////////////////////////////////////////////////////////////////////
-void telaMostraSelecionaLinguagem(void)
+void telaMostraSelecionaIdioma(void)
 {
 	if (tempConfigModoFuncionamento == _PORTUGUES)
 	{
@@ -161,4 +164,6 @@ void telaMostraSelecionaLinguagem(void)
         escreveDadoLcd(&charTelaSelecionaLinguagemESP[0],&caracterLcd[0]);
 		escreveDadoLcd(&charTelaEspanhol[0],&caracterLcd[16]);
 	}
+
+    telaMostraSelecionaIdiomaSeteSegmentos();
 }

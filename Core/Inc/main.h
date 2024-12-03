@@ -140,6 +140,18 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN Private defines */
 
+#define displaySeteSegmentosLcd
+
+/* Pinos compartilhados entre 16x2 e 7seg */
+#define resetDsp_Pin pinoData5_Pin
+#define resetDsp_GPIO_Port pinoData5_GPIO_Port
+
+#define dataLcd_GPIO_Port pinoData7_GPIO_Port
+#define dataLcd_Pin pinoData7_Pin
+
+#define clockLcd_Pin pinoData6_Pin
+#define clockLcd_GPIO_Port pinoData6_GPIO_Port
+
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
