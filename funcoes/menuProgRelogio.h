@@ -29,25 +29,20 @@ void funcaoProgramaHoraData(void)
                     if (tempProgDataHora == 1){tempProgDataHora = 0;}
                     else{tempProgDataHora = 1;}    
                 }
-                if (teclaPressionadaAtual == teclaSalva )
+                if (teclaPressionadaAtual == teclaSalva)
                 {
                     teclaPressionadaAtual = teclaSolta;  
                     exibeRelogioMem = tempProgDataHora;
                     salvaExibeRelogio();
 
-                    if (exibeRelogioMem == _EXIBE_RELOGIO_HABILITADO){
-                        inteiroTo2BytesAscii(horaRelogio,&arrayProgHora[0]);
-                        inteiroTo2BytesAscii(minutoRelogio,&arrayProgMinuto[0]);
-                        inteiroTo2BytesAscii(diaMesRelogio,&arrayProgDia[0]);
-                        inteiroTo2BytesAscii(mesRelogio,&arrayProgMes[0]);
-                        inteiroTo2BytesAscii(anoRelogio,&arrayProgAno[0]);
-                        tempProgDataHora = arrayProgHora[0];
-                        marcaEdicao = 1;
-                        menuProgramacaoRelogioAtual = menuProgramaHoraH;
-                    } else {
-                        menuProgramacaoRelogioAtual = menuProgramaRelogioEmEspera;
-                        telaAcessaMenuConfiguraRelogio();
-                    }
+                    inteiroTo2BytesAscii(horaRelogio,&arrayProgHora[0]);
+                    inteiroTo2BytesAscii(minutoRelogio,&arrayProgMinuto[0]);
+                    inteiroTo2BytesAscii(diaMesRelogio,&arrayProgDia[0]);
+                    inteiroTo2BytesAscii(mesRelogio,&arrayProgMes[0]);
+                    inteiroTo2BytesAscii(anoRelogio,&arrayProgAno[0]);
+                    tempProgDataHora = arrayProgHora[0];
+                    marcaEdicao = 1;
+                    menuProgramacaoRelogioAtual = menuProgramaHoraH;
                 }
                 break;
 //verifica se insere dado no campo hora H
@@ -393,6 +388,55 @@ void classificaMes(void)
         }
     }
 }
+
+void telaMostraProgExibeRelogio (void)
+{
+    if (linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&telaProgExibeRelogioPT[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _INGLES){transfereConstToArray(&telaProgExibeRelogioING[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _ESPANHOL){transfereConstToArray(&telaProgExibeRelogioESP[0],&caracterLcd[0]);}
+
+    if (tempProgDataHora == 1)
+    {
+        if (linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&telaHabilitadoPT[0],&caracterLcd[16]);}
+        if (linguagemSelecionadaMem == _INGLES){transfereConstToArray(&telaHabilitadoING[0],&caracterLcd[16]);}
+        if (linguagemSelecionadaMem == _ESPANHOL){transfereConstToArray(&telaHabilitadoESP[0],&caracterLcd[16]);}
+    } else {
+        if (linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&telaDesabilitadoPT[0],&caracterLcd[16]);}
+        if (linguagemSelecionadaMem == _INGLES){transfereConstToArray(&telaDesabilitadoING[0],&caracterLcd[16]);}   
+        if (linguagemSelecionadaMem == -_ESPANHOL){transfereConstToArray(&telaDesabilitadoESP[0],&caracterLcd[16]);}
+    }
+
+#ifdef displaySeteSegmentosLcd
+    telaMostraProgExibeRelogioSeteSegmentos();
+#endif
+}
+
+void telaMostraProgHoraMin (void)
+{
+    if (linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&telaProgHoraDataLcdPT[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _INGLES){transfereConstToArray(&telaProgHoraDataLcdING[0],&caracterLcd[0]);}
+    if (linguagemSelecionadaMem == _ESPANHOL){transfereConstToArray(&telaProgHoraDataLcdESP[0],&caracterLcd[0]);}
+
+    caracterLcd[16]= arrayProgHora[0];
+    caracterLcd[17]= arrayProgHora[1];
+    caracterLcd[18] = ':';
+    caracterLcd[19]= arrayProgMinuto[0];
+    caracterLcd[20]= arrayProgMinuto[1];      
+
+    carregaArrayComEspacoAscii(21,&caracterLcd[0]);
+
+#ifdef displaySeteSegmentosLcd
+    if ((menuProgramacaoRelogioAtual == menuProgramaHoraH) || (menuProgramacaoRelogioAtual == menuProgramaHoraL))
+    {
+        telaMostraProgHoraSeteSegmentos();
+    }
+    if ((menuProgramacaoRelogioAtual == menuProgramaMinutoH) || (menuProgramacaoRelogioAtual == menuProgramaMinutoL))
+    {
+        telaMostraProgMinutoSeteSegmentos();
+    }
+#endif
+}
+
 //////////////////////////////////////////////////////////////////////////////////
 //metodo que controla a visualizacao da edicao                                  //            
 //////////////////////////////////////////////////////////////////////////////////
@@ -400,29 +444,16 @@ void telaMostraProgHoraData(void)
 {
     if (menuProgramacaoRelogioAtual != menuProgramaRelogioEmEspera)
     {
-        if (menuProgramacaoRelogioAtual == menuProgramaExibeRelogio) {
-            if (linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&telaProgExibeRelogioPT[0],&caracterLcd[0]);}
-        	if (linguagemSelecionadaMem == _INGLES){transfereConstToArray(&telaProgExibeRelogioING[0],&caracterLcd[0]);}
-        	if (linguagemSelecionadaMem == _ESPANHOL){transfereConstToArray(&telaProgExibeRelogioESP[0],&caracterLcd[0]);}
-
-            if (tempProgDataHora == 1){
-                if (linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&telaHabilitadoPT[0],&caracterLcd[16]);}
-                if (linguagemSelecionadaMem == _INGLES){transfereConstToArray(&telaHabilitadoING[0],&caracterLcd[16]);}
-                if (linguagemSelecionadaMem == _ESPANHOL){transfereConstToArray(&telaHabilitadoESP[0],&caracterLcd[16]);}
-            } else {
-                if (linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&telaDesabilitadoPT[0],&caracterLcd[16]);}
-                if (linguagemSelecionadaMem == _INGLES){transfereConstToArray(&telaDesabilitadoING[0],&caracterLcd[16]);}   
-                if (linguagemSelecionadaMem == -_ESPANHOL){transfereConstToArray(&telaDesabilitadoESP[0],&caracterLcd[16]);}
-            }
-
-            caracterLcd[30] = caracterRetorna;
-            caracterLcd[31] = caracterSalva;  
+        if (menuProgramacaoRelogioAtual == menuProgramaExibeRelogio) 
+        {
+            telaMostraProgExibeRelogio();
         } 
         else if (mostraTelaTemporariaLcd == 0)
         { 
-        	if (linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&telaProgHoraDataLcdPT[0],&caracterLcd[0]);}
+            if (linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&telaProgHoraDataLcdPT[0],&caracterLcd[0]);}
         	if (linguagemSelecionadaMem == _INGLES){transfereConstToArray(&telaProgHoraDataLcdING[0],&caracterLcd[0]);}
         	if (linguagemSelecionadaMem == _ESPANHOL){transfereConstToArray(&telaProgHoraDataLcdESP[0],&caracterLcd[0]);}
+
             caracterLcd[16]= arrayProgHora[0];
             caracterLcd[17]= arrayProgHora[1];
             caracterLcd[18] = ':';
@@ -437,51 +468,95 @@ void telaMostraProgHoraData(void)
             caracterLcd[27] = '/';
             caracterLcd[28]= arrayProgAno[0];
             caracterLcd[29]= arrayProgAno[1];  
+
+#ifdef displaySeteSegmentosLcd
+            telaMostraProgHoraDataSeteSegmentos();
+#endif
+
 //controla a visualizacao da programacao da hora        
             if (menuProgramacaoRelogioAtual == menuProgramaHoraH)
             {
-                if (piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[16] = '_';}
+                if (piscaCaracter == 1 && marcaEdicao == 1)
+                {
+                    caracterLcd[16] = '_';
+                    dadoLcdSetSegmentos[5] = ' ';
+                }
             }
-           if (menuProgramacaoRelogioAtual == menuProgramaHoraL)
+            if (menuProgramacaoRelogioAtual == menuProgramaHoraL)
             {
-                if (piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[17] = '_';}
-            }            
-            
+                if (piscaCaracter == 1 && marcaEdicao == 1)
+                {
+                    caracterLcd[17] = '_';
+                    dadoLcdSetSegmentos[6] = ' ';
+                }
+            }               
 //controla a visualizacao da programacao da minuto        
             if (menuProgramacaoRelogioAtual == menuProgramaMinutoH)
             {
-                if (piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[19] = '_';}
+                if (piscaCaracter == 1 && marcaEdicao == 1)
+                {
+                    caracterLcd[19] = '_';
+                    dadoLcdSetSegmentos[5] = ' ';
+                }
             }
             if (menuProgramacaoRelogioAtual == menuProgramaMinutoL)
             {
-                if (piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[20] = '_';}
+                if (piscaCaracter == 1 && marcaEdicao == 1)
+                {
+                    caracterLcd[20] = '_';
+                    dadoLcdSetSegmentos[6] = ' ';
+                }
             }                    
 //controla a visualizacao da programacao do dia        
             if (menuProgramacaoRelogioAtual == menuProgramaDiaH)
             {
-                if (piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[22] = '_';}
+                if (piscaCaracter == 1 && marcaEdicao == 1)
+                {
+                    caracterLcd[22] = '_';
+                    dadoLcdSetSegmentos[5] = ' ';
+                }
             }     
             if (menuProgramacaoRelogioAtual == menuProgramaDiaL)
             {
-                if (piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[23] = '_';}
+                if (piscaCaracter == 1 && marcaEdicao == 1)
+                {
+                    caracterLcd[23] = '_';
+                    dadoLcdSetSegmentos[6] = ' ';
+                }
             }                                      
 //controla a visualizacao da programacao do mes        
             if (menuProgramacaoRelogioAtual == menuProgramaMesH)
             {
-                if (piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[25] = '_';}
+                if (piscaCaracter == 1 && marcaEdicao == 1)
+                {
+                    caracterLcd[25] = '_';
+                    dadoLcdSetSegmentos[5] = ' ';
+                }
             }
             if (menuProgramacaoRelogioAtual == menuProgramaMesL)
             {
-                if (piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[26] = '_';}
+                if (piscaCaracter == 1 && marcaEdicao == 1)
+                {
+                    caracterLcd[26] = '_';
+                    dadoLcdSetSegmentos[6] = ' ';
+                }
             }                             
 //controla a visualizacao da programacao do ano        
             if (menuProgramacaoRelogioAtual == menuProgramaAnoH)
             {
-                if (piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[28] = '_';}
+                if (piscaCaracter == 1 && marcaEdicao == 1)
+                {
+                    caracterLcd[28] = '_';
+                    dadoLcdSetSegmentos[5] = ' ';
+                }
             }
             if (menuProgramacaoRelogioAtual == menuProgramaAnoL)
             {
-                if (piscaCaracter == 1 && marcaEdicao == 1){caracterLcd[29] = '_';}
+                if (piscaCaracter == 1 && marcaEdicao == 1)
+                {
+                    caracterLcd[29] = '_';
+                    dadoLcdSetSegmentos[6] = ' ';
+                }
             }
         }               
     }    

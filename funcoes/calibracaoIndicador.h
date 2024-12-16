@@ -23,17 +23,19 @@ void controleCalibraIndicador(void)
 		if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&telaMostraSenhaLcdING[0],&caracterLcd[0]);}
 		if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&telaMostraSenhaLcdESP[0],&caracterLcd[0]);}
 
-		telaSenhaSeteSegmentos();
-
 		caracterLcd[16]= senhaTemp[0];
 		caracterLcd[17]= senhaTemp[1];
 		caracterLcd[18]= senhaTemp[2];
 		caracterLcd[19]= senhaTemp[3];
 
+#ifdef displaySeteSegmentosLcd		
+		telaSenhaSeteSegmentos();
+
 		dadoLcdSetSegmentos[3] = senhaTemp[0];
 		dadoLcdSetSegmentos[4] = senhaTemp[1];
 		dadoLcdSetSegmentos[5] = senhaTemp[2];
 		dadoLcdSetSegmentos[6] = senhaTemp[3];
+#endif
 
 		//retorna ao menu anterior
 		if (teclaPressionadaAtual == teclaZeroRetorna)
@@ -59,117 +61,17 @@ void controleCalibraIndicador(void)
 			}
 			if (senhaValidada == 0)
 			{
-				transfereConstToArray(&senhaProgDivisao[0],&arrayTempIndicador[2]);
-				transfereArrayToArray(4,&senhaTemp[0],&arrayTemp1Indicador[2]);
-				tempProgIndicador = comparaValoresArray(4,&arrayTempIndicador[2],&arrayTemp1Indicador[2]);
-
-				if (tempProgIndicador == 0)
-				{
-					menuCalibraIndicador = menuAjustaValorDivisao;
-					//                        buf = ftoa(valorDivisaoIndicador,status);
-					loopConverteDivisaoInterna = 0;
-					carregaArrayComEspacoAscii(10,&valorAtualDivisaoInterna[0]);
-					while (loopConverteDivisaoInterna < 9)
-					{
-						valorAtualDivisaoInterna[loopConverteDivisaoInterna] = *buf;
-						buf++;
-						loopConverteDivisaoInterna++;
-					}
-					rotacionaArrayTelaValorDivisao();
-					carregaArrayComEspacoAscii(10,&arrayTempProgDivisao[0]);
-					arrayTempProgDivisao[9] = '0';
-					loopProgDivisaoIntena = 0;
-					telaMostraValorProDivisaoInterna();
-					menuCalibraIndicador = menuAjustaValorDivisao;
-					senhaValidada = 1;
-				}
-				if (senhaValidada == 0)
-				{
-					telaErroSenhaTecnica();
-					apagaSenha();
-					flagPiscaDigitoSenha = 1;
-					digitoAtualProgramacao = programandoDigitoTres;
-				}
+				telaErroSenhaTecnica();
+				apagaSenha();
+				flagPiscaDigitoSenha = 1;
+				digitoAtualProgramacao = programandoDigitoTres;
 			}
-		}
-		break;
-		/////////////////////////////////////////////////////////////////////////////////
-		//Define o ajuste para divisao interna                                          //
-		//////////////////////////////////////////////////////////////////////////////////
-	case menuAjustaValorDivisao:
-		//tecla incremento
-		switch (teclaPressionadaAtual)
-		{
-		//retorna ao menu anterior
-		case teclaZeroRetorna:
-			teclaPressionadaAtual = teclaSolta;
-			menuCalibraIndicador = menuCalibraIndicadorEmEspera;
-			telaAcessaMenuFazCalibracao();
-			break;
-			//tecla Seta acima
-		case teclaImprimeSetaAcima:
-			if (arrayTempProgDivisao[9] !=  '.'){arrayTempProgDivisao[9]++;}
-			if (arrayTempProgDivisao[9] == '.'){arrayTempProgDivisao[9] = '0';}
-			else if (arrayTempProgDivisao[9] > '9'){arrayTempProgDivisao[9] = '.';}
-			else if (arrayTempProgDivisao[9] < '.'){arrayTempProgDivisao[9] = '0';}
-			telaMostraValorProDivisaoInterna();
-			break;
-			//tecla seta esquerda
-		case teclaTaraSetaEsquerda:
-			if (loopProgDivisaoIntena < 8)
-			{
-				loopProgDivisaoIntena++;
-				arrayTempProgDivisao[0] = arrayTempProgDivisao[1];
-				arrayTempProgDivisao[1] = arrayTempProgDivisao[2];
-				arrayTempProgDivisao[2] = arrayTempProgDivisao[3];
-				arrayTempProgDivisao[3] = arrayTempProgDivisao[4];
-				arrayTempProgDivisao[4] = arrayTempProgDivisao[5];
-				arrayTempProgDivisao[5] = arrayTempProgDivisao[6];
-				arrayTempProgDivisao[6] = arrayTempProgDivisao[7];
-				arrayTempProgDivisao[7] = arrayTempProgDivisao[8];
-				arrayTempProgDivisao[8] = arrayTempProgDivisao[9];
-				arrayTempProgDivisao[9] = '0';
-			}
-			else
-			{
-				loopProgDivisaoIntena = 0;
-				carregaArrayComEspacoAscii(10,&arrayTempProgDivisao[0]);
-				arrayTempProgDivisao[9] = '0';
-			}
-			telaMostraValorProDivisaoInterna();
-			break;
-			//tecla Ok
-		case teclaSalva:
-			teclaPressionadaAtual = teclaSolta;
-			transfereArrayToArray(10,&arrayTempProgDivisao[0],&arrayInteiroTemp[0]);
-			rotacionaArrayInsere0Converte();
-			tempFloatCalculaDivisao = atof(arrayInteiroTemp);
-			if (tempFloatCalculaDivisao > 10)
-			{
-				valorDivisaoIndicador = tempFloatCalculaDivisao;
-				valorDivisaoIndicadorMem.float32 = valorDivisaoIndicador;
-				salvaValorDivisaoIndicadorMem();
-				menuCalibraIndicador = menuCalibraIndicadorEmEspera;
-			}
-			else
-			{
-				transfereArrayToArray(32,&caracterLcd[0],&backupTelaLcd[0]);
-				if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charErroPesoCalibracaoPT[0],&caracterLcd[0]);}
-				if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charErroPesoCalibracaoING[0],&caracterLcd[0]);}
-				if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charErroPesoCalibracaoESP[0],&caracterLcd[0]);}
-				transfereCaracterLcdMenu1Dwin();
-				transfereCaracterLcdMenu2Dwin();
-				mostraTelaTemporariaLcd = 1;
-				tempoMostraTelaTemporariaLcd = 0;
-			}
-			break;
 		}
 		break;
 	//////////////////////////////////////////////////////////////////////////////////
 	//define o valor do filtro digital                                              //
 	//////////////////////////////////////////////////////////////////////////////////
 	case menuFiltroDigital:
-		//tecla incremento
 		switch (teclaPressionadaAtual)
 		{
 		//retorna a tela anterior
@@ -183,7 +85,6 @@ void controleCalibraIndicador(void)
 			operacaoComTeclado = 0;
 			telaAcessaMenuFazCalibracao();
 			break;
-			//tecla Seta acima
 		case teclaTaraSetaEsquerda:
 			teclaPressionadaAtual = teclaSolta;
 			tempProgIndicador = 0;
@@ -196,20 +97,19 @@ void controleCalibraIndicador(void)
 			telaValorFiltroDigitalIndicador();
 			break;
 //tecla Ok
-			case teclaSalva:
-				teclaPressionadaAtual = teclaSolta;
-				valorFiltroDigitalMem = tempProgIndicador;
-				salvaValorFiltroDigitalMem();
-				tempProgIndicador = posicaoPontoDecimalIndicadorMem;
-				telaPosicaoPontoDecimalIndicador();
-				break;
-			}
+		case teclaSalva:
+			teclaPressionadaAtual = teclaSolta;
+			valorFiltroDigitalMem = tempProgIndicador;
+			salvaValorFiltroDigitalMem();
+			tempProgIndicador = posicaoPontoDecimalIndicadorMem;
+			telaPosicaoPontoDecimalIndicador();
 			break;
+			}
+		break;
 	//////////////////////////////////////////////////////////////////////////////////
 	//define a posicao do ponto decimal                                             //
 	//////////////////////////////////////////////////////////////////////////////////
 	case menuDefinePontoDecimal:
-		//tecla incremento
 		switch (teclaPressionadaAtual)
 		{
 			//retorna a tela anterior
@@ -245,8 +145,7 @@ void controleCalibraIndicador(void)
 	//define o degrau do peso 1, 2, 5, 10, 20                                       //
 	//////////////////////////////////////////////////////////////////////////////////
 	case menuDefineDegrauPeso:
-		//tecla incremento
-		switch (teclaPressionadaAtual )
+		switch (teclaPressionadaAtual)
 		{
 		case teclaTaraSetaEsquerda:
 			teclaPressionadaAtual = teclaSolta;
@@ -290,7 +189,7 @@ else{tempProgIndicador = 1;}
 	//////////////////////////////////////////////////////////////////////////////////
 	case menuCapacidadeMaxima:
 		//tecla incremento
-		switch (teclaPressionadaAtual )
+		switch (teclaPressionadaAtual)
 		{
 		//retorna ao menu anterior
 		case teclaZeroRetorna:
@@ -328,7 +227,7 @@ else{tempProgIndicador = 1;}
 	//////////////////////////////////////////////////////////////////////////////////
 	case menuPesoCalibracao:
 		//tecla incremento
-		switch (teclaPressionadaAtual )
+		switch (teclaPressionadaAtual)
 		{
 		//retorna ao menu anterior
 		case teclaZeroRetorna:
@@ -387,32 +286,22 @@ else{tempProgIndicador = 1;}
 				teclaPressionadaAtual = teclaSolta;
 				telaPesoCalibracaoIndicador();
 				break;
-				//tecla seta esquerda
 			case teclaTaraSetaEsquerda:
 				teclaPressionadaAtual = teclaSolta;
 				tempAd = 0;
 				flagFazMediaAd = 1;
 				loopMediaCalibracao = 0;
 				operacaoComTeclado = 1;
-				if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charAguardePT[0],&caracterLcd[16]);}
-				if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charAguardeING[0],&caracterLcd[16]);}
-				if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charAguardeESP[0],&caracterLcd[16]);}
+				telaAguardeCalibracaoIndicador();
 				break;
-				//tecla Ok
 			case teclaSalva:
 				teclaPressionadaAtual = teclaSolta;
 				menuCalibraIndicador = menuComPeso;
-				if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charComPesoIndicadorPT[0],&caracterLcd[0]);}
-				if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charComPesoIndicadorING[0],&caracterLcd[0]);}
-				if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charComPesoIndicadorESP[0],&caracterLcd[0]);}
-				caracterLcd[29] = caracterRetorna;
-				caracterLcd[30] = '<';
-				caracterLcd[31] = caracterSalva;
-
+				telaComPesoCalibracaoIndicador();
 				break;
 			}
-			break;
 		}
+		break;
 		//////////////////////////////////////////////////////////////////////////////////
 		//faz a leitura da celula do valor equivalente ao peso de calibracao            //
 		//////////////////////////////////////////////////////////////////////////////////
@@ -427,18 +316,15 @@ else{tempProgIndicador = 1;}
 				teclaPressionadaAtual = teclaSolta;
 				telaPesoZeroIndicador();
 				break;
-				//tecla Seta acima
 			case teclaTaraSetaEsquerda:
 				teclaPressionadaAtual = teclaSolta;
 				tempAd = 0;
 				flagFazMediaAd = 1;
 				loopMediaCalibracao = 0;
 				operacaoComTeclado = 1;
-				if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charAguardePT[0],&caracterLcd[16]);}
-				if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charAguardeING[0],&caracterLcd[16]);}
-				if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charAguardeESP[0],&caracterLcd[16]);}
+				
+				telaAguardeCalibracaoIndicador();
 				break;
-				//tecla Ok
 			case teclaSalva:
 				teclaPressionadaAtual = teclaSolta;
 				flagFimCalibracao = 0;
@@ -463,11 +349,9 @@ void telaSenhaDeAcessoCalibracao(void)
 	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&telaVerificaSenhaLcdING[0],&caracterLcd[0]);}
 	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&telaVerificaSenhaLcdESP[0],&caracterLcd[0]);}
 	
-	caracterLcd[29] = '<';
-	caracterLcd[30] = caracterIncremento;
-	caracterLcd[31] = caracterSalva;
-
+#ifdef displaySeteSegmentosLcd
 	telaSenhaSeteSegmentos();
+#endif
 
 	flagPiscaDigitoSenha = 1;
 	digitoAtualProgramacao = programandoDigitoTres;
@@ -482,14 +366,14 @@ void telaValorFiltroDigitalIndicador(void)
 	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charValorFiltroDigitalPT[0],&caracterLcd[0]);}
 	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charValorFiltroDigitalING[0],&caracterLcd[0]);}
 	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charValorFiltroDigitalESP[0],&caracterLcd[0]);}
+	
 	if (tempProgIndicador < 10){caracterLcd[16] = tempProgIndicador + '0';}
 	else if (tempProgIndicador < 100){inteiroTo2BytesAscii(tempProgIndicador,&caracterLcd[16]);}
 	else{inteiroTo3BytesAscii(tempProgIndicador,&caracterLcd[16]);}
 
-	caracterLcd[30] = caracterIncremento;
-	caracterLcd[31] = caracterSalva;
-
+#ifdef displaySeteSegmentosLcd
 	telaValorFiltroDigitalSeteSegmentos();
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////
 /*tela de programacao da posicao doponto decimal                                */
@@ -509,11 +393,9 @@ void telaPosicaoPontoDecimalIndicador(void)
 	if (tempProgIndicador == _UMGRAMA){transfereConstToArray(&charUmaGramasPonto[0],&caracterLcd[16]);}
 	if (tempProgIndicador == _DECIGRAMA){transfereConstToArray(&charUmDecigramaPonto[0],&caracterLcd[16]);}
 
-	caracterLcd[29] = caracterRetorna;
-	caracterLcd[30] = caracterIncremento;
-	caracterLcd[31] = caracterSalva;
-
+#ifdef displaySeteSegmentosLcd
 	telaPosicaoPontoSeteSegmentos();
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //carrega a tela programacao do degrau do indicador 1,2,5,10 e 20            	//
@@ -526,13 +408,12 @@ void telaDefineDegrauPesoIndicador(void)
 	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charDegrauPesoIndicadorPT[0],&caracterLcd[0]);}
 	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charDegrauPesoIndicadorING[0],&caracterLcd[0]);}
 	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charDegrauPesoIndicadorESP[0],&caracterLcd[0]);}
-
+	
+#ifdef displaySeteSegmentosLcd	
+	telaDefineDegrauPesoSeteSegmentos();
+#endif
+	
 	telaControlaIncrementodegrauIndicador();
-
-	caracterLcd[29] = caracterRetorna;
-	caracterLcd[30] = caracterIncremento;
-	caracterLcd[31] = caracterSalva;
-
 }
 //////////////////////////////////////////////////////////////////////////////////
 //tela que mostra a programacao da carga maxima do indicador                    //
@@ -549,11 +430,9 @@ void telaPesoCargaMaximaIndicador(void)
 
 	transfereArrayToArray(6,&capacidadeMaximaIndicadorMem[2],&arrayTempIndicador[0]);
 
-	caracterLcd[28] = caracterRetorna;
-	caracterLcd[29] = caracterIncremento;
-	caracterLcd[30] = '<';
-	caracterLcd[31] = caracterSalva;
-
+#ifdef displaySeteSegmentosLcd
+	telaCapacidadeMaximaSeteSegmentos();
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////
 //tela que mostra a programacao do peso de calibracao do indicador              //
@@ -570,12 +449,9 @@ void telaPesoCalibracaoIndicador(void)
 	
 	transfereArrayToArray(6,&pesoCalibracaoIndicadorMem[2],&arrayTempIndicador[0]);
 
-	caracterLcd[28] = caracterRetorna;
-	caracterLcd[29] = caracterIncremento;
-	caracterLcd[30] = '<';
-	caracterLcd[31] = caracterSalva;
-
-	telaPesoCalibracaoSeteSeg();
+#ifdef displaySeteSegmentosLcd
+	telaPesoCalibracaoSeteSegmentos();
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////
 //tela que faz a leitura da indicaodr sem peso (zero)                           //
@@ -588,22 +464,59 @@ void telaPesoZeroIndicador(void)
 	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charSemPesoIndicadorING[0],&caracterLcd[0]);}
 	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charSemPesoIndicadorESP[0],&caracterLcd[0]);}
 
-	caracterLcd[29] = caracterRetorna;
-	caracterLcd[30] = '<';
-	caracterLcd[31] = caracterSalva;
-
-	telaSemPesoSeteSeg();
+#ifdef displaySeteSegmentosLcd
+	telaSemPesoSeteSegmentos();
+#endif
 }
+
+//////////////////////////////////////////////////////////////////////////////////
+//tela que faz a leitura da indicaodr com peso 		                           //
+//////////////////////////////////////////////////////////////////////////////////
+void telaComPesoCalibracaoIndicador(void)
+{
+	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charComPesoIndicadorPT[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charComPesoIndicadorING[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charComPesoIndicadorESP[0],&caracterLcd[0]);}
+	
+#ifdef displaySeteSegmentosLcd
+	telaComPesoSeteSegmentos();
+#endif
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+//tela que mostra a mensagem de aguarde				                           //
+//////////////////////////////////////////////////////////////////////////////////
+void telaAguardeCalibracaoIndicador (void) 
+{
+	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charAguardePT[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charAguardeING[0],&caracterLcd[0]);}
+	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charAguardeESP[0],&caracterLcd[0]);}
+
+#ifdef displaySeteSegmentosLcd
+	telaAguardeCalibracaoSeteSegmentos();	
+#endif
+}
+
 //////////////////////////////////////////////////////////////////////////////////
 //tela que controla a programacao do valor do degrau do indicador              //
 //////////////////////////////////////////////////////////////////////////////////
 void telaControlaIncrementodegrauIndicador(void)
 {
-	if (tempProgIndicador == 10 || tempProgIndicador == 20){inteiroTo2BytesAscii(tempProgIndicador,&caracterLcd[16]);}
+	if (tempProgIndicador == 10 || tempProgIndicador == 20)
+	{
+		inteiroTo2BytesAscii(tempProgIndicador,&caracterLcd[16]);
+
+		inteiroTo2BytesAscii(tempProgIndicador,&dadoLcdSetSegmentos[5]);
+	}
 	else
 	{
 		caracterLcd[17] = ' ';
 		caracterLcd[16] = tempProgIndicador + '0';
+
+#ifdef displaySeteSegmentosLcd
+		dadoLcdSetSegmentos[5] = ' ';
+		dadoLcdSetSegmentos[6] = tempProgIndicador + '0';
+#endif
 	}
 }
 //////////////////////////////////////////////////////////////////////////////////
@@ -752,7 +665,9 @@ void piscaDigitoProgIndicador(void)
 		}
 	}
 }
-
+//////////////////////////////////////////////////////////////////////////////////		
+// Controla a posicao e faz piscar o ponto decimal em sua programacao			//
+//////////////////////////////////////////////////////////////////////////////////
 void piscaPontoProgIndicador(void) 
 {
 	uint8_t i;
@@ -762,16 +677,18 @@ void piscaPontoProgIndicador(void)
 		/* Display LCD 16x2 e display grafico */
 		caracterLcd[21 - tempProgIndicador] = ' ';
 
-		/* Display 7seg */
+#ifdef displaySeteSegmentosLcd
 		digitosLcdSeteSegmentos[6 - tempProgIndicador] -= ValorPontoDecimalDspSeteSegmentos;
+#endif
 	}
 	else
 	{
 		/* Display LCD 16x2 e display grafico */
 		caracterLcd[21 - tempProgIndicador] = '.';
 
-		/* Display 7seg */
+#ifdef displaySeteSegmentosLcd
 		digitosLcdSeteSegmentos[6 - tempProgIndicador] += ValorPontoDecimalDspSeteSegmentos;
+#endif
 	}
 }
 
@@ -798,22 +715,22 @@ void manipulacaoDoDigitoDoIndicador(void)
 	case digitoZero:
 		switch (teclaPressionadaAtual)
 		{
-		// tecla incrementa o valor do digito
-		case teclaImprimeSetaAcima:
-			if (++arrayTempIndicador[5] > '9'|| arrayTempIndicador[5] < '0'){arrayTempIndicador[5] = '0';}
-			break;
-			//Direciona programacao para digito a esquerda
-		case teclaTaraSetaEsquerda:
-			digitoAtualIndicador = digitoUm;
-			break;
+			// tecla incrementa o valor do digito
+			case teclaImprimeSetaAcima:
+				if (++arrayTempIndicador[5] > '9'|| arrayTempIndicador[5] < '0'){arrayTempIndicador[5] = '0';}
+				break;
+				//Direciona programacao para digito a esquerda
+			case teclaTaraSetaEsquerda:
+				digitoAtualIndicador = digitoUm;
+				break;
 		}
 		break;
-		//////////////////////////////////////////////////////////////////////////////////
-		//programacao do digito um                                                      //
-		//////////////////////////////////////////////////////////////////////////////////
-		case digitoUm:
-			switch (teclaPressionadaAtual )
-			{
+	//////////////////////////////////////////////////////////////////////////////////
+	//programacao do digito um                                                      //
+	//////////////////////////////////////////////////////////////////////////////////
+	case digitoUm:
+		switch (teclaPressionadaAtual )
+		{
 			// tecla incrementa o valor do digito
 			case teclaImprimeSetaAcima:
 				if (++arrayTempIndicador[4] > '9'|| arrayTempIndicador[4] < '0'){arrayTempIndicador[4] = '0';}
@@ -822,72 +739,72 @@ void manipulacaoDoDigitoDoIndicador(void)
 			case teclaTaraSetaEsquerda:
 				digitoAtualIndicador = digitoDois;
 				break;
-			}
-			break;
-			//////////////////////////////////////////////////////////////////////////////////
-			//programacao do digito dois                                                    //
-			//////////////////////////////////////////////////////////////////////////////////
-			case digitoDois:
-				switch (teclaPressionadaAtual )
-				{
-				// tecla incrementa o valor do digito
-				case teclaImprimeSetaAcima:
-					if (++arrayTempIndicador[3] > '9'|| arrayTempIndicador[3] < '0'){arrayTempIndicador[3] = '0';}
-					break;
-					//Direciona programacao para digito a esquerda
-				case teclaTaraSetaEsquerda:
-					digitoAtualIndicador = digitoTres;
-					break;
-				}
+		}
+		break;
+	//////////////////////////////////////////////////////////////////////////////////
+	//programacao do digito dois                                                    //
+	//////////////////////////////////////////////////////////////////////////////////
+	case digitoDois:
+		switch (teclaPressionadaAtual )
+		{
+			// tecla incrementa o valor do digito
+			case teclaImprimeSetaAcima:
+				if (++arrayTempIndicador[3] > '9'|| arrayTempIndicador[3] < '0'){arrayTempIndicador[3] = '0';}
 				break;
-				//////////////////////////////////////////////////////////////////////////////////
-				//programacao do digito tres                                                    //
-				//////////////////////////////////////////////////////////////////////////////////
-				case digitoTres:
-					switch (teclaPressionadaAtual)
-					{
-					// tecla incrementa o valor do digito
-					case teclaImprimeSetaAcima:
-						if (++arrayTempIndicador[2] > '9'|| arrayTempIndicador[2] < '0'){arrayTempIndicador[2] = '0';}
-						break;
-						//Direciona programacao para digito a esquerda
-					case teclaTaraSetaEsquerda:
-						digitoAtualIndicador = digitoQuatro;
-						break;
-					}
-					break;
-					//////////////////////////////////////////////////////////////////////////////////
-					//programacao do digito quatro                                                  //
-					//////////////////////////////////////////////////////////////////////////////////
-					case digitoQuatro:
-						switch (teclaPressionadaAtual )
-						{
-						// tecla incrementa o valor do digito
-						case teclaImprimeSetaAcima:
-							if (++arrayTempIndicador[1] > '9'|| arrayTempIndicador[1] < '0'){arrayTempIndicador[1] = '0';}
-							break;
-							//Direciona programacao para digito a esquerda
-						case teclaTaraSetaEsquerda:
-							digitoAtualIndicador = digitoCinco;
-							break;
-						}
-						break;
-						//////////////////////////////////////////////////////////////////////////////////
-						//programacao do digito cinco                                                   //
-						//////////////////////////////////////////////////////////////////////////////////
-						case digitoCinco:
-							switch (teclaPressionadaAtual )
-							{
-							// tecla incrementa o valor do digito
-							case teclaImprimeSetaAcima:
-								if (++arrayTempIndicador[0] > '9'|| arrayTempIndicador[0] < '0'){arrayTempIndicador[0] = '0';}
-								break;
-								//Direciona programacao para digito a esquerda
-							case teclaTaraSetaEsquerda:
-								digitoAtualIndicador = digitoZero;
-								break;
-							}
-							break;
+				//Direciona programacao para digito a esquerda
+			case teclaTaraSetaEsquerda:
+				digitoAtualIndicador = digitoTres;
+				break;
+		}
+		break;
+	//////////////////////////////////////////////////////////////////////////////////
+	//programacao do digito tres                                                    //
+	//////////////////////////////////////////////////////////////////////////////////
+	case digitoTres:
+		switch (teclaPressionadaAtual)
+		{
+			// tecla incrementa o valor do digito
+			case teclaImprimeSetaAcima:
+				if (++arrayTempIndicador[2] > '9'|| arrayTempIndicador[2] < '0'){arrayTempIndicador[2] = '0';}
+				break;
+				//Direciona programacao para digito a esquerda
+			case teclaTaraSetaEsquerda:
+				digitoAtualIndicador = digitoQuatro;
+				break;
+		}
+		break;
+	//////////////////////////////////////////////////////////////////////////////////
+	//programacao do digito quatro                                                  //
+	//////////////////////////////////////////////////////////////////////////////////
+	case digitoQuatro:
+		switch (teclaPressionadaAtual )
+		{
+			// tecla incrementa o valor do digito
+			case teclaImprimeSetaAcima:
+				if (++arrayTempIndicador[1] > '9'|| arrayTempIndicador[1] < '0'){arrayTempIndicador[1] = '0';}
+				break;
+				//Direciona programacao para digito a esquerda
+			case teclaTaraSetaEsquerda:
+				digitoAtualIndicador = digitoCinco;
+				break;
+		}
+		break;
+	//////////////////////////////////////////////////////////////////////////////////
+	//programacao do digito cinco                                                   //
+	//////////////////////////////////////////////////////////////////////////////////
+	case digitoCinco:
+		switch (teclaPressionadaAtual )
+		{
+			// tecla incrementa o valor do digito
+			case teclaImprimeSetaAcima:
+				if (++arrayTempIndicador[0] > '9'|| arrayTempIndicador[0] < '0'){arrayTempIndicador[0] = '0';}
+				break;
+				//Direciona programacao para digito a esquerda
+			case teclaTaraSetaEsquerda:
+				digitoAtualIndicador = digitoZero;
+				break;
+		}
+		break;
 	}
 }
 /*tela de erro do peso de calibracao                                            */
@@ -896,11 +813,6 @@ void telaErroPesoCalibracao (void)
 	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charComPesoIndicadorPT[0],&backupTelaLcd[0]);}
 	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charComPesoIndicadorING[0],&backupTelaLcd[0]);}
 	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charComPesoIndicadorESP[0],&backupTelaLcd[0]);}
-
-	backupTelaLcd[28] = caracterRetorna;
-	backupTelaLcd[29] = caracterIncremento;
-	backupTelaLcd[30] = '<';
-	backupTelaLcd[31] = caracterSalva;
 
 	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charErroPesoCalibracaoPT[0],&caracterLcd[0]);}
 	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charErroPesoCalibracaoING[0],&caracterLcd[0]);}
@@ -912,7 +824,10 @@ void telaErroPesoCalibracao (void)
 	tempoMostraTelaTemporariaLcd = 1;
 
 #ifdef displaySeteSegmentosLcd
-	transfereArrayToArray(6,&dadoLcdSetSegmentos[0],&backupDigitosLcdSeteSegmentos[0]);
+	/* Salva tela ComPeso */
+	telaComPesoSeteSegmentos();
+	transfereArrayToArray(6,&dadoLcdSetSegmentos[1],&backupDigitosLcdSeteSegmentos[0]);
+
 	dadoLcdSetSegmentos[1] = 'E';
 	dadoLcdSetSegmentos[2] = 'R';
 	dadoLcdSetSegmentos[3] = 'R';
@@ -929,11 +844,6 @@ void telaErroCapacidadeMaxima (void)
 	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charPesoCalibracaoIndicadorING[0],&backupTelaLcd[0]);}
 	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charPesoCalibracaoIndicadorESP[0],&backupTelaLcd[0]);}
 
-	backupTelaLcd[28] = caracterRetorna;
-	backupTelaLcd[29] = caracterIncremento;
-	backupTelaLcd[30] = '<';
-	backupTelaLcd[31] = caracterSalva;
-
 	if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charErroPesoCargaMaximaPT[0],&caracterLcd[0]);}
 	if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charErroPesoCargaMaximaING[0],&caracterLcd[0]);}
 	if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charErroPesoCargaMaximaESP[0],&caracterLcd[0]);}
@@ -944,7 +854,9 @@ void telaErroCapacidadeMaxima (void)
 	tempoMostraTelaTemporariaLcd = 1;
 
 #ifdef displaySeteSegmentosLcd
-	transfereArrayToArray(6,&dadoLcdSetSegmentos[0],&backupDigitosLcdSeteSegmentos[0]);
+	/* Salva tela PesoCalibracao */
+	telaPesoCalibracaoSeteSegmentos();
+	transfereArrayToArray(6,&dadoLcdSetSegmentos[1],&backupDigitosLcdSeteSegmentos[0]);
 	dadoLcdSetSegmentos[1] = 'E';
 	dadoLcdSetSegmentos[2] = 'R';
 	dadoLcdSetSegmentos[3] = 'R';
@@ -1065,10 +977,7 @@ void telaMostraValorProDivisaoInterna(void)
 	transfereArrayToArray(10,&valorAtualDivisaoInterna[0],&caracterLcd[3]);
 	transfereArrayToArray(10,&arrayTempProgDivisao[0],&caracterLcd[19]);
 
-	caracterLcd[29] = caracterIncremento;
-	caracterLcd[30] = '<';
-	caracterLcd[31] = caracterSalva;
-
+	telaMostraNaoSeAplicaSeteSegmentos();
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //Tela que carrega a mensagem de erro peso fora do intervalo permitido          // 
@@ -1089,7 +998,7 @@ void telaErroSenhaTecnica(void)
 	tempoMostraTelaTemporariaLcd = 1;
 
 #ifdef displaySeteSegmentosLcd
-	transfereArrayToArray(6,&dadoLcdSetSegmentos[0],&backupDigitosLcdSeteSegmentos[0]);
+	transfereArrayToArray(6,&dadoLcdSetSegmentos[1],&backupDigitosLcdSeteSegmentos[0]);
 	dadoLcdSetSegmentos[1] = 'E';
 	dadoLcdSetSegmentos[2] = 'R';
 	dadoLcdSetSegmentos[3] = 'R';

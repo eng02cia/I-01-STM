@@ -23,7 +23,7 @@ void tempoEscreveLcdSeteSegmentos(void)
 			   contadorInicializaTelaSeteSegmento += 2;
 			   switch(contadorInicializaTelaSeteSegmento)
 			   {
-					case 80:
+					case 50:
 						digitosLcdSeteSegmentos[0] = 1;
 						digitosLcdSeteSegmentos[1] = 1 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[2] = 1 + ValorPontoDecimalDspSeteSegmentos;
@@ -32,7 +32,7 @@ void tempoEscreveLcdSeteSegmentos(void)
 						digitosLcdSeteSegmentos[5] = 1 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[6] = 1 + ValorPontoDecimalDspSeteSegmentos;
 						break;
-					case 90:
+					case 60:
 						digitosLcdSeteSegmentos[0] = 2;
 						digitosLcdSeteSegmentos[1] = 2 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[2] = 2 + ValorPontoDecimalDspSeteSegmentos;
@@ -41,7 +41,7 @@ void tempoEscreveLcdSeteSegmentos(void)
 						digitosLcdSeteSegmentos[5] = 2 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[6] = 2 + ValorPontoDecimalDspSeteSegmentos;
 						break;
-					case 100:
+					case 70:
 						digitosLcdSeteSegmentos[0] = 3;
 						digitosLcdSeteSegmentos[1] = 3 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[2] = 3 + ValorPontoDecimalDspSeteSegmentos;
@@ -50,7 +50,7 @@ void tempoEscreveLcdSeteSegmentos(void)
 						digitosLcdSeteSegmentos[5] = 3 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[6] = 3 + ValorPontoDecimalDspSeteSegmentos;
 						break;
-					case 110:
+					case 80:
 						digitosLcdSeteSegmentos[0] = 4;
 						digitosLcdSeteSegmentos[1] = 4 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[2] = 4 + ValorPontoDecimalDspSeteSegmentos;
@@ -59,7 +59,7 @@ void tempoEscreveLcdSeteSegmentos(void)
 						digitosLcdSeteSegmentos[5] = 4 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[6] = 4 + ValorPontoDecimalDspSeteSegmentos;
 						break;
-					case 120:
+					case 90:
 						digitosLcdSeteSegmentos[0] = 5;
 						digitosLcdSeteSegmentos[1] = 5 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[2] = 5 + ValorPontoDecimalDspSeteSegmentos;
@@ -68,7 +68,7 @@ void tempoEscreveLcdSeteSegmentos(void)
 						digitosLcdSeteSegmentos[5] = 5 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[6] = 5 + ValorPontoDecimalDspSeteSegmentos;
 						break;
-					case 130:
+					case 100:
 						digitosLcdSeteSegmentos[0] = 6;
 						digitosLcdSeteSegmentos[1] = 6 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[2] = 6 + ValorPontoDecimalDspSeteSegmentos;
@@ -77,7 +77,7 @@ void tempoEscreveLcdSeteSegmentos(void)
 						digitosLcdSeteSegmentos[5] = 6 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[6] = 6 + ValorPontoDecimalDspSeteSegmentos;
 						break;
-					case 140:
+					case 110:
 						digitosLcdSeteSegmentos[0] = 7;
 						digitosLcdSeteSegmentos[1] = 7 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[2] = 7 + ValorPontoDecimalDspSeteSegmentos;
@@ -86,7 +86,7 @@ void tempoEscreveLcdSeteSegmentos(void)
 						digitosLcdSeteSegmentos[5] = 7 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[6] = 7 + ValorPontoDecimalDspSeteSegmentos;
 						break;
-					case 150:
+					case 120:
 						digitosLcdSeteSegmentos[0] = 8;
 						digitosLcdSeteSegmentos[1] = 8 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[2] = 8 + ValorPontoDecimalDspSeteSegmentos;
@@ -95,7 +95,7 @@ void tempoEscreveLcdSeteSegmentos(void)
 						digitosLcdSeteSegmentos[5] = 8 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[6] = 8 + ValorPontoDecimalDspSeteSegmentos;
 						break;
-					case 160:
+					case 130:
 						digitosLcdSeteSegmentos[0] = 9;
 						digitosLcdSeteSegmentos[1] = 9 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[2] = 9 + ValorPontoDecimalDspSeteSegmentos;
@@ -104,7 +104,7 @@ void tempoEscreveLcdSeteSegmentos(void)
 						digitosLcdSeteSegmentos[5] = 9 + ValorPontoDecimalDspSeteSegmentos;
 						digitosLcdSeteSegmentos[6] = 9 + ValorPontoDecimalDspSeteSegmentos;
 						break;
-					case 170:
+					case 140:
 						fazTelaInicialSeteSegmento = 1;
 						contadorInicializaTelaSeteSegmento = 0;
 						break;

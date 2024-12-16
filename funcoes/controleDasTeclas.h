@@ -117,7 +117,9 @@ void metodoLigaSistema(void)
     transfereCaracterDwinTelaInicial();  
     trocarPaginaDwin = 0;
 //    preparaSalvaStatusPowerOn();
+#ifdef displaySeteSegmentosLcd
     telaVersaoSeteSegmentos();
+#endif
     fazTelaInicialPesoDwin = 0;
     fazTelaInicialSeteSegmento = 0;
     escreveDadoLcd(&telaInicialIndicador[0],&caracterLcd[0]);
@@ -138,7 +140,9 @@ void metodoDesligaSistema(void)
     statusPowerOnMem = _DESLIGADO;
     carregaTela0();
 //    preparaSalvaStatusPowerOn();
+#ifdef displaySeteSegmentosLcd
     apagaLcdSeteSegmentos();
+#endif
     controleTara = _TARADESATIVADA;
     tempoSegundoBacklightLigado = 0;
     tempoBacklightLigado = 0;
@@ -220,7 +224,7 @@ void telaErroLimiteZero(void)
     transfereCaracterLcdLinha1Dwin();
 
 #ifdef displaySeteSegmentosLcd
-	transfereArrayToArray(6,&dadoLcdSetSegmentos[0],&backupDigitosLcdSeteSegmentos[0]);
+	transfereArrayToArray(6,&dadoLcdSetSegmentos[1],&backupDigitosLcdSeteSegmentos[0]);
 	dadoLcdSetSegmentos[1] = 'E';
 	dadoLcdSetSegmentos[2] = 'R';
 	dadoLcdSetSegmentos[3] = 'R';

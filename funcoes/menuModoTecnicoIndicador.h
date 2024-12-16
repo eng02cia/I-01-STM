@@ -193,13 +193,12 @@ void telaMostraProgramacaoLimiteZero(void)
     if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaConfiguraLimiteZeroING[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaConfiguraLimiteZeroESP[0],&caracterLcd[0]);}
 
-    telaConfLimiteZeroSeteSegmentos();
-
     caracterLcd[16] = tempConfigIndicador + '0';
     caracterLcd[18] = '%';
-    caracterLcd[29] = caracterRetorna;
-    caracterLcd[30] = caracterIncremento;
-    caracterLcd[31] = caracterSalva;        
+
+#ifdef displaySeteSegmentosLcd
+    telaConfLimiteZeroSeteSegmentos();
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //tela mostra  filtro digital modo tecnico indicador                          	//
@@ -214,11 +213,9 @@ void telaValorFiltroDigitalModoTecnicoIndicador(void)
     else if (tempConfigIndicador < 100){inteiroTo2BytesAscii(tempConfigIndicador,&caracterLcd[16]);}
     else{inteiroTo3BytesAscii(tempConfigIndicador,&caracterLcd[16]);}
 
-    caracterLcd[29] = caracterRetorna;
-    caracterLcd[30] = caracterIncremento;
-    caracterLcd[31] = caracterSalva;    
-
+#ifdef displaySeteSegmentosLcd
     telaValorFiltroDigitalSeteSegmentos();
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //tela mostra a programacao do modo de pesagem do indicador                   	//
@@ -229,21 +226,22 @@ void telaMostraProgramacaoStatusZeroLigarIndicador(void)
     if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaModoPesagemIndicadorING[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaModoPesagemIndicadorESP[0],&caracterLcd[0]);}
 
-    if (tempConfigIndicador == 0) {
+    if (tempConfigIndicador == 0) 
+    {
         if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaDesativadoPT[0],&caracterLcd[16]);}
         if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaDesativadoING[0],&caracterLcd[16]);}
         if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaDesativadoESP[0],&caracterLcd[16]);}
-    } else{
+    } 
+    else
+    {
         if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaAtivadoPT[0],&caracterLcd[16]);}
         if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaAtivadoING[0],&caracterLcd[16]);}
         if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaAtivadoESP[0],&caracterLcd[16]);}
     }
 
+#ifdef displaySeteSegmentosLcd
     telaMostraStatusZeroLigarSeteSegmentos();
-
-    caracterLcd[29] = caracterRetorna;
-    caracterLcd[30] = caracterIncremento;
-    caracterLcd[31] = caracterSalva;    
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //tela mostra a programacao do modo de funcinamento do backlight             	//
@@ -271,11 +269,9 @@ void telaMostraProgramacaoModoFuncionamentoBackLight(void)
         if (tempConfigIndicador == 2){escreveDadoLcd(&charTelaLigadoPorTempoESP[0],&caracterLcd[16]);}
     }
 
+#ifdef displaySeteSegmentosLcd
     telaMostraFuncionamentoBackLightSeteSegmentos();
-
-    caracterLcd[29] = caracterRetorna;
-    caracterLcd[30] = caracterIncremento;
-    caracterLcd[31] = caracterSalva;    
+#endif   
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //tela mostra a programacao do tempo que o back light fica ligado               //
@@ -294,11 +290,9 @@ void telaTempoBackLightLigado(void)
         if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaDesligadoESP[0],&caracterLcd[16]);}
     }
 
+#ifdef displaySeteSegmentosLcd
     telaTempoBackLightSeteSegmentos();
-
-	caracterLcd[29] = caracterRetorna;
-	caracterLcd[30] = caracterIncremento;
-	caracterLcd[31] = caracterSalva;
+#endif
 }
 
 

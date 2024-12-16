@@ -12,7 +12,7 @@ void controlaTempoExibeTelaTemporaria (void)
             mostraTelaTemporariaLcd = 0;
             tempoMostraTelaTemporariaLcd = 0;
             transfereArrayToArray(32,&backupTelaLcd[0],&caracterLcd[0]);
-            transfereArrayToArray(6,&backupDigitosLcdSeteSegmentos[0],&dadoLcdSetSegmentos[0]);
+            transfereArrayToArray(6,&backupDigitosLcdSeteSegmentos[0],&dadoLcdSetSegmentos[1]);
         }
     }
 }
@@ -237,7 +237,8 @@ void transmiteNibleLcd (void)
     }
     if (byteDataLcd.Flag.Bit5 == 1)
     {
-    	HAL_GPIO_WritePin(pinoData5_GPIO_Port, pinoData5_Pin,GPIO_PIN_SET);    }
+    	HAL_GPIO_WritePin(pinoData5_GPIO_Port, pinoData5_Pin,GPIO_PIN_SET);    
+    }
     if (byteDataLcd.Flag.Bit4 == 1)
     {
     	HAL_GPIO_WritePin(pinoData4_GPIO_Port, pinoData4_Pin,GPIO_PIN_SET);

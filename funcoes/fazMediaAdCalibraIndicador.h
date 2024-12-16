@@ -39,8 +39,6 @@ void fazMediaAdCalibraIndicador(void)
                 {
                     menuCalibraIndicador = menuCalibraIndicadorEmEspera;
                     flagFimCalibracao = 0;
-					HAL_UART_Transmit(&huart3, "page PESO", 9, 25);
-					HAL_UART_Transmit(&huart3, cmd_end, 3, 25);
                 }
                 else
                 {
@@ -56,7 +54,6 @@ void fazMediaAdCalibraIndicador(void)
                     temp1Ad = atol(arrayInteiroTemp);   
                     valorDivisaoIndicador = tempAd/temp1Ad;
 
-
                     if (valorDivisaoIndicador >= 10)
                     {
                         valorDivisaoIndicadorMem.float32 = valorDivisaoIndicador;
@@ -64,9 +61,7 @@ void fazMediaAdCalibraIndicador(void)
 
                         if (operacaoComTeclado == 1)
                         {
-							if (linguagemSelecionadaMem == _PORTUGUES) {transfereConstToArray(&charCertoPT[0],&caracterLcd[16]);}
-                            if (linguagemSelecionadaMem == _INGLES) {transfereConstToArray(&charCertoING[0],&caracterLcd[16]);}
-                            if (linguagemSelecionadaMem == _ESPANHOL) {transfereConstToArray(&charCertoESP[0],&caracterLcd[16]);}
+                            telaCertoCalibracao();
 
                             flagFimCalibracao = 1;
                             flagFazMediaAd = 1;
@@ -128,37 +123,12 @@ void rotacionaArrayInsere0Converte(void)
 //////////////////////////////////////////////////////////////////////////////////
 void telaZeroOkCalibracao(void)
 {
-	if (linguagemSelecionadaMem == 0){transfereConstToArray(&charZeroOkPT[0],&caracterLcd[16]);}
-	if (linguagemSelecionadaMem == 1){transfereConstToArray(&charZeroOkING[0],&caracterLcd[16]);}
-	if (linguagemSelecionadaMem == 2){transfereConstToArray(&charZeroOkESP[0],&caracterLcd[16]);}
+	if (linguagemSelecionadaMem == _PORTUGUES){transfereConstToArray(&charZeroOkPT[0],&caracterLcd[16]);}
+	if (linguagemSelecionadaMem == _INGLES){transfereConstToArray(&charZeroOkING[0],&caracterLcd[16]);}
+	if (linguagemSelecionadaMem == _ESPANHOL){transfereConstToArray(&charZeroOkESP[0],&caracterLcd[16]);}
+
 #ifdef displaySeteSegmentosLcd
-	if (linguagemSelecionadaMem == _PORTUGUES)
-	{
-		dadoLcdSetSegmentos[1] = 'Z';
-		dadoLcdSetSegmentos[2] = 'E';
-		dadoLcdSetSegmentos[3] = 'R';
-		dadoLcdSetSegmentos[4] = ' ';
-		dadoLcdSetSegmentos[5] = 'O';
-		dadoLcdSetSegmentos[6] = 'K';
-	}
-	if (linguagemSelecionadaMem == _INGLES)
-	{
-		dadoLcdSetSegmentos[1] = 'Z';
-		dadoLcdSetSegmentos[2] = 'E';
-		dadoLcdSetSegmentos[3] = 'R';
-		dadoLcdSetSegmentos[4] = ' ';
-		dadoLcdSetSegmentos[5] = 'O';
-		dadoLcdSetSegmentos[6] = 'K';
-	}
-	if (linguagemSelecionadaMem == _ESPANHOL)
-	{
-		dadoLcdSetSegmentos[1] = 'C';
-		dadoLcdSetSegmentos[2] = 'E';
-		dadoLcdSetSegmentos[3] = 'R';
-		dadoLcdSetSegmentos[4] = ' ';
-		dadoLcdSetSegmentos[5] = 'O';
-		dadoLcdSetSegmentos[6] = 'K';
-	}
+    telaZeroOkCalibracaoSeteSegmentos();
 #endif
 }
 //////////////////////////////////////////////////////////////////////////////////
@@ -171,32 +141,6 @@ void telaCertoCalibracao(void)
 	if (linguagemSelecionadaMem == _ESPANHOL){transfereConstToArray(&charCertoESP[0],&caracterLcd[16]);}
 
 #ifdef displaySeteSegmentosLcd
-	if (linguagemSelecionadaMem == _PORTUGUES)
-	{
-		dadoLcdSetSegmentos[1] = 'C';
-		dadoLcdSetSegmentos[2] = 'E';
-		dadoLcdSetSegmentos[3] = 'R';
-		dadoLcdSetSegmentos[4] = 'T';
-		dadoLcdSetSegmentos[5] = 'O';
-		dadoLcdSetSegmentos[6] = ' ';
-	}
-	if (linguagemSelecionadaMem == _INGLES)
-	{
-		dadoLcdSetSegmentos[1] = 'R';
-		dadoLcdSetSegmentos[2] = 'I';
-		dadoLcdSetSegmentos[3] = 'G';
-		dadoLcdSetSegmentos[4] = 'H';
-		dadoLcdSetSegmentos[5] = 'T';
-		dadoLcdSetSegmentos[6] = ' ';
-	}
-	if (linguagemSelecionadaMem == _ESPANHOL)
-	{
-		dadoLcdSetSegmentos[1] = 'B';
-		dadoLcdSetSegmentos[2] = 'I';
-		dadoLcdSetSegmentos[3] = 'E';
-		dadoLcdSetSegmentos[4] = 'N';
-		dadoLcdSetSegmentos[5] = ' ';
-		dadoLcdSetSegmentos[6] = ' ';
-	}
+    telaCertoCalibracaoSeteSegmentos();
 #endif
 }

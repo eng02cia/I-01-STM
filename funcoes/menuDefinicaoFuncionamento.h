@@ -137,11 +137,10 @@ void telaMostraProgNomeAcii(void)
         if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaDefineTelaInicialESP[0],&caracterLcd[0]);}
     }    
     transfereArrayToArray(16,&nomeProgTemp[0],&caracterLcd[16]);
-    caracterLcd[13] = caracterRetorna;
-    caracterLcd[14] = caracterIncremento;
-    caracterLcd[15] = caracterSalva;
-
+    
+#ifdef displaySeteSegmentosLcd
     telaMostraNaoSeAplicaSeteSegmentos();
+#endif
 }
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -149,21 +148,36 @@ void telaMostraProgNomeAcii(void)
 //////////////////////////////////////////////////////////////////////////////////
 void telaMostraSelecionaIdioma(void)
 {
+    /* Idioma configurado */
+    if (linguagemSelecionadaMem == _PORTUGUES) 
+    {
+        escreveDadoLcd(&charTelaSelecionaLinguagemPT[0],&caracterLcd[0]);
+    }    
+    if (linguagemSelecionadaMem == _INGLES) 
+    {
+        escreveDadoLcd(&charTelaSelecionaLinguagemING[0],&caracterLcd[0]);
+    }
+    if (linguagemSelecionadaMem == _ESPANHOL) 
+    {
+        escreveDadoLcd(&charTelaSelecionaLinguagemESP[0],&caracterLcd[0]);
+    }
+
+    /* Selecao do idioma no menu */
 	if (tempConfigModoFuncionamento == _PORTUGUES)
-	{
-	    escreveDadoLcd(&charTelaSelecionaLinguagemPT[0],&caracterLcd[0]);
+	{	    
 		escreveDadoLcd(&charTelaPortugues[0],&caracterLcd[16]);
 	}
 	if (tempConfigModoFuncionamento == _INGLES)
 	{
-        escreveDadoLcd(&charTelaSelecionaLinguagemING[0],&caracterLcd[0]);
+        
 		escreveDadoLcd(&charTelaIngles[0],&caracterLcd[16]);
 	}
 	if (tempConfigModoFuncionamento == _ESPANHOL)
 	{
-        escreveDadoLcd(&charTelaSelecionaLinguagemESP[0],&caracterLcd[0]);
 		escreveDadoLcd(&charTelaEspanhol[0],&caracterLcd[16]);
 	}
 
+#ifdef displaySeteSegmentosLcd
     telaMostraSelecionaIdiomaSeteSegmentos();
+#endif
 }

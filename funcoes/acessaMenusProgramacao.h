@@ -99,10 +99,9 @@ void telaAcessaMenuModoTecnicoIndicador(void)
     if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaAcessaMenuModoTecnicoIndicadorING[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaAcessaMenuModoTecnicoIndicadorESP[0],&caracterLcd[0]);}    
 
-    caracterLcd[30] = caracterIncremento;
-    caracterLcd[31] = caracterSalva;       
-
+#ifdef displaySeteSegmentosLcd
     telaAcessaMenuModoTecnicoSeteSegmentos();
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //tela de acesso a configuracao da serial                                     	//
@@ -114,10 +113,9 @@ void telaAcessaMenuConfiguraSerial_1(void)
     if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaAcessaMenuConfiguraSerial_1ING[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaAcessaMenuConfiguraSerial_1ESP[0],&caracterLcd[0]);}
 
-    caracterLcd[30] = caracterIncremento;
-    caracterLcd[31] = caracterSalva;       
-
+#ifdef displaySeteSegmentosLcd
     telaConfigSerialSeteSegmentos();
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //tela de acesso a calibracao do indicador                                     	//
@@ -129,10 +127,9 @@ void telaAcessaMenuFazCalibracao(void)
     if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaAcessaMenuFazCalibracaoING[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaAcessaMenuFazCalibracaoESP[0],&caracterLcd[0]);}
 
-    caracterLcd[30] = caracterIncremento;
-    caracterLcd[31] = caracterSalva;       
-
+#ifdef displaySeteSegmentosLcd
     telaAcessaMenuCalibracaoSeteSegmentos();
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////
 //tela de acesso a configuracao do relogio                                   	//
@@ -144,5 +141,7 @@ void telaAcessaMenuConfiguraRelogio(void)
     if (linguagemSelecionadaMem == _INGLES){escreveDadoLcd(&charTelaAcessaMenuProgRelogioING[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _ESPANHOL){escreveDadoLcd(&charTelaAcessaMenuProgRelogioESP[0],&caracterLcd[0]);}
 
-    telaMostraNaoSeAplicaSeteSegmentos();
+#ifdef displaySeteSegmentosLcd
+    telaAcessaConfiguraRelogioSeteSegmentos();
+#endif
 }

@@ -264,16 +264,16 @@ void telaMostraAtivaDesativaSerial_1(void)
         if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charDesativadoING[0],&caracterLcd[25]);}
         if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charDesativadoESP[0],&caracterLcd[25]);}
     }
-    caracterLcd[29] = caracterRetorna;
-    caracterLcd[30] = caracterIncremento;
-    caracterLcd[31] = caracterSalva;     
+    
+#ifdef displaySeteSegmentosLcd
+    telaMostraAtivDesativSerial_1SeteSegmentos();
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //tela mostra ativa desativa serial                                         	//
 //////////////////////////////////////////////////////////////////////////////////    
 void telaMostraProgVelocidadeSerial_1(void)  
 {
-
     if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaConfiguraVelocidadeSerialPT[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaConfiguraVelocidadeSerialING[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaConfiguraVelocidadeSerialESP[0],&caracterLcd[0]);}
@@ -305,16 +305,16 @@ void telaMostraProgVelocidadeSerial_1(void)
             escreveDadoLcd(&charVelocidade115200Kbps[0],&caracterLcd[23]);
             break;
     }
-    caracterLcd[29] = caracterRetorna;
-    caracterLcd[30] = caracterIncremento;
-    caracterLcd[31] = caracterSalva; 
+    
+#ifdef displaySeteSegmentosLcd
+    telaMostraProgVelSerial_1SeteSegmentos();
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //tela mostra ativa desativa serial                                         	//
 //////////////////////////////////////////////////////////////////////////////////
 void telaMostraTipoPortaSerial_1(void)
 {
-
     if (linguagemSelecionadaMem == _PORTUGUES) {escreveDadoLcd(&charTelaEscolhePortaSerial_1PT[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _INGLES) {escreveDadoLcd(&charTelaEscolhePortaSerial_1ING[0],&caracterLcd[0]);}
     if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaEscolhePortaSerial_1ESP[0],&caracterLcd[0]);}
@@ -322,9 +322,9 @@ void telaMostraTipoPortaSerial_1(void)
     if (tempConfigSerial == _RS232){escreveDadoLcd(&charRs232[0],&caracterLcd[16]);}
     if (tempConfigSerial == _RS485){escreveDadoLcd(&charRs485[0],&caracterLcd[16]);}  
 
-    caracterLcd[29] = caracterRetorna;
-    caracterLcd[30] = caracterIncremento;
-    caracterLcd[31] = caracterSalva;     
+#ifdef displaySeteSegmentosLcd
+    telaMostraTipoPortaSerial_1SeteSegmentos();
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //tela mostra a forma de saida de dados serial 2                              	//
@@ -338,9 +338,10 @@ void telaMostraTipoSaidaDadosSerial_1(void)
     if (tempConfigSerial == _TRANSMISSAOCONTINUA_1){escreveDadoLcd(&charTcContinua_1[0],&caracterLcd[16]);}
 	if (tempConfigSerial == _TRANSMISSAOCONTINUA_2){escreveDadoLcd(&charTcContinua_2[0],&caracterLcd[16]);}
     if (tempConfigSerial == _MODBUS_RTU){escreveDadoLcd(&charModBusRtu[0],&caracterLcd[16]);}
-    caracterLcd[29] = caracterRetorna;
-    caracterLcd[30] = caracterIncremento;
-    caracterLcd[31] = caracterSalva;
+    
+#ifdef displaySeteSegmentosLcd
+    telaMostraTipoSaidaSerial_1SeteSegmentos();
+#endif
 }
 
 //////////////////////////////////////////////////////////////////////////////////		
@@ -354,9 +355,10 @@ void telaMostraTipoSaidaDadosSerial_2(void)
 
     if (tempConfigSerial == _TRANSMISSAOCONTINUA_1){escreveDadoLcd(&charTcContinua_1[0],&caracterLcd[16]);}
     if (tempConfigSerial == _TRANSMISSAOCONTINUA_2){escreveDadoLcd(&charTcContinua_2[0],&caracterLcd[16]);}
-    caracterLcd[29] = caracterRetorna;
-    caracterLcd[30] = caracterIncremento;
-    caracterLcd[31] = caracterSalva;     
+    
+#ifdef displaySeteSegmentosLcd
+    telaMostraTipoSaidaSerial_2SeteSegmentos();
+#endif
 }
 //////////////////////////////////////////////////////////////////////////////////		
 //tela mostra o endereco definido para a modbus-rtu e Sigmacia SA              	//
@@ -368,9 +370,10 @@ void telaMostraEnderecoIndicador(void)
     if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaEnderecoIndicadorSerial_1ESP[0],&caracterLcd[0]);}
 
     inteiroTo2BytesAscii(tempConfigSerial,&caracterLcd[25]);
-    caracterLcd[29] = caracterRetorna;
-    caracterLcd[30] = caracterIncremento;
-    caracterLcd[31] = caracterSalva;     
+      
+#ifdef displaySeteSegmentosLcd
+    telaMostraenderecoIndicadorSeteSegmentos();
+#endif
 } 
 //////////////////////////////////////////////////////////////////////////////////		
 //tela mostra a programacao da quantidade de frames por segundo                	//
@@ -382,9 +385,10 @@ void telaMostraQtFramePorSegundo(void)
     if (linguagemSelecionadaMem == _ESPANHOL) {escreveDadoLcd(&charTelaQtFramePorSegundoESP[0],&caracterLcd[0]);}
 
     inteiroTo2BytesAscii(tempConfigSerial,&caracterLcd[25]);
-    caracterLcd[29] = caracterRetorna;
-    caracterLcd[30] = caracterIncremento;
-    caracterLcd[31] = caracterSalva;     
+    
+#ifdef displaySeteSegmentosLcd
+    telaMostraQtFramePorSegundoSeteSegmentos();
+#endif
 } 
 
 
