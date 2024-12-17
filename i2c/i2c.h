@@ -54,7 +54,6 @@ void metodoTempoLeituraRelogio(void)
         && menuModoTecnicoIndicador == menuModoTecnicoIndicadorEmEspera
         && menuProgramacaoRelogioAtual == menuProgramaRelogioEmEspera
         && menuProgramaDefinicaoFucionamento == menuDefinicaoFuncionamentoEmEspera)
-//        && menuStatusHomologacao == menuStatusHomologacaoEmEspera)
         {
         	le_Relogio_i2c();
         	segundoRelogio = bcdToDec(set_time[0]);

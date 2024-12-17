@@ -149,11 +149,7 @@ void apagaLcdSeteSegmentos(void)
 //////////////////////////////////////////////////////////////////////////////////
 void escreveDigitosLcdSetSegmentos(void)
 { 
-//	HAL_GPIO_WritePin(COM_DSP_GPIO_Port, COM_DSP_Pin,GPIO_PIN_RESET);
-//	HAL_GPIO_WritePin(clockLcd_GPIO_Port, clockLcd_Pin,GPIO_PIN_RESET);
 	indexExcreveDigitos = 0;
-//escreve novo dado  na linha
-//    indexEscreveMatriz = ValorUltimaColunaMatriz;
     for(loopEscreveSegmentosLcd = 6 ; loopEscreveSegmentosLcd != 0 ; loopEscreveSegmentosLcd--)
     {
     	controlSegmentosDsp.Byte = dadoDigitosEscreveLcd[indexExcreveDigitos];

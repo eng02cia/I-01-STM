@@ -48,7 +48,7 @@ void trataControleDasTeclas (void)
                     // transmiteSemFonte = 0;
                     // transmiteCarregando = 0;
                     // transmiteSemBateria = 0;
-                    acessaMenuProgramaNomeTelaInicial();
+                    acessaMenuModoFuncionamentoLiguagem();
                 }  
 //////////////////////////////////////////////////////////////////////////////////		
 //Verifica o acesso aos menus de programacao                          		 	//

@@ -82,7 +82,7 @@ void digita16CaracteresAscii(void)
         if (posicaoDigitoControleCadastro < 16)
        {          
             nomeProgTemp[posicaoDigitoControleCadastro++] = teclaPs2Press;
-            telaMostraProgNomeAcii();
+            telaMostraProgNomeAscii();
         }
         teclaPs2Press = 0;
     }
@@ -92,7 +92,7 @@ void digita16CaracteresAscii(void)
         teclasEditaProgramaAtualPs2 = teclaSoltaPs2;
         posicaoDigitoControleCadastro = 0;
         carregaArrayComEspacoAscii(16,&nomeProgTemp[0]);
-        telaMostraProgNomeAcii();
+        telaMostraProgNomeAscii();
     }
 //verifica se apaga um caracter
     if (teclasEditaProgramaAtualPs2 == teclaBackSpace)
@@ -101,7 +101,7 @@ void digita16CaracteresAscii(void)
         if (posicaoDigitoControleCadastro != 0)
         {
              nomeProgTemp[--posicaoDigitoControleCadastro] = ' ';
-            telaMostraProgNomeAcii();
+            telaMostraProgNomeAscii();
        }
     } 
 }
@@ -112,7 +112,7 @@ void acessaMenuProgramaNomeTelaInicial(void)
 {
     menuProgramaDefinicaoFucionamento = defineNomeTelaPrincipal;
     transfereArrayToArray(16,&nomeTelaIndicadorMem[0],&nomeProgTemp[0]);
-    telaMostraProgNomeAcii();
+    telaMostraProgNomeAscii();
 }
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -128,7 +128,7 @@ void acessaMenuModoFuncionamentoLiguagem(void)
 //////////////////////////////////////////////////////////////////////////////////		
 //tela mostra o acesso a programacao do nome da tela                          	//
 //////////////////////////////////////////////////////////////////////////////////
-void telaMostraProgNomeAcii(void)
+void telaMostraProgNomeAscii(void)
 {
     if (menuProgramaDefinicaoFucionamento == defineNomeTelaPrincipal)
     {

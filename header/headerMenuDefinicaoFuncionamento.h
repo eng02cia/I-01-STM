@@ -23,7 +23,7 @@ void telaMostraEscolheVersaoIcv(void);
 void telaMostraEscolheDuplaCalibracao(void);
 void telaMostraAtivaDesativaWifi(void);
 void telaMostraAtivaDesativaBluetooth(void);
-void telaMostraProgNomeAcii(void);
+void telaMostraProgNomeAscii(void);
 void telaMostraSelecionaIdioma(void);
 //contantes utilizadas na funcao                
 
