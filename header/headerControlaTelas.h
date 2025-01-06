@@ -12,7 +12,7 @@ unsigned char tempControlaTelas;
 
 //flags utilizados para controle das telas
 static unsigned char exibeVersionControl;
-static unsigned char transmitindoErro;
+//static unsigned char transmitindoErro;
 unsigned char trocaTelaPeso;
 
 //frases utilizadas 

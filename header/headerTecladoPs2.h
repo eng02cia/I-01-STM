@@ -35,7 +35,7 @@ static unsigned char indexDataTeclaPresPs2;
 static unsigned int tempoRecebendoDadoTecladoPs2;
 static unsigned int tempoMaxConfigTecladoPs2;
 static unsigned char teclaPs2Press;
-static unsigned char dataTempPressPs2;
+//static unsigned char dataTempPressPs2;
 static unsigned char configuraTecladoPs2;
 static unsigned char verificaTeclaSoltaPs2;
 //static unsigned char primeiraParteFrameTeclaExtend;

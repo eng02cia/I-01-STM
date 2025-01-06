@@ -2,7 +2,7 @@
 //                       Header Rx Serial display remoto                  		//		
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////		
-//prototipos de fun��o utilizados												//
+//prototipos de funcao utilizados												//
 //////////////////////////////////////////////////////////////////////////////////		
 void initRxPesoSerial_1(void);
 void rxSerial_1Rs232Interrupt(void);
@@ -14,7 +14,7 @@ void controleTempoJanelaFrameSerial_1(void);
 void funcaoIdentificaSemSerial_1(void);
 
 //////////////////////////////////////////////////////////////////////////////////		
-//declara��o de variaveis utilziadas nesta fun��o								//
+//declara��o de variaveis utilziadas nesta funcao								//
 //////////////////////////////////////////////////////////////////////////////////		
 static unsigned char tempoReferenciaFinalFrameSerial_1;
 unsigned char statusProtocoloIdenticadoSerial_1;
@@ -45,7 +45,7 @@ short flagPiscaLedRxSerial_1;
 #define _BUFFER_VAZIO 0
 #define _COM_BALANCA 1
 #define _SEM_BALANCA 0
-//flags utilizados na fun��o de recp��o do peso serial
+//flags utilizados na funcao de recp��o do peso serial
 
 enum 
 {

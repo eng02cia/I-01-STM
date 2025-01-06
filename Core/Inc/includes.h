@@ -14,7 +14,6 @@
 #include "transfereConstToArray.h"
 uint8_t cmd_end[3] ={0xFF, 0xFF, 0xFF};
 uint8_t Rx_ModbusSerial_1[10];
-#include "headerPilhaSaveEeprom.h"
 #include "headerControleTask.h"
 #include "headerControlaTelas.h"
 #include "headerControleDasTeclas.h"

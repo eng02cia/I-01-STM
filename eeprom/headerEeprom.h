@@ -105,6 +105,11 @@ void salvaQtDivisoesCargaVivaMem(void);
 void salvaModoFuncionamentoBackLightMem(void);
 void salvaTempoDesligaBackLightMem(void);
 void salvaStatusZeroPowerMem(void);
+void salvaExibeRelogio(void);
+void salvaPosicaoPontoDecimalIndicadorMem(void);
+void salvaStatusSaidaPortaSerial_1Mem(void);
+void salvaValorDivisaoIndicadorMem(void);
+
 //////////////////////////////////////////////////////////////////////////////////		
 //declaracao de variaveis utilziadas nesta funcao								//
 //////////////////////////////////////////////////////////////////////////////////		
@@ -116,14 +121,14 @@ static unsigned char statusSaidaDadosSerial_2Mem;
 static unsigned char enderecoIndicadorMem;
 static unsigned char qtFramePorSegundoMem;
 static unsigned char statusTransmiteAutomaticoMem[2];
-static unsigned char modoPesagemIndicadorMem = 0;
+//static unsigned char modoPesagemIndicadorMem = 0;
 static unsigned char statusPowerOnMem;
 static unsigned char statusZeroAoLigarMem;
 static unsigned char statusLigaDesliga;
 //static unsigned char valorDivisaoCargaVivaMem;
 //variaveis referente as funcoes do indicador de peso
 static unsigned char valorLimiteDeZeroMem;//porcentagem
-static unsigned char valorZeroMilPorcentoMem;// 0.1 porcento
+//static unsigned char valorZeroMilPorcentoMem;// 0.1 porcento
 static unsigned char valorFiltroDigitalMem;
 static unsigned char posicaoPontoDecimalIndicadorMem;
 static unsigned char degrauIndicadorMem;
@@ -158,16 +163,16 @@ union{
 //de 9 a 16 quantidade de bateladas executadas ate o momento
 //static unsigned char dadosBateladasMem[16];
 //static unsigned char tempArrayMem[16];
-static unsigned char arrayDadoEeprom[16];
-static unsigned char dataEeprom;
+//static unsigned char arrayDadoEeprom[16];
+//static unsigned char dataEeprom;
 //static unsigned char endEeprom;
 //static unsigned char loopApagaMemoria;
-static unsigned char quantidadeByteEeprom;
-static unsigned char indexMem;
+//static unsigned char quantidadeByteEeprom;
+//static unsigned char indexMem;
 //static unsigned char  iniciaSalvaDadosEeprom;
 //static unsigned char  controleEepronOcupada;
 //static unsigned char bytesDataEepron[10];
-static unsigned char posicaoEpromDadosBatelada;
+//static unsigned char posicaoEpromDadosBatelada;
 //unsigned char RloopReadEeprom;
 unsigned char tempMem;
 //short flagSalvaByteEepron;

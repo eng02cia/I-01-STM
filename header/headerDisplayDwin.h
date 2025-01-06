@@ -54,7 +54,7 @@ uint8_t telaPesoDwin[7];
 uint8_t tempTelaDwin;
 uint8_t indexRetiraPontoDwin;
 uint8_t loopRetiraPontoDwin;
-static unsigned char limpaLinha1;
+//static unsigned char limpaLinha1;
 
 const char charTela0Dwin[]={0x5A,0xA5,0x07,0x82,0x00,0x84,0x5A,0x01,0,0};
 const char charTela1Dwin[]={0x5A,0xA5,0x07,0x82,0x00,0x84,0x5A,0x01,0,1};

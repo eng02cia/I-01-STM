@@ -7,7 +7,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////
-//Fun��o que inicializa a utilia��o dos canais digitais                         //
+//funcao que inicializa a utilia��o dos canais digitais                         //
 //////////////////////////////////////////////////////////////////////////////////
 void inicializaDecodificaTeclado(void)
 {
@@ -137,7 +137,7 @@ void metodoDecodificaTeclado(void)
    }       
 }
 //////////////////////////////////////////////////////////////////////////////////		
-//Fun��o que faz a leitura das teclas multplexadas com os pinos de controle do 	//
+//funcao que faz a leitura das teclas multplexadas com os pinos de controle do 	//
 //diplay																		//
 //////////////////////////////////////////////////////////////////////////////////		
 void metodoValidaTeclaPresionada(void)

@@ -37,28 +37,28 @@ void funcaoMenuModoTecnicoIndicador(void)
                     tempConfigIndicador = valorFiltroDigitalMem;
                     telaValorFiltroDigitalModoTecnicoIndicador();
                     break;
+                default:
+                    /* do nothing */
+                    break;  
             }            
             break; 
 //////////////////////////////////////////////////////////////////////////////////
 //define o valor do filtro digital                                              //
 //////////////////////////////////////////////////////////////////////////////////
         case defineFiltroDigital:
- //tecla incremento
-            switch (teclaPressionadaAtual )
+            switch (teclaPressionadaAtual)
             {               
                 case teclaTaraSetaEsquerda:
                     teclaPressionadaAtual = teclaSolta; 
                     tempConfigIndicador = 0;  
                     telaValorFiltroDigitalModoTecnicoIndicador();
-                    break; 
-//tecla Seta acima                      
+                    break;               
                 case teclaImprimeSetaAcima:
                     teclaPressionadaAtual = teclaSolta;
                     tempConfigIndicador++;
                     if (tempConfigIndicador >= _VMAX_FILTRO_DIGITALI01){tempConfigIndicador = 0;}                   
                     telaValorFiltroDigitalModoTecnicoIndicador();
                     break;
-//tecla Ok
                 case teclaSalva:
                     teclaPressionadaAtual = teclaSolta;
                     valorFiltroDigitalMem = tempConfigIndicador;
@@ -67,6 +67,9 @@ void funcaoMenuModoTecnicoIndicador(void)
                     tempConfigIndicador = statusZeroAoLigarMem;
                     telaMostraProgramacaoStatusZeroLigarIndicador();
                     break;
+                default:
+                    /* do nothing */
+                    break;  
             }					            
             break;
 //////////////////////////////////////////////////////////////////////////////////
@@ -74,21 +77,19 @@ void funcaoMenuModoTecnicoIndicador(void)
 // 0 - desativado  1 - ativado                                                  //
 //////////////////////////////////////////////////////////////////////////////////
         case defineZeroAoLigar: 
-            switch (teclaPressionadaAtual )
+            switch (teclaPressionadaAtual)
             {   
                 case teclaTaraSetaEsquerda:                   
                     teclaPressionadaAtual = teclaSolta; 
                     tempConfigIndicador = 0;
                     telaMostraProgramacaoStatusZeroLigarIndicador();
                     break;                            
-//tecla Seta acima  
                 case teclaImprimeSetaAcima:
                     teclaPressionadaAtual = teclaSolta;
                     if (tempConfigIndicador == 1){tempConfigIndicador = 0;}
                     else{tempConfigIndicador = 1;}
                     telaMostraProgramacaoStatusZeroLigarIndicador();
                     break;
-//tecla Ok
                 case teclaSalva:
                     teclaPressionadaAtual = teclaSolta;
                     statusZeroAoLigarMem = tempConfigIndicador;
@@ -97,6 +98,9 @@ void funcaoMenuModoTecnicoIndicador(void)
                     tempConfigIndicador = modoFuncionamentoBackLightMem;
                     telaMostraProgramacaoModoFuncionamentoBackLight();
                     break;
+                default:
+                    /* do nothing */
+                    break;  
             }					            
             break;                  
 //////////////////////////////////////////////////////////////////////////////////
@@ -104,20 +108,18 @@ void funcaoMenuModoTecnicoIndicador(void)
 //0 - desligado 1 - ligado tempo todo  2 - ligado por tempo                     //
 //////////////////////////////////////////////////////////////////////////////////
         case defineModoFuncionamentoBackLight:
-            switch (teclaPressionadaAtual )
+            switch (teclaPressionadaAtual)
             {
                 case teclaTaraSetaEsquerda:                   
                     teclaPressionadaAtual = teclaSolta; 
                     tempConfigIndicador = 0;
                     telaMostraProgramacaoModoFuncionamentoBackLight();
                     break;                    
-//tecla Seta acima  
                 case teclaImprimeSetaAcima:
                     teclaPressionadaAtual = teclaSolta;
                     if (++tempConfigIndicador > 2){tempConfigIndicador = 0;}
                     telaMostraProgramacaoModoFuncionamentoBackLight();
                     break;
-//tecla Ok
                 case teclaSalva:
                     teclaPressionadaAtual = teclaSolta;
                     modoFuncionamentoBackLightMem = tempConfigIndicador;
@@ -152,26 +154,27 @@ void funcaoMenuModoTecnicoIndicador(void)
                         telaTempoBackLightLigado();
                     }
                     break;
+                default:
+                    /* do nothing */
+                    break;  
             }					            
             break;                  
 //////////////////////////////////////////////////////////////////////////////////
 //define o tempo que o back light fica ligado                                   //
 //////////////////////////////////////////////////////////////////////////////////
         case defineTempoDesligaBackLight:
-            switch (teclaPressionadaAtual )
+            switch (teclaPressionadaAtual)
             { 
                case teclaTaraSetaEsquerda:                   
                     teclaPressionadaAtual = teclaSolta; 
                     tempConfigIndicador = 1;
                     telaTempoBackLightLigado();
                     break;                    
-//tecla Seta acima  
                 case teclaImprimeSetaAcima:
                     teclaPressionadaAtual = teclaSolta;
                     if (++tempConfigIndicador > 10){tempConfigIndicador = 1;};                    
                     telaTempoBackLightLigado();
                     break;
-//tecla Ok
                 case teclaSalva:
                     teclaPressionadaAtual = teclaSolta;
                     tempoDesligaBackLightMem = tempConfigIndicador;
@@ -180,8 +183,14 @@ void funcaoMenuModoTecnicoIndicador(void)
                     tempConfigIndicador = valorLimiteDeZeroMem;
                     telaMostraProgramacaoLimiteZero();
                     break;
+                default:
+                    /* do nothing */
+                    break;  
             }					            
-            break;             
+            break;     
+        default:
+            /* do nothing */
+            break;     
      }
 }
 //////////////////////////////////////////////////////////////////////////////////		

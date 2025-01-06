@@ -31,6 +31,9 @@ void funcaoAcessaMenusProgramacao(void)
                     telaMostraProgramacaoLimiteZero();
                     menuAcessaMenusProgramacao = menuAcessaMenusProgramacaoEmEspera;
                     break;
+                default:
+                    /* do nothing */
+                    break;
             }            
             break;                 
 //////////////////////////////////////////////////////////////////////////////////
@@ -50,6 +53,9 @@ void funcaoAcessaMenusProgramacao(void)
                     telaMostraProgVelocidadeSerial_1();
                     menuAcessaMenusProgramacao = menuAcessaMenusProgramacaoEmEspera;
                     break;
+                default:
+                    /* do nothing */
+                    break;
             }            
             break;          
 //////////////////////////////////////////////////////////////////////////////////
@@ -65,6 +71,9 @@ void funcaoAcessaMenusProgramacao(void)
                 case teclaSalva:
                     teclaPressionadaAtual = teclaSolta;
                     telaSenhaDeAcessoCalibracao();
+                    break;
+                default:
+                    /* do nothing */
                     break;
             }            
             break;          
@@ -85,7 +94,10 @@ void funcaoAcessaMenusProgramacao(void)
                     /* do nothing*/
                     break;
  			}
-            break;    
+            break;  
+        default:
+            /* do nothing*/
+            break;  
         }               
     }
 }

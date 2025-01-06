@@ -208,7 +208,7 @@ break;
 			//////////////////////////////////////////////////////////////////////////////////
 			case menuDefinePontoDecimal:
 				//tecla incremento
-				switch (teclaPressionadaAtual )
+				switch (teclaPressionadaAtual)
 				{
 				//retorna a tela anterior
 				case  teclaZeroRetorna:
@@ -244,7 +244,7 @@ break;
 				//////////////////////////////////////////////////////////////////////////////////
 				case menuDefineDegrauPeso:
 					//tecla incremento
-					switch (teclaPressionadaAtual )
+					switch (teclaPressionadaAtual)
 					{
 					case teclaTaraSetaEsquerda:
 						teclaPressionadaAtual = teclaSolta;
@@ -288,7 +288,7 @@ else{tempProgIndicador = 1;}
 					//////////////////////////////////////////////////////////////////////////////////
 					case menuCapacidadeMaxima:
 						//tecla incremento
-						switch (teclaPressionadaAtual )
+						switch (teclaPressionadaAtual)
 						{
 						//retorna ao menu anterior
 						case teclaZeroRetorna:
@@ -326,7 +326,7 @@ else{tempProgIndicador = 1;}
 						//////////////////////////////////////////////////////////////////////////////////
 						case menuPesoCalibracao:
 							//tecla incremento
-							switch (teclaPressionadaAtual )
+							switch (teclaPressionadaAtual)
 							{
 							//retorna ao menu anterior
 							case teclaZeroRetorna:
@@ -726,7 +726,7 @@ void manipulacaoDoDigitoDoIndicador(void)
 		//programa��o do digito um                                                      //
 		//////////////////////////////////////////////////////////////////////////////////
 		case digitoUm:
-			switch (teclaPressionadaAtual )
+			switch (teclaPressionadaAtual)
 			{
 			// tecla incrementa o valor do digito
 			case teclaImprimeSetaAcima:
@@ -742,7 +742,7 @@ void manipulacaoDoDigitoDoIndicador(void)
 			//programa��o do digito dois                                                    //
 			//////////////////////////////////////////////////////////////////////////////////
 			case digitoDois:
-				switch (teclaPressionadaAtual )
+				switch (teclaPressionadaAtual)
 				{
 				// tecla incrementa o valor do digito
 				case teclaImprimeSetaAcima:
@@ -774,7 +774,7 @@ void manipulacaoDoDigitoDoIndicador(void)
 					//programa��o do digito quatro                                                  //
 					//////////////////////////////////////////////////////////////////////////////////
 					case digitoQuatro:
-						switch (teclaPressionadaAtual )
+						switch (teclaPressionadaAtual)
 						{
 						// tecla incrementa o valor do digito
 						case teclaImprimeSetaAcima:
@@ -790,7 +790,7 @@ void manipulacaoDoDigitoDoIndicador(void)
 						//programa��o do digito cinco                                                   //
 						//////////////////////////////////////////////////////////////////////////////////
 						case digitoCinco:
-							switch (teclaPressionadaAtual )
+							switch (teclaPressionadaAtual)
 							{
 							// tecla incrementa o valor do digito
 							case teclaImprimeSetaAcima:
@@ -850,7 +850,7 @@ void verificaSenhaAcessoCalibracao(void)
 	//programa��o do digito zero (digito menos siginificativo)                      //
 	//////////////////////////////////////////////////////////////////////////////////
 	case programandoDigitoZero:
-		switch (teclaPressionadaAtual )
+		switch (teclaPressionadaAtual)
 		{
 		// tecla incrementa o valor do digito
 		case teclaImprimeSetaAcima:
@@ -869,7 +869,7 @@ void verificaSenhaAcessoCalibracao(void)
 		//programa��o do digito um                                                      //
 		//////////////////////////////////////////////////////////////////////////////////
 		case programandoDigitoUm:
-			switch (teclaPressionadaAtual )
+			switch (teclaPressionadaAtual)
 			{
 			// tecla incrementa o valor do digito
 			case teclaImprimeSetaAcima:
@@ -888,7 +888,7 @@ void verificaSenhaAcessoCalibracao(void)
 			//programa��o do digito dois                                                    //
 			//////////////////////////////////////////////////////////////////////////////////
 			case programandoDigitoDois:
-				switch (teclaPressionadaAtual )
+				switch (teclaPressionadaAtual)
 				{
 				// tecla incrementa o valor do digito
 				case teclaImprimeSetaAcima:

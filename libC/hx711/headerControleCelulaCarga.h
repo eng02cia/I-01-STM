@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////		
 //         funcoes de controle das medi��es da celula de carga           		//	
 //////////////////////////////////////////////////////////////////////////////////
-//prototipos de fun��o utilizadas
+//prototipos de funcao utilizadas
 void inicializaLedsIndicador(void);
 void mostraPesoIndicador(void);
 void trataPesoAdIndicador(void);

@@ -44,8 +44,8 @@ static unsigned char frameTxModBusRtu[90];
 static unsigned char qtBytesTxModBusRtu;
 static unsigned char indexTxModBusRtu;
 //static unsigned char testeEndModbus;
-static unsigned char arrayPesoBrutoModbus[6];
-static unsigned char arrayPesoTaraModbus[6];
+//static unsigned char arrayPesoBrutoModbus[6];
+//static unsigned char arrayPesoTaraModbus[6];
 static unsigned char arrayTempModBusRtu[2];
 static unsigned char frameRxModBusRtu[60];
 static unsigned char rrxModBusRtu;
@@ -56,11 +56,11 @@ static unsigned char tempRxModBusRtu;
 static unsigned char tempModBusRtu;
 static unsigned char temp1ModBusRtu;
 static unsigned char temp2ModBusRtu;
-static unsigned char numeroRegistradorModBusH;
-static unsigned char numeroRegistradorModBusL;
+//static unsigned char numeroRegistradorModBusH;
+//static unsigned char numeroRegistradorModBusL;
 
 
-static unsigned char *indexModBus;
+//static unsigned char *indexModBus;
 struct 
 {
     unsigned transmitindoModBusRtu:1;

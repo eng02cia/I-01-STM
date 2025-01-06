@@ -104,6 +104,9 @@ void controleCalibraIndicador(void)
 			tempProgIndicador = posicaoPontoDecimalIndicadorMem;
 			telaPosicaoPontoDecimalIndicador();
 			break;
+		default:
+			/* do nothing */
+			break;
 			}
 		break;
 	//////////////////////////////////////////////////////////////////////////////////
@@ -139,6 +142,9 @@ void controleCalibraIndicador(void)
 				tempProgIndicador = degrauIndicadorMem;
 				telaDefineDegrauPesoIndicador();
 				break;
+			default:
+			/* do nothing */
+			break;
 		}
 		break;
 	//////////////////////////////////////////////////////////////////////////////////
@@ -182,6 +188,9 @@ else{tempProgIndicador = 1;}
 			salvaPosicaoDegrauIndicadorMem();
 			telaPesoCargaMaximaIndicador();
 			break;
+		default:
+			/* do nothing */
+			break;
 		}
 		break;
 	/////////////////////////////////////////////////////////////////////////////////
@@ -219,6 +228,9 @@ else{tempProgIndicador = 1;}
 			salvaPesoCapacidadeMaxIndicadorMem();
 
 			telaPesoCalibracaoIndicador();
+			break;
+		default:
+			/* do nothing */
 			break;
 		}
 		break;
@@ -270,6 +282,9 @@ else{tempProgIndicador = 1;}
 				digitoAtualIndicador = digitoZero;
 			}
 			break;
+		default:
+			/* do nothing */
+			break;
 		}
 		break;
 	//////////////////////////////////////////////////////////////////////////////////
@@ -298,6 +313,9 @@ else{tempProgIndicador = 1;}
 				teclaPressionadaAtual = teclaSolta;
 				menuCalibraIndicador = menuComPeso;
 				telaComPesoCalibracaoIndicador();
+				break;
+			default:
+				/* do nothing */
 				break;
 			}
 		}
@@ -331,8 +349,14 @@ else{tempProgIndicador = 1;}
 				flagFazMediaAd = 0;
 				menuCalibraIndicador = menuCalibraIndicadorEmEspera;
 				break;
+			default:
+				/* do nothing */
+				break;
 			}
 		}
+		break;
+	default:
+		/* do nothing */
 		break;
 	}
 }
@@ -593,7 +617,7 @@ void piscaDigitoProgIndicador(void)
 		caracterLcd[21]= arrayTempIndicador[4];
 		caracterLcd[22]= arrayTempIndicador[5];
 	}
-	if (flagPiscaProgIndicador == 1 & flagTempoPiscaProgIndicador == 1)
+	if ((flagPiscaProgIndicador == 1) && (flagTempoPiscaProgIndicador == 1))
 	{
 		if (posicaoPontoDecimalIndicadorMem == 0)
 		{
@@ -670,8 +694,6 @@ void piscaDigitoProgIndicador(void)
 //////////////////////////////////////////////////////////////////////////////////
 void piscaPontoProgIndicador(void) 
 {
-	uint8_t i;
-
 	if ((flagPiscaProgIndicador == 1) && (flagTempoPiscaProgIndicador == 1))
 	{
 		/* Display LCD 16x2 e display grafico */
@@ -723,13 +745,16 @@ void manipulacaoDoDigitoDoIndicador(void)
 			case teclaTaraSetaEsquerda:
 				digitoAtualIndicador = digitoUm;
 				break;
+			default:
+				/* do nothing */
+				break;
 		}
 		break;
 	//////////////////////////////////////////////////////////////////////////////////
 	//programacao do digito um                                                      //
 	//////////////////////////////////////////////////////////////////////////////////
 	case digitoUm:
-		switch (teclaPressionadaAtual )
+		switch (teclaPressionadaAtual)
 		{
 			// tecla incrementa o valor do digito
 			case teclaImprimeSetaAcima:
@@ -739,13 +764,16 @@ void manipulacaoDoDigitoDoIndicador(void)
 			case teclaTaraSetaEsquerda:
 				digitoAtualIndicador = digitoDois;
 				break;
+			default:
+				/* do nothing */
+				break;
 		}
 		break;
 	//////////////////////////////////////////////////////////////////////////////////
 	//programacao do digito dois                                                    //
 	//////////////////////////////////////////////////////////////////////////////////
 	case digitoDois:
-		switch (teclaPressionadaAtual )
+		switch (teclaPressionadaAtual)
 		{
 			// tecla incrementa o valor do digito
 			case teclaImprimeSetaAcima:
@@ -754,6 +782,9 @@ void manipulacaoDoDigitoDoIndicador(void)
 				//Direciona programacao para digito a esquerda
 			case teclaTaraSetaEsquerda:
 				digitoAtualIndicador = digitoTres;
+				break;
+			default:
+				/* do nothing */
 				break;
 		}
 		break;
@@ -771,13 +802,16 @@ void manipulacaoDoDigitoDoIndicador(void)
 			case teclaTaraSetaEsquerda:
 				digitoAtualIndicador = digitoQuatro;
 				break;
+			default:
+				/* do nothing */
+				break;
 		}
 		break;
 	//////////////////////////////////////////////////////////////////////////////////
 	//programacao do digito quatro                                                  //
 	//////////////////////////////////////////////////////////////////////////////////
 	case digitoQuatro:
-		switch (teclaPressionadaAtual )
+		switch (teclaPressionadaAtual)
 		{
 			// tecla incrementa o valor do digito
 			case teclaImprimeSetaAcima:
@@ -787,13 +821,16 @@ void manipulacaoDoDigitoDoIndicador(void)
 			case teclaTaraSetaEsquerda:
 				digitoAtualIndicador = digitoCinco;
 				break;
+			default:
+				/* do nothing */
+				break;
 		}
 		break;
 	//////////////////////////////////////////////////////////////////////////////////
 	//programacao do digito cinco                                                   //
 	//////////////////////////////////////////////////////////////////////////////////
 	case digitoCinco:
-		switch (teclaPressionadaAtual )
+		switch (teclaPressionadaAtual)
 		{
 			// tecla incrementa o valor do digito
 			case teclaImprimeSetaAcima:
@@ -802,6 +839,9 @@ void manipulacaoDoDigitoDoIndicador(void)
 				//Direciona programacao para digito a esquerda
 			case teclaTaraSetaEsquerda:
 				digitoAtualIndicador = digitoZero;
+				break;
+			default:
+				/* do nothing */
 				break;
 		}
 		break;
@@ -893,6 +933,7 @@ void verificaSenhaAcessoCalibracao(void)
 			digitoAtualProgramacao = programandoDigitoTres;
 			break;
 		default:
+			/* do nothing */
 			break;
 		}
 		break;
@@ -916,6 +957,7 @@ void verificaSenhaAcessoCalibracao(void)
 			digitoAtualProgramacao = programandoDigitoZero;
 			break;
 		default:
+			/* do nothing */
 			break;
 		}
 		break;
@@ -923,7 +965,7 @@ void verificaSenhaAcessoCalibracao(void)
 	//programacao do digito dois                                                    //
 	//////////////////////////////////////////////////////////////////////////////////
 	case programandoDigitoDois:
-		switch (teclaPressionadaAtual )
+		switch (teclaPressionadaAtual)
 		{
 		// tecla incrementa o valor do digito
 		case teclaImprimeSetaAcima:
@@ -961,6 +1003,7 @@ void verificaSenhaAcessoCalibracao(void)
 			digitoAtualProgramacao = programandoDigitoDois;
 			break;
 		default:
+			/* do nothing */
 			break;
 		}
 		break;

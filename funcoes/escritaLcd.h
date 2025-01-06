@@ -57,7 +57,7 @@ void apagaLinha_2Lcd(void)
 //Funcao utilizada para transferir uma array de string para ser escrita na   	//
 //no lcd                                                                        //
 //////////////////////////////////////////////////////////////////////////////////
-int escreveDadoLcd(const char *charOrigem,unsigned char*charDestino)
+void escreveDadoLcd(const char *charOrigem,unsigned char*charDestino)
 {
 	while (*charOrigem != 0)
     {

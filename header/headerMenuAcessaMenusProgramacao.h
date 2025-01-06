@@ -8,6 +8,7 @@ void telaAcessaMenuModoTecnicoIndicador(void);
 void telaAcessaMenuConfiguraSerial_1(void);
 void telaAcessaMenuFazCalibracao(void);
 void telaAcessaMenuTesteDasSaidas(void);
+void acessaMenuModoFuncionamentoLiguagem(void);
 //contantes utilizadas na funcao                
 // telas de programacao
                                                  

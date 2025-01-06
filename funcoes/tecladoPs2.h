@@ -1,4 +1,4 @@
-extern  GPIO_InitTypeDef GPIO_InitStruct = {0};
+GPIO_InitTypeDef GPIO_InitStruct = {0};
 //////////////////////////////////////////////////////////////////////////////////		
 //                                                                            	//
 // Funcoes de comunicacao com teclado PS2                                   	//
@@ -413,14 +413,13 @@ void funcaoVerificaTeclaValidaPs2(void)
                             if (dataTeclaPs2 < _TAMANHO_MAXIMO_TABELA)
                             {
                                 teclaPs2Press = tabelaConvertePcKeyboardToAsciiMaiusculo[dataTeclaPs2];
+                                teclasEditaProgramaAtualPs2 == teclaSoltaPs2;
                                 if (teclaPs2Press != 0)
                                 {
                                     teclaValidaPs2 = 1;
-                                    teclasEditaProgramaAtualPs2 == teclaSoltaPs2;
                                 }
                                 else
                                 {
-                                    teclasEditaProgramaAtualPs2 == teclaSoltaPs2;
                                     checaTeclaEdicaoTecladoPs2();                                   
                                 }           
                             }                                                                      
@@ -430,14 +429,13 @@ void funcaoVerificaTeclaValidaPs2(void)
                             if (dataTeclaPs2 < _TAMANHO_MAXIMO_TABELA)
                             {  
                                 teclaPs2Press = tabelaConvertePcKeyboardToAsciiMinusculo[dataTeclaPs2];
+                                teclasEditaProgramaAtualPs2 == teclaSoltaPs2;
                                 if (teclaPs2Press != 0)
                                 {
                                     teclaValidaPs2 = 1;
-                                    teclasEditaProgramaAtualPs2 == teclaSoltaPs2;
                                 }
                                 else
                                 {
-                                    teclasEditaProgramaAtualPs2 == teclaSoltaPs2;
                                     checaTeclaEdicaoTecladoPs2();                                    
                                 }
                             }

@@ -8,16 +8,16 @@ static unsigned char backupTelaLcd[32];
 static unsigned char quantidadeByteLcd;
 static unsigned char indexEscreveDadoLcd;
 static unsigned char mostraTelaTemporariaLcd;
-static unsigned char mostraTelaErroCalibracao;
-static unsigned char mostraTelaErroCargaMaxima;
-static unsigned char mostraTelaErroMenuIniciar;
-static unsigned char mostraTelaErroZeroInicio;
+//static unsigned char mostraTelaErroCalibracao;
+//static unsigned char mostraTelaErroCargaMaxima;
+//static unsigned char mostraTelaErroMenuIniciar;
+//static unsigned char mostraTelaErroZeroInicio;
 
 static unsigned char tempoMostraTelaTemporariaLcd;
-static unsigned char tempoMostraTelaErroCalibracao;
-static unsigned char tempoMostraTelaErroCargaMaxima;
-static unsigned char tempoMostraTelaErroZeroInicio;
-static unsigned char tempoMostraTelaErroMenuIniciar;
+//static unsigned char tempoMostraTelaErroCalibracao;
+//static unsigned char tempoMostraTelaErroCargaMaxima;
+//static unsigned char tempoMostraTelaErroZeroInicio;
+//static unsigned char tempoMostraTelaErroMenuIniciar;
 
 unsigned char frameEscritaDisplayRest[50];
 
@@ -127,7 +127,7 @@ void transmiteNibleLcd (void);
 void delayInternoMicroSegundos (unsigned char DelayInterno);
 void delayExternoLcd (void);
 void controlaEscritaLcd (void);
-int escreveDadoLcd(const char *charOrigem,unsigned char*charDestino);
+void escreveDadoLcd(const char *charOrigem,unsigned char*charDestino);
 void apagaLcd(void);
 void apagaLinha_1Lcd(void);
 void apagaLinha_2Lcd(void);

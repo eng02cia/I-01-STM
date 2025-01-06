@@ -138,6 +138,9 @@ void mostraPesoDwin(void)
 			case pesoReal:
 				transfereArrayToArray(7,&pesoConvertido[0],&telaPesoDwin[0]);
 				break;
+			default:
+				/* do nothing */
+				break;
 		}
 		if (tempPosicaoPontoDwin != 0)
 		{

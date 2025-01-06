@@ -107,7 +107,7 @@ static float tempAd;
 static long int temp1Ad;
 static float valorAdPesoCalibracao;
 //static unsigned char loopMediaZero;
-static unsigned char *buffer;
+//static unsigned char *buffer;
 static unsigned char loopMediaCalibracao;
 static unsigned char fazZeroIndicadorPeso;
 static unsigned char fazTaraIndicadorPeso;
@@ -118,9 +118,9 @@ static unsigned char operacaoComTeclado;
 
 static unsigned char arrayTempProgDivisao[10];
 static unsigned char valorAtualDivisaoInterna[10];
-static unsigned char loopProgDivisaoIntena;
+//static unsigned char loopProgDivisaoIntena;
 float tempFloatCalculaDivisao;
-static unsigned char loopConverteDivisaoInterna;
+//static unsigned char loopConverteDivisaoInterna;
 
 union
 {
@@ -131,9 +131,9 @@ union
 
 // variaveis utilizadas no calculo da divisao
 //uldiv_t result;
-static float tempResultado;
-static float tempFloat;
-static unsigned calculaRestoCalibracao;
+//static float tempResultado;
+//static float tempFloat;
+//static unsigned calculaRestoCalibracao;
 
 short flagTempoPiscaProgIndicador;
 short flagPiscaProgIndicador;

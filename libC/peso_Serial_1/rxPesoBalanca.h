@@ -19,7 +19,7 @@ void initRxPesoSerial_1(void)
     tempoReferenciaFinalFrameSerial_1 = 50;
 }
 //////////////////////////////////////////////////////////////////////////////////	
-//fun��o que recebe um frame de dados de peso                           		//
+//funcao que recebe um frame de dados de peso                           		//
 //////////////////////////////////////////////////////////////////////////////////		
 void recebeFramePesoSerial_1(void)
 {

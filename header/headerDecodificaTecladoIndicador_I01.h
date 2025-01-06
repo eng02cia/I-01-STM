@@ -34,7 +34,7 @@ unsigned char temp1TeclasStart;
 unsigned char tempTeclaPrint;
 unsigned char tempTeclaTara;
 unsigned char tempTeclaZero;
-static unsigned char flagIniciaTempoTeclaPresionada ;
+//static unsigned char flagIniciaTempoTeclaPresionada ;
 
 static unsigned char flagTeclaPressionadaTemp;
 static unsigned char flagInibeTeclaSolta;

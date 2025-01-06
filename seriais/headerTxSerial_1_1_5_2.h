@@ -12,9 +12,9 @@ void tempoControleTransmiteFrameAutomatico(void);
 //////////////////////////////////////////////////////////////////////////////////		
 //declaracao de variaveis utilziadas nesta funcao								//
 //////////////////////////////////////////////////////////////////////////////////		
-static unsigned char frameTempTxSerial_1[30];
-static unsigned char quantidadeTempBytesTxSerial_1;
-static unsigned char indexTempTxSerial_1;
+//static unsigned char frameTempTxSerial_1[30];
+//static unsigned char quantidadeTempBytesTxSerial_1;
+//static unsigned char indexTempTxSerial_1;
 static unsigned char transmiteStatusPeso;
 static unsigned char transmiteStatusDaPesagem;
 

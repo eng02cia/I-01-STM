@@ -5,5 +5,5 @@ void telaZeroOkCalibracao(void);
 void telaCertoCalibracao(void);
 void telaErroPesoCalibracao(void);
 static unsigned char arrayInteiroTemp[10];
-static float tempResultadoFloat;
+//static float tempResultadoFloat;
 //static unsigned char tempoMostraTelainicialNextion;

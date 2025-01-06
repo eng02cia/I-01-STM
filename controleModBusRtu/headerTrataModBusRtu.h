@@ -17,13 +17,13 @@ void fazArredondamentoPesoModBusRtu(void);
 //declaracao de variaveis utilizadas
 static unsigned char arrayMemoriaModbusRtu[36];
 static unsigned char arrayMemoriaModbusRtuEspenho[36];
-static unsigned char arrayTempConverteInt[8];
+//static unsigned char arrayTempConverteInt[8];
 static unsigned char arrayTemp10ModBus[10];
 //static long int longIntTemp;
 //static float tempFloatModBusRtu;
 static float tempPesoFloatModBus;
 static long int tempLongIntPesoModBus;
-static unsigned char *indexLongInt;
+//static unsigned char *indexLongInt;
 //static unsigned long int tempTransformaPesoModBus;
 short flagVerificaSalvaFrameModBusRtu;
 //short iniciaSalvaDadosModbusRtu;

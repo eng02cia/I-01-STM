@@ -53,10 +53,12 @@ void funcaoMenusConfiguraSerial_1(void)
                         case velocidade115200Kbps:
                             velocidadeTxSerial_1 = velocidade1200Kbps;
                             break;
+                        default:
+                            /* do nothing */
+                            break;
                     }
                     telaMostraProgVelocidadeSerial_1();
                     break;   
-//tecla Ok
                 case teclaSalva:
                     teclaPressionadaAtual = teclaSolta;
                     velocidadeTxSerial_1Mem = velocidadeTxSerial_1;
@@ -65,7 +67,10 @@ void funcaoMenusConfiguraSerial_1(void)
                     tempConfigSerial = statusPortaSerial_1Mem;
                     menuConfiguraSerial_1 = ativaDesativaSerial_1;
                     telaMostraAtivaDesativaSerial_1();
-                break;
+                    break;
+                default:
+                    /* do nothing */
+                    break;  
             }            
             break; 
 //////////////////////////////////////////////////////////////////////////////////
@@ -94,7 +99,9 @@ void funcaoMenusConfiguraSerial_1(void)
                     menuConfiguraSerial_1 = definePortaSerial_1;
                     telaMostraTipoPortaSerial_1();
                     break;
-
+                default:
+                    /* do nothing */
+                    break;  
             }            
             break;            
 //////////////////////////////////////////////////////////////////////////////////
@@ -124,7 +131,9 @@ void funcaoMenusConfiguraSerial_1(void)
                     tempConfigSerial = statusSaidaDadosSerial_1Mem;
                     telaMostraTipoSaidaDadosSerial_1();
                     break;
-
+                default:
+                    /* do nothing */
+                    break;  
             }            
             break;  
 //////////////////////////////////////////////////////////////////////////////////
@@ -144,7 +153,6 @@ void funcaoMenusConfiguraSerial_1(void)
                     if (tempConfigSerial == 3){tempConfigSerial = 0;}
                     telaMostraTipoSaidaDadosSerial_1();            
                     break;            
-//tecla Ok
                 case teclaSalva:
                     teclaPressionadaAtual = teclaSolta;  
                     statusSaidaDadosSerial_1Mem = tempConfigSerial;
@@ -152,9 +160,10 @@ void funcaoMenusConfiguraSerial_1(void)
                     tempConfigSerial = enderecoIndicadorMem;
                     menuConfiguraSerial_1 = defineEnderecoIndicadorSerial_1;
                     telaMostraEnderecoIndicador(); 
-                    
-
                     break;
+                default:
+                    /* do nothing */
+                    break;  
             }            
             break;                                   
 //////////////////////////////////////////////////////////////////////////////////
@@ -182,9 +191,10 @@ void funcaoMenusConfiguraSerial_1(void)
                     tempConfigSerial = qtFramePorSegundoMem;
                     menuConfiguraSerial_1 = defineQtFramePorSegundoSerial_1;
                     telaMostraQtFramePorSegundo();
-
-
                     break;
+                default:
+                    /* do nothing */
+                    break;  
             }            
             break;
 //////////////////////////////////////////////////////////////////////////////////
@@ -213,6 +223,9 @@ void funcaoMenusConfiguraSerial_1(void)
                     tempConfigSerial = statusSaidaDadosSerial_2Mem;
                     telaMostraTipoSaidaDadosSerial_2();                                       
                     break;
+                default:
+                    /* do nothing */
+                    break;  
             }            
             break;
 /////////////////////////////////////////////////////////////////////////////////
@@ -241,8 +254,14 @@ void funcaoMenusConfiguraSerial_1(void)
                     menuConfiguraSerial_1 = defineVelocidadeSerial_1;
                     telaMostraProgVelocidadeSerial_1();                    
                     break;
+                default:
+                    /* do nothing */
+                    break;  
             }            
-            break;                              
+            break;   
+        default:
+            /* do nothing */
+            break;   
     }
 }
 //////////////////////////////////////////////////////////////////////////////////		
@@ -303,6 +322,9 @@ void telaMostraProgVelocidadeSerial_1(void)
             break;
         case velocidade115200Kbps:
             escreveDadoLcd(&charVelocidade115200Kbps[0],&caracterLcd[23]);
+            break;
+        default:
+            /* do nothing */
             break;
     }
     
