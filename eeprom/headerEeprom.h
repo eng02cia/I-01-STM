@@ -37,31 +37,32 @@
 #define endlinguagemSelecionadaMem				57 // 1 byte
 #define endExibeRelogioMem						58 // 1 byte
 
-const char defaultEeprom[] = {
-	_SERIAL_1ATIVADA,
-	velocidade9600Kbps,
-	_RS485,
-	_MODBUS_RTU,
-	_TRANSMISSAOCONTINUA_1,
-	1,
-	4,
-	_LIGADO,
-	_BACKLIGHT_TEMPORIZADO,
-	3,
-	_DESLIGADO,
-	2,
-	2,
-	0,
-	1,
-	2,4,															 	// 17
-	'0','0','0','2','0','0','0','0', 									// 25
-	'0','0','0','0','0','0','0','0', 									// 33
-	' ',' ',' ',' ', 													// 37
-	' ',' ',' ',' ',													// 41	
-	'I','N','D','I','C','A','D','O','R',' ','I','-','0','1',' ',' ',	// 57
-	_PORTUGUES,
-	_EXIBE_RELOGIO_DESABILITADO,
-	' ',' ',' ',' ',1,											// 64 																	
+const char defaultEeprom[] = 
+{
+/* 00 */	_SERIAL_1ATIVADA,
+/* 01 */	velocidade9600Kbps,
+/* 02 */	_RS485,
+/* 03 */	_MODBUS_RTU,
+/* 04 */	_TRANSMISSAOCONTINUA_1,
+/* 05 */	1,
+/* 06 */	4,
+/* 07 */	_LIGADO,
+/* 08 */	_BACKLIGHT_TEMPORIZADO,
+/* 09 */	3,
+/* 10 */	_DESLIGADO,
+/* 11 */	2,
+/* 12 */	2,
+/* 13 */	0,
+/* 14 */	1,
+/* 15 */	2,4,															 
+/* 17 */	'0','0','0','2','0','0','0','0', 								
+/* 25 */	'0','0','0','0','0','0','0','0', 								
+/* 33 */	' ',' ',' ',' ', 												
+/* 37 */	' ',' ',' ',' ',													
+/* 41 */	'I','N','D','I','C','A','D','O','R',' ','I','-','0','1',' ',' ',
+/* 57 */	_PORTUGUES,
+/* 58 */	_EXIBE_RELOGIO_DESABILITADO,
+/* 59 */	' ',' ',' ',' ',1,																													
 };
 
 //////////////////////////////////////////////////////////////////////////////////		
@@ -105,7 +106,7 @@ void salvaQtDivisoesCargaVivaMem(void);
 void salvaModoFuncionamentoBackLightMem(void);
 void salvaTempoDesligaBackLightMem(void);
 void salvaStatusZeroPowerMem(void);
-void salvaExibeRelogio(void);
+void salvaExibeRelogioMem(void);
 void salvaPosicaoPontoDecimalIndicadorMem(void);
 void salvaStatusSaidaPortaSerial_1Mem(void);
 void salvaValorDivisaoIndicadorMem(void);
@@ -140,22 +141,13 @@ static unsigned char nomeTelaIndicadorMem[16];
 static unsigned char linguagemSelecionadaMem;
 static unsigned char exibeRelogioMem;
 
-//controle da velocidade comunicacao
-//enum 
-//{
-//    velocidade1200Kbps,
-//    velocidade2400Kbps,
-//    velocidade4800Kbps,
-//    velocidade9600Kbps,
-//    velocidade19200Kbps,   
-//}velocidadeTxSerial_1Mem
 union{
      char array4[4]; 
      float float32;   
 }valorDivisaoIndicadorMem;
 union{
      char array4[4]; 
-     float int32;   
+     int32_t int32;   
 }valorZeroIndicadorMem;
 
 //dadosBateladasMem[16] armazena dados sobre as bateladas ate o momento
@@ -182,8 +174,8 @@ union
 {
 	struct
 	{
-        unsigned char endL:8;
-        unsigned char endH:8;
+        uint8_t endL:8;
+        uint8_t endH:8;
 	}end8Bits;
-    unsigned int end16Bits;
+    uint16_t end16Bits;
 }endEeprom;

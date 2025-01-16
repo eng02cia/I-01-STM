@@ -33,7 +33,7 @@ void funcaoProgramaHoraData(void)
                 {
                     teclaPressionadaAtual = teclaSolta;  
                     exibeRelogioMem = tempProgDataHora;
-                    salvaExibeRelogio();
+                    salvaExibeRelogioMem();
 
                     inteiroTo2BytesAscii(horaRelogio,&arrayProgHora[0]);
                     inteiroTo2BytesAscii(minutoRelogio,&arrayProgMinuto[0]);

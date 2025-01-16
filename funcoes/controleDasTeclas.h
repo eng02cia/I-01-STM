@@ -239,9 +239,10 @@ void telaErroLimiteZero(void)
 void funcaoTempoBackLight(void)
 {
     if (menuAcessaMenusProgramacao == menuAcessaMenusProgramacaoEmEspera
-    && menuCalibraIndicador == menuCalibraIndicadorEmEspera
-    && menuConfiguraSerial_1 == menuConfiguraSerial_1EmEspera
-    && menuModoTecnicoIndicador == menuModoTecnicoIndicadorEmEspera)  
+        && menuCalibraIndicador == menuCalibraIndicadorEmEspera
+        && menuConfiguraSerial_1 == menuConfiguraSerial_1EmEspera
+        && menuModoTecnicoIndicador == menuModoTecnicoIndicadorEmEspera
+        && menuProgramaDefinicaoFucionamento == menuDefinicaoFuncionamentoEmEspera)
     {
         if (flagTempoExibeBackLight == 1)
         {

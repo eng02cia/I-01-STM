@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "includes.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,7 +51,6 @@ UART_HandleTypeDef huart2;
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
-#include "includes.h"
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -554,7 +553,6 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback (TIM_HandleTypeDef *htim)
 {
-
 	if (htim->Instance == TIM2)
 	{
 		controleDasTasks = 1;
@@ -576,7 +574,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if (exibeVersionControl == 0 && statusLigaDesliga ==_LIGADO)
 	{
-		if (huart->Instance==USART1)
+		if (huart->Instance == USART1)
 		{
 			if (statusPortaSerial_1Mem == _RS232)
 			{
@@ -584,11 +582,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 				rrxModBusRtu = Rx_ModbusSerial_1[0];
 				rxSerialModBusRtu();
 			}
-
-
 		}
 
-		if (huart->Instance==UART5)
+		if (huart->Instance == UART5)
 		{
 			if (statusPortaSerial_1Mem == _RS485)
 			{
@@ -598,13 +594,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			}
 		}
 	}
-
-
 }
 
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 {
-	if (huart->Instance==USART1)
+	if (huart->Instance == USART1)
 	{
 		flagModBusRtu.txModBusRtu = 0;
 		flagTxSerial_1.transmitindoSerial_1 = 0;
@@ -613,19 +607,18 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 		HAL_UART_AbortTransmit_IT(&huart1);
 	}
 
-	if (huart->Instance==USART2)
+	if (huart->Instance == USART2)
 	{
 		transmitindoSerial_2 = 0;
 		HAL_UART_AbortTransmit_IT(&huart2);
 	}
 
-	if (huart->Instance==USART3)
+	if (huart->Instance == USART3)
 	{
-
 		HAL_UART_AbortTransmit_IT(&huart3);
 	}
 
-	if (huart->Instance==UART5)
+	if (huart->Instance == UART5)
 	{
 		flagModBusRtu.txModBusRtu = 0;
 		flagTxSerial_1.transmitindoSerial_1 = 0;
@@ -633,7 +626,6 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 		HAL_GPIO_WritePin(CONTROL485_GPIO_Port, CONTROL485_Pin, GPIO_PIN_RESET);
 		HAL_UART_AbortTransmit_IT(&huart5);
 	}
-
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)

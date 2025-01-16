@@ -64,7 +64,7 @@ void funcaoMenusConfiguraSerial_1(void)
                     velocidadeTxSerial_1Mem = velocidadeTxSerial_1;
                     iniciaVariaveisTxSerial_1();
                     salvaStatusSaidaDadosSerial_1Mem();
-                    tempConfigSerial = statusPortaSerial_1Mem;
+                    tempConfigSerial = statusComunicacaoSerial_1Mem;
                     menuConfiguraSerial_1 = ativaDesativaSerial_1;
                     telaMostraAtivaDesativaSerial_1();
                     break;
@@ -90,7 +90,6 @@ void funcaoMenusConfiguraSerial_1(void)
                     else{tempConfigSerial = 1;}
                     telaMostraAtivaDesativaSerial_1();            
                     break;            
-//tecla Ok
                 case teclaSalva:
                     teclaPressionadaAtual = teclaSolta;  
                     statusComunicacaoSerial_1Mem = tempConfigSerial;

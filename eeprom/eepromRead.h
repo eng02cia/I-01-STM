@@ -58,19 +58,15 @@ void le_i2c(void)
 
 void leituraI2c_Default(void)
 {
-	HAL_I2C_Mem_Read(EEPROM_I2C, EEPROM_ADDR, 0, tamanhoPagina, &Data_Write_I2c[0], 64, 200);
+	HAL_I2C_Mem_Read(EEPROM_I2C, EEPROM_ADDR, 0, tamanhoPagina, &Data_Write_I2c[0], 64, 700);
 	if (Data_Write_I2c[63] != 1)
 	{
 		transfereConstToArrayLoop(64,&defaultEeprom[0],&Data_Write_I2c[0]);
-		HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 0, tamanhoPagina, &Data_Write_I2c[0], 32, 700);
-		HAL_Delay(10);
-		HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 32, tamanhoPagina, &Data_Write_I2c[32], 32, 700);
-		HAL_Delay(10);
-		le_i2c();
-	}
-	else
-		le_i2c();
+		HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, 0, tamanhoPagina, &Data_Write_I2c[0], 64, 700);
+	}	
+	le_i2c();
 }
+
 void TimerReadi2c (void)
 {
 	if (flagFazLeituraI2c == 1)

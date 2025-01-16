@@ -63,9 +63,10 @@ static unsigned char temp2ModBusRtu;
 //static unsigned char *indexModBus;
 struct 
 {
-    unsigned transmitindoModBusRtu:1;
-    unsigned txModBusRtu:1;
-    unsigned tempoMaxRxModBusRtu:1;
+    unsigned char transmitindoModBusRtu:    1;
+    unsigned char txModBusRtu:              1;
+    unsigned char tempoMaxRxModBusRtu:      1;
+    unsigned char naoUsado:                 5;                     
 }flagModBusRtu;
 
 #define _qtMaxLeituraRegistradorValido16Bits 18

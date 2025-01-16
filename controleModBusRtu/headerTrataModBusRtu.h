@@ -36,21 +36,23 @@ short flagVerificaSalvaFrameModBusRtu;
 struct 
 { 
     union{
-        char array4[4]; 
-        long int int32;   
+        uint8_t array4[4]; 
+        uint32_t int32;   
     }pesoBruto;
     union{
         struct{
-            unsigned pontoDecimal:3;
-            unsigned pesoNegativo:1;
-            unsigned sobreCarga:1;
-            unsigned subCarga:1;            
+            uint8_t pontoDecimal:3;
+            uint8_t pesoNegativo:1;
+            uint8_t sobreCarga:1;
+            uint8_t subCarga:1;            
+            uint8_t naoUsado:2;
         }stBit;
-        unsigned char Byte;
+        uint8_t Byte;
     }statusL;    
-    char statusH;       
+    uint8_t statusH;       
 }peso32BitsModbus;
+
 union{
-     char array4[4]; 
-     long int int32;   
+     uint8_t array4[4]; 
+     uint32_t int32;   
 }dadoTemp32BitsModbus;

@@ -115,7 +115,7 @@ void funcaoVerificaSalvaModBusRtu(void)
         if (arrayMemoriaModbusRtu[30] != arrayMemoriaModbusRtuEspenho[30]
         ||arrayMemoriaModbusRtu[31] != arrayMemoriaModbusRtuEspenho[31])
         {    
-            if ( arrayMemoriaModbusRtuEspenho[31] <= _limiteProgLimiteDeZero)
+            if (arrayMemoriaModbusRtuEspenho[31] <= _limiteProgLimiteDeZero)
             {                
                 valorLimiteDeZeroMem = arrayMemoriaModbusRtuEspenho[31];
                 salvaValorLimiteDeZeroMem();
@@ -125,7 +125,7 @@ void funcaoVerificaSalvaModBusRtu(void)
         if (arrayMemoriaModbusRtu[32] != arrayMemoriaModbusRtuEspenho[32]
         ||arrayMemoriaModbusRtu[33] != arrayMemoriaModbusRtuEspenho[33])
         {   
-            if ( arrayMemoriaModbusRtuEspenho[33] <= _limiteProgValorFiltroDigital)
+            if (arrayMemoriaModbusRtuEspenho[33] <= _limiteProgValorFiltroDigital)
             {
                 valorFiltroDigitalMem = arrayMemoriaModbusRtuEspenho[33];
                 salvaValorFiltroDigitalMem();

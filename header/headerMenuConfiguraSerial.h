@@ -65,13 +65,7 @@ const char charTcContinua_2[]={"TC CONTINUA_2"};
 const char charModBusRtu[]= {"MODBUS-RTU"};
 const char charSigmaciaSa[]= {"SIGMACIA-SA"};
 
-const char linha0Serial[]=      {"t6.txt=\""};
-const char linha1Serial[]=      {"t7.txt=\""};
-
-unsigned char frameSerialNextion[100];
 unsigned char frameVelocidadeSerial[100];
-unsigned char frameSaidaDadosNextion[100];
-unsigned char frameEndindicadorNextion[100];
 
 //unsigned char frameSaidaDadosNextion[100];
 

@@ -96,7 +96,7 @@ void salvaModoFuncionamentoBackLightMem(void)
 //////////////////////////////////////////////////////////////////////////////////	
 void salvaTempoDesligaBackLightMem(void)
 {    
-	Data_Write_I2c[endTempoDesligaBacklightMem] = modoFuncionamentoBackLightMem;
+	Data_Write_I2c[endTempoDesligaBacklightMem] = tempoDesligaBackLightMem;
 	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, endTempoDesligaBacklightMem, tamanhoPagina, 
 		&Data_Write_I2c[endTempoDesligaBacklightMem], umByte, 10);
 }
@@ -197,7 +197,7 @@ void salvaLinguagemSelecionadaMem(void)
 		&Data_Write_I2c[endlinguagemSelecionadaMem], umByte, 10);
 }
 /* salva o funcionamento de exibicao do relogio */
-void salvaExibeRelogio(void)
+void salvaExibeRelogioMem(void)
 {
 	Data_Write_I2c[endExibeRelogioMem] = exibeRelogioMem;
 	HAL_I2C_Mem_Write(EEPROM_I2C, EEPROM_ADDR, endExibeRelogioMem, tamanhoPagina, 

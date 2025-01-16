@@ -31,7 +31,6 @@ void ControleMultTask(void)
 	if (controleDasTasks == 1)
 	{
         controleDasTasks = 0;
-        trataFrameRxModBusRtu();
 
 //////////////////////////////////////////////////////////////////////        
 //funcoes executadas a cada 200 micro segundos          			//
@@ -58,8 +57,11 @@ void ControleMultTask(void)
             tempoEscreveLcdSeteSegmentos();
             telaMostraDadoLcdSeteSegmentos();
 #endif
-            if (statusLigaDesliga == _LIGADO){controlaBackLightOscilaPeso();}
-            else{HAL_GPIO_WritePin(pinoBackLight_GPIO_Port, pinoBackLight_Pin, GPIO_PIN_RESET);}
+            // if (statusLigaDesliga == _LIGADO){controlaBackLightOscilaPeso();}
+            // else{HAL_GPIO_WritePin(pinoBackLight_GPIO_Port, pinoBackLight_Pin, GPIO_PIN_RESET);}
+            HAL_GPIO_WritePin(pinoBackLight_GPIO_Port, pinoBackLight_Pin, GPIO_PIN_SET);
+
+            /* TESTE BACKLIGHT LIGADO */
 		}
 ///////////////////////////////////////////////////////////////////////        
 //funcoes executadas a cada 10 mile segundo                			 //
